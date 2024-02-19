@@ -10,18 +10,14 @@ then result in a single EAGLE palette.
 Be creative! do whatever you need to do!
 """
 import logging
-import pickle
 
-from dlg.drop import BarrierAppDROP, BranchAppDrop
+from dlg.drop import BarrierAppDROP
 from dlg.meta import (
     dlg_batch_input,
     dlg_batch_output,
-    dlg_bool_param,
     dlg_component,
     dlg_float_param,
-    dlg_int_param,
     dlg_streaming_input,
-    dlg_string_param,
 )
 
 logger = logging.getLogger(__name__)
@@ -30,12 +26,12 @@ logger = logging.getLogger(__name__)
 # @brief MyApp
 # @details Template app for demonstration only!
 # Replace the documentation with whatever you want/need to show in the DALiuGE
-# workflow editor. The appclass parameter should contain the relative Pythonpath
-# to import MyApp.
+# workflow editor. The appclass parameter should contain the relative
+# Pythonpath to import MyApp.
 #
 # @par EAGLE_START
 # @param category PythonApp
-# @param[in] param/appclass Application Class/wallaby_hires.MyApp/String/readonly/
+# @param[in] param/appclass Application Class/wallaby_hires.MyApp/String/
 #     \~English Import direction for application class
 # @param[in] param/dummy Dummy parameter/ /String/readwrite/
 #     \~English Dummy modifyable parameter
