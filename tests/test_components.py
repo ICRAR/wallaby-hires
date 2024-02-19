@@ -1,6 +1,6 @@
 import pytest
 
-from project_name import MyAppDROP, MyDataDROP
+from wallaby_hires import MyAppDROP, MyDataDROP
 
 given = pytest.mark.parametrize
 
