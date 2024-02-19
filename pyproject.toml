@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "a-flask-test"
+name = "wallaby-hires"
 version = "0.1.0"
 description = ""
-authors = ["ICRAR"]
+authors = ["awicenec", "gayatri"]
 readme = "README.md"
-packages = [{include = "a_flask_test"}]
+packages = []
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 
 
 [build-system]

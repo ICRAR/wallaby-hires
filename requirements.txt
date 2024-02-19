@@ -1,2 +1,0 @@
-daliuge-engine>=2.0
-daliuge-translator>=2.0
