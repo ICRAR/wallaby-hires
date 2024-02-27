@@ -110,7 +110,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "ffb425ba-7c9b-43e3-8f6c-d41d6907470a",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -125,7 +125,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "5384b04d-9371-43e8-8f23-1715f2c41f96",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -207,7 +207,7 @@
             "color": "#2c2c2c",
             "drawOrderHint": 0,
             "key": -2,
-            "name": "asu.tsv",
+            "name": "test_catalogue.csv",
             "description": "A standard file on a filesystem mounted to the deployment machine",
             "x": 492,
             "y": 334.23,
