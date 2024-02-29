@@ -160,7 +160,7 @@
                 },
                 {
                     "name": "func_name",
-                    "value": "A_read_catalogue.read_and_process_csv_file",
+                    "value": "A_read_process_catalogue.read_and_process_csv_file",
                     "defaultValue": "A_read_catalogue.read_csv_file_as_list",
                     "description": "Complete import path of function",
                     "readonly": true,
