@@ -148,7 +148,7 @@
                 },
                 {
                     "name": "uvdata",
-                    "value": "",
+                    "value": "Source1_Beam1_uv.fits",
                     "defaultValue": "",
                     "description": "Dummy port",
                     "readonly": false,
@@ -541,7 +541,7 @@
                 },
                 {
                     "name": "array",
-                    "value": "[['Source1', '05:30:00', '40:30:00', '100'],  ['Source2', '12:45:30', '-25:15:00', '150'],  ['Source3', '22:10:15', '10:20:30', '200'],  ['Source4', '03:15:45', '-60:00:00', '90'],  ['Source5', '18:55:20', '-22:45:15', '180']]",
+                    "value": "[A,B]",
                     "defaultValue": "",
                     "description": "",
                     "readonly": false,
@@ -663,8 +663,8 @@
                 },
                 {
                     "name": "array",
-                    "value": "[['Source1', '05:30:00', '40:30:00', '100'],  ['Source2', '12:45:30', '-25:15:00', '150'],  ['Source3', '22:10:15', '10:20:30', '200'],  ['Source4', '03:15:45', '-60:00:00', '90'],  ['Source5', '18:55:20', '-22:45:15', '180']]",
-                    "defaultValue": "",
+                    "value": "[1,2,3,4,5,6]",
+                    "defaultValue": "[1,2,3,4,5,6]",
                     "description": "",
                     "readonly": false,
                     "type": "Object",
@@ -695,7 +695,7 @@
             "color": "#2c2c2c",
             "drawOrderHint": 0,
             "key": -5,
-            "name": "source_info",
+            "name": "source_dict",
             "description": "{'name': 'Source1', \n'RA\\_string': '05h30m00', \n'Dec\\_string': '40d30m00s',\n'Vsys': 100.0} ",
             "x": 626.0928849831461,
             "y": 783.279361759309,
@@ -784,8 +784,8 @@
                     "usage": "NoPort"
                 },
                 {
-                    "name": "array",
-                    "value": "[['Source1', '05:30:00', '40:30:00', '100'],  ['Source2', '12:45:30', '-25:15:00', '150'],  ['Source3', '22:10:15', '10:20:30', '200'],  ['Source4', '03:15:45', '-60:00:00', '90'],  ['Source5', '18:55:20', '-22:45:15', '180']]",
+                    "name": "source_dict",
+                    "value": "{'name': 'Source1',  'RA_string': '05h30h00.00',  'Dec_string': '40d30d00.0',  'Vsys': 100.0}",
                     "defaultValue": "",
                     "description": "",
                     "readonly": false,
@@ -793,7 +793,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "id": "25908dc5-b2f8-4a77-a23a-d5448c449632",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputOutput"
