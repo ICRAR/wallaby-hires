@@ -768,7 +768,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "e39a0f71-2b81-429f-8066-3c37a5599146",
-                    "parameterType": "ConstraintParameter",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -829,7 +829,7 @@
                     "keyAttribute": false,
                     "id": "faf822c0-15a8-49a7-9426-6993678d4d9c",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "OutputPort"
                 }
             ],
             "inputAppFields": [],
