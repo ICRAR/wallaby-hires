@@ -493,7 +493,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "a2316b6a-6e2f-4624-ae2a-1604b0465f23",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -554,7 +554,7 @@
                     "keyAttribute": false,
                     "id": "56104deb-e2d7-4fa7-a132-fabcd743c3ad",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "NoPort"
                 },
                 {
                     "name": "element",
@@ -707,7 +707,7 @@
                     "keyAttribute": false,
                     "id": "397026a1-21d1-4deb-bdf4-04d98ebbd902",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "OutputPort"
                 }
             ],
             "inputAppFields": [],
@@ -768,7 +768,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "e39a0f71-2b81-429f-8066-3c37a5599146",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
                 {
