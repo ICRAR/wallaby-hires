@@ -178,8 +178,8 @@
                     "usage": "NoPort"
                 },
                 {
-                    "name": "list_of_sources",
-                    "value": "",
+                    "name": "source_list",
+                    "value": "[['Source1', '05:30:00', '40:30:00', '100'],  ['Source2', '12:45:30', '-25:15:00', '150'],  ['Source3', '22:10:15', '10:20:30', '200'],  ['Source4', '03:15:45', '-60:00:00', '90'],  ['Source5', '18:55:20', '-22:45:15', '180']]",
                     "defaultValue": "",
                     "description": "List of elements",
                     "readonly": false,
@@ -478,7 +478,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "a2316b6a-6e2f-4624-ae2a-1604b0465f23",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -692,7 +692,7 @@
                     "keyAttribute": false,
                     "id": "397026a1-21d1-4deb-bdf4-04d98ebbd902",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "OutputPort"
                 }
             ],
             "inputAppFields": [],
@@ -814,7 +814,7 @@
                     "keyAttribute": false,
                     "id": "faf822c0-15a8-49a7-9426-6993678d4d9c",
                     "parameterType": "ApplicationArgument",
-                    "usage": "OutputPort"
+                    "usage": "InputOutput"
                 }
             ],
             "inputAppFields": [],
