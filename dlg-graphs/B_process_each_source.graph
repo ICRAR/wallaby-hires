@@ -241,8 +241,8 @@
             "fields": [
                 {
                     "name": "func_name",
-                    "value": "",
-                    "defaultValue": "",
+                    "value": "A_process_each_source.process_each_source",
+                    "defaultValue": "A_process_each_source.process_each_source",
                     "description": "Python function name",
                     "readonly": false,
                     "type": "String",
