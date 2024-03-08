@@ -32,7 +32,7 @@
             "description": "For every line in the catalogue (.csv) file. ",
             "x": 949.3731541316781,
             "y": 394.96860688770346,
-            "radius": 291.93334141636456,
+            "radius": 296.8236123863249,
             "collapsed": false,
             "subject": null,
             "expanded": true,
@@ -227,8 +227,8 @@
             "key": -22,
             "name": "process_each_source",
             "description": "For each line (i.e. for every source) in the .csv file:\n- By splitting the comma-separated values. ",
-            "x": 973.6115366276972,
-            "y": 394.89408177176995,
+            "x": 974.4257795966305,
+            "y": 393.2655958339034,
             "radius": 25,
             "collapsed": true,
             "subject": null,
@@ -256,8 +256,8 @@
                 },
                 {
                     "name": "func_code",
-                    "value": "A_process_each_source.process_each_source",
-                    "defaultValue": "A_process_each_source.process_each_source",
+                    "value": "",
+                    "defaultValue": "",
                     "description": "Python function code, e.g. 'def function_name(args): return args'",
                     "readonly": false,
                     "type": "String",
@@ -376,7 +376,7 @@
                         "dataurl"
                     ],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "id": "b3a6bc47-e690-45a3-95a4-4a5f703bad5e",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputPort"
@@ -398,7 +398,7 @@
                         "dataurl"
                     ],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "id": "4f5078c6-afc9-4ed1-bc74-75191545bb9a",
                     "parameterType": "ApplicationArgument",
                     "usage": "OutputPort"
@@ -417,21 +417,6 @@
                     "id": "db158c5f-9b83-4268-b4ea-17eaab15ad91",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
-                },
-                {
-                    "name": "source_dict",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "",
-                    "readonly": false,
-                    "type": "String",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": true,
-                    "id": "d9d176bb-cb16-4d1b-a81e-b29ea0f9830a",
-                    "parameterType": "ComponentParameter",
-                    "usage": "OutputPort"
                 }
             ],
             "inputAppFields": [],
@@ -454,7 +439,7 @@
             "key": -27,
             "name": "source",
             "description": "In-memory storage of intermediate data products",
-            "x": 794.018431737285,
+            "x": 826.5881504946165,
             "y": 395.0818941474958,
             "radius": 25,
             "collapsed": true,
@@ -493,7 +478,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "a2316b6a-6e2f-4624-ae2a-1604b0465f23",
-                    "parameterType": "ConstraintParameter",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -554,7 +539,7 @@
                     "keyAttribute": false,
                     "id": "56104deb-e2d7-4fa7-a132-fabcd743c3ad",
                     "parameterType": "ApplicationArgument",
-                    "usage": "NoPort"
+                    "usage": "InputOutput"
                 },
                 {
                     "name": "element",
@@ -592,8 +577,8 @@
             "key": -28,
             "name": "Dictionary",
             "description": "For each source, we have the following values: {name, RA, DEC, System Velocity}",
-            "x": 1186.304230908693,
-            "y": 396.0045277379002,
+            "x": 1191.1896887222927,
+            "y": 396.8187707068335,
             "radius": 25,
             "collapsed": true,
             "subject": null,
@@ -707,7 +692,7 @@
                     "keyAttribute": false,
                     "id": "397026a1-21d1-4deb-bdf4-04d98ebbd902",
                     "parameterType": "ApplicationArgument",
-                    "usage": "OutputPort"
+                    "usage": "InputOutput"
                 }
             ],
             "inputAppFields": [],
