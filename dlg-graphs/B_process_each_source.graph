@@ -241,8 +241,8 @@
             "fields": [
                 {
                     "name": "func_name",
-                    "value": "A_process_each_source_withoutAstropy.process_each_source",
-                    "defaultValue": "A_process_each_source_withoutAstropy.process_each_source",
+                    "value": "A_process_each_source_withoutAstropy.extract_name_RA_DEC_VSYS",
+                    "defaultValue": "A_process_each_source_withoutAstropy.extract_name_RA_DEC_VSYS",
                     "description": "Python function name",
                     "readonly": false,
                     "type": "String",
@@ -539,7 +539,7 @@
                     "keyAttribute": false,
                     "id": "56104deb-e2d7-4fa7-a132-fabcd743c3ad",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "NoPort"
                 },
                 {
                     "name": "element",
@@ -753,7 +753,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "e39a0f71-2b81-429f-8066-3c37a5599146",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
                 {
