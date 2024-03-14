@@ -30,8 +30,8 @@
             "key": -1,
             "name": "uvdata.fits",
             "description": "- uvdata (i.e. visibilities) for that particular source, footprint and beam-number. \n- uvdata, coming from casda, should also have information about the beam number. ",
-            "x": 892.5130694873874,
-            "y": 538.8815141908956,
+            "x": 994.758851765429,
+            "y": 569.4678593168052,
             "radius": 25,
             "collapsed": true,
             "subject": null,
@@ -182,10 +182,10 @@
             "key": -3,
             "name": "imager_parset_file",
             "description": "An application that wraps a simple python function. The inputs of the application are treated as the arguments of the function. Conversely, the output of the function is treated as the output of the application. If the application has more than one output, the result of calling the function is treated as an iterable, with each individual object being written to its corresponding output.",
-            "x": 835.4833778168339,
-            "y": 388.01216169523076,
+            "x": 925.4554139525292,
+            "y": 393.2530087616977,
             "radius": 25,
-            "collapsed": false,
+            "collapsed": true,
             "subject": null,
             "expanded": true,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
@@ -333,7 +333,7 @@
                     "keyAttribute": false,
                     "id": "e7ab968d-666b-4ff6-ad7c-7f34adb2b2ab",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputPort"
+                    "usage": "NoPort"
                 },
                 {
                     "name": "output_parser",
@@ -355,7 +355,7 @@
                     "keyAttribute": false,
                     "id": "2557b26f-a571-40af-83f2-d3b8d5c081d2",
                     "parameterType": "ApplicationArgument",
-                    "usage": "OutputPort"
+                    "usage": "NoPort"
                 },
                 {
                     "name": "func_arg_mapping",
@@ -430,7 +430,22 @@
                     "keyAttribute": true,
                     "id": "90b341c0-c16b-4221-855b-7a5acfad5934",
                     "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
+                    "usage": "InputPort"
+                },
+                {
+                    "name": "imager_parset_file",
+                    "value": "",
+                    "defaultValue": "",
+                    "description": "",
+                    "readonly": false,
+                    "type": "String",
+                    "precious": false,
+                    "options": [],
+                    "positional": false,
+                    "keyAttribute": false,
+                    "id": "fe9dd815-eed1-45a8-9784-0d7d3d05f28f",
+                    "parameterType": "ComponentParameter",
+                    "usage": "InputPort"
                 }
             ],
             "inputAppFields": [],
@@ -453,8 +468,8 @@
             "key": -2,
             "name": "fp",
             "description": "[A,B]",
-            "x": 591.6273042925992,
-            "y": 540.9413609410915,
+            "x": 556.6787383959438,
+            "y": 544.9353792475503,
             "radius": 25,
             "collapsed": true,
             "subject": null,
@@ -575,8 +590,8 @@
             "key": -4,
             "name": "beam_number",
             "description": "[1,2,3,4,5,6]",
-            "x": 672.9843936603897,
-            "y": 735.239774547632,
+            "x": 860.7871414006057,
+            "y": 645.8088299442109,
             "radius": 25,
             "collapsed": true,
             "subject": null,
@@ -697,8 +712,8 @@
             "key": -5,
             "name": "source_dict",
             "description": "{'name': 'Source1', \n'RA\\_string': '05h30m00', \n'Dec\\_string': '40d30m00s',\n'Vsys': 100.0} ",
-            "x": 851.6502477771512,
-            "y": 749.2645386366412,
+            "x": 707.855415771056,
+            "y": 656.2955768445221,
             "radius": 25,
             "collapsed": true,
             "subject": null,
@@ -819,10 +834,10 @@
             "key": -6,
             "name": "imager_parset_file",
             "description": "A standard file on a filesystem mounted to the deployment machine. \n- This just has the parset file generated for the imager. ",
-            "x": 1061.1388915300624,
-            "y": 383.98640110641213,
+            "x": 275.27710613318857,
+            "y": 7.86506017523396,
             "radius": 25,
-            "collapsed": false,
+            "collapsed": true,
             "subject": null,
             "expanded": true,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
@@ -999,7 +1014,7 @@
                 },
                 {
                     "name": "string",
-                    "value": "[A,B]",
+                    "value": "[[\"Source1\", \"05:30:00\", \"40:30:00\", \"100\"],  [\"Source2\", \"12:45:30\", \"-25:15:00\", \"150\"],  [\"Source3\", \"22:10:15\", \"10:20:30\", \"200\"],  [\"Source4\", \"03:15:45\", \"-60:00:00\", \"90\"],  [\"Source5\", \"18:55:20\", \"-22:45:15\", \"180\"]]",
                     "defaultValue": "[\"Andreas\\n\", \"Perth\\n\", \"World\\n\", \"Solar System\\n\", \"Galaxy\\n\", \"Universe\\n\"]",
                     "description": "",
                     "readonly": false,
@@ -1212,8 +1227,8 @@
             "key": -8,
             "name": "string2json",
             "description": "An application that wraps a simple python function. The inputs of the application are treated as the arguments of the function. Conversely, the output of the function is treated as the output of the application. If the application has more than one output, the result of calling the function is treated as an iterable, with each individual object being written to its corresponding output.",
-            "x": 549.7898612473105,
-            "y": 772.4865173906045,
+            "x": 886.1301130763591,
+            "y": 809.227302474072,
             "radius": 25,
             "collapsed": true,
             "subject": null,
@@ -1240,7 +1255,7 @@
                 },
                 {
                     "name": "string",
-                    "value": "[1,2,3,4,5,6]",
+                    "value": "[[\"Source1\", \"05:30:00\", \"40:30:00\", \"100\"],  [\"Source2\", \"12:45:30\", \"-25:15:00\", \"150\"],  [\"Source3\", \"22:10:15\", \"10:20:30\", \"200\"],  [\"Source4\", \"03:15:45\", \"-60:00:00\", \"90\"],  [\"Source5\", \"18:55:20\", \"-22:45:15\", \"180\"]]",
                     "defaultValue": "[\"Andreas\\n\", \"Perth\\n\", \"World\\n\", \"Solar System\\n\", \"Galaxy\\n\", \"Universe\\n\"]",
                     "description": "",
                     "readonly": false,
@@ -1453,8 +1468,8 @@
             "key": -11,
             "name": "string2json",
             "description": "An application that wraps a simple python function. The inputs of the application are treated as the arguments of the function. Conversely, the output of the function is treated as the output of the application. If the application has more than one output, the result of calling the function is treated as an iterable, with each individual object being written to its corresponding output.",
-            "x": 962.2430974340931,
-            "y": 652.2361282643484,
+            "x": 1084.5884779377325,
+            "y": 651.3622326893225,
             "radius": 25,
             "collapsed": true,
             "subject": null,
@@ -1694,8 +1709,8 @@
             "key": -9,
             "name": "string2json",
             "description": "An application that wraps a simple python function. The inputs of the application are treated as the arguments of the function. Conversely, the output of the function is treated as the output of the application. If the application has more than one output, the result of calling the function is treated as an iterable, with each individual object being written to its corresponding output.",
-            "x": 864.1831254751115,
-            "y": 887.7783060008131,
+            "x": 679.8907573702255,
+            "y": 838.9397520249555,
             "radius": 25,
             "collapsed": true,
             "subject": null,
@@ -1929,29 +1944,11 @@
     ],
     "linkDataArray": [
         {
-            "from": -3,
-            "fromPort": "2557b26f-a571-40af-83f2-d3b8d5c081d2",
-            "to": -6,
-            "toPort": "8798f2b0-9cbe-4d96-9eff-7fa0756f4372",
-            "dataType": "Select",
-            "loop_aware": "0",
-            "closesLoop": false
-        },
-        {
             "from": -7,
             "fromPort": "d418431a-1fd9-4864-bdf5-ae83e610eed9",
             "to": -2,
             "toPort": "e4116ed4-7e0c-4e54-8e35-e81aa26ced3f",
             "dataType": "String",
-            "loop_aware": "0",
-            "closesLoop": false
-        },
-        {
-            "from": -1,
-            "fromPort": "cd2bcb0b-9d4d-4f07-afe1-c4b6efcecfac",
-            "to": -3,
-            "toPort": "26c1f21a-88d0-47aa-801b-95bba86be10b",
-            "dataType": "Object",
             "loop_aware": "0",
             "closesLoop": false
         },
@@ -1974,11 +1971,47 @@
             "closesLoop": false
         },
         {
+            "from": -1,
+            "fromPort": "cd2bcb0b-9d4d-4f07-afe1-c4b6efcecfac",
+            "to": -3,
+            "toPort": "3574fa6b-587b-47a8-99e9-622f0ccf8c17",
+            "dataType": "Object",
+            "loop_aware": "0",
+            "closesLoop": false
+        },
+        {
             "from": -9,
             "fromPort": "55bedec8-0ff8-4c04-8350-74cd529efad9",
             "to": -5,
             "toPort": "25908dc5-b2f8-4a77-a23a-d5448c449632",
             "dataType": "String",
+            "loop_aware": "0",
+            "closesLoop": false
+        },
+        {
+            "from": -4,
+            "fromPort": "e11def59-b99d-46ad-8168-ce047e730ad6",
+            "to": -3,
+            "toPort": "473ee6af-9681-4456-96ec-b2718ad02256",
+            "dataType": "Object",
+            "loop_aware": "0",
+            "closesLoop": false
+        },
+        {
+            "from": -5,
+            "fromPort": "25908dc5-b2f8-4a77-a23a-d5448c449632",
+            "to": -3,
+            "toPort": "90b341c0-c16b-4221-855b-7a5acfad5934",
+            "dataType": "Object",
+            "loop_aware": "0",
+            "closesLoop": false
+        },
+        {
+            "from": -2,
+            "fromPort": "e4116ed4-7e0c-4e54-8e35-e81aa26ced3f",
+            "to": -3,
+            "toPort": "26c1f21a-88d0-47aa-801b-95bba86be10b",
+            "dataType": "Object",
             "loop_aware": "0",
             "closesLoop": false
         }
