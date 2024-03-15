@@ -43,7 +43,7 @@
             "fields": [
                 {
                     "name": "num_of_copies",
-                    "value": 4,
+                    "value": 1,
                     "defaultValue": "4",
                     "description": "Specifies the number of replications that will be generated of the scatter construct's contents.",
                     "readonly": false,
@@ -598,8 +598,8 @@
             "key": -6,
             "name": "string2json",
             "description": "An application that wraps a simple python function. The inputs of the application are treated as the arguments of the function. Conversely, the output of the function is treated as the output of the application. If the application has more than one output, the result of calling the function is treated as an iterable, with each individual object being written to its corresponding output.",
-            "x": 798.1399545936945,
-            "y": 1035.6065865523733,
+            "x": 766.6596758515263,
+            "y": 1026.2790965546944,
             "radius": 25,
             "collapsed": true,
             "subject": null,
