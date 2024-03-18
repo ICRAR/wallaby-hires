@@ -1179,7 +1179,7 @@
             "fields": [
                 {
                     "name": "pydata",
-                    "value": "[{'name': 'Source1', 'RA': '05h30m00', 'Dec': '40d30m00s', 'Vsys': 100.0},  {'name': 'Source2', 'RA': '12h45m30', 'Dec': '-25d15m00s', 'Vsys': 150.0},  {'name': 'Source3', 'RA': '22h10m15', 'Dec': '10d20m30s', 'Vsys': 200.0},  {'name': 'Source4', 'RA': '03h15m45', 'Dec': '-60d00m00s', 'Vsys': 90.0},  {'name': 'Source5', 'RA': '18h55m20', 'Dec': '-22d45m15s', 'Vsys': 180.0}]",
+                    "value": "[{'name': 'Source1',   'RA': '05h30m00',   'Dec': '40d30m00s',   'Vsys': 100.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source1.fits'},  {'name': 'Source2',   'RA': '12h45m30',   'Dec': '-25d15m00s',   'Vsys': 150.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source2.fits'},  {'name': 'Source3',   'RA': '22h10m15',   'Dec': '10d20m30s',   'Vsys': 200.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source3.fits'},  {'name': 'Source4',   'RA': '03h15m45',   'Dec': '-60d00m00s',   'Vsys': 90.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source4.fits'},  {'name': 'Source5',   'RA': '18h55m20',   'Dec': '-22d45m15s',   'Vsys': 180.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source5.fits'}]",
                     "defaultValue": "None",
                     "description": "Data to be loaded into memory",
                     "readonly": false,
