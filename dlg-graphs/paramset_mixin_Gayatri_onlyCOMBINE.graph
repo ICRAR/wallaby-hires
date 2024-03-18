@@ -231,7 +231,7 @@
                 },
                 {
                     "name": "output_parser",
-                    "value": "eval",
+                    "value": "pickle",
                     "defaultValue": "pickle",
                     "description": "Output port parsing technique Mapping from argname to default value. Should match only the last part of the argnames list. Values are interpreted as Python code literals and that means string values need to be quoted.",
                     "readonly": false,
