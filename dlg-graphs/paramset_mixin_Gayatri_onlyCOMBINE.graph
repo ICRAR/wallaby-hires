@@ -285,8 +285,8 @@
             "fields": [
                 {
                     "name": "num_of_copies",
-                    "value": 2,
-                    "defaultValue": "4",
+                    "value": 5,
+                    "defaultValue": "5",
                     "description": "Specifies the number of replications that will be generated of the scatter construct's contents.",
                     "readonly": false,
                     "type": "Integer",
