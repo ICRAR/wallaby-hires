@@ -483,7 +483,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "88ffc6f0-2ef1-4587-a2af-e41f38cb4a99",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -498,7 +498,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "e1e5049d-3cf1-46fd-9175-c4ab11e75114",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -513,7 +513,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "70a46c3a-12f4-4403-a467-b36c4d7e9d51",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -528,7 +528,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "e8d82fc8-d022-4d08-9175-1f56324d41d3",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -543,7 +543,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "c556b21f-3c42-4744-a3b1-633b4b424ee7",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -558,7 +558,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "8b07b94a-7df7-442d-99fb-9328b31c12d6",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -573,7 +573,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "18bc3d22-6b63-4dfc-a5d8-5a92e0633662",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -588,7 +588,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "32fa09d2-776d-4b65-ac76-9e88ed34b449",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -603,7 +603,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "b9c106c0-1ca1-4e47-97f9-383e988fc37f",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -618,7 +618,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "66d1832b-6d26-41c7-aaa2-cdc130991408",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -633,7 +633,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "9c3bd9c8-d563-4b7b-b773-63c4b3eaf9f3",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -648,7 +648,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "67ef82bc-699c-4fb7-b50a-e4972a9061bb",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -663,7 +663,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "28af3a04-6846-4ffe-9043-e84bb6343185",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -678,7 +678,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "77768f46-615b-4d36-a30c-6c4dc47b9dbb",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -693,7 +693,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "7f3992d6-672a-4e39-b34f-45bfe24929c9",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -708,7 +708,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "12aa2552-e2d6-4e82-bc50-b1f9fa87cd93",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -723,7 +723,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "2df73402-6031-4949-979c-2953623d1c5f",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -738,7 +738,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "c4c264a4-b3a9-45d8-8ed2-5689970628bb",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -753,7 +753,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "6a0f8f59-8a4e-434e-813e-68692986237c",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -768,7 +768,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "18ed6c9f-bf2d-40ff-818b-1136160eebf1",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -783,7 +783,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "82041ba3-1163-47ea-88c5-0f4c5f134ba4",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -798,7 +798,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "c8df7fb2-dd8f-4baa-88f4-a2dfc4a490e1",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -813,7 +813,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "f42761cc-dfbf-41e2-bde9-80ab694eaf6f",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -828,7 +828,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "e79c1329-2f7c-48ae-b480-1acd8f207f0d",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -843,7 +843,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "c0b87128-a35a-4e3c-94f5-e1f8b96fc24a",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -858,7 +858,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "905ea343-07dc-4a45-bbb8-ee9d648b8ca6",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -873,7 +873,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "df6cc76c-1362-43c4-85ea-de2785501bc8",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -888,7 +888,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "cc472946-1c4e-4554-b5ed-bc61d957d716",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -903,7 +903,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "88662c34-3b27-402d-a4d1-d07e1834f758",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -918,7 +918,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "00002f4f-c6e5-4785-a80b-8af68eda54d5",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -933,7 +933,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "96672f8b-3307-4fba-a39e-f1a9bd8fc555",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -948,7 +948,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "358af49c-6ae3-489a-bacd-60dc632a9c4a",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -963,7 +963,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "4b44321a-2c20-437f-9d02-ad7af1fd6ad6",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -978,7 +978,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "6a169de0-01ed-4729-bd2a-a20e744c4040",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -993,7 +993,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "07822244-cb38-483a-823f-2a4dacf4819c",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1008,7 +1008,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "d390cda2-ccfe-4afb-a520-f6bd864a1dc7",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1023,7 +1023,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "3b1a6bcd-0bfc-4973-9218-198c7eba007e",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1038,7 +1038,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "a320649c-adf2-407e-b5df-7a3ec29b8a91",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1053,7 +1053,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "10068c7b-5696-4b6f-a1cf-2f76bf540fab",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1068,7 +1068,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "51924842-eeff-45fe-88b1-5f3f5323cfd2",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1083,7 +1083,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "f8aa8923-c0bc-4def-8b2b-0bc96028da4d",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1098,7 +1098,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "05892e9c-fe2c-45f8-b4db-c85c3c002f3d",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1113,7 +1113,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "383157b3-b61d-4093-84b7-909ec5e3d32b",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1128,7 +1128,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "aa53d682-bf28-4bd5-95ee-475ec8f7de9b",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1143,7 +1143,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "fc5cc2f3-f243-4712-9ac5-04a3c484122a",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1158,7 +1158,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "59a1c21b-936f-432f-af42-b928fc396a88",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1173,7 +1173,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "d1f69f46-e7e8-41a5-b245-8644ce296d9c",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1188,7 +1188,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "0d18f702-6a99-4064-aa38-516138cd67ce",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1203,7 +1203,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "cbf131ed-770a-4a8d-bf79-879a88405c34",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1218,7 +1218,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "b280ce4a-fce1-4d24-8850-18b8d3898ac8",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1233,7 +1233,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "a3b31742-9449-4815-903c-a05007d73e66",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1248,7 +1248,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "975d43a3-0da1-4fd4-b17d-28f5ee5e82fc",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1263,7 +1263,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "a90530d7-b89a-4ba8-8c28-dd600dcb1d5f",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1278,7 +1278,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "id": "ca6317c8-752a-4a69-bd30-9e5d0a67099a",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 }
             ],
