@@ -274,7 +274,7 @@
             "description": "A default Scatter construct for the GenericScatterApp component.",
             "x": 768.5024487417124,
             "y": 121.37903824490878,
-            "radius": 207.36904223741337,
+            "radius": 186.95322257213755,
             "collapsed": false,
             "subject": null,
             "expanded": true,
@@ -548,8 +548,8 @@
             "key": -3,
             "name": "combineParams",
             "description": "A standard file on a filesystem mounted to the deployment machine",
-            "x": 918.5021343820537,
-            "y": 94.61302733283101,
+            "x": 899.6280956576277,
+            "y": 106.62377924837487,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -698,11 +698,11 @@
             "isGroup": false,
             "color": "#2c2c2c",
             "drawOrderHint": 0,
-            "key": -4,
-            "name": "dynamic_parset",
+            "key": -1,
+            "name": "static_parset_dict",
             "description": "In-memory storage of intermediate data products",
-            "x": 222.8531207134089,
-            "y": 69.28125699935404,
+            "x": 351.21793837776784,
+            "y": 306.6007527547179,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -714,7 +714,7 @@
             "fields": [
                 {
                     "name": "pydata",
-                    "value": "[{'name': 'Source1',   'RA': '05h30m00',   'Dec': '40d30m00s',   'Vsys': 100.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source1.fits'},  {'name': 'Source2',   'RA': '12h45m30',   'Dec': '-25d15m00s',   'Vsys': 150.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source2.fits'},  {'name': 'Source3',   'RA': '22h10m15',   'Dec': '10d20m30s',   'Vsys': 200.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source3.fits'},  {'name': 'Source4',   'RA': '03h15m45',   'Dec': '-60d00m00s',   'Vsys': 90.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source4.fits'},  {'name': 'Source5',   'RA': '18h55m20',   'Dec': '-22d45m15s',   'Vsys': 180.0,   'fp': 'A',   'beam_no': 1,   'uv_data': 'uvdata_source5.fits'}]",
+                    "value": "{\"Cimager.imagetype\": \"fits\",  \"Cimager.MaxUV\": 7000,  \"Cimager.MinUV\": 12,  \"Cimager.Images.shape\": [384, 384],  \"Cimager.Images.cellsize\": [\"2arcsec\", \"2arcsec\"],  \"Cimager.Images.restFrequency\": \"HI\",  \"Cimager.nchanpercore\": 10,  \"Cimager.usetmpfs\": false,  \"Cimager.tmpfs\": \"/dev/shm\",  \"Cimager.freqframe\": \"bary\",  \"Cimager.solverpercore\": true,  \"Cimager.nuvwmachines\": 1,  \"Cimager.nwriters\": 25,  \"Cimager.singleoutputfile\": true,  \"Cimager.Channels\": [250, 0],  \"Cimager.gridder.snapshotimaging\": false,  \"Cimager.gridder.snapshotimaging.wtolerance\": 2600,  \"Cimager.gridder.snapshotimaging.longtrack\": true,  \"Cimager.gridder.snapshotimaging.clipping\": 0.01,  \"Cimager.gridder\": \"WProject\",  \"Cimager.gridder.WProject.wmax\": 35000,  \"Cimager.gridder.WProject.nwplanes\": 257,  \"Cimager.gridder.WProject.oversample\": 4,  \"Cimager.gridder.WProject.maxsupport\": 1024,  \"Cimager.gridder.WProject.variablesupport\": true,  \"Cimager.gridder.WProject.offsetsupport\": true,  \"Cimager.gridder.WProject.sharecf\": true,  \"Cimager.solver\": \"Clean\",  \"Cimager.solver.Clean.algorithm\": \"BasisfunctionMFS\",  \"Cimager.solver.Clean.niter\": 800,  \"Cimager.solver.Clean.gain\": 0.2,  \"Cimager.solver.Clean.scales\": [0, 10, 30, 60],  \"Cimager.solver.Clean.solutiontype\": \"MAXBASE\",  \"Cimager.solver.Clean.verbose\": false,  \"Cimager.solver.Clean.tolerance\": 0.01,  \"Cimager.solver.Clean.weightcutoff\": \"zero\",  \"Cimager.solver.Clean.weightcutoff.clean\": false,  \"Cimager.solver.Clean.decoupled\": true,  \"Cimager.solver.Clean.psfwidth\": 256,  \"Cimager.solver.Clean.logevery\": 50,  \"Cimager.solver.Clean.detectdivergence\": true,  \"Cimager.threshold.minorcycle\": [\"45%\", \"3.5mJy\", \"0.5mJy\"],  \"Cimager.threshold.majorcycle\": \"0.5mJy\",  \"Cimager.ncycles\": 3,  \"Cimager.Images.writeAtMajorCycle\": false,  \"Cimager.preconditioner.Names\": [\"Wiener\", \"GaussianTaper\"],  \"Cimager.preconditioner.GaussianTaper\": [\"12arcsec\", \"12arcsec\", \"0deg\"],  \"Cimager.preconditioner.GaussianTaper.isPsfSize\": true,  \"Cimager.preconditioner.GaussianTaper.tolerance\": 0.005,  \"Cimager.preconditioner.preservecf\": true,  \"Cimager.preconditioner.Wiener.robustness\": 0.5,  \"Cimager.restore\": true,  \"Cimager.restore.beam\": \"fit\",  \"Cimager.restore.beam.cutoff\": 0.5,  \"Cimager.restore.beamReference\": \"mid\"}",
                     "defaultValue": "None",
                     "description": "Data to be loaded into memory",
                     "readonly": false,
@@ -723,7 +723,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "de6153fd-6283-48e1-b84d-39c8eac03929",
+                    "id": "06972693-9bad-43b7-83b4-fb513beaa80e",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -738,7 +738,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "30ff3720-d73d-4b48-a2a6-6f42a75f4611",
+                    "id": "28548491-434b-476e-9867-80d777478148",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputOutput"
                 },
@@ -753,7 +753,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "9e33e72b-8926-4fa2-a538-ea3359fd4742",
+                    "id": "9b048959-c587-438c-9c38-b6ddb78a13c4",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -768,7 +768,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "b6f65083-a784-45e7-842c-4cb0880d896b",
+                    "id": "459812c8-47ec-4efa-a6f8-547547be709c",
                     "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
@@ -783,7 +783,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "09c6c0c6-78bb-49cb-9d63-fd2221550234",
+                    "id": "9bebe8ba-decc-4bad-b68b-a871efd0ba22",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -798,7 +798,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "b7f3bca7-6c04-4640-bb5f-4dc88bb61064",
+                    "id": "1548a80f-f439-442d-90e8-a53915541e43",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -813,7 +813,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "40d3fdd8-9308-4c22-8959-049abda37e6e",
+                    "id": "dc66665a-a60a-4fdc-aa6d-d4083235f804",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 }
@@ -835,11 +835,11 @@
             "isGroup": false,
             "color": "#2c2c2c",
             "drawOrderHint": 0,
-            "key": -7,
-            "name": "static_parset",
+            "key": -4,
+            "name": "dynamic_parset_dict",
             "description": "In-memory storage of intermediate data products",
-            "x": 263.90050994246633,
-            "y": 332.13574810386194,
+            "x": 300.3331477377978,
+            "y": 97.86036551045684,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -851,7 +851,7 @@
             "fields": [
                 {
                     "name": "pydata",
-                    "value": "{'Cimager.imagetype': 'fits',  'Cimager.MaxUV': 7000,  'Cimager.MinUV': 12,  'Cimager.Images.shape': [384, 384],  'Cimager.Images.cellsize': ['2arcsec', '2arcsec'],  'Cimager.Images.restFrequency': 'HI',  'Cimager.nchanpercore': 10,  'Cimager.usetmpfs': False,  'Cimager.tmpfs': '/dev/shm',  'Cimager.freqframe': 'bary',  'Cimager.solverpercore': True,  'Cimager.nuvwmachines': 1,  'Cimager.nwriters': 25,  'Cimager.singleoutputfile': True,  'Cimager.Channels': [250, 0],  'Cimager.gridder.snapshotimaging': False,  'Cimager.gridder.snapshotimaging.wtolerance': 2600,  'Cimager.gridder.snapshotimaging.longtrack': True,  'Cimager.gridder.snapshotimaging.clipping': 0.01,  'Cimager.gridder': 'WProject',  'Cimager.gridder.WProject.wmax': 35000,  'Cimager.gridder.WProject.nwplanes': 257,  'Cimager.gridder.WProject.oversample': 4,  'Cimager.gridder.WProject.maxsupport': 1024,  'Cimager.gridder.WProject.variablesupport': True,  'Cimager.gridder.WProject.offsetsupport': True,  'Cimager.gridder.WProject.sharecf': True,  'Cimager.solver': 'Clean',  'Cimager.solver.Clean.algorithm': 'BasisfunctionMFS',  'Cimager.solver.Clean.niter': 800,  'Cimager.solver.Clean.gain': 0.2,  'Cimager.solver.Clean.scales': [0, 10, 30, 60],  'Cimager.solver.Clean.solutiontype': 'MAXBASE',  'Cimager.solver.Clean.verbose': False,  'Cimager.solver.Clean.tolerance': 0.01,  'Cimager.solver.Clean.weightcutoff': 'zero',  'Cimager.solver.Clean.weightcutoff.clean': False,  'Cimager.solver.Clean.decoupled': True,  'Cimager.solver.Clean.psfwidth': 256,  'Cimager.solver.Clean.logevery': 50,  'Cimager.solver.Clean.detectdivergence': True,  'Cimager.threshold.minorcycle': ['45%', '3.5mJy', '0.5mJy'],  'Cimager.threshold.majorcycle': '0.5mJy',  'Cimager.ncycles': 3,  'Cimager.Images.writeAtMajorCycle': False,  'Cimager.preconditioner.Names': ['Wiener', 'GaussianTaper'],  'Cimager.preconditioner.GaussianTaper': ['12arcsec', '12arcsec', '0deg'],  'Cimager.preconditioner.GaussianTaper.isPsfSize': True,  'Cimager.preconditioner.GaussianTaper.tolerance': 0.005,  'Cimager.preconditioner.preservecf': True,  'Cimager.preconditioner.Wiener.robustness': 0.5,  'Cimager.restore': True,  'Cimager.restore.beam': 'fit',  'Cimager.restore.beam.cutoff': 0.5,  'Cimager.restore.beamReference': 'mid'}",
+                    "value": "{\"name\": \"Source1\",   \"RA\": \"05h30m00\",   \"Dec\": \"40d30m00s\",   \"Vsys\": 100.0,   \"fp\": \"A\",   \"beam_no\": 1}",
                     "defaultValue": "None",
                     "description": "Data to be loaded into memory",
                     "readonly": false,
@@ -860,7 +860,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "92cb6499-e203-488e-aa6d-6397816c44b1",
+                    "id": "42649a9b-784e-4262-88ef-d5db3df55ea3",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -875,7 +875,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "39faee59-5b65-4fed-a466-2219ee0ba63c",
+                    "id": "a5fa2b6a-2198-4889-b469-edece8db43b6",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputOutput"
                 },
@@ -890,7 +890,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "529ed083-882f-49ac-899e-d53e0d799e1c",
+                    "id": "b9a7a2e2-dc84-47f3-ba45-facaab9afc1f",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -905,7 +905,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "a6d7a983-59b3-4bb0-bdf2-3a489a7c864d",
+                    "id": "f5ac7d40-5943-41c7-99cd-597ff9f9d873",
                     "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
@@ -920,7 +920,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "28c4cf71-dc13-48d1-9e57-40369f8d6a96",
+                    "id": "b225a69c-550f-4b42-938c-65ac903c5fc6",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -935,7 +935,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "340ec20e-0597-402f-91cb-01faa99ba38d",
+                    "id": "fa57a761-eef6-4054-85a9-d7624e5ce7d4",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -950,7 +950,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "fdb015a0-39a1-4470-becf-02e24bddcadd",
+                    "id": "09897c17-9462-49cd-a53b-17a64e9bc780",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 }
@@ -996,21 +996,21 @@
             "closesLoop": false
         },
         {
-            "from": -4,
-            "fromPort": "30ff3720-d73d-4b48-a2a6-6f42a75f4611",
-            "to": -9,
-            "toPort": "026c1a1b-ed3d-40ad-84f9-1254580067f0",
-            "dataType": "Object",
-            "loop_aware": "0",
-            "closesLoop": false
-        },
-        {
-            "from": -7,
-            "fromPort": "39faee59-5b65-4fed-a466-2219ee0ba63c",
+            "from": -1,
+            "fromPort": "28548491-434b-476e-9867-80d777478148",
             "to": -2,
             "toPort": "75d7a00a-ed1d-4b40-9b16-9fe5b29a518c",
             "dataType": "Object",
             "loop_aware": "1",
+            "closesLoop": false
+        },
+        {
+            "from": -4,
+            "fromPort": "a5fa2b6a-2198-4889-b469-edece8db43b6",
+            "to": -9,
+            "toPort": "026c1a1b-ed3d-40ad-84f9-1254580067f0",
+            "dataType": "Object",
+            "loop_aware": "0",
             "closesLoop": false
         }
     ]
