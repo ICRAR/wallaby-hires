@@ -161,20 +161,20 @@
                 },
                 {
                     "name": "Cimager.imagetype",
-                    "value": "String",
+                    "value": "",
                     "defaultValue": "casa",
                     "description": "Type of the image handler (determines the format of the images, both which are written to or read from the disk). Either fits or casa can be requested.",
                     "readonly": false,
                     "type": "Select",
                     "precious": false,
                     "options": [
-                        "fits",
+                        "String",
                         "casa"
                     ],
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter1",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -189,7 +189,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter2",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -204,7 +204,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter3",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -219,7 +219,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter4",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -234,7 +234,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter5",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -249,7 +249,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter6",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -264,7 +264,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter7",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -279,7 +279,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter8",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -294,7 +294,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter9",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -309,7 +309,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter10",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -324,12 +324,12 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter11",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.gridder",
-                    "value": "Box",
+                    "value": "",
                     "defaultValue": "",
                     "description": "Name of the gridder, further parameters are given bygridder.something. SeeGriddersfor details.",
                     "readonly": false,
@@ -347,7 +347,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter12",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -362,7 +362,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter13",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -377,7 +377,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter14",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -392,7 +392,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter15",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -407,7 +407,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter16",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -422,7 +422,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter17",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -437,7 +437,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter18",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -452,7 +452,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter19",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -467,7 +467,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter20",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -485,7 +485,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter21",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -500,7 +500,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter22",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -515,7 +515,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter23",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -530,7 +530,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter24",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -545,7 +545,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter25",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -560,7 +560,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter26",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -575,7 +575,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter27",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -590,7 +590,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter28",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -605,7 +605,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter29",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -620,7 +620,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter30",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -635,7 +635,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter31",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -650,7 +650,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter32",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -665,7 +665,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter33",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -680,7 +680,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter34",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -695,7 +695,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter35",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -710,7 +710,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter36",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -725,7 +725,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter37",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -740,7 +740,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter38",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -755,7 +755,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter39",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -770,7 +770,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter40",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -785,7 +785,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter41",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -800,7 +800,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter42",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -815,7 +815,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter43",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -830,7 +830,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter44",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -845,7 +845,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter45",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -860,7 +860,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter46",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -875,22 +875,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter47",
-                    "parameterType": "ApplicationArgument",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "Cimager.nchanpercore",
-                    "value": false,
-                    "defaultValue": "false",
-                    "description": "Turn on distributed solver (spectral imaging) mode.",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "parameter48",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -904,8 +889,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "parameter49",
-                    "parameterType": "ApplicationArgument",
+                    "id": "parameter48",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -919,8 +904,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "parameter50",
-                    "parameterType": "ApplicationArgument",
+                    "id": "parameter49",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -934,8 +919,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "parameter51",
-                    "parameterType": "ApplicationArgument",
+                    "id": "parameter50",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -949,8 +934,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "parameter52",
-                    "parameterType": "ApplicationArgument",
+                    "id": "parameter51",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
@@ -964,13 +949,13 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "parameter53",
-                    "parameterType": "ApplicationArgument",
+                    "id": "parameter52",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.solver.Clean.solutiontype",
-                    "value": "MAXBASE",
+                    "value": "",
                     "defaultValue": "MAXBASE",
                     "description": "The type of peak finding algorithm to use in the deconvolution. Choices are MAXCHISQ, MAXTERM0, or MAXBASE.",
                     "readonly": false,
@@ -983,8 +968,38 @@
                     ],
                     "positional": false,
                     "keyAttribute": false,
+                    "id": "parameter53",
+                    "parameterType": "ComponentParameter",
+                    "usage": "NoPort"
+                },
+                {
+                    "name": "Cimager.restore.beamReference",
+                    "value": "",
+                    "defaultValue": "mid",
+                    "description": "The channel to use as the reference for the beam - this channel\u2019s beam is written to the cube header. Values can be an integer indicating the channel number (0-based), or one of \u2018mid\u2019, \u2018first\u2019, or \u2018last\u2019.",
+                    "readonly": false,
+                    "type": "String",
+                    "precious": false,
+                    "options": [],
+                    "positional": false,
+                    "keyAttribute": false,
                     "id": "parameter54",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
+                    "usage": "NoPort"
+                },
+                {
+                    "name": "Cimager.Images.restFrequency",
+                    "value": "",
+                    "defaultValue": "null",
+                    "description": "A string indicating the rest frequency to be written to the image cube header (for the restored, model and residual cubes only). The string can be a quantity string (e.g. 1234.567MHz) or the special string \u2018HI\u2019, which resovles to 1420.405751786 MHz. If not given, no rest frequency is written to the cubes.",
+                    "readonly": false,
+                    "type": "String",
+                    "precious": false,
+                    "options": [],
+                    "positional": false,
+                    "keyAttribute": false,
+                    "id": "parameter55",
+                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 }
             ],
