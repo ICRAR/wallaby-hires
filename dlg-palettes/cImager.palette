@@ -168,7 +168,7 @@
                     "type": "Select",
                     "precious": false,
                     "options": [
-                        "String",
+                        "fits",
                         "casa"
                     ],
                     "positional": false,
