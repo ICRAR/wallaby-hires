@@ -248,7 +248,7 @@
                 },
                 {
                     "name": "Cimager.Images.cellsize",
-                    "value": "",
+                    "value": "2arcsec,2arcsec",
                     "defaultValue": "2arcsec,2arcsec",
                     "description": "Optional parameter to define the default pixel (or cell) size for all images. If an individual cell size parameter is specified separately for one of the images, this default value is overridden. Individual cell size parameters (see below) must be given for all images, if this parameter is omitted. If defined, a 2-element quantity string vector is expected, e.g. [6.0arcsec, 6.0arcsec]. (1/max(u,v) / 6 rad)",
                     "readonly": false,
@@ -263,7 +263,7 @@
                 },
                 {
                     "name": "Cimager.freqframe",
-                    "value": "",
+                    "value": "bary",
                     "defaultValue": "topo",
                     "description": "Frequency frame to work in (the frame is converted when the dataset is read). Either lsrk or topo is supported.",
                     "readonly": false,
@@ -293,7 +293,7 @@
                 },
                 {
                     "name": "Cimager.nUVWMachines",
-                    "value": null,
+                    "value": 1,
                     "defaultValue": "0",
                     "description": "Size of uvw-machines cache. uvw-machines are used to convert uvw from a given phase centre to a common tangent point. To reduce the cost to set the machine up (calculation of the transformation matrix), a number of these machines is cached. The key to the cache is a pair of two directions: the current phase centre and the tangent centre. If the required pair is within the tolerances of that used to setup one of the machines in the cache, this machine is reused. If none of the cache items matches the least accessed one is replaced by the new machine which is set up with the new pair of directions. The code would work faster if this parameter is set to the number of phase centres encountered during imaging. In non-faceting case, the optimal setting would be the number of synthetic beams times the number of fields. For faceting (btw, the performance gain is quite significant in this case), it should be further multiplied by the number of facets. Direction tolerances are given as a separate parameter.",
                     "readonly": false,
@@ -308,7 +308,7 @@
                 },
                 {
                     "name": "Cimager.ncycles",
-                    "value": null,
+                    "value": 3,
                     "defaultValue": "0",
                     "description": "Number of major cycles (and iterations over the dataset)",
                     "readonly": false,
@@ -338,7 +338,7 @@
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.wtolerance",
-                    "value": "",
+                    "value": "2600",
                     "defaultValue": "",
                     "description": "Required tolerance on residual w-term for snap-shot imaging (in wavelengths).This parameter must be given if the snap-shot imaging is used. An exception is thrown if the antenna layout is significantly non-coplanar and the required tolerance cannot be achieved by plane fitting.",
                     "readonly": false,
@@ -353,7 +353,7 @@
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.longtrack",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "false",
                     "description": "If true the best fit W plane for the snapshot is predicted by advancing the uvw in time and finding that plane which minimises the deviation in the future. Some minutes from the current time. This allows the max deviation to remain within tolerance for almost twice as long as the default scheme. This can have a substantial effect on processing time for long tracks. It should be a factor of two faster.",
                     "readonly": false,
@@ -368,7 +368,7 @@
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.clipping",
-                    "value": "",
+                    "value": "0.01",
                     "defaultValue": "0",
                     "description": "Optional clipping to avoid edge effects during image reprojection. This parameter represents the fraction of the image size (on each directional axis) which is zeroed (equally from both sides). It should be a non-negative number less than 1. Set it to 0 (default) to avoid any clipping. Applies to all images (image.*, residual.*, weights.*, etc.).",
                     "readonly": false,
@@ -383,7 +383,7 @@
                 },
                 {
                     "name": "Cimager.gridder",
-                    "value": "Box",
+                    "value": "WProject",
                     "defaultValue": "",
                     "description": "Name of the gridder, further parameters are given bygridder.something. SeeGriddersfor details.",
                     "readonly": false,
@@ -406,7 +406,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.wmax",
-                    "value": null,
+                    "value": 35000,
                     "defaultValue": "largest w value relative to the tangent of the first image (or the largest residual w when using snapshots)",
                     "description": "Largest allowed absolute value of the w term in wavelengths.  An exception will be thrown if the dataset contains w-term exceeding this value (W scaling error: recommend allowing larger range of w).",
                     "readonly": false,
@@ -421,7 +421,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.nwplanes",
-                    "value": null,
+                    "value": 257,
                     "defaultValue": "65",
                     "description": "Number of w-planes. Number of w planes must be an odd positive number. For the WProject gridder this scales up the number of convolution functions calculated. For the WStack gridder this is the number of grids maintained. You may (and will) run out of memory for a large number of w planes, especially for the stacking algorithm",
                     "readonly": false,
@@ -436,7 +436,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.oversample",
-                    "value": null,
+                    "value": 4,
                     "defaultValue": "8",
                     "description": "Oversampling factor. Convolution functions will be computed for this number of pixels per uv-cell.",
                     "readonly": false,
@@ -451,7 +451,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.maxsupport",
-                    "value": null,
+                    "value": 1024,
                     "defaultValue": "256",
                     "description": "The largest allowed support size in pixels. The grid used to compute the convolution function (before the support is searched and the appropriate inner part of the grid is extracted) is initialised to have the size equal to the smallest of maxsupport and the image size. WProject uses maxsupport x maxsupport grid at the moment regardless of the image size.",
                     "readonly": false,
@@ -466,7 +466,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.variablesupport",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "false",
                     "description": "If true, the support will be searched separately for each convolution function. This can speed things up considerably, unless costs to search the support dominates. It was also found that when variable support is used, the algorithm is more sensitive to cutoff value. Too high cutoff value has a significant impact on the image quality if the variable support is used.",
                     "readonly": false,
@@ -481,7 +481,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.offsetsupport",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "false",
                     "description": "If true, an offset of the convolution function will be treated separately (the support will be defined by size and offset, which can be non-zero in general). This option reduces the memory footprint and speeds up greeting. It can only be used in conjunction withvariablesupport=true",
                     "readonly": false,
@@ -496,7 +496,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.sharecf",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "false",
                     "description": "If true, use a (static) cache for the convolution functions in the WProject gridder. This saves both time and memory, especially for large images and spectral line cubes. Tests show no significant changes in continuum imaging but small differences in spectral cubes, it is not clear yet if these are a problem. Feedback welcome",
                     "readonly": false,
@@ -526,7 +526,7 @@
                 },
                 {
                     "name": "Cimager.solver",
-                    "value": "",
+                    "value": "Clean",
                     "defaultValue": "",
                     "description": "Name of the solver, further parameters are given bysolver.something. See Solvers for details",
                     "readonly": false,
@@ -544,7 +544,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.algorithm",
-                    "value": "",
+                    "value": "BasisfunctionMFS",
                     "defaultValue": "BasisfunctionMFS",
                     "description": "Valid choices are MultiScale, Basisfunction, Hogbom, MultiScaleMFS and BasisfunctionMFS. Use Hogbom for a single scale, non-MFS case. For the Clean solver, the casacore\u2019sLatticeCleanerused to do the actual work in non-MSMFS case will be set up withCleanEnums::HOGBOMif algorithm is Hogbom and the single scale of 0 will be used.  For the Basisfunction algorithm, a re-implemented and improved version of the CASA MultiScale algorithm is used. BasisfunctionMFS is the optimised algorithm used for most ASKAP processing",
                     "readonly": false,
@@ -559,7 +559,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.niter",
-                    "value": null,
+                    "value": 800,
                     "defaultValue": "100",
                     "description": "Number of minor cycles",
                     "readonly": false,
@@ -574,7 +574,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.gain",
-                    "value": null,
+                    "value": 0.2,
                     "defaultValue": "0.7",
                     "description": "Loop gain. Fraction of the peak subtracted during one minor cycle.",
                     "readonly": false,
@@ -589,7 +589,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.scales",
-                    "value": "",
+                    "value": "0,10,30,60",
                     "defaultValue": "0,3,10",
                     "description": "Scales to be solved (defined in pixels). Ignored if algorithm=Hogbom",
                     "readonly": false,
@@ -604,7 +604,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.verbose",
-                    "value": "",
+                    "value": "False",
                     "defaultValue": "true",
                     "description": "True enables lots of output",
                     "readonly": false,
@@ -619,7 +619,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.tolerance",
-                    "value": null,
+                    "value": 0.01,
                     "defaultValue": "0.1",
                     "description": "cutoff value given as a fraction of the largest diagonal element. The linear system describing interferometric measurement is inverted approximately, assuming that the matrix is diagonal, i.e. the right-hand side is divided by the appropriate diagonal element (which is a weight). If diagonal is smaller than this tolerance multiplied by the largest diagonal element, the right-hand side instead is either divided by the largest diagonal element to get the result or the result is set to zero. This is controlled byweightcutoffparameter. For images it means that areas with low weight (i.e. a mosaic edge) are not boosted up. In addition to weight truncation, all pixels with the weight below cutoff are normally masked out. Theweightcutoff.cleanparameter allows to assign mask corresponding to weight truncation. This allows S/N-based cleaning to happen, if the peak of S/N is realised outside the nominal field of view.",
                     "readonly": false,
@@ -634,7 +634,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.weightcutoff",
-                    "value": "",
+                    "value": "zero",
                     "defaultValue": "truncate",
                     "description": "Either zero or truncate. This parameter controls what actually happens for values below cutoff defined by thetoleranceparameter. Ifzerois given, the appropriate values are set to zero. Fortruncate, the values are divided by the largest diagonal.",
                     "readonly": false,
@@ -664,7 +664,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.decoupled",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "true",
                     "description": "Use decoupled residuals - this improves convergence for large scales, allows the use of a lower percentage threshold.minorcycle and seems to have few drawbacks",
                     "readonly": false,
@@ -679,7 +679,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.psfwidth",
-                    "value": null,
+                    "value": 256,
                     "defaultValue": "0",
                     "description": "Sets the width of the psf patch used in the minor cycle. This decreases memory use and run time by approximately the ratio of pixels in the patch to pixels in the image.",
                     "readonly": false,
@@ -694,7 +694,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.logevery",
-                    "value": null,
+                    "value": 48,
                     "defaultValue": "1",
                     "description": "How frequently to log progress in the minor cycle. Every nth iteration is reported (ie. iflogevery=100, every 100th iteration is reported), providing the iteration number, the peak residual, the objective function and the total flux.",
                     "readonly": false,
@@ -709,7 +709,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.detectdivergence",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "true",
                     "description": "Check if the deconvolution is diverging - stop the major cycles if the residuals increase by a factor 2",
                     "readonly": false,
@@ -724,7 +724,7 @@
                 },
                 {
                     "name": "Cimager.threshold.minorcycle",
-                    "value": "",
+                    "value": "[45%, 3.5mJy, 0.5mJy]",
                     "defaultValue": "no threshold",
                     "description": "If defined, the parameter can be either a single string or a vector of 2 or 3 strings. A number without units, or with a percentage sign, is interpreted as a fractional stopping threshold (with respect to the peak residual). An absolute flux given in Jy or related units is interpreted as an absolute threshold. A string like 5.0sigma will set a threshold relative to the noise in the residuals. You can mix fractional and absolute or noise thresholds, but can\u2019t mix absolute and noise ones. An undefined parameter means no minor cycle thresholding is done. A second absolute flux (or noise) threshold can be used to specify a deep clean threshold. During deep cleaning only pixels already in the model are searched to find new components. Setting the deep clean threshold to 0.5 times the noise level generally leaves very few sidelobes visible. Deep clean and noise based threshold are currently only implemented for the BasisFunctionMFS solver",
                     "readonly": false,
@@ -739,7 +739,7 @@
                 },
                 {
                     "name": "Cimager.threshold.majorcycle",
-                    "value": "",
+                    "value": "0.5mJy",
                     "defaultValue": "-1Jy",
                     "description": "The target peak residual. Use negative value to ensure all requested major cycles are done.",
                     "readonly": false,
@@ -754,7 +754,7 @@
                 },
                 {
                     "name": "Cimager.preconditioner.GaussianTaper",
-                    "value": "",
+                    "value": "[12arcsec, 12arcsec, 0deg]",
                     "defaultValue": "",
                     "description": "A Gaussian taper is applied to the visibilities. The parameter should be either a single string with the FWHM of a circular gaussian taper, or a vector of three strings for an elliptical taper: the major and minor axis FWHM and the position angle. String values may contain units, e.g.[10arcsec,10arcsec,34deg]. If no units are given, radians are assumed.GaussianTapercurrently conflicts with different uv-cell sizes for different images. An exception is thrown if such a condition exists.",
                     "readonly": false,
@@ -769,7 +769,7 @@
                 },
                 {
                     "name": "Cimager.preconditioner.GaussianTaper.isPsfSize",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "false",
                     "description": "If true, try to make the final fitted PSF the size given. This uses the restore.beam.cutoff parameter for the fit. A warning will appear in the log if the target PSF size was not achieved.",
                     "readonly": false,
@@ -784,7 +784,7 @@
                 },
                 {
                     "name": "Cimager.preconditioner.GaussianTaper.tolerance",
-                    "value": null,
+                    "value": 0.005,
                     "defaultValue": "0.005",
                     "description": "Specify the fractional tolerance of the fitted beam size when isPsfSize is true, default is 0.5%",
                     "readonly": false,
@@ -799,7 +799,7 @@
                 },
                 {
                     "name": "Cimager.preconditioner.preservecf",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "false",
                     "description": "Use a modified PSF to generate any preconditioner that is derived from the uv sampling function (e.g.WienerandRobust). This option takes a running mean over an approximate nearest-neighbour sampling function with a box width that is proportional to the support size of the gridding kernels. This enables post-gridding density weighting while preserving the gridding convolutions. Note that this is currently only used with theWienerpreconditioner and theWProjectgridder. The default is normally false, but will be true if preconditioning is used.",
                     "readonly": false,
@@ -814,7 +814,7 @@
                 },
                 {
                     "name": "Cimager.preconditioner.Wiener.robustness",
-                    "value": null,
+                    "value": 0.5,
                     "defaultValue": "",
                     "description": "The noise power is derived from the given value of robustness to have roughly the same effect as the analogous parameter in Robust (i.e., -2.0 close to uniform weighting, +2.0 close to natural weighting). Note that the Wiener filter must be specified with eithernoisepowerorrobustness.",
                     "readonly": false,
@@ -829,7 +829,7 @@
                 },
                 {
                     "name": "Cimager.restore",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "false",
                     "description": "If true, the image will be restored (by convolving with the given 2D gaussian). This is an additional step to normal imaging, which, by default, ends with just a model image. The restored image is written into a separate image file (with the.restoredsuffix). The convolution is done with the restore solver (see alsoSolvers) which by default reuses the same parameters used to setup the image solver. An additional preconditioning step with alternative parameters can be specified usingrestore.preconditioner.xxx, which results in a second set of restored files (with the.alt.restoredsuffix). The only additional parameter of the restore solver is the shape of the gaussian representing clean beam (or flag to determine the shape). It is given by therestore.beamparameter, which must be present ifrestoreis set to True.",
                     "readonly": false,
@@ -844,7 +844,7 @@
                 },
                 {
                     "name": "Cimager.restore.beam",
-                    "value": "",
+                    "value": "fit",
                     "defaultValue": "",
                     "description": "Either a single wordfitor a quantity string describing the shape of the clean beam (to convolve the model image with). If quantity is given it must have exactly 3 elements, e.g. [30arcsec, 10arcsec, 40deg]. Otherwise an exception is thrown. This parameter is only used ifrestoreis set to True. If restore.beam=fit, the code will fit a 2D gaussian to the PSF image (first encountered if multiple images are solved for) and use the results of this fit.",
                     "readonly": false,
@@ -859,7 +859,7 @@
                 },
                 {
                     "name": "Cimager.restore.beam.cutoff",
-                    "value": null,
+                    "value": 0.5,
                     "defaultValue": "0.05",
                     "description": "Cutoff for the support search prior to beam fitting, as a fraction of the PSF peak. This parameter is only used ifrestore.beam=fit. The code does fitting on a limited support (to speed things up and to avoid sidelobes influencing the fit). The extent of this support is controlled by this parameter representing the level of the PSF which should be included into support. This value should be above the first sidelobe level for meaningful results.",
                     "readonly": false,
@@ -874,7 +874,7 @@
                 },
                 {
                     "name": "Cimager.MaxUV",
-                    "value": null,
+                    "value": 7000,
                     "defaultValue": "",
                     "description": "Select data based on the uv-distance (in metres). Only visibility points corresponding to uv-distance smaller than the given value (defined in metres) are read from the measurement set. Note, the selection is done without taking frequency information into account.",
                     "readonly": false,
@@ -889,7 +889,7 @@
                 },
                 {
                     "name": "Cimager.MinUV",
-                    "value": null,
+                    "value": 12,
                     "defaultValue": "",
                     "description": "Select data based on the uv-distance (in metres). Only visibility points corresponding to uv-distance greater than the given value (defined in metres) are read from the measurement set. Note, the selection is done without taking frequency information into account.",
                     "readonly": false,
@@ -904,7 +904,7 @@
                 },
                 {
                     "name": "Cimager.preconditioner.Names",
-                    "value": "",
+                    "value": "[Wiener,GaussianTaper]",
                     "defaultValue": "",
                     "description": "List of preconditioners to be applied (in the order they are given in the list). Preconditioners are ASKAPsoft equivalents of visibility weighting (i.e. uniform, robust, natural), which do not require multiple passes over the dataset. Preconditioners can be viewed as operators applied to equation matrix before it is solved. Having the normal matrix as close to the diagonal as possible (a diagonal form is actually assumed during the inversion process) makes the inversion more accurate. By default, no transformation to the normal matrix is done. This is equivalent to the natural weighting. The following preconditioners are currently implemented: Wiener, NormWiener, Robust and GaussianTaper. In addition, the word None is understood as an empty preconditioner which does nothing. Each preconditioner requires a specific set of parameters described in a separate section. These parameters are given after the name of the preconditioner, e.g. preconditioner.Wiener.noisepower (see below)",
                     "readonly": false,
@@ -919,7 +919,7 @@
                 },
                 {
                     "name": "Cimager.nchanpercore",
-                    "value": null,
+                    "value": 10,
                     "defaultValue": "1",
                     "description": "",
                     "readonly": false,
@@ -934,7 +934,7 @@
                 },
                 {
                     "name": "Cimager.nwriters",
-                    "value": null,
+                    "value": 25,
                     "defaultValue": "1",
                     "description": "The number of output cubes to generate in spectral cube mode.",
                     "readonly": false,
@@ -949,7 +949,7 @@
                 },
                 {
                     "name": "Cimager.singleoutputfile",
-                    "value": false,
+                    "value": true,
                     "defaultValue": "false",
                     "description": "Single output cube. Useful in the case of multiple writers.",
                     "readonly": false,
@@ -964,7 +964,7 @@
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "",
+                    "value": "250,0",
                     "defaultValue": "",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
@@ -994,7 +994,7 @@
                 },
                 {
                     "name": "Cimager.tmpfs",
-                    "value": "",
+                    "value": "/dev/shm",
                     "defaultValue": "/dev/shm",
                     "description": "Location of the shared memory.",
                     "readonly": false,
@@ -1028,7 +1028,7 @@
                 },
                 {
                     "name": "Cimager.restore.beamReference",
-                    "value": "",
+                    "value": "mid",
                     "defaultValue": "mid",
                     "description": "The channel to use as the reference for the beam - this channel\u2019s beam is written to the cube header. Values can be an integer indicating the channel number (0-based), or one of \u2018mid\u2019, \u2018first\u2019, or \u2018last\u2019.",
                     "readonly": false,
@@ -1043,7 +1043,7 @@
                 },
                 {
                     "name": "Cimager.Images.restFrequency",
-                    "value": "",
+                    "value": "HI",
                     "defaultValue": "null",
                     "description": "A string indicating the rest frequency to be written to the image cube header (for the restored, model and residual cubes only). The string can be a quantity string (e.g. 1234.567MHz) or the special string \u2018HI\u2019, which resovles to 1420.405751786 MHz. If not given, no rest frequency is written to the cubes.",
                     "readonly": false,
