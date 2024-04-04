@@ -7,8 +7,8 @@
         "repoService": "GitHub",
         "repoBranch": "main",
         "repo": "ICRAR/wallaby-hires",
-        "eagleVersion": "v6.2.0:html-graph-renderer",
-        "eagleCommitHash": "a1d68d87110d9cf6614ceb5e9f6b807ffad4498f",
+        "eagleVersion": "v6.2.8",
+        "eagleCommitHash": "80717598c275f0e9b15a46e15e79383e0434e85f",
         "schemaVersion": "OJS",
         "readonly": true,
         "repositoryUrl": "",
@@ -170,7 +170,7 @@
                 },
                 {
                     "name": "Cimager.dataset",
-                    "value": "$DLG_ROOT/testdata/HIPASSJ2304-19_SB51759_F00_B16.ms",
+                    "value": "$DLG_ROOT/testdata/HIPASSJ1922-54_SB51537_F00_B09.ms",
                     "defaultValue": "",
                     "description": "Measurement set file name to read from. Usual substitution rules apply if the parameter is a single string. If the parameter is given as a vector of strings all measurement sets given by this vector are effectively concatenated together on-the-fly in the serial case. In the parallel case, the size of the vector is required to be either 1 or the number of nodes - 1, and therefore there is one measurement set per worker node.",
                     "readonly": false,
@@ -185,7 +185,7 @@
                 },
                 {
                     "name": "Cimager.Images.Names",
-                    "value": "HIPASSJ2304-19_SB51759_F00_B16",
+                    "value": "[image.HIPASSJ1922-54_SB51537_F00_B09]",
                     "defaultValue": "",
                     "description": "List of image names which this imager will produce. If more than one image is given, a superposition is assumed (i.e. visibilities are fitted with a combined effect of two images; two measurement equations are simply added). Parameters of each image defined in this list must be given in the same parset using ImageName.something keywords (with usual prefix). Note, all image names must start with word image (this is how parameters representing images are distinguished from other type of free parameters in ASKAPsoft), otherwise an exception is thrown. Example of valid names are: image.10uJy, image, imagecena.",
                     "readonly": false,
@@ -233,8 +233,8 @@
                 },
                 {
                     "name": "Cimager.Images.shape",
-                    "value": "384,384",
-                    "defaultValue": "384,384",
+                    "value": "[384,384]",
+                    "defaultValue": "[384,384]",
                     "description": "Optional parameter to define the default shape for all images. If an individualshapeparameter is specified separately for one of the images, this default value of the shape is overridden. Individualshapeparameters (see below) must be given for all images if this parameter is not defined. Must be a two-element vector. 1.7 * pb FWHM (~1st null) + 2 * max(pb offset)pb FWHM = 1.2*lambda/12",
                     "readonly": false,
                     "type": "Object.Array",
@@ -248,8 +248,8 @@
                 },
                 {
                     "name": "Cimager.Images.cellsize",
-                    "value": "2arcsec,2arcsec",
-                    "defaultValue": "2arcsec,2arcsec",
+                    "value": "[2arcsec,2arcsec]",
+                    "defaultValue": "[2arcsec,2arcsec]",
                     "description": "Optional parameter to define the default pixel (or cell) size for all images. If an individual cell size parameter is specified separately for one of the images, this default value is overridden. Individual cell size parameters (see below) must be given for all images, if this parameter is omitted. If defined, a 2-element quantity string vector is expected, e.g. [6.0arcsec, 6.0arcsec]. (1/max(u,v) / 6 rad)",
                     "readonly": false,
                     "type": "Object.Array",
@@ -574,8 +574,8 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.scales",
-                    "value": "0,10,30,60",
-                    "defaultValue": "0,3,10",
+                    "value": "[0,10,30,60]",
+                    "defaultValue": "[0,3,10]",
                     "description": "Scales to be solved (defined in pixels). Ignored if algorithm=Hogbom",
                     "readonly": false,
                     "type": "Object.Array",
@@ -904,7 +904,7 @@
                 },
                 {
                     "name": "Cimager.nchanpercore",
-                    "value": 10,
+                    "value": 2,
                     "defaultValue": "1",
                     "description": "",
                     "readonly": false,
@@ -919,7 +919,7 @@
                 },
                 {
                     "name": "Cimager.nwriters",
-                    "value": 25,
+                    "value": 2,
                     "defaultValue": "1",
                     "description": "The number of output cubes to generate in spectral cube mode.",
                     "readonly": false,
@@ -949,7 +949,7 @@
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "250,0",
+                    "value": "[4,1]",
                     "defaultValue": "",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
@@ -1150,7 +1150,7 @@
                 },
                 {
                     "name": "image",
-                    "value": "icrar/yanda_imager:0.3",
+                    "value": "csirocass/yandasoft:dev-openmpi2",
                     "defaultValue": "",
                     "description": "Name of the docker image to be used for this application",
                     "readonly": false,
@@ -1165,7 +1165,7 @@
                 },
                 {
                     "name": "command",
-                    "value": "cd $DLG_ROOT/testdata && mpirun -np 4 --allow-run-as-root imager -c %i0",
+                    "value": "cd $DLG_ROOT/testdata && mpirun -np 3 --allow-run-as-root cimager",
                     "defaultValue": "",
                     "description": "The command line to run within the docker instance",
                     "readonly": false,
@@ -1175,36 +1175,6 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "16fe0328-49b8-4fbf-8348-8cf98ef64261",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "user",
-                    "value": "gayatri",
-                    "defaultValue": "",
-                    "description": "Username of the user who will run the application within the docker image",
-                    "readonly": false,
-                    "type": "String",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "f7288b6a-6c20-447e-9ab3-4f3431f7e7f6",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "ensureUserAndSwitch",
-                    "value": true,
-                    "defaultValue": "0",
-                    "description": "",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "127fd309-8587-4cff-841b-9775d1494ce1",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -1239,7 +1209,7 @@
                     "usage": "NoPort"
                 },
                 {
-                    "name": "config",
+                    "name": "c",
                     "value": "",
                     "defaultValue": "",
                     "description": "",
