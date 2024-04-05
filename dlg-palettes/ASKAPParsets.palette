@@ -1,14 +1,14 @@
 {
     "modelData": {
-        "filePath": "dlg-graphs/ASKAPParsets.palette",
+        "filePath": "dlg-palettes/ASKAPParsets.palette",
         "fileType": "Palette",
         "shortDescription": "Parset for ASKA cImager",
         "detailedDescription": "",
         "repoService": "GitHub",
         "repoBranch": "main",
         "repo": "ICRAR/wallaby-hires",
-        "eagleVersion": ":",
-        "eagleCommitHash": "",
+        "eagleVersion": "v6.2.8:eagle-1181",
+        "eagleCommitHash": "0f671a8b811b491666cfe341d73cc9fbfd505e10",
         "schemaVersion": "AppRef",
         "readonly": true,
         "repositoryUrl": "",
@@ -29,18 +29,21 @@
             "description": "A set of parameters, wholly specified in EAGLE",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "671d6e3",
-            "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/wallaby-hires/8b9a34483534195a8045b37756afa5c3abde1ef3/dlg-graphs/cImagerParset.palette",
+            "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/wallaby-hires/ed84cc12877cb98e9fb489f737e9f68c7802fe38/dlg-palettes/ASKAPParsets.palette",
             "dataHash": "7175f1d4ab71115f928b888dc3914dbc17b59de46a476b69a2fa077721597b4c",
             "fields": [
                 {
                     "name": "Cimager.imagetype",
-                    "value": "",
-                    "defaultValue": "\u201ccasa\u201d",
+                    "value": "casa",
+                    "defaultValue": "fits",
                     "description": "Type of the image handler (determines the format of the images, both which are written to or read from the disk). Either \u201cfits\u201d or \u201ccasa\u201d can be requested.",
                     "readonly": false,
-                    "type": "String",
+                    "type": "Select",
                     "precious": false,
-                    "options": [],
+                    "options": [
+                        "casa",
+                        "fits"
+                    ],
                     "positional": false,
                     "keyAttribute": false,
                     "id": "parameter1",
@@ -3097,7 +3100,7 @@
             "description": "A set of parameters, wholly specified in EAGLE",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "671d6e3",
-            "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/wallaby-hires/8b9a34483534195a8045b37756afa5c3abde1ef3/dlg-graphs/cImagerParset.palette",
+            "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/wallaby-hires/ed84cc12877cb98e9fb489f737e9f68c7802fe38/dlg-palettes/ASKAPParsets.palette",
             "dataHash": "7175f1d4ab71115f928b888dc3914dbc17b59de46a476b69a2fa077721597b4c",
             "fields": [
                 {
