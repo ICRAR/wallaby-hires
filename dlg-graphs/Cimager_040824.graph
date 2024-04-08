@@ -18,7 +18,7 @@
         "lastModifiedName": "",
         "lastModifiedEmail": "",
         "lastModifiedDatetime": 0,
-        "numLGNodes": 9
+        "numLGNodes": 6
     },
     "nodeDataArray": [
         {
@@ -28,10 +28,10 @@
             "color": "#2c2c2c",
             "drawOrderHint": 0,
             "key": -1,
-            "name": "CimagerStaticParset ",
+            "name": "StaticParset ",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 259.934715030629,
-            "y": 286.64235471652296,
+            "x": 258.9116047871653,
+            "y": 284.59613422959563,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -43,7 +43,7 @@
             "fields": [
                 {
                     "name": "Cimager.dataset",
-                    "value": "$DLG_ROOT/testdata/HIPASSJ2304-19_SB51759_F00_B16.ms",
+                    "value": "",
                     "defaultValue": "",
                     "description": "Measurement set file name to read from. Usual substitution rules apply if the parameter is a single string. If the parameter is given as a vector of strings all measurement sets given by this vector are effectively concatenated together on-the-fly in the serial case. In the parallel case, the size of the vector is required to be either 1 or the number of nodes - 1, and therefore there is one measurement set per worker node.",
                     "readonly": false,
@@ -58,7 +58,7 @@
                 },
                 {
                     "name": "Cimager.Images.Names",
-                    "value": "[image.HIPASSJ1922-54_SB51537_F00_B09]",
+                    "value": "",
                     "defaultValue": "",
                     "description": "List of image names which this imager will produce. If more than one image is given, a superposition is assumed (i.e. visibilities are fitted with a combined effect of two images; two measurement equations are simply added). Parameters of each image defined in this list must be given in the same parset using ImageName.something keywords (with usual prefix). Note, all image names must start with word image (this is how parameters representing images are distinguished from other type of free parameters in ASKAPsoft), otherwise an exception is thrown. Example of valid names are: image.10uJy, image, imagecena.",
                     "readonly": false,
@@ -73,7 +73,7 @@
                 },
                 {
                     "name": "Cimager.Images.direction",
-                    "value": "23:16:13.617000, -22.00.05.16000, J2000",
+                    "value": "",
                     "defaultValue": "",
                     "description": "Direction to the centre of the required image (or tangent point for facets). This vector should contain a 3-element direction quantity containing right ascension, declination and epoch, e.g. [12h30m00.00, -45.00.00.00, J2000]. Note that a casa style of declination delimiters (dots rather than colons) is essential. Only J2000 directions are currently supported.",
                     "readonly": false,
@@ -257,7 +257,7 @@
                 {
                     "name": "Cimager.gridder",
                     "value": "WProject",
-                    "defaultValue": "",
+                    "defaultValue": "Box",
                     "description": "Name of the gridder, further parameters are given bygridder.something. SeeGriddersfor details.",
                     "readonly": false,
                     "type": "Select",
@@ -1054,218 +1054,6 @@
             "outputApplicationDescription": ""
         },
         {
-            "category": "Docker",
-            "categoryType": "Application",
-            "isGroup": false,
-            "color": "#0059a5",
-            "drawOrderHint": 0,
-            "key": -3,
-            "name": "yanda_imager",
-            "description": "This docker app runs the Yandasoft Imager. It uses an askapsoft compliant configuration file on input, which defines all the required parameters.",
-            "x": 1174.234172092285,
-            "y": 369.6295926362882,
-            "radius": 25,
-            "collapsed": true,
-            "subject": null,
-            "expanded": true,
-            "repositoryUrl": "",
-            "commitHash": "",
-            "paletteDownloadUrl": "",
-            "dataHash": "",
-            "fields": [
-                {
-                    "name": "persist",
-                    "value": false,
-                    "defaultValue": "false",
-                    "description": "Specifies whether this data component contains data that should not be deleted after execution",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "a3fd0caf-de1b-425e-93f8-e7003565f195",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "streaming",
-                    "value": false,
-                    "defaultValue": "false",
-                    "description": "Specifies whether this data component streams input and output data",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "cff66c1e-34a2-4dbf-bf1f-b5379e9d1ee0",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "execution_time",
-                    "value": 5,
-                    "defaultValue": "0",
-                    "description": "Estimate of execution time (in seconds) for this application.",
-                    "readonly": false,
-                    "type": "Float",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "711b7f84-2129-4ed7-96f0-9898cceac4ed",
-                    "parameterType": "ConstraintParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "num_cpus",
-                    "value": 1,
-                    "defaultValue": "0",
-                    "description": "Number of CPUs used for this application.",
-                    "readonly": false,
-                    "type": "Integer",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "d0b658fe-bddd-4755-af0c-4657de80ab90",
-                    "parameterType": "ConstraintParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "group_start",
-                    "value": false,
-                    "defaultValue": "false",
-                    "description": "Is this node the start of a group?",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "ca575227-5f11-4bf6-8762-170c0723bf3b",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "image",
-                    "value": "csirocass/yandasoft:dev-openmpi2",
-                    "defaultValue": "",
-                    "description": "Name of the docker image to be used for this application",
-                    "readonly": false,
-                    "type": "String",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "d8a8ea39-3cb0-476f-a39d-6c21468371e8",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "command",
-                    "value": "cd $DLG_ROOT/testdata && mpirun -np 3 --allow-run-as-root cimager",
-                    "defaultValue": "",
-                    "description": "The command line to run within the docker instance",
-                    "readonly": false,
-                    "type": "String",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "16fe0328-49b8-4fbf-8348-8cf98ef64261",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "removeContainer",
-                    "value": 1,
-                    "defaultValue": "0",
-                    "description": "",
-                    "readonly": false,
-                    "type": "Integer",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "14c59773-5a8f-4f88-983d-58842224faaf",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "additionalBindings",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "Any additional bindings that should be passed through to the image",
-                    "readonly": false,
-                    "type": "String",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "3cffaae9-a4d8-4766-afdc-e37f1c140cb8",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "c",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "",
-                    "readonly": false,
-                    "type": "Object",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "e16cd1c7-c172-4499-8193-451d5e2911c1",
-                    "parameterType": "ApplicationArgument",
-                    "usage": "InputPort"
-                },
-                {
-                    "name": "residual_image",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "",
-                    "readonly": false,
-                    "type": "Object",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "6e7c0941-5bc9-41bf-95bb-a0226943c87b",
-                    "parameterType": "ApplicationArgument",
-                    "usage": "OutputPort"
-                },
-                {
-                    "name": "restored_image",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "",
-                    "readonly": false,
-                    "type": "Object",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "d31b2952-8ce0-4f11-b768-056e6173da86",
-                    "parameterType": "ApplicationArgument",
-                    "usage": "OutputPort"
-                }
-            ],
-            "inputAppFields": [],
-            "outputAppFields": [],
-            "inputApplicationName": "",
-            "inputApplicationType": "None",
-            "inputApplicationKey": null,
-            "inputApplicationDescription": "",
-            "outputApplicationName": "",
-            "outputApplicationType": "None",
-            "outputApplicationKey": null,
-            "outputApplicationDescription": ""
-        },
-        {
             "category": "PythonApp",
             "categoryType": "Application",
             "isGroup": false,
@@ -1604,158 +1392,6 @@
             "isGroup": false,
             "color": "#2c2c2c",
             "drawOrderHint": 0,
-            "key": -5,
-            "name": "File3",
-            "description": "A standard file on a filesystem mounted to the deployment machine",
-            "x": 1021.1368941389675,
-            "y": 369.7284542285436,
-            "radius": 25,
-            "collapsed": false,
-            "subject": null,
-            "expanded": true,
-            "repositoryUrl": "https://github.com/ICRAR/daliuge",
-            "commitHash": "b11f970",
-            "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
-            "dataHash": "f40f919804d78c6b8e2674e3089e84fcb9a43bd732aec6bd8e29ddffb724de4a",
-            "fields": [
-                {
-                    "name": "filepath",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "File path for this file. In many cases this does not need to be specified. If it has a \\/ at the end it will be treated as a directory name and the filename will be generated. If it does not have a \\/, the last part will be treated as a filename. If filepath does not start with \\/ (relative path) then the session directory will be prepended to make the path absolute.\"",
-                    "readonly": false,
-                    "type": "String",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "80e77e5a-eca9-45a2-a2d5-f6509d4158d7",
-                    "parameterType": "ApplicationArgument",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "check_filepath_exists",
-                    "value": false,
-                    "defaultValue": "False",
-                    "description": "Perform a check to make sure the file path exists before proceeding with the application",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "81ab2f67-9a03-494f-9ce4-ce41cf1c79c3",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "dropclass",
-                    "value": "dlg.data.drops.file.FileDROP",
-                    "defaultValue": "dlg.data.drops.file.FileDROP",
-                    "description": "Drop class",
-                    "readonly": false,
-                    "type": "String",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "dedeaa0a-b137-4943-a5d1-0fe17a61fd2f",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "streaming",
-                    "value": false,
-                    "defaultValue": "False",
-                    "description": "Specifies whether this data component streams input and output data",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "35c3149a-f8aa-4a7b-8a05-f0c7e4e1c2cf",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "persist",
-                    "value": true,
-                    "defaultValue": "True",
-                    "description": "Specifies whether this data component contains data that should not be deleted after execution",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "a09e63a9-1309-4eae-8a55-f1ccd8191b49",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "data_volume",
-                    "value": 5,
-                    "defaultValue": "5",
-                    "description": "Estimated size of the data contained in this node",
-                    "readonly": false,
-                    "type": "Float",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "16a4fafb-608e-4e11-bfbf-2de8d6ce64c2",
-                    "parameterType": "ConstraintParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "group_end",
-                    "value": false,
-                    "defaultValue": "False",
-                    "description": "Is this node the end of a group?",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "9cfd79a1-4ecd-4065-8a7d-6231fc7b73cb",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "dummy",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "Dummy port",
-                    "readonly": false,
-                    "type": "Object",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "8cc74bb3-9383-44e5-b414-63561fd63f58",
-                    "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
-                }
-            ],
-            "inputAppFields": [],
-            "outputAppFields": [],
-            "inputApplicationName": "",
-            "inputApplicationType": "None",
-            "inputApplicationKey": null,
-            "inputApplicationDescription": "",
-            "outputApplicationName": "",
-            "outputApplicationType": "None",
-            "outputApplicationKey": null,
-            "outputApplicationDescription": ""
-        },
-        {
-            "category": "File",
-            "categoryType": "Data",
-            "isGroup": false,
-            "color": "#2c2c2c",
-            "drawOrderHint": 0,
             "key": -6,
             "name": "File2",
             "description": "A standard file on a filesystem mounted to the deployment machine",
@@ -1889,143 +1525,6 @@
                     "id": "d02e24bd-4049-4afc-a8cc-0485f19d5373",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputOutput"
-                }
-            ],
-            "inputAppFields": [],
-            "outputAppFields": [],
-            "inputApplicationName": "",
-            "inputApplicationType": "None",
-            "inputApplicationKey": null,
-            "inputApplicationDescription": "",
-            "outputApplicationName": "",
-            "outputApplicationType": "None",
-            "outputApplicationKey": null,
-            "outputApplicationDescription": ""
-        },
-        {
-            "category": "PythonApp",
-            "categoryType": "Application",
-            "isGroup": false,
-            "color": "#0059a5",
-            "drawOrderHint": 0,
-            "key": -7,
-            "name": "CombineFiles",
-            "description": "A placeholder APP to aid construction of new applications. This is mainly useful (and used) when starting a new workflow from scratch.",
-            "x": 850.8244985696246,
-            "y": 370.3432422496683,
-            "radius": 25,
-            "collapsed": false,
-            "subject": null,
-            "expanded": true,
-            "repositoryUrl": "https://github.com/ICRAR/daliuge",
-            "commitHash": "b11f970",
-            "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master-template.palette",
-            "dataHash": "c83ef987b15b86c59502c8e631d404b3a9c0d7360b79be46f15c65affa9582e9",
-            "fields": [
-                {
-                    "name": "dropclass",
-                    "value": "PythonApp",
-                    "defaultValue": "PythonApp",
-                    "description": "Application class",
-                    "readonly": false,
-                    "type": "String",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "50f65954-52d3-4f9b-b3ec-993268af7eb3",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "num_cpus",
-                    "value": 1,
-                    "defaultValue": "1",
-                    "description": "Number of cores used",
-                    "readonly": false,
-                    "type": "Integer",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "f6f435cd-fdf7-4fb3-acd6-200043f1d789",
-                    "parameterType": "ConstraintParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "execution_time",
-                    "value": 5,
-                    "defaultValue": "5",
-                    "description": "Estimated execution time",
-                    "readonly": false,
-                    "type": "Float",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "d6e05b5a-c354-491b-b133-0f4bc4b5bf8f",
-                    "parameterType": "ConstraintParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "group_start",
-                    "value": false,
-                    "defaultValue": "False",
-                    "description": "Is this node the start of a group?",
-                    "readonly": false,
-                    "type": "Boolean",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "4f7e2d8f-a7e6-49f3-b359-b7f8ba47e9e2",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "file1",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "",
-                    "readonly": false,
-                    "type": "Object",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": true,
-                    "id": "335f7202-af6c-40a5-8dd2-b9392dc34105",
-                    "parameterType": "ApplicationArgument",
-                    "usage": "InputPort"
-                },
-                {
-                    "name": "file2",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "",
-                    "readonly": false,
-                    "type": "Object",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": true,
-                    "id": "5b38bf9a-162c-453d-bb2b-15996148053c",
-                    "parameterType": "ApplicationArgument",
-                    "usage": "InputPort"
-                },
-                {
-                    "name": "outputFile",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "",
-                    "readonly": false,
-                    "type": "Object.File",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": true,
-                    "id": "dd3c00e9-2696-445e-a23f-e42f27c221fd",
-                    "parameterType": "ApplicationArgument",
-                    "usage": "OutputPort"
                 }
             ],
             "inputAppFields": [],
@@ -2226,18 +1725,18 @@
             "isGroup": false,
             "color": "#2c2c2c",
             "drawOrderHint": 0,
-            "key": -9,
+            "key": -10,
             "name": "DynamicParset",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 266.6517088656821,
-            "y": 468.70665110908544,
+            "x": 266.81464216358387,
+            "y": 467.29212702426304,
             "radius": 25,
             "collapsed": false,
             "subject": null,
             "expanded": true,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "b11f970",
-            "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/wallaby-hires/a3682230fed0c3add44c6ba6f393a40ae1e5984b/dlg-palettes/cImager.palette",
+            "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "dataHash": "057c6a8ea53a5d04ce07c2e26ef25cfca59504053407289c5309f81cc44556fc",
             "fields": [
                 {
@@ -2251,7 +1750,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "4c6f3bb1-a858-4843-bcff-550a2bb757f4",
+                    "id": "398a6500-2055-4660-9d1f-a727544537c5",
                     "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
@@ -2266,7 +1765,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "e44f3c41-9db7-4512-81a7-42f4196846a8",
+                    "id": "9e553582-b6f1-44cd-97c0-07a572f3672f",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2288,7 +1787,7 @@
                     ],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "9cf71ddd-fa4a-4776-ba30-8d0ea7b1646e",
+                    "id": "7a274e4b-79d8-45e4-9c49-774db337937f",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2303,7 +1802,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "30ef2b79-2ed4-4594-ace4-a30c11ba0832",
+                    "id": "94777a95-5f16-4266-9fcd-6f2dc3de2a40",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2318,7 +1817,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "4c8527b9-a6a0-47f9-8eb3-870ffe26579f",
+                    "id": "b714510d-9046-4d77-a0e2-3437fcb6af08",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2333,7 +1832,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "4c415575-bdae-4398-9dc1-98bf81d08638",
+                    "id": "3380a15d-8223-45f2-968a-deefd93a04ce",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2348,7 +1847,7 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "4387dc82-052c-403b-8ac9-fb2b88512c9e",
+                    "id": "b4f6f09a-b0b5-4992-9fc3-d6d02110fe25",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2363,9 +1862,54 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "1f231dfe-91cd-4911-8631-6ae36f671937",
-                    "parameterType": "ApplicationArgument",
+                    "id": "02125248-1dd6-4fd6-9b2b-4ed921c96e1d",
+                    "parameterType": "ComponentParameter",
                     "usage": "OutputPort"
+                },
+                {
+                    "name": "Cimager.dataset",
+                    "value": "$DLG_ROOT/testdata/HIPASSJ2304-19_SB51759_F00_B16.ms",
+                    "defaultValue": "",
+                    "description": "Measurement set file name to read from. Usual substitution rules apply if the parameter is a single string. If the parameter is given as a vector of strings all measurement sets given by this vector are effectively concatenated together on-the-fly in the serial case. In the parallel case, the size of the vector is required to be either 1 or the number of nodes - 1, and therefore there is one measurement set per worker node.",
+                    "readonly": false,
+                    "type": "Array",
+                    "precious": false,
+                    "options": [],
+                    "positional": false,
+                    "keyAttribute": false,
+                    "id": "18d1e7d9-2440-41df-80f0-09c36bb88682",
+                    "parameterType": "ApplicationArgument",
+                    "usage": "NoPort"
+                },
+                {
+                    "name": "Cimager.Images.Names",
+                    "value": "[image.HIPASSJ1922-54_SB51537_F00_B09]",
+                    "defaultValue": "",
+                    "description": "List of image names which this imager will produce. If more than one image is given, a superposition is assumed (i.e. visibilities are fitted with a combined effect of two images; two measurement equations are simply added). Parameters of each image defined in this list must be given in the same parset using ImageName.something keywords (with usual prefix). Note, all image names must start with word image (this is how parameters representing images are distinguished from other type of free parameters in ASKAPsoft), otherwise an exception is thrown. Example of valid names are: image.10uJy, image, imagecena.",
+                    "readonly": false,
+                    "type": "Array",
+                    "precious": false,
+                    "options": [],
+                    "positional": false,
+                    "keyAttribute": false,
+                    "id": "df7622dc-d026-435d-9f31-700d32f13d78",
+                    "parameterType": "ApplicationArgument",
+                    "usage": "NoPort"
+                },
+                {
+                    "name": "Cimager.Images.direction",
+                    "value": "23:16:13.617000, -22.00.05.16000, J2000",
+                    "defaultValue": "",
+                    "description": "Direction to the centre of the required image (or tangent point for facets). This vector should contain a 3-element direction quantity containing right ascension, declination and epoch, e.g. [12h30m00.00, -45.00.00.00, J2000]. Note that a casa style of declination delimiters (dots rather than colons) is essential. Only J2000 directions are currently supported.",
+                    "readonly": false,
+                    "type": "Array",
+                    "precious": false,
+                    "options": [],
+                    "positional": false,
+                    "keyAttribute": false,
+                    "id": "824b37a3-3c0b-4d03-b7e7-b1c13d0ee818",
+                    "parameterType": "ApplicationArgument",
+                    "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.imagetype",
@@ -2381,8 +1925,8 @@
                     ],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "75f2b748-25eb-46b7-97e6-580d678bd134",
-                    "parameterType": "ComponentParameter",
+                    "id": "569d17aa-4c20-4cea-9810-b82ea924e04c",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2396,8 +1940,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "e03e411d-0d58-42f1-8182-4ebadae897e6",
-                    "parameterType": "ComponentParameter",
+                    "id": "ab58c5a9-a2fd-4807-8a9a-d682a91e9db1",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2411,8 +1955,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "dab77c26-ae82-4402-afa1-4ba10c81bae3",
-                    "parameterType": "ComponentParameter",
+                    "id": "08833923-bdbe-46e9-8212-b227ae07a226",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2426,8 +1970,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "45d28ba1-6616-464b-9358-cd416f3a0ed7",
-                    "parameterType": "ComponentParameter",
+                    "id": "eba2651f-39c5-4b51-9085-e5a926e89b66",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2441,8 +1985,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "f253724d-41f7-4076-8be9-82f62416ffc1",
-                    "parameterType": "ComponentParameter",
+                    "id": "1419c359-8869-49bd-ac7b-2c7ee3056078",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2456,8 +2000,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "972dd1e7-de05-4951-b2c0-1093bdab5466",
-                    "parameterType": "ComponentParameter",
+                    "id": "fe275aa1-cdc1-483c-892d-d34a5633ab21",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2471,8 +2015,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "df6ea5d3-2918-41df-8826-c0afc29ab5be",
-                    "parameterType": "ComponentParameter",
+                    "id": "88f89489-3e6e-468e-922a-2f91c2da58cb",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2486,8 +2030,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "d88f5a79-331d-4fb3-bdcf-773db18f9c74",
-                    "parameterType": "ComponentParameter",
+                    "id": "92ddabcf-3e4a-43e5-b8bd-64b95abae826",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2501,8 +2045,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "85d852a9-2b1c-4cb3-af40-d399f0ff639c",
-                    "parameterType": "ComponentParameter",
+                    "id": "8aea39e2-e318-4678-9ecc-a3fe7e502192",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2516,8 +2060,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "9fb3d974-7a5e-43fc-b571-4425b6f2b2e5",
-                    "parameterType": "ComponentParameter",
+                    "id": "3c2f3ef9-b349-46e0-b101-bfc8d0e00697",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2531,8 +2075,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "d9fefb03-6612-4e01-8db9-de452f44534a",
-                    "parameterType": "ComponentParameter",
+                    "id": "202cc16a-9546-4351-92da-8f90d9ef168b",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2554,8 +2098,8 @@
                     ],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "f2362884-5042-4ed9-ac44-6a1a4462558d",
-                    "parameterType": "ComponentParameter",
+                    "id": "3b170f38-181b-4a0f-a330-433a5c185bd9",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2569,8 +2113,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "691df9e4-7fa4-444c-bb21-55621fd8e493",
-                    "parameterType": "ComponentParameter",
+                    "id": "e40a9ecb-ba0d-437b-a550-ddc62b2144d7",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2584,8 +2128,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "0a221cae-a3e2-4ff6-8b76-74d169286b9a",
-                    "parameterType": "ComponentParameter",
+                    "id": "daca86a3-54e2-4ebb-b26f-0c13a44420c1",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2599,8 +2143,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "7d4e3971-5bf7-415d-9501-f03db59a3257",
-                    "parameterType": "ComponentParameter",
+                    "id": "0f77a81f-4732-4f88-8b36-0b0c85e6ea33",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2614,8 +2158,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "bc30da55-1595-4374-8e0e-3a95464b0539",
-                    "parameterType": "ComponentParameter",
+                    "id": "168d80b0-d706-451d-983c-016551d1d7c7",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2629,8 +2173,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "9db5b1da-73ac-4f35-b57c-2a35db476f90",
-                    "parameterType": "ComponentParameter",
+                    "id": "8d0476c4-9d8c-4376-9da1-a714047244a1",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2644,8 +2188,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "1c448a00-8c9a-4876-a7eb-9abc32cb3f66",
-                    "parameterType": "ComponentParameter",
+                    "id": "1a8f0660-4d43-42ef-b343-801fc71c57f7",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2659,8 +2203,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "cf3f9028-31cb-45dc-acea-738041c96559",
-                    "parameterType": "ComponentParameter",
+                    "id": "c4b16bcd-016f-475b-bcdf-3fc41900a00d",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2674,8 +2218,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "48e40dab-4afb-4a6f-b7f0-fddb48c215f5",
-                    "parameterType": "ComponentParameter",
+                    "id": "03affa0a-11a2-4c89-9599-979c63658dd0",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2692,8 +2236,8 @@
                     ],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "819f4e3a-34d2-4a01-acf3-a742d68e4476",
-                    "parameterType": "ComponentParameter",
+                    "id": "135dc147-db6d-41a5-888c-7c5325353e8d",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2707,8 +2251,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "6f1021aa-835e-4d16-aef6-78cc42647c73",
-                    "parameterType": "ComponentParameter",
+                    "id": "89de8969-1642-46ba-871e-f9276b02a744",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2722,8 +2266,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "2186c14d-c353-4452-a1bd-0d772b77229e",
-                    "parameterType": "ComponentParameter",
+                    "id": "3f51c0ee-2491-47f0-b1d3-2543f53002c2",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2737,8 +2281,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "f7734557-6e8e-4617-be55-4b949d8ddf82",
-                    "parameterType": "ComponentParameter",
+                    "id": "81f6c89f-4460-493a-b0b4-ce25a97d1938",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2752,8 +2296,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "7ed412f1-42a2-4521-a2b0-b5da7c5c138b",
-                    "parameterType": "ComponentParameter",
+                    "id": "f4d2de68-e58f-436f-bbd9-4b1efcc9afce",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2767,8 +2311,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "567c5827-d96a-40d8-90a3-1eff304caa9e",
-                    "parameterType": "ComponentParameter",
+                    "id": "118f265f-303b-4650-a471-f751a09b0476",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2782,8 +2326,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "6019c575-ea20-46f6-a858-6a072edbfcab",
-                    "parameterType": "ComponentParameter",
+                    "id": "05710dbe-8f12-40dc-ba06-91e4db3e6614",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2797,8 +2341,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "530da2a3-d20a-4194-93c6-94c40f440d33",
-                    "parameterType": "ComponentParameter",
+                    "id": "fbff03b2-40f2-466e-bee1-602f09a9e3a5",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2812,8 +2356,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "f44bae4a-d989-4a03-b6c2-8d3dc463ffbd",
-                    "parameterType": "ComponentParameter",
+                    "id": "509062de-bc33-4ed8-9cb3-8d733df480f9",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2827,8 +2371,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "22c637f7-fe52-40ec-b229-ed7160c87559",
-                    "parameterType": "ComponentParameter",
+                    "id": "e98dbfc1-a8dc-41a0-a5d1-5d9fd1b83346",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2842,8 +2386,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "dfdbe1e2-25d8-47c0-8e17-f7792bb2c502",
-                    "parameterType": "ComponentParameter",
+                    "id": "4f033de6-de0f-426f-a42a-c7bc607a7f15",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2857,8 +2401,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "9c1ec286-a695-4534-a727-af54d75acaa5",
-                    "parameterType": "ComponentParameter",
+                    "id": "53c6b079-2adf-4dc1-b82c-c14baaa1679f",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2872,8 +2416,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "5fe5821e-6de9-4932-bdc6-254c737e2b49",
-                    "parameterType": "ComponentParameter",
+                    "id": "a32699d4-70b4-46f9-a388-ca74643df1bd",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2887,8 +2431,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "5a6e86ed-bfb6-4924-9691-301c41f7fb1a",
-                    "parameterType": "ComponentParameter",
+                    "id": "faf9c8b7-a390-4e72-a31f-d6c8af7216ae",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2902,8 +2446,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "076e2f45-20f4-4f29-b62b-3aad4e8b1700",
-                    "parameterType": "ComponentParameter",
+                    "id": "6c621495-636c-4513-8273-9e6a9dcc11ae",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2917,8 +2461,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "05f4a1ff-0b53-46f2-a071-c063e2774cdf",
-                    "parameterType": "ComponentParameter",
+                    "id": "69ec23ca-5205-4bb6-839a-bc496485e65e",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2932,8 +2476,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "75b94a75-d7d0-43c7-91c4-77bfa3d4d0a4",
-                    "parameterType": "ComponentParameter",
+                    "id": "49e47a54-8d16-4bd9-975e-50a8b78aaaad",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2947,8 +2491,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "db4a1a40-5ecb-42bd-83e7-e88d2bb1dee4",
-                    "parameterType": "ComponentParameter",
+                    "id": "2f21ef19-bdfb-4c3c-9f06-7c52f2d98ceb",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2962,8 +2506,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "0742b36b-b6e8-4ea3-952b-35fda22e8533",
-                    "parameterType": "ComponentParameter",
+                    "id": "f3a13f91-9207-4e1d-b360-b0b48a07208f",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2977,8 +2521,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "7d0af006-0c4f-48b6-b549-f82b8da870d2",
-                    "parameterType": "ComponentParameter",
+                    "id": "20238afb-ceff-4dc7-b27c-51f3528501cd",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -2992,8 +2536,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "3cb95dc7-72f4-4414-a262-1198839979d3",
-                    "parameterType": "ComponentParameter",
+                    "id": "c6757157-bdb7-4dd4-ad2e-0bb625d27baf",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3007,8 +2551,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "a815d303-12e9-4e32-9d9b-36c39762a5e5",
-                    "parameterType": "ComponentParameter",
+                    "id": "c9abb0b5-4ca3-4376-be25-8237d7af81b8",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3022,8 +2566,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "d08e5de7-6ae9-4650-a734-7d53cbe943af",
-                    "parameterType": "ComponentParameter",
+                    "id": "f0cf052e-b1b3-4bf3-a14d-3a05b5a6d591",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3037,8 +2581,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "4d0a9357-1d07-4037-8763-5d8bbe1a21eb",
-                    "parameterType": "ComponentParameter",
+                    "id": "4f33d258-202e-4360-aba0-47e740249103",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3052,8 +2596,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "e969b793-71a9-4b86-b501-a6365ab5d811",
-                    "parameterType": "ComponentParameter",
+                    "id": "512bc555-def1-458e-8066-ca317db9105a",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3067,8 +2611,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "4fb1f1b6-d11a-4b07-94ec-e32161d85851",
-                    "parameterType": "ComponentParameter",
+                    "id": "c0b54055-8b1e-45b2-8cf0-596dfa5e692a",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3082,8 +2626,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "4d9091fb-09db-4aa0-9343-2b57b8b4443d",
-                    "parameterType": "ComponentParameter",
+                    "id": "1d5a3220-3353-4b8a-8a26-a7dfa391d09f",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3097,8 +2641,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "8cfbcf7e-2e2e-4935-be84-1c0aa9f1d164",
-                    "parameterType": "ComponentParameter",
+                    "id": "f18282f8-f17f-450b-aff6-ba4dfc8b5edc",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3112,8 +2656,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "9a95b64e-2297-4773-b087-7206b10f838b",
-                    "parameterType": "ComponentParameter",
+                    "id": "0d64ab2f-466e-41c8-a431-df2718d21509",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3127,8 +2671,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "e226d93b-dde6-4be9-9576-81057556a32c",
-                    "parameterType": "ComponentParameter",
+                    "id": "8e3cd7fe-aa0a-4099-9ce0-41c8345ede08",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3142,8 +2686,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "9aa5d097-bbe7-475d-b4f2-7245d914251f",
-                    "parameterType": "ComponentParameter",
+                    "id": "f93c3865-a7c5-46f9-bb7a-054a34835078",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3157,8 +2701,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "1237e089-c4f1-4bd1-99e9-5091ba6b41be",
-                    "parameterType": "ComponentParameter",
+                    "id": "703f3178-5996-4697-ac43-bd6e2de94bca",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3176,8 +2720,8 @@
                     ],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "7005006c-148d-4d3f-9335-5d6b45cc98a8",
-                    "parameterType": "ComponentParameter",
+                    "id": "de283698-c8e5-4850-83f6-c5a5e3efac8a",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3191,8 +2735,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "2ae80525-625a-4459-8c51-8e7edb1fef0f",
-                    "parameterType": "ComponentParameter",
+                    "id": "1f9d26bc-4d40-4058-bc2f-81f3fd149fd5",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3206,8 +2750,8 @@
                     "options": [],
                     "positional": false,
                     "keyAttribute": false,
-                    "id": "e3b840c3-3544-4b01-b403-2aaed5d15c55",
-                    "parameterType": "ComponentParameter",
+                    "id": "a92a146b-981a-4bd1-b946-b3c9a6041c8c",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 }
             ],
@@ -3243,42 +2787,6 @@
             "closesLoop": false
         },
         {
-            "from": -5,
-            "fromPort": "8cc74bb3-9383-44e5-b414-63561fd63f58",
-            "to": -3,
-            "toPort": "e16cd1c7-c172-4499-8193-451d5e2911c1",
-            "dataType": "Object",
-            "loop_aware": "0",
-            "closesLoop": false
-        },
-        {
-            "from": -6,
-            "fromPort": "d02e24bd-4049-4afc-a8cc-0485f19d5373",
-            "to": -7,
-            "toPort": "5b38bf9a-162c-453d-bb2b-15996148053c",
-            "dataType": "Object",
-            "loop_aware": "0",
-            "closesLoop": false
-        },
-        {
-            "from": -4,
-            "fromPort": "8528f8ab-2dbb-4b4d-87c9-6667e732c13e",
-            "to": -7,
-            "toPort": "335f7202-af6c-40a5-8dd2-b9392dc34105",
-            "dataType": "Object",
-            "loop_aware": "0",
-            "closesLoop": false
-        },
-        {
-            "from": -7,
-            "fromPort": "dd3c00e9-2696-445e-a23f-e42f27c221fd",
-            "to": -5,
-            "toPort": "8cc74bb3-9383-44e5-b414-63561fd63f58",
-            "dataType": "Object.File",
-            "loop_aware": "0",
-            "closesLoop": false
-        },
-        {
             "from": -8,
             "fromPort": "c95562ef-e8e1-49f7-9e58-a7c08bd61897",
             "to": -6,
@@ -3288,8 +2796,8 @@
             "closesLoop": false
         },
         {
-            "from": -9,
-            "fromPort": "1f231dfe-91cd-4911-8631-6ae36f671937",
+            "from": -10,
+            "fromPort": "02125248-1dd6-4fd6-9b2b-4ed921c96e1d",
             "to": -8,
             "toPort": "c95562ef-e8e1-49f7-9e58-a7c08bd61897",
             "dataType": "Object.File",
