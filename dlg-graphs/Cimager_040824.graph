@@ -2925,7 +2925,7 @@
             "fields": [
                 {
                     "name": "func_name",
-                    "value": "I_Cimager.combine",
+                    "value": "I_CImager.combine",
                     "defaultValue": "I_Cimager.combine",
                     "description": "Python function name",
                     "readonly": false,
@@ -2944,7 +2944,7 @@
                     "defaultValue": "",
                     "description": "",
                     "readonly": false,
-                    "type": "String",
+                    "type": "Object",
                     "precious": false,
                     "options": [],
                     "positional": false,
@@ -2959,7 +2959,7 @@
                     "defaultValue": "",
                     "description": "",
                     "readonly": false,
-                    "type": "String",
+                    "type": "Object",
                     "precious": false,
                     "options": [],
                     "positional": false,
