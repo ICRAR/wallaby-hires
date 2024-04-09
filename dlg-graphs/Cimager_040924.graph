@@ -1062,8 +1062,8 @@
             "key": -7,
             "name": "File3",
             "description": "A standard file on a filesystem mounted to the deployment machine",
-            "x": 962.1532278960799,
-            "y": 404.55740129390534,
+            "x": 961.2190542395522,
+            "y": 400.82070666779447,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -1227,8 +1227,8 @@
             "fields": [
                 {
                     "name": "func_name",
-                    "value": "I_CImager.merge_dictionaries",
-                    "defaultValue": "I_Cimager.combine",
+                    "value": "I_CImager.parset_mixin",
+                    "defaultValue": "",
                     "description": "Python function name",
                     "readonly": false,
                     "type": "String",
@@ -1392,7 +1392,7 @@
                 },
                 {
                     "name": "input_parser",
-                    "value": "path",
+                    "value": "pickle",
                     "defaultValue": "pickle",
                     "description": "Input port parsing technique",
                     "readonly": false,
@@ -1414,7 +1414,7 @@
                 },
                 {
                     "name": "output_parser",
-                    "value": "pickle",
+                    "value": "raw",
                     "defaultValue": "pickle",
                     "description": "Output port parsing technique Mapping from argname to default value. Should match only the last part of the argnames list. Values are interpreted as Python code literals and that means string values need to be quoted.",
                     "readonly": false,
