@@ -1,4 +1,7 @@
-def parset_mixin(parset: dict, mixin: dict) -> bin:
+from typing import BinaryIO
+
+
+def parset_mixin(parset: dict, mixin: dict) -> bytes:
     """
     Update parset with dict values.
 

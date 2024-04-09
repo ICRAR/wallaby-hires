@@ -32,7 +32,7 @@ fmt:              ## Format code using black & isort.
 
 .PHONY: lint
 lint:             ## Run pep8, black, mypy linters.
-	$(ENV_PREFIX)flake8 wallaby_hires/
+	$(ENV_PREFIX)flake8 --max-line-length wallaby_hires/
 	$(ENV_PREFIX)black -l 90 --check wallaby_hires/
 	$(ENV_PREFIX)black -l 90 --check tests/
 	$(ENV_PREFIX)mypy --ignore-missing-imports wallaby_hires/
