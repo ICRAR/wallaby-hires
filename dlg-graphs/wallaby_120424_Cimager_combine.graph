@@ -2645,8 +2645,8 @@
             "key": -10,
             "name": "Combine",
             "description": "An application that wraps a simple python function. The inputs of the application are treated as the arguments of the function. Conversely, the output of the function is treated as the output of the application. If the application has more than one output, the result of calling the function is treated as an iterable, with each individual object being written to its corresponding output.",
-            "x": 1111.006500946409,
-            "y": 938.6877917183259,
+            "x": 1117.9744931508728,
+            "y": 943.6649290072287,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -2658,7 +2658,7 @@
             "fields": [
                 {
                     "name": "func_name",
-                    "value": "CImager.parset_mixin_gayu_imcontsub",
+                    "value": "CImager.parset_mixin_gayu_linmos",
                     "defaultValue": "CImager.parset_mixin_gayu",
                     "description": "Python function name",
                     "readonly": false,
@@ -3038,8 +3038,8 @@
             "key": -12,
             "name": "linmosStatic",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 1107.8247087259415,
-            "y": 806.1499646902623,
+            "x": 1122.756120592649,
+            "y": 807.1453921480426,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -3081,7 +3081,7 @@
                 },
                 {
                     "name": "mode",
-                    "value": "YANDA",
+                    "value": "pickle",
                     "defaultValue": "YANDA",
                     "description": "Serialisation method.",
                     "readonly": false,
@@ -3188,7 +3188,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "5c41743e-08c0-4d8b-99ef-aa649675ce91",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3203,7 +3203,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "e40895b2-a531-4b18-a7dc-33c7893d7101",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3218,7 +3218,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "e90a8a8f-4b50-4633-9a62-0c75ea1d7984",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3233,7 +3233,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "5a01942a-4ffc-47ff-b97f-ba3a51589ba6",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3248,7 +3248,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "9a15bcfe-a96a-409b-a3b8-cf0b6168e37f",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3263,7 +3263,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "0ec37d6c-369b-4cde-8a79-2d4836af39f9",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3278,7 +3278,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "48ac752e-167f-43c2-9d7b-1766294c39d4",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3293,7 +3293,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "527c8751-4e75-4d09-9bcb-c6fe0c66f556",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3308,7 +3308,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "4ede6192-88ce-4b26-ac72-2b59780737dd",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3323,7 +3323,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "f65ae528-031e-4a8e-9e03-c64509986522",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3338,7 +3338,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "de542fdf-1249-46b5-858f-bd079756ba1a",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -3353,12 +3353,12 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "fc88a631-385a-4dac-9a0b-09e1702a9243",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "linmos.imagetype",
-                    "value": "",
+                    "value": "casa",
                     "defaultValue": "casa",
                     "description": "Type of the image handler (determines the format of the images, both which are written to or read from the disk). Either fits or casa can be requested.",
                     "readonly": false,
@@ -3371,7 +3371,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "3240db19-5e80-477e-a897-e187c514b515",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 }
             ],
@@ -3466,6 +3466,24 @@
             "to": -11,
             "toPort": "faa73933-21a3-4aa2-a5c2-249abbe77429",
             "dataType": "Object",
+            "loop_aware": "0",
+            "closesLoop": false
+        },
+        {
+            "from": -3,
+            "fromPort": "437c3a9e-88a0-4d70-a799-406d98efb1bb",
+            "to": -10,
+            "toPort": "50124d5d-1000-4772-97ca-c12618fbcc0e",
+            "dataType": "String",
+            "loop_aware": "0",
+            "closesLoop": false
+        },
+        {
+            "from": -12,
+            "fromPort": "8d5f6273-e011-4c9d-92f1-2baef4019d37",
+            "to": -10,
+            "toPort": "5755464c-fcf4-43ee-9423-6a7a21ce905f",
+            "dataType": "Object.File",
             "loop_aware": "0",
             "closesLoop": false
         }
