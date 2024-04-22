@@ -30,8 +30,8 @@
             "key": -1,
             "name": "CimagerStatic",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 1087.8010118971226,
-            "y": 212.92187945199638,
+            "x": 1089.29039173114,
+            "y": 214.41125928601386,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -777,7 +777,7 @@
                 },
                 {
                     "name": "Cimager.nchanpercore",
-                    "value": 2,
+                    "value": 10,
                     "defaultValue": "1",
                     "description": "",
                     "readonly": false,
@@ -792,7 +792,7 @@
                 },
                 {
                     "name": "Cimager.nwriters",
-                    "value": 2,
+                    "value": 25,
                     "defaultValue": "1",
                     "description": "The number of output cubes to generate in spectral cube mode.",
                     "readonly": false,
@@ -822,7 +822,7 @@
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "[50,100]",
+                    "value": "[25,0]",
                     "defaultValue": "[4,1]",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
