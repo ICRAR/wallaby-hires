@@ -30,7 +30,7 @@
             "key": -1,
             "name": "CimagerParset ",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 348.8206933122049,
+            "x": 351.0145623429349,
             "y": 273.51136754604534,
             "radius": 25,
             "collapsed": false,
@@ -43,7 +43,7 @@
             "fields": [
                 {
                     "name": "Cimager.dataset",
-                    "value": "$DLG_ROOT/testdata/HIPASSJ1922-54_SB51537_F00_B09.ms",
+                    "value": "$DLG_ROOT/testdata/HIPASSJ1303+07_B_beam06_10arc_split.ms",
                     "defaultValue": "",
                     "description": "Measurement set file name to read from. Usual substitution rules apply if the parameter is a single string. If the parameter is given as a vector of strings all measurement sets given by this vector are effectively concatenated together on-the-fly in the serial case. In the parallel case, the size of the vector is required to be either 1 or the number of nodes - 1, and therefore there is one measurement set per worker node.",
                     "readonly": false,
