@@ -1227,8 +1227,8 @@
             "fields": [
                 {
                     "name": "func_name",
-                    "value": "CImager.parset_mixin_gayu_cimager",
-                    "defaultValue": "CImager.parset_mixin_gayu",
+                    "value": "wallaby_hires.parset_mixin_cimager",
+                    "defaultValue": "wallaby_hires.parset_mixin_cimager",
                     "description": "Python function name",
                     "readonly": false,
                     "type": "String",
@@ -1620,8 +1620,8 @@
             "fields": [
                 {
                     "name": "func_name",
-                    "value": "CImager.read_and_process_csv_file_output_all_dynamic_parset",
-                    "defaultValue": "CImager.read_and_process_csv_file_output_dynamic_parset",
+                    "value": "wallaby_hires.read_and_process_csv_file_output_all_dynamic_parset",
+                    "defaultValue": "wallaby_hires.read_and_process_csv_file_output_all_dynamic_parset",
                     "description": "Python function name",
                     "readonly": false,
                     "type": "String",
@@ -2135,8 +2135,8 @@
             "fields": [
                 {
                     "name": "func_name",
-                    "value": "CImager.parset_mixin_gayu_imcontsub",
-                    "defaultValue": "CImager.parset_mixin_gayu",
+                    "value": "wallaby_hires.parset_mixin_imcontsub",
+                    "defaultValue": "wallaby_hires.parset_mixin_imcontsub",
                     "description": "Python function name",
                     "readonly": false,
                     "type": "String",
@@ -2646,7 +2646,7 @@
             "name": "Combine",
             "description": "An application that wraps a simple python function. The inputs of the application are treated as the arguments of the function. Conversely, the output of the function is treated as the output of the application. If the application has more than one output, the result of calling the function is treated as an iterable, with each individual object being written to its corresponding output.",
             "x": 1111.7002027312342,
-            "y": 984.6715664003134,
+            "y": 983.3162843099959,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -2658,8 +2658,8 @@
             "fields": [
                 {
                     "name": "func_name",
-                    "value": "CImager.parset_mixin_gayu_linmos",
-                    "defaultValue": "CImager.parset_mixin_gayu",
+                    "value": "wallaby_hires.parset_mixin_linmos",
+                    "defaultValue": "wallaby_hires.parset_mixin_linmos",
                     "description": "Python function name",
                     "readonly": false,
                     "type": "String",
@@ -3408,7 +3408,7 @@
             "fields": [
                 {
                     "name": "image",
-                    "value": "icrar/yanda_imager:0.4",
+                    "value": "csirocass/yandasoft:develop-openmpi4",
                     "defaultValue": "",
                     "description": "The name of the docker image to be used for this application",
                     "readonly": false,
