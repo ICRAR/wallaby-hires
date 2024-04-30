@@ -30,7 +30,7 @@
             "key": -1,
             "name": "CimagerParset ",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 351.0145623429349,
+            "x": 348.8206933122049,
             "y": 273.51136754604534,
             "radius": 25,
             "collapsed": false,
@@ -43,7 +43,7 @@
             "fields": [
                 {
                     "name": "Cimager.dataset",
-                    "value": "$DLG_ROOT/testdata/HIPASSJ1303+07_B_beam06_10arc_split.ms",
+                    "value": "$DLG_ROOT/testdata/HIPASSJ1903-56_SB51537_F00_B13.ms",
                     "defaultValue": "",
                     "description": "Measurement set file name to read from. Usual substitution rules apply if the parameter is a single string. If the parameter is given as a vector of strings all measurement sets given by this vector are effectively concatenated together on-the-fly in the serial case. In the parallel case, the size of the vector is required to be either 1 or the number of nodes - 1, and therefore there is one measurement set per worker node.",
                     "readonly": false,
@@ -51,14 +51,14 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "id": "13e56f15-04b5-4f4f-831a-50a0808b5058",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.Images.Names",
-                    "value": "[image.HIPASSJ1303+07_B_beam06_10arc_split.ms]",
+                    "value": "[image.HIPASSJ1903-56_SB51537_F00_B13]",
                     "defaultValue": "",
                     "description": "List of image names which this imager will produce. If more than one image is given, a superposition is assumed (i.e. visibilities are fitted with a combined effect of two images; two measurement equations are simply added). Parameters of each image defined in this list must be given in the same parset using ImageName.something keywords (with usual prefix). Note, all image names must start with word image (this is how parameters representing images are distinguished from other type of free parameters in ASKAPsoft), otherwise an exception is thrown. Example of valid names are: image.10uJy, image, imagecena.",
                     "readonly": false,
@@ -66,14 +66,14 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "id": "66837904-5a30-4b42-968b-9d82512677f6",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.Images.direction",
-                    "value": "[13h03m14.7,+7.48.08, J2000]",
+                    "value": "[19h03m03.1,-56.09.25, J2000]",
                     "defaultValue": "",
                     "description": "Direction to the centre of the required image (or tangent point for facets). This vector should contain a 3-element direction quantity containing right ascension, declination and epoch, e.g. [12h30m00.00, -45.00.00.00, J2000]. Note that a casa style of declination delimiters (dots rather than colons) is essential. Only J2000 directions are currently supported.",
                     "readonly": false,
@@ -81,7 +81,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "id": "8b463862-229c-41bd-95c2-57c1db0f9817",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
@@ -181,7 +181,7 @@
                 },
                 {
                     "name": "Cimager.ncycles",
-                    "value": 3,
+                    "value": 1,
                     "defaultValue": "0",
                     "description": "Number of major cycles (and iterations over the dataset)",
                     "readonly": false,
@@ -294,7 +294,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.nwplanes",
-                    "value": 257,
+                    "value": 65,
                     "defaultValue": "65",
                     "description": "Number of w-planes. Number of w planes must be an odd positive number. For the WProject gridder this scales up the number of convolution functions calculated. For the WStack gridder this is the number of grids maintained. You may (and will) run out of memory for a large number of w planes, especially for the stacking algorithm",
                     "readonly": false,
@@ -324,7 +324,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.maxsupport",
-                    "value": 1024,
+                    "value": 256,
                     "defaultValue": "256",
                     "description": "The largest allowed support size in pixels. The grid used to compute the convolution function (before the support is searched and the appropriate inner part of the grid is extracted) is initialised to have the size equal to the smallest of maxsupport and the image size. WProject uses maxsupport x maxsupport grid at the moment regardless of the image size.",
                     "readonly": false,
@@ -417,7 +417,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.niter",
-                    "value": 800,
+                    "value": 100,
                     "defaultValue": "100",
                     "description": "Number of minor cycles",
                     "readonly": false,
@@ -672,7 +672,7 @@
                 },
                 {
                     "name": "Cimager.preconditioner.Wiener.robustness",
-                    "value": 0.5,
+                    "value": 0,
                     "defaultValue": "0",
                     "description": "The noise power is derived from the given value of robustness to have roughly the same effect as the analogous parameter in Robust (i.e., -2.0 close to uniform weighting, +2.0 close to natural weighting). Note that the Wiener filter must be specified with eithernoisepowerorrobustness.",
                     "readonly": false,
@@ -747,7 +747,7 @@
                 },
                 {
                     "name": "Cimager.MinUV",
-                    "value": 12,
+                    "value": 10,
                     "defaultValue": "0",
                     "description": "Select data based on the uv-distance (in metres). Only visibility points corresponding to uv-distance greater than the given value (defined in metres) are read from the measurement set. Note, the selection is done without taking frequency information into account.",
                     "readonly": false,
@@ -777,7 +777,7 @@
                 },
                 {
                     "name": "Cimager.nchanpercore",
-                    "value": 2,
+                    "value": 5,
                     "defaultValue": "1",
                     "description": "",
                     "readonly": false,
@@ -837,7 +837,7 @@
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "[4,1]",
+                    "value": "[15,109]",
                     "defaultValue": "",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
@@ -845,7 +845,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "id": "b60ad299-62dc-456a-a54d-f7dd0f662d96",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
@@ -1210,7 +1210,7 @@
                 },
                 {
                     "name": "command",
-                    "value": "cd $DLG_ROOT/testdata && mpirun -np 3 --allow-run-as-root imager",
+                    "value": "cd $DLG_ROOT/testdata && mpirun -np 4 --allow-run-as-root imager",
                     "defaultValue": "",
                     "description": "The command line to run within the docker instance",
                     "readonly": false,
@@ -1225,11 +1225,11 @@
                 },
                 {
                     "name": "removeContainer",
-                    "value": 1,
+                    "value": true,
                     "defaultValue": "0",
                     "description": "",
                     "readonly": false,
-                    "type": "Integer",
+                    "type": "Boolean",
                     "precious": false,
                     "options": [],
                     "positional": false,
