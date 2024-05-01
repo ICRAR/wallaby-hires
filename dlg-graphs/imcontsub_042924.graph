@@ -503,7 +503,7 @@
                 },
                 {
                     "name": "imcontsub.inputfitscube",
-                    "value": "image.restored.HIPASSJ1303+07_B_beam06_10arc_split",
+                    "value": "image.restored.HIPASSJ1303+07_B_beam06_10arc_split.ms",
                     "defaultValue": "",
                     "description": "Image cube to work with. The input file has to be in FITS format. It is read and left unchanged.",
                     "readonly": false,
