@@ -30,7 +30,7 @@
             "key": -1,
             "name": "CimagerParset ",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 348.8206933122049,
+            "x": 349.97023859569293,
             "y": 273.51136754604534,
             "radius": 25,
             "collapsed": false,
@@ -43,7 +43,7 @@
             "fields": [
                 {
                     "name": "Cimager.dataset",
-                    "value": "$DLG_ROOT/testdata/HIPASSJ1903-56_SB51537_F00_B13.ms",
+                    "value": "$DLG_ROOT/testdata/HIPASSJ1303+07_B_beam06_10arc_split.ms",
                     "defaultValue": "",
                     "description": "Measurement set file name to read from. Usual substitution rules apply if the parameter is a single string. If the parameter is given as a vector of strings all measurement sets given by this vector are effectively concatenated together on-the-fly in the serial case. In the parallel case, the size of the vector is required to be either 1 or the number of nodes - 1, and therefore there is one measurement set per worker node.",
                     "readonly": false,
@@ -58,7 +58,7 @@
                 },
                 {
                     "name": "Cimager.Images.Names",
-                    "value": "[image.HIPASSJ1903-56_SB51537_F00_B13]",
+                    "value": "[image.HIPASSJ1303+07_B_beam06_10arc_split]",
                     "defaultValue": "",
                     "description": "List of image names which this imager will produce. If more than one image is given, a superposition is assumed (i.e. visibilities are fitted with a combined effect of two images; two measurement equations are simply added). Parameters of each image defined in this list must be given in the same parset using ImageName.something keywords (with usual prefix). Note, all image names must start with word image (this is how parameters representing images are distinguished from other type of free parameters in ASKAPsoft), otherwise an exception is thrown. Example of valid names are: image.10uJy, image, imagecena.",
                     "readonly": false,
@@ -73,7 +73,7 @@
                 },
                 {
                     "name": "Cimager.Images.direction",
-                    "value": "[19h03m03.1,-56.09.25, J2000]",
+                    "value": "[13h03m14.7,7.48.08, J2000]",
                     "defaultValue": "",
                     "description": "Direction to the centre of the required image (or tangent point for facets). This vector should contain a 3-element direction quantity containing right ascension, declination and epoch, e.g. [12h30m00.00, -45.00.00.00, J2000]. Note that a casa style of declination delimiters (dots rather than colons) is essential. Only J2000 directions are currently supported.",
                     "readonly": false,
@@ -837,7 +837,7 @@
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "[15,109]",
+                    "value": "[50,100]",
                     "defaultValue": "",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
@@ -1108,7 +1108,7 @@
             "name": "yanda_imager",
             "description": "This docker app runs the Yandasoft Imager. It uses an askapsoft compliant configuration file on input, which defines all the required parameters.",
             "x": 865.174851754627,
-            "y": 271.7184002475908,
+            "y": 270.5688549641028,
             "radius": 25,
             "collapsed": true,
             "subject": null,
