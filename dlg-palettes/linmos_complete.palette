@@ -6,7 +6,7 @@
         "downloadUrl": "",
         "eagleCommitHash": "a1d68d87110d9cf6614ceb5e9f6b807ffad4498f",
         "eagleVersion": "v6.2.0:html-graph-renderer",
-        "filePath": "linmos.palette",
+        "filePath": "imcontsub_complete.palette",
         "fileType": "Palette",
         "lastModifiedDatetime": 0,
         "lastModifiedEmail": "",
@@ -587,7 +587,7 @@
 		    "precious": false,
 		    "readonly": false,
 		    "id": "parameter36"
-		},
+		}, 
 		{
 		    "name": "linmos.primarybeam",
 		    "type": "Select",
@@ -875,7 +875,7 @@
 		    "precious": false,
 		    "readonly": false,
 		    "id": "parameter60"
-		}           
+		}	
             ],
             "inputAppFields": [],
             "inputApplicationDescription": "",
