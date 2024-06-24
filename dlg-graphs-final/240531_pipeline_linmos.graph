@@ -560,8 +560,8 @@
             "key": -18,
             "name": "linmos_image",
             "description": "A standard file on a filesystem mounted to the deployment machine",
-            "x": 1137.6959170003727,
-            "y": 863.885691332928,
+            "x": 1136.7082501516995,
+            "y": 866.8486918789478,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -713,7 +713,7 @@
             "name": "linmosParset",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
             "x": 325.0793258622977,
-            "y": 861.8270867600952,
+            "y": 860.8394199114219,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -852,7 +852,7 @@
                 },
                 {
                     "name": "linmos.names",
-                    "value": "$DLG_ROOT/testdata/Setonix/HIPASS_J1318-21/HIPASS_J1318-21_images/A_B10/image.restored.HIPASSJ1318-21_A_beam10_10arc_split.contsub",
+                    "value": "[image.restored.HIPASSJ1318-21_A_beam10_10arc_split.contsub]",
                     "defaultValue": "",
                     "description": "Names of the input images. If these images start with \u201cimage\u201d and have associated sensitivity images, the latter are integrated into a sensitivity image for the mosaic.",
                     "readonly": false,
@@ -862,12 +862,12 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "bd619ba2-1483-41e6-a56d-81e86bc244d9",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "linmos.weights",
-                    "value": "$DLG_ROOT/testdata/Setonix/HIPASS_J1318-21/HIPASS_J1318-21_images/A_B10/weights.HIPASSJ1318-21_A_beam10_10arc_split",
+                    "value": "[weights.HIPASSJ1318-21_A_beam10_10arc_split]",
                     "defaultValue": "",
                     "description": "Optional parameter (required if using weight images). Names of input images containing pixel weights. There must be one weight image for each image, and the size must match. Alternatively, a weightslog file can be specified for each input image. Use the useweightslog parameter and/or .txt extension to indicate weightslog inputs. If weights are required, but not specified, linmos will try to read them from the image headers. Ignored if weighttype=FromPrimaryBeamModel or if findmosaics=true.",
                     "readonly": false,
@@ -877,7 +877,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "09353c17-4ca5-415f-8c5e-da6d1d58209d",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -892,7 +892,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "e892d836-ae07-4a15-8a94-a38c6425cecc",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -907,7 +907,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "ab4b3126-7dd6-43b7-8087-9e1ab10d9fea",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -922,7 +922,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "1fa3722a-f703-48c8-b2cd-452e99d01a34",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -937,7 +937,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "e3cbdf9c-e3d8-47b7-a45b-e4fda05b13dd",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -952,7 +952,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "9ca8ac77-8552-41f5-a7f5-1eda750f363d",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -967,7 +967,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "bfca4361-cd60-4fed-924f-ceffa5146f49",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -982,7 +982,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "f8b4b52d-6c57-4598-8f81-8be14ac07833",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -997,12 +997,12 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "36cd762b-f499-4db7-850e-50cbb7453742",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "linmos.primarybeam.ASKAP_PB.image",
-                    "value": "$DLG_ROOT/testdata/calibration-metadata-processing-logs-SB34275_2022-01-06-132301/LinmosBeamImages",
+                    "value": "akpb.iquv.square_6x6.54.1295MHz.SB32736.cube.fits",
                     "defaultValue": "",
                     "description": "FITS image file with 4/5 axes (see above), note that you need to specify the full filename (including .fits) here.",
                     "readonly": false,
@@ -1012,7 +1012,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "fa80b353-be85-4758-8416-dfe981c529b4",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1027,7 +1027,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "68fcbc7d-c5e9-4bea-a7f0-6fe70c038af3",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1045,7 +1045,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "296c3993-abac-4db1-9b02-5a384b6a479b",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1064,7 +1064,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "0070455e-a7c2-4449-86a9-861359e23d31",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
@@ -1079,7 +1079,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "d8e1c357-02ae-484c-80e6-3b1755f8f56f",
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 }
             ],
