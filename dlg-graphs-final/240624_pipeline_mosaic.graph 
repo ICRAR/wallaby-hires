@@ -1,0 +1,25 @@
+{
+    "modelData": {
+        "filePath": "dlg-graphs-final/240624_pipeline_mosaic.graph ",
+        "fileType": "Graph",
+        "shortDescription": "",
+        "detailedDescription": "",
+        "repoService": "GitHub",
+        "repoBranch": "main",
+        "repo": "ICRAR/wallaby-hires",
+        "eagleVersion": "v6.2.8",
+        "eagleCommitHash": "80717598c275f0e9b15a46e15e79383e0434e85f",
+        "schemaVersion": "OJS",
+        "readonly": true,
+        "repositoryUrl": "",
+        "commitHash": "",
+        "downloadUrl": "",
+        "signature": "",
+        "lastModifiedName": "",
+        "lastModifiedEmail": "",
+        "lastModifiedDatetime": 0,
+        "numLGNodes": 0
+    },
+    "nodeDataArray": [],
+    "linkDataArray": []
+}
