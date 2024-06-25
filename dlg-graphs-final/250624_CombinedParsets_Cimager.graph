@@ -2906,6 +2906,21 @@
                     "usage": "NoPort"
                 },
                 {
+                    "name": "Cimager.write.weightsimage",
+                    "value": true,
+                    "defaultValue": "",
+                    "description": "",
+                    "readonly": false,
+                    "type": "Boolean",
+                    "precious": false,
+                    "options": [],
+                    "positional": false,
+                    "keyAttribute": false,
+                    "id": "ed5ec312-1f5e-4b26-b9c1-e6882fd55878",
+                    "parameterType": "ApplicationArgument",
+                    "usage": "NoPort"
+                },
+                {
                     "name": "data_volume",
                     "value": 5,
                     "defaultValue": "5",
@@ -3031,21 +3046,6 @@
                     "id": "f68e2d6e-4062-4c56-b9fd-7fde42aba1ba",
                     "parameterType": "ComponentParameter",
                     "usage": "OutputPort"
-                },
-                {
-                    "name": "New Parameter",
-                    "value": "",
-                    "defaultValue": "",
-                    "description": "",
-                    "readonly": false,
-                    "type": "String",
-                    "precious": false,
-                    "options": [],
-                    "positional": false,
-                    "keyAttribute": false,
-                    "id": "14873337-4f90-4907-8ac1-e637304cd44b",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
                 }
             ],
             "inputAppFields": [],
