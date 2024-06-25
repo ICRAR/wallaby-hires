@@ -3350,8 +3350,8 @@
             "key": -18,
             "name": "linmosStaticNew",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 1212.4720846349649,
-            "y": 944.7302401228391,
+            "x": 1207.8012765851092,
+            "y": 950.5687501851592,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -3485,7 +3485,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "id": "78d79be1-2bad-4153-8d9a-a4a322a67abd",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "OutputPort"
                 },
                 {
