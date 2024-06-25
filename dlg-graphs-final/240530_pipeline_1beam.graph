@@ -1580,7 +1580,7 @@
                 },
                 {
                     "name": "imcontsub.inputfitscube",
-                    "value": "image.restored.HIPASSJ1318-21_A_beam10_10arc_split.ms",
+                    "value": "image.restored.HIPASSJ1318-21_A_beam10_10arc_split",
                     "defaultValue": "",
                     "description": "Image cube to work with. The input file has to be in FITS format. It is read and left unchanged.",
                     "readonly": false,
@@ -1595,7 +1595,7 @@
                 },
                 {
                     "name": "imcontsub.outputfitscube",
-                    "value": "image.restored.HIPASSJ1318-21_A_beam10_10arc_split.ms.contsub ",
+                    "value": "image.restored.HIPASSJ1318-21_A_beam10_10arc_split.contsub ",
                     "defaultValue": "",
                     "description": "The name of the cube to write the results to. If the file already exists, it will be overwritten. If the output name is left unspecified, it is generated from the input name: mycube.fits -> mycube.contsub.fits",
                     "readonly": false,
