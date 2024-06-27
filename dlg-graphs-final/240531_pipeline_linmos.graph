@@ -852,7 +852,7 @@
                 },
                 {
                     "name": "linmos.names",
-                    "value": "[image.restored.HIPASSJ1318-21_A_beam10_10arc_split.contsub]",
+                    "value": "[image.restored.HIPASSJ1318-21_A_beam10_10arc_split_25.contsub]",
                     "defaultValue": "",
                     "description": "Names of the input images. If these images start with \u201cimage\u201d and have associated sensitivity images, the latter are integrated into a sensitivity image for the mosaic.",
                     "readonly": false,
@@ -867,7 +867,7 @@
                 },
                 {
                     "name": "linmos.weights",
-                    "value": "[weights.HIPASSJ1318-21_A_beam10_10arc_split]",
+                    "value": "[weights.HIPASSJ1318-21_A_beam10_10arc_split_25]",
                     "defaultValue": "",
                     "description": "Optional parameter (required if using weight images). Names of input images containing pixel weights. There must be one weight image for each image, and the size must match. Alternatively, a weightslog file can be specified for each input image. Use the useweightslog parameter and/or .txt extension to indicate weightslog inputs. If weights are required, but not specified, linmos will try to read them from the image headers. Ignored if weighttype=FromPrimaryBeamModel or if findmosaics=true.",
                     "readonly": false,
@@ -882,7 +882,7 @@
                 },
                 {
                     "name": "linmos.outname",
-                    "value": "image.restored.HIPASSJ1318-21_A_beam10_10arc_split.contsub_holo ",
+                    "value": "image.restored.HIPASSJ1318-21_A_beam10_10arc_split_25.contsub_holo ",
                     "defaultValue": "",
                     "description": "Name of the output image. Ignored if findmosaics=true.",
                     "readonly": false,
@@ -897,7 +897,7 @@
                 },
                 {
                     "name": "linmos.outweight",
-                    "value": "weights.HIPASSJ1318-21_A_beam10_10arc_split.contsub_holo",
+                    "value": "weights.HIPASSJ1318-21_A_beam10_10arc_split_25.contsub_holo",
                     "defaultValue": "",
                     "description": "Name of output image containing pixel weights. Ignored if findmosaics=true.",
                     "readonly": false,
@@ -1068,7 +1068,7 @@
                     "usage": "NoPort"
                 },
                 {
-                    "name": "linmos.feeds.image.restored.HIPASSJ1318-21_A_beam10_10arc_split.contsub",
+                    "name": "linmos.feeds.image.restored.HIPASSJ1318-21_A_beam10_10arc_split_25.contsub",
                     "value": "[0.0,0.0]  ",
                     "defaultValue": "",
                     "description": "",
