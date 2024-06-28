@@ -30,8 +30,8 @@
             "key": -2,
             "name": "CopyApp",
             "description": "A simple APP that copies its inputs into its outputs. All inputs are copied into all outputs in the order they were declared in the graph. If an input is a container (e.g. a directory) it copies the content recursively.",
-            "x": 546.4487440613728,
-            "y": 271.21299742291984,
+            "x": 552.7429931473959,
+            "y": 273.31108045159414,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -646,7 +646,7 @@
             "name": "imcontsub_image",
             "description": "A standard file on a filesystem mounted to the deployment machine",
             "x": 1065.660682463847,
-            "y": 268.5204106787076,
+            "y": 270.6184937073819,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -2327,15 +2327,6 @@
             "closesLoop": false
         },
         {
-            "from": -10,
-            "fromPort": "d35735aa-baba-4319-b75a-b969acd983b5",
-            "to": -3,
-            "toPort": "49b2b6e2-6b06-41ac-b4be-9f029252f346",
-            "dataType": "Object",
-            "loop_aware": "0",
-            "closesLoop": false
-        },
-        {
             "from": -4,
             "fromPort": "8528f8ab-2dbb-4b4d-87c9-6667e732c13e",
             "to": -1,
@@ -2354,10 +2345,19 @@
             "closesLoop": false
         },
         {
+            "from": -10,
+            "fromPort": "d35735aa-baba-4319-b75a-b969acd983b5",
+            "to": -3,
+            "toPort": "2e6329af-088f-4c5d-b902-961ce6d550e9",
+            "dataType": "Object",
+            "loop_aware": "0",
+            "closesLoop": false
+        },
+        {
             "from": -11,
             "fromPort": "c6615e0b-1753-4a46-b748-c86a9639851b",
             "to": -3,
-            "toPort": "2e6329af-088f-4c5d-b902-961ce6d550e9",
+            "toPort": "49b2b6e2-6b06-41ac-b4be-9f029252f346",
             "dataType": "Object.event",
             "loop_aware": "0",
             "closesLoop": false
