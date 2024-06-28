@@ -1,6 +1,6 @@
 {
     "modelData": {
-        "filePath": "dlg-graphs-final/250624_CombinedParsets_Cimager.graph",
+        "filePath": "dlg-graphs-final/250624_CombinedParsetsPipeline.graph",
         "fileType": "Graph",
         "shortDescription": "",
         "detailedDescription": "",
@@ -2813,7 +2813,7 @@
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "[4,125]",
+                    "value": "[25, 111]",
                     "defaultValue": "",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
@@ -3350,7 +3350,7 @@
             "key": -18,
             "name": "linmosStaticNew",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 728.5647926360064,
+            "x": 730.3651281565803,
             "y": 1120.845440134204,
             "radius": 25,
             "collapsed": false,
@@ -5033,8 +5033,8 @@
             "key": -22,
             "name": "imcontsub_image",
             "description": "A standard file on a filesystem mounted to the deployment machine",
-            "x": 1607.6647287606354,
-            "y": 478.28059381534024,
+            "x": 1611.4916736317052,
+            "y": 478.2805938153404,
             "radius": 25,
             "collapsed": false,
             "subject": null,
