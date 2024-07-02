@@ -2753,7 +2753,7 @@
                 },
                 {
                     "name": "Cimager.nchanpercore",
-                    "value": 5,
+                    "value": 1,
                     "defaultValue": "1",
                     "description": "",
                     "readonly": false,
@@ -2813,7 +2813,7 @@
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "[25, 111]",
+                    "value": "[9, 125]",
                     "defaultValue": "",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
@@ -5033,8 +5033,8 @@
             "key": -22,
             "name": "imcontsub_image",
             "description": "A standard file on a filesystem mounted to the deployment machine",
-            "x": 1611.4916736317052,
-            "y": 478.2805938153404,
+            "x": 1623.3763310902673,
+            "y": 478.28059381534047,
             "radius": 25,
             "collapsed": false,
             "subject": null,
