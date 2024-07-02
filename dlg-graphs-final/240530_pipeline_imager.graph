@@ -837,7 +837,7 @@
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "[3,125]",
+                    "value": "[9,125]",
                     "defaultValue": "",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
