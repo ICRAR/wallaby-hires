@@ -2932,10 +2932,10 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "encoding": "pickle",
                     "id": "0ec2cfe4-516e-4a63-bd92-5d96c7085c78",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "OutputPort"
                 },
                 {
@@ -3485,10 +3485,10 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "encoding": "pickle",
                     "id": "c4e55951-e1b6-41cb-9696-db2d8c4ae16c",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "OutputPort"
                 },
                 {
