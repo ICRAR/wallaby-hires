@@ -25,7 +25,7 @@
             "category": "ParameterSet",
             "categoryType": "Data",
             "key": -35,
-            "name": "CImager_parset_subset",
+            "name": "Cimager_parset_subset",
             "description": "Subset set of parameters for ASKAPSoft/YANDASoft cimager, needed for WALLABY-hires pipeline.",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "671d6e3",
