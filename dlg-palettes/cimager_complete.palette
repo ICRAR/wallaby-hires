@@ -211,7 +211,7 @@
                     "name": "Cimager.sphfuncforpsf",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the default spheroidal function gridder is used to compute PSF regardless of the gridder selected for model degridding and residual gridding. This has a potential to produce better behaving PSF by taking out two major factors of position dependence. Note, this doesnt make the PSF correct or otherwise, it is just a different approximation.",
                     "keyAttribute": false,
                     "positional": false,
@@ -223,7 +223,7 @@
                     "name": "Cimager.calibrate",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, calibration of visibilities will be performed before imaging. SeeAccess to calibrator solutionsfor details on calibration parameters used during this application process.",
                     "keyAttribute": false,
                     "positional": false,
@@ -235,7 +235,7 @@
                     "name": "Cimager.calibrate.scalenoise",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the noise estimate will be scaled in accordance with the applied calibrator factor to achieve proper weighting.",
                     "keyAttribute": false,
                     "positional": false,
@@ -247,7 +247,7 @@
                     "name": "Cimager.calibrate.allowflag",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, corresponding visibilities are flagged if the inversion of Mueller matrix fails. Otherwise, an exception is thrown should the matrix inversion fail.",
                     "keyAttribute": false,
                     "positional": false,
@@ -259,7 +259,7 @@
                     "name": "Cimager.calibrate.ignorebeam",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the calibration solution corresponding to beam 0 will be applied to all beams.",
                     "keyAttribute": false,
                     "positional": false,
@@ -271,7 +271,7 @@
                     "name": "Cimager.calibrate.interpolatetime",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, do linear interpolation of gain solutions.",
                     "keyAttribute": false,
                     "positional": false,
@@ -295,7 +295,7 @@
                     "name": "Cimager.restore",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the image will be restored (by convolving with the given 2D gaussian). This is an additional step to normal imaging, which, by default, ends with just a model image. The restored image is written into a separate image file (with the.restoredsuffix). The convolution is done with the restore solver (see alsoSolvers) which by default reuses the same parameters used to setup the image solver. An additional preconditioning step with alternative parameters can be specified usingrestore.preconditioner.xxx, which results in a second set of restored files (with the.alt.restoredsuffix). The only additional parameter of the restore solver is the shape of the gaussian representing clean beam (or flag to determine the shape). It is given by therestore.beamparameter, which must be present ifrestoreis set to True.",
                     "keyAttribute": false,
                     "positional": false,
@@ -340,40 +340,16 @@
                     "id": "parameter15"
                 },
                 {
-                    "name": "Cimager.restore.preconditioner.xxx",
-                    "type": "Array",
-                    "options": [],
-                    "defaultValue": "None",
-                    "description": "Specify an additional preconditioner to be used when restoring. This will result in a second set of restored files with the.alt.restoredsuffix. See preconditioner below. When using multiple restore solvers, one should use therestore.beam=fitoption to allow for different beam shapes.",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter16"
-                },
-                {
-                    "name": "Cimager.restore.preconditioner.suffix",
-                    "type": "String",
-                    "options": [],
-                    "defaultValue": "alt",
-                    "description": "Change the suffix for the alternative preconditioner products.",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter17"
-                },
-                {
                     "name": "Cimager.restore.equalise",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the final residual is multiplied by the square root of the truncated normalised weight (i.e. additional weight described by Sault et al. (1996), which gives a flat noise). Note, that the source flux densities are likely to have position-dependent errors if this option is used because not all flux is recovered during the clean process. However, the images look aesthetically pleasing with this option.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter18"
+                    "id": "parameter16"
                 },
                 {
                     "name": "Cimager.restore.updateresiduals",
@@ -385,7 +361,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter19"
+                    "id": "parameter17"
                 },
                 {
                     "name": "Cimager.nUVWMachines",
@@ -397,7 +373,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter20"
+                    "id": "parameter18"
                 },
                 {
                     "name": "Cimager.uvwMachineDirTolerance",
@@ -409,7 +385,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter21"
+                    "id": "parameter19"
                 },
                 {
                     "name": "Cimager.gridder",
@@ -429,19 +405,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter22"
+                    "id": "parameter20"
                 },
                 {
                     "name": "Cimager.includeflagged",
                     "type": "Boolean",
                     "options": [],
                     "defaultValue": "true",
-                    "description": "By default the flags are ignored when scanning through the data for ranges of frequencies, uvw values and other parameters because this is faster. Set to false to exclude flagged data and make the advice more accurate. Flagged data are always excluded during imaging.",
+                    "description": "By default the flags are ignored when scanning through the data for ranges of frequencies, uvw values and other parameters because this is faster. Set to False to exclude flagged data and make the advice more accurate. Flagged data are always excluded during imaging.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter23"
+                    "id": "parameter21"
                 },
                 {
                     "name": "Cimager.rankstoringcf",
@@ -453,7 +429,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter24"
+                    "id": "parameter22"
                 },
                 {
                     "name": "Cimager.visweights",
@@ -465,7 +441,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter25"
+                    "id": "parameter23"
                 },
                 {
                     "name": "Cimager.visweights.MFS.reffreq",
@@ -477,7 +453,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter26"
+                    "id": "parameter24"
                 },
                 {
                     "name": "Cimager.solver",
@@ -492,7 +468,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter27"
+                    "id": "parameter25"
                 },
                 {
                     "name": "Cimager.ncycles",
@@ -504,7 +480,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter28"
+                    "id": "parameter26"
                 },
                 {
                     "name": "Cimager.sensitivityimage",
@@ -516,7 +492,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter29"
+                    "id": "parameter27"
                 },
                 {
                     "name": "Cimager.sensitivityimage.cutoff",
@@ -528,31 +504,31 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
+                    "id": "parameter28"
+                },
+                {
+                    "name": "Cimager.freqframe",
+                    "type": "String",
+                    "options": [],
+                    "defaultValue": "topo",
+                    "description": "Frequency frame to work in (the frame is converted when the dataset is read). Either lsrk or topo is supported.",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter29"
+                },
+                {
+                    "name": "Cimager.freqframe",
+                    "type": "String",
+                    "options": [],
+                    "defaultValue": "topo",
+                    "description": "Frequency frame to work in (the frame is converted when the dataset is read). Either lsrk or topo is supported.",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
                     "id": "parameter30"
-                },
-                {
-                    "name": "Cimager.freqframe",
-                    "type": "String",
-                    "options": [],
-                    "defaultValue": "topo",
-                    "description": "Frequency frame to work in (the frame is converted when the dataset is read). Either lsrk or topo is supported.",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter32"
-                },
-                {
-                    "name": "Cimager.freqframe",
-                    "type": "String",
-                    "options": [],
-                    "defaultValue": "topo",
-                    "description": "Frequency frame to work in (the frame is converted when the dataset is read). Either lsrk or topo is supported.",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter32"
                 },
                 {
                     "name": "Cimager.Feed",
@@ -564,7 +540,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter33"
+                    "id": "parameter31"
                 },
                 {
                     "name": "Cimager.Beam",
@@ -576,7 +552,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter34"
+                    "id": "parameter32"
                 },
                 {
                     "name": "Cimager.Antenna",
@@ -588,7 +564,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter35"
+                    "id": "parameter33"
                 },
                 {
                     "name": "Cimager.Baseline",
@@ -600,7 +576,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter36"
+                    "id": "parameter34"
                 },
                 {
                     "name": "Cimager.Channels",
@@ -612,7 +588,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter37"
+                    "id": "parameter35"
                 },
                 {
                     "name": "Cimager.SpectralWindow",
@@ -624,7 +600,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter38"
+                    "id": "parameter36"
                 },
                 {
                     "name": "Cimager.Polarisations",
@@ -636,7 +612,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter39"
+                    "id": "parameter37"
                 },
                 {
                     "name": "Cimager.TimeRange",
@@ -648,7 +624,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter40"
+                    "id": "parameter38"
                 },
                 {
                     "name": "Cimager.Tiles",
@@ -660,7 +636,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter41"
+                    "id": "parameter39"
                 },
                 {
                     "name": "Cimager.CorrelationType",
@@ -672,7 +648,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter42"
+                    "id": "parameter40"
                 },
                 {
                     "name": "Cimager.ScanNumber",
@@ -684,7 +660,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter43"
+                    "id": "parameter41"
                 },
                 {
                     "name": "Cimager.MinUV",
@@ -696,7 +672,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter44"
+                    "id": "parameter42"
                 },
                 {
                     "name": "Cimager.MinNonZeroUV",
@@ -708,7 +684,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter45"
+                    "id": "parameter43"
                 },
                 {
                     "name": "Cimager.MaxUV",
@@ -720,19 +696,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter46"
+                    "id": "parameter44"
                 },
                 {
                     "name": "Cimager.Images.reuse",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, the model images will be read from the disk (from the image files they are normally written to according to the parset) before the first major cycle. If false (the default), a new empty model image will be initialised for every image solved for. Setting this parameter to true allows to continue cleaning the same image if more major cycles are required after inspection of the image. Note, there is little cross check that the image given as an input is actually a result of the previous run of cimager with the same Image parameters. So the user is responsible to ensure that the projection, shape, etc matches.",
+                    "defaultValue": "False",
+                    "description": "If true, the model images will be read from the disk (from the image files they are normally written to according to the parset) before the first major cycle. If False (the default), a new empty model image will be initialised for every image solved for. Setting this parameter to true allows to continue cleaning the same image if more major cycles are required after inspection of the image. Note, there is little cross check that the image given as an input is actually a result of the previous run of cimager with the same Image parameters. So the user is responsible to ensure that the projection, shape, etc matches.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter47"
+                    "id": "parameter45"
                 },
                 {
                     "name": "Cimager.Images.shape",
@@ -744,7 +720,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter48"
+                    "id": "parameter46"
                 },
                 {
                     "name": "Cimager.Images.cellsize",
@@ -756,19 +732,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter49"
+                    "id": "parameter47"
                 },
                 {
                     "name": "Cimager.Images.writeAtMajorCycle",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the current images are written to disk after each major cycle (.cyclesuffix is added to the name to reflect which major cycle the image corresponds to). By default, the images are only written afterncyclesmajor cycles are completed.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter50"
+                    "id": "parameter48"
                 },
                 {
                     "name": "Cimager.Images.Names",
@@ -780,7 +756,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter51"
+                    "id": "parameter49"
                 },
                 {
                     "name": "Cimager.Images.griddingcellsize",
@@ -792,31 +768,31 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter52"
+                    "id": "parameter50"
                 },
                 {
                     "name": "Cimager.Images.nyquistgridding",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "Optional parameter to determine the griddingcellsize parameter automatically using uvw metadata. If griddingcellsize is also defined, that value will be used. Setting nyquistgridding=false will not disable griddingcellsize if it is defined.",
+                    "defaultValue": "False",
+                    "description": "Optional parameter to determine the griddingcellsize parameter automatically using uvw metadata. If griddingcellsize is also defined, that value will be used. Setting nyquistgridding=False will not disable griddingcellsize if it is defined.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter53"
+                    "id": "parameter51"
                 },
                 {
                     "name": "Cimager.Images.ImageName.nchan",
                     "type": "Integer",
                     "options": [],
-                    "defaultValue":1,
+                    "defaultValue": 1,
                     "description": "Number of spectral planes in the image cube to produce. Set it to 1 if just a 2D image is required",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter54"
+                    "id": "parameter52"
                 },
                 {
                     "name": "Cimager.Images.ImageName.frequency",
@@ -828,7 +804,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter55"
+                    "id": "parameter53"
                 },
                 {
                     "name": "Cimager.Images.ImageName.direction",
@@ -840,7 +816,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter56"
+                    "id": "parameter54"
                 },
                 {
                     "name": "Cimager.Images.ImageName.tangent",
@@ -852,19 +828,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter57"
+                    "id": "parameter55"
                 },
                 {
                     "name": "Cimager.Images.ImageName.ewprojection",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the image will be set up with the NCP or SCP projection appropriate for East-West arrays (w-term is equivalent to this coordinate transfer for East-West arrays)",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter58"
+                    "id": "parameter56"
                 },
                 {
                     "name": "Cimager.Images.ImageName.shape",
@@ -876,7 +852,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter59"
+                    "id": "parameter57"
                 },
                 {
                     "name": "Cimager.Images.ImageName.cellsize",
@@ -888,19 +864,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter60"
+                    "id": "parameter58"
                 },
                 {
                     "name": "Cimager.Images.ImageName.nfacets",
                     "type": "Integer",
                     "options": [],
-                    "defaultValue":1,
+                    "defaultValue": 1,
                     "description": "Number of facets for the given image. If greater than one, the image centre is treated as a tangent point andnfacetsfacets are created for this given image (parameters/output model images will have names like ImageName.facet.x.y, where x and y are 0-based facet indices varying from 0 tonfacet-1).  The facets are merged together into a single image in the restore solver (i.e. it would happen only ifrestoreis true).",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter61"
+                    "id": "parameter59"
                 },
                 {
                     "name": "Cimager.Images.ImageName.polarisation",
@@ -912,7 +888,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter62"
+                    "id": "parameter60"
                 },
                 {
                     "name": "Cimager.Images.ImageName.nterms",
@@ -924,31 +900,31 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
+                    "id": "parameter61"
+                },
+                {
+                    "name": "Cimager.Images.ImageName.facetstep",
+                    "type": "Integer",
+                    "options": [],
+                    "defaultValue": "min(shape(0),shape(1))",
+                    "description": "Offset in tangent plane pixels between facet centres (assumed the same for both dimensions).  The default value is the image size, which means no overlap between facets (no overlap on the shortest axis for rectangular images). Overlap may be required to achieve a reasonable dynamic range with faceting (aliasing from the sources located beyond the facet edge). The alternative way to address the same problem is thepaddingoption of the gridder (seeGriddersfor details).",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter62"
+                },
+                {
+                    "name": "Cimager.Images.ImageName.facetstep",
+                    "type": "Integer",
+                    "options": [],
+                    "defaultValue": "min(shape(0),shape(1))",
+                    "description": "Offset in tangent plane pixels between facet centres (assumed the same for both dimensions).  The default value is the image size, which means no overlap between facets (no overlap on the shortest axis for rectangular images). Overlap may be required to achieve a reasonable dynamic range with faceting (aliasing from the sources located beyond the facet edge). The alternative way to address the same problem is thepaddingoption of the gridder (seeGriddersfor details).",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
                     "id": "parameter63"
-                },
-                {
-                    "name": "Cimager.Images.ImageName.facetstep",
-                    "type": "Integer",
-                    "options": [],
-                    "defaultValue": "min(shape(0),shape(1))",
-                    "description": "Offset in tangent plane pixels between facet centres (assumed the same for both dimensions).  The default value is the image size, which means no overlap between facets (no overlap on the shortest axis for rectangular images). Overlap may be required to achieve a reasonable dynamic range with faceting (aliasing from the sources located beyond the facet edge). The alternative way to address the same problem is thepaddingoption of the gridder (seeGriddersfor details).",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter65"
-                },
-                {
-                    "name": "Cimager.Images.ImageName.facetstep",
-                    "type": "Integer",
-                    "options": [],
-                    "defaultValue": "min(shape(0),shape(1))",
-                    "description": "Offset in tangent plane pixels between facet centres (assumed the same for both dimensions).  The default value is the image size, which means no overlap between facets (no overlap on the shortest axis for rectangular images). Overlap may be required to achieve a reasonable dynamic range with faceting (aliasing from the sources located beyond the facet edge). The alternative way to address the same problem is thepaddingoption of the gridder (seeGriddersfor details).",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter65"
                 },
                 {
                     "name": "Cimager.calibaccess",
@@ -960,7 +936,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter66"
+                    "id": "parameter64"
                 },
                 {
                     "name": "Cimager.calibaccess.parset",
@@ -972,7 +948,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter67"
+                    "id": "parameter65"
                 },
                 {
                     "name": "Cimager.calibaccess.table",
@@ -984,19 +960,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter68"
+                    "id": "parameter66"
                 },
                 {
                     "name": "Cimager.calibaccess.table.reuse",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "Unless this flag is true, an old table or file, which name is given bycalibaccess.tableis removed if writing of the calibration solution is requested",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter69"
+                    "id": "parameter67"
                 },
                 {
                     "name": "Cimager.calibaccess.table.maxant",
@@ -1008,7 +984,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter70"
+                    "id": "parameter68"
                 },
                 {
                     "name": "Cimager.calibaccess.table.maxbeam",
@@ -1020,7 +996,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter71"
+                    "id": "parameter69"
                 },
                 {
                     "name": "Cimager.calibaccess.table.maxchan",
@@ -1032,7 +1008,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter72"
+                    "id": "parameter70"
                 },
                 {
                     "name": "Cimager.gridder.padding",
@@ -1044,31 +1020,31 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter73"
+                    "id": "parameter71"
                 },
                 {
                     "name": "Cimager.gridder.alldatapsf",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "Set to true to use all data for PSF calculations instead of just the representative feed and field. If this flag is false (default), only data for the first encountered feed and field will be used to compute PSF (to avoid a false improving of the PSF due to a better uv-coverage of a combined dataset. This feature is introduced largely for real ATCA data and is not very relevant for ASKAP with its parallel mosaicing.",
+                    "defaultValue": "False",
+                    "description": "Set to true to use all data for PSF calculations instead of just the representative feed and field. If this flag is False (default), only data for the first encountered feed and field will be used to compute PSF (to avoid a False improving of the PSF due to a better uv-coverage of a combined dataset. This feature is introduced largely for real ATCA data and is not very relevant for ASKAP with its parallel mosaicing.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter74"
+                    "id": "parameter72"
                 },
                 {
                     "name": "Cimager.gridder.oversampleweight",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "Set to true to use actual oversampling offset of the convolution function in weight computation, rather than the zero offset in both coordinates. It gives more accurate fluxes, but increases the size of weight buffer with the factor of oversampling squared (and make weight finalisation more time consuming)",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter75"
+                    "id": "parameter73"
                 },
                 {
                     "name": "Cimager.gridder.MaxPointingSeparation",
@@ -1080,19 +1056,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter76"
+                    "id": "parameter74"
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, snapshot imaging is done. In this mode, a w=au+bv plane is fitted to baseline coordinates and the effective w-term becomes a difference between the actual w-term and the fitted plane. The subtraction of such a plane is equivalent to the coordinate distortion. Therefore, every time the fit is updated, the current dirty and weight images are regridded into a stable frame. How often the new fit is done depends on the w-tolerance parameter, which must be given if the snap-shot imaging is used.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter77"
+                    "id": "parameter75"
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.wtolerance",
@@ -1104,7 +1080,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter78"
+                    "id": "parameter76"
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.clipping",
@@ -1116,7 +1092,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter79"
+                    "id": "parameter77"
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.weightsclipping",
@@ -1128,19 +1104,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter80"
+                    "id": "parameter78"
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.reprojectpsf",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the PSF will be reprojected and accumulated the same way as the dirty image. Otherwise, a single image (labelled with the target coordinates) will be constructed.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter81"
+                    "id": "parameter79"
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.coorddecimation",
@@ -1152,7 +1128,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter82"
+                    "id": "parameter80"
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.interpmethod",
@@ -1164,43 +1140,43 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter83"
+                    "id": "parameter81"
                 },
                 {
                     "name": "Cimager.gridder.snapshotimaging.longtrack",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true the best fit W plane for the snapshot is predicted by advancing the uvw in time and finding that plane which minimises the deviation in the future. Some minutes from the current time. This allows the max deviation to remain within tolerance for almost twice as long as the default scheme. This can have a substantial effect on processing time for long tracks. It should be a factor of two faster.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter84"
+                    "id": "parameter82"
                 },
                 {
                     "name": "Cimager.gridder.bwsmearing",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the effect of bandwidth smearing is predicted.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter85"
+                    "id": "parameter83"
                 },
                 {
                     "name": "Cimager.gridder.bwsmearing.chanbw",
                     "type": "Float",
                     "options": [],
-                    "defaultValue": 1e6,
+                    "defaultValue": 1000000.0,
                     "description": "Effective bandwidth of a single spectral channel in Hz for the bandwidth smearing simulation.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter86"
+                    "id": "parameter84"
                 },
                 {
                     "name": "Cimager.gridder.bwsmearing.nsteps",
@@ -1212,19 +1188,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter87"
+                    "id": "parameter85"
                 },
                 {
                     "name": "Cimager.gridder.parotation",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "Enable parallactic angle rotation based on feed angle recorded in the feed table.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter88"
+                    "id": "parameter86"
                 },
                 {
                     "name": "Cimager.gridder.parotation.angle",
@@ -1236,43 +1212,43 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter89"
+                    "id": "parameter87"
                 },
                 {
                     "name": "Cimager.gridder.swappols",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "Swap the polarisations in the Stokes conversion matrix. E.g., to swap ASKAP X and Y feed outputs Only works when parotation=true.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter90"
+                    "id": "parameter88"
                 },
                 {
                     "name": "Cimager.gridder.cleargrids",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "Clear the grids when no longer needed. The imager code sets this automatically, based on whether the grids are written out or not.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter91"
+                    "id": "parameter89"
                 },
                 {
                     "name": "Cimager.gridder.reusegrids",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "Reuse the PSF and PCF grids for subsequent major cyles, this overrrides the setting of cleargrids for those two grids",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter92"
+                    "id": "parameter90"
                 },
                 {
                     "name": "Cimager.gridder.WProject.wmax",
@@ -1284,7 +1260,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter93"
+                    "id": "parameter91"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.wmax",
@@ -1296,7 +1272,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter94"
+                    "id": "parameter92"
                 },
                 {
                     "name": "Cimager.gridder.WStack.wmax",
@@ -1308,7 +1284,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter95"
+                    "id": "parameter93"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.wmax",
@@ -1320,7 +1296,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter96"
+                    "id": "parameter94"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.wmax",
@@ -1332,13 +1308,37 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter97"
+                    "id": "parameter95"
                 },
                 {
                     "name": "Cimager.gridder.WProject.wmaxclip",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
+                    "description": "By default, throws an exception if w term is outside the valid range [-wmax,wmax]. If true data outside the valid range is discarded during gridding. If clipping is used the value of wmax should not be increased in subsequent processing steps as unprocessed data may reappear (e.g., cont. subtraction followed by imaging)",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter96"
+                },
+                {
+                    "name": "Cimager.gridder.MPIWProject.wmaxclip",
+                    "type": "Boolean",
+                    "options": [],
+                    "defaultValue": "False",
+                    "description": "By default, throws an exception if w term is outside the valid range [-wmax,wmax]. If true data outside the valid range is discarded during gridding. If clipping is used the value of wmax should not be increased in subsequent processing steps as unprocessed data may reappear (e.g., cont. subtraction followed by imaging)",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter97"
+                },
+                {
+                    "name": "Cimager.gridder.WStack.wmaxclip",
+                    "type": "Boolean",
+                    "options": [],
+                    "defaultValue": "False",
                     "description": "By default, throws an exception if w term is outside the valid range [-wmax,wmax]. If true data outside the valid range is discarded during gridding. If clipping is used the value of wmax should not be increased in subsequent processing steps as unprocessed data may reappear (e.g., cont. subtraction followed by imaging)",
                     "keyAttribute": false,
                     "positional": false,
@@ -1347,10 +1347,10 @@
                     "id": "parameter98"
                 },
                 {
-                    "name": "Cimager.gridder.MPIWProject.wmaxclip",
+                    "name": "Cimager.gridder.AWProject.wmaxclip",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "By default, throws an exception if w term is outside the valid range [-wmax,wmax]. If true data outside the valid range is discarded during gridding. If clipping is used the value of wmax should not be increased in subsequent processing steps as unprocessed data may reappear (e.g., cont. subtraction followed by imaging)",
                     "keyAttribute": false,
                     "positional": false,
@@ -1359,40 +1359,16 @@
                     "id": "parameter99"
                 },
                 {
-                    "name": "Cimager.gridder.WStack.wmaxclip",
+                    "name": "Cimager.gridder.AProjectWStack.wmaxclip",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "By default, throws an exception if w term is outside the valid range [-wmax,wmax]. If true data outside the valid range is discarded during gridding. If clipping is used the value of wmax should not be increased in subsequent processing steps as unprocessed data may reappear (e.g., cont. subtraction followed by imaging)",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
                     "id": "parameter100"
-                },
-                {
-                    "name": "Cimager.gridder.AWProject.wmaxclip",
-                    "type": "Boolean",
-                    "options": [],
-                    "defaultValue": "false",
-                    "description": "By default, throws an exception if w term is outside the valid range [-wmax,wmax]. If true data outside the valid range is discarded during gridding. If clipping is used the value of wmax should not be increased in subsequent processing steps as unprocessed data may reappear (e.g., cont. subtraction followed by imaging)",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter101"
-                },
-                {
-                    "name": "Cimager.gridder.AProjectWStack.wmaxclip",
-                    "type": "Boolean",
-                    "options": [],
-                    "defaultValue": "false",
-                    "description": "By default, throws an exception if w term is outside the valid range [-wmax,wmax]. If true data outside the valid range is discarded during gridding. If clipping is used the value of wmax should not be increased in subsequent processing steps as unprocessed data may reappear (e.g., cont. subtraction followed by imaging)",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter102"
                 },
                 {
                     "name": "Cimager.gridder.WProject.wpercentile",
@@ -1404,7 +1380,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter103"
+                    "id": "parameter101"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.wpercentile",
@@ -1416,7 +1392,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter104"
+                    "id": "parameter102"
                 },
                 {
                     "name": "Cimager.gridder.WStack.wpercentile",
@@ -1428,7 +1404,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter105"
+                    "id": "parameter103"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.wpercentile",
@@ -1440,7 +1416,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter106"
+                    "id": "parameter104"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.wpercentile",
@@ -1452,7 +1428,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter107"
+                    "id": "parameter105"
                 },
                 {
                     "name": "Cimager.gridder.WProject.nwplanes",
@@ -1464,7 +1440,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter108"
+                    "id": "parameter106"
                 },
                 {
                     "name": "Cimager.gridder.WStack.nwplanes",
@@ -1476,31 +1452,31 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter109"
+                    "id": "parameter107"
                 },
                 {
                     "name": "Cimager.gridder.WProject.wstats",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the gridder will log the statistics at the end showing the number of times each w-plane has been used since the construction of the gridder",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter110"
+                    "id": "parameter108"
                 },
                 {
                     "name": "Cimager.gridder.WStack.wstats",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the gridder will log the statistics at the end showing the number of times each w-plane has been used since the construction of the gridder",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter111"
+                    "id": "parameter109"
                 },
                 {
                     "name": "Cimager.gridder.SphFunc.alpha",
@@ -1512,7 +1488,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter112"
+                    "id": "parameter110"
                 },
                 {
                     "name": "Cimager.gridder.WProject.alpha",
@@ -1524,7 +1500,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter113"
+                    "id": "parameter111"
                 },
                 {
                     "name": "Cimager.gridder.WProject.wsampling",
@@ -1536,7 +1512,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter114"
+                    "id": "parameter112"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.wsampling",
@@ -1548,7 +1524,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter115"
+                    "id": "parameter113"
                 },
                 {
                     "name": "Cimager.gridder.WStack.wsampling",
@@ -1560,7 +1536,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter116"
+                    "id": "parameter114"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.wsampling",
@@ -1572,7 +1548,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter117"
+                    "id": "parameter115"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.wsampling",
@@ -1584,7 +1560,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter118"
+                    "id": "parameter116"
                 },
                 {
                     "name": "Cimager.gridder.WProject.wsampling.exponent",
@@ -1596,7 +1572,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter119"
+                    "id": "parameter117"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.wsampling.exponent",
@@ -1608,7 +1584,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter120"
+                    "id": "parameter118"
                 },
                 {
                     "name": "Cimager.gridder.WStack.wsampling.exponent",
@@ -1620,7 +1596,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter121"
+                    "id": "parameter119"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.wsampling.exponent",
@@ -1632,7 +1608,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter122"
+                    "id": "parameter120"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.wsampling.exponent",
@@ -1644,7 +1620,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter123"
+                    "id": "parameter121"
                 },
                 {
                     "name": "Cimager.gridder.WProject.wsampling.nwplanes50",
@@ -1656,7 +1632,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter124"
+                    "id": "parameter122"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.wsampling.nwplanes50",
@@ -1668,7 +1644,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter125"
+                    "id": "parameter123"
                 },
                 {
                     "name": "Cimager.gridder.WStack.wsampling.nwplanes50",
@@ -1680,7 +1656,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter126"
+                    "id": "parameter124"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.wsampling.nwplanes50",
@@ -1692,7 +1668,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter127"
+                    "id": "parameter125"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.wsampling.nwplanes50",
@@ -1704,7 +1680,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter128"
+                    "id": "parameter126"
                 },
                 {
                     "name": "Cimager.gridder.WProject.wsampling.export",
@@ -1716,7 +1692,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter129"
+                    "id": "parameter127"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.wsampling.export",
@@ -1728,7 +1704,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter130"
+                    "id": "parameter128"
                 },
                 {
                     "name": "Cimager.gridder.WStack.wsampling.export",
@@ -1740,7 +1716,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter131"
+                    "id": "parameter129"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.wsampling.export",
@@ -1752,7 +1728,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter132"
+                    "id": "parameter130"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.wsampling.export",
@@ -1764,13 +1740,37 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter133"
+                    "id": "parameter131"
                 },
                 {
                     "name": "Cimager.gridder.WProject.cutoff",
                     "type": "Float",
                     "options": [],
-                    "defaultValue": 1e-3,
+                    "defaultValue": 0.001,
+                    "description": "Cutoff in determining support (note, relative cutoff must be greater than 0.0 and less than 1.0). The support is searched starting from the edge of the image inwards. As soon as the value of the convolution function exceeds cutoff times the peak (or just cutoff if absolute cutoff is used, see below), the distance from the centre (the largest value of two coordinates is used) becomes the support size. At the moment, we use a single value of the support, which is the largest across all family of convolution functions stored in the cache. The smaller the cutoff, the larger the support size and the more accurate gridding is performed.",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter132"
+                },
+                {
+                    "name": "Cimager.gridder.MPIWProject.cutoff",
+                    "type": "Float",
+                    "options": [],
+                    "defaultValue": 0.001,
+                    "description": "Cutoff in determining support (note, relative cutoff must be greater than 0.0 and less than 1.0). The support is searched starting from the edge of the image inwards. As soon as the value of the convolution function exceeds cutoff times the peak (or just cutoff if absolute cutoff is used, see below), the distance from the centre (the largest value of two coordinates is used) becomes the support size. At the moment, we use a single value of the support, which is the largest across all family of convolution functions stored in the cache. The smaller the cutoff, the larger the support size and the more accurate gridding is performed.",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter133"
+                },
+                {
+                    "name": "Cimager.gridder.AWProject.cutoff",
+                    "type": "Float",
+                    "options": [],
+                    "defaultValue": 0.001,
                     "description": "Cutoff in determining support (note, relative cutoff must be greater than 0.0 and less than 1.0). The support is searched starting from the edge of the image inwards. As soon as the value of the convolution function exceeds cutoff times the peak (or just cutoff if absolute cutoff is used, see below), the distance from the centre (the largest value of two coordinates is used) becomes the support size. At the moment, we use a single value of the support, which is the largest across all family of convolution functions stored in the cache. The smaller the cutoff, the larger the support size and the more accurate gridding is performed.",
                     "keyAttribute": false,
                     "positional": false,
@@ -1779,10 +1779,10 @@
                     "id": "parameter134"
                 },
                 {
-                    "name": "Cimager.gridder.MPIWProject.cutoff",
+                    "name": "Cimager.gridder.AProjectWStack.cutoff",
                     "type": "Float",
                     "options": [],
-                    "defaultValue": 1e-3,
+                    "defaultValue": 0.001,
                     "description": "Cutoff in determining support (note, relative cutoff must be greater than 0.0 and less than 1.0). The support is searched starting from the edge of the image inwards. As soon as the value of the convolution function exceeds cutoff times the peak (or just cutoff if absolute cutoff is used, see below), the distance from the centre (the largest value of two coordinates is used) becomes the support size. At the moment, we use a single value of the support, which is the largest across all family of convolution functions stored in the cache. The smaller the cutoff, the larger the support size and the more accurate gridding is performed.",
                     "keyAttribute": false,
                     "positional": false,
@@ -1791,11 +1791,11 @@
                     "id": "parameter135"
                 },
                 {
-                    "name": "Cimager.gridder.AWProject.cutoff",
-                    "type": "Float",
+                    "name": "Cimager.gridder.WProject.cutoff.absolute",
+                    "type": "Boolean",
                     "options": [],
-                    "defaultValue": 1e-3,
-                    "description": "Cutoff in determining support (note, relative cutoff must be greater than 0.0 and less than 1.0). The support is searched starting from the edge of the image inwards. As soon as the value of the convolution function exceeds cutoff times the peak (or just cutoff if absolute cutoff is used, see below), the distance from the centre (the largest value of two coordinates is used) becomes the support size. At the moment, we use a single value of the support, which is the largest across all family of convolution functions stored in the cache. The smaller the cutoff, the larger the support size and the more accurate gridding is performed.",
+                    "defaultValue": "False",
+                    "description": "If set to true, the cutoffvalue given by the parameter listed above is treated as an absolute cutoff value, rather than the fraction of the peak. This is an experimental feature.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
@@ -1803,11 +1803,11 @@
                     "id": "parameter136"
                 },
                 {
-                    "name": "Cimager.gridder.AProjectWStack.cutoff",
-                    "type": "Float",
+                    "name": "Cimager.gridder.MPIWProject.cutoff.absolute",
+                    "type": "Boolean",
                     "options": [],
-                    "defaultValue": 1e-3,
-                    "description": "Cutoff in determining support (note, relative cutoff must be greater than 0.0 and less than 1.0). The support is searched starting from the edge of the image inwards. As soon as the value of the convolution function exceeds cutoff times the peak (or just cutoff if absolute cutoff is used, see below), the distance from the centre (the largest value of two coordinates is used) becomes the support size. At the moment, we use a single value of the support, which is the largest across all family of convolution functions stored in the cache. The smaller the cutoff, the larger the support size and the more accurate gridding is performed.",
+                    "defaultValue": "False",
+                    "description": "If set to true, the cutoffvalue given by the parameter listed above is treated as an absolute cutoff value, rather than the fraction of the peak. This is an experimental feature.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
@@ -1815,10 +1815,10 @@
                     "id": "parameter137"
                 },
                 {
-                    "name": "Cimager.gridder.WProject.cutoff.absolute",
+                    "name": "Cimager.gridder.AWProject.cutoff.absolute",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If set to true, the cutoffvalue given by the parameter listed above is treated as an absolute cutoff value, rather than the fraction of the peak. This is an experimental feature.",
                     "keyAttribute": false,
                     "positional": false,
@@ -1827,40 +1827,16 @@
                     "id": "parameter138"
                 },
                 {
-                    "name": "Cimager.gridder.MPIWProject.cutoff.absolute",
-                    "type": "Boolean",
-                    "options": [],
-                    "defaultValue": "false",
-                    "description": "If set to true, the cutoffvalue given by the parameter listed above is treated as an absolute cutoff value, rather than the fraction of the peak. This is an experimental feature.",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter139"
-                },
-                {
-                    "name": "Cimager.gridder.AWProject.cutoff.absolute",
-                    "type": "Boolean",
-                    "options": [],
-                    "defaultValue": "false",
-                    "description": "If set to true, the cutoffvalue given by the parameter listed above is treated as an absolute cutoff value, rather than the fraction of the peak. This is an experimental feature.",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter140"
-                },
-                {
                     "name": "Cimager.gridder.AProjectWStack.cutoff.absolute",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If set to true, the cutoff value given by the parameter listed above is treated as an absolute cutoff value, rather than the fraction of the peak. This is an experimental feature.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter141"
+                    "id": "parameter139"
                 },
                 {
                     "name": "Cimager.gridder.WProject.oversample",
@@ -1872,7 +1848,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter142"
+                    "id": "parameter140"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.oversample",
@@ -1884,7 +1860,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter143"
+                    "id": "parameter141"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.oversample",
@@ -1896,7 +1872,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter144"
+                    "id": "parameter142"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.oversample",
@@ -1908,7 +1884,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter145"
+                    "id": "parameter143"
                 },
                 {
                     "name": "Cimager.gridder.WProject.maxsupport",
@@ -1920,7 +1896,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter146"
+                    "id": "parameter144"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.maxsupport",
@@ -1932,7 +1908,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter147"
+                    "id": "parameter145"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.maxsupport",
@@ -1944,7 +1920,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter148"
+                    "id": "parameter146"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.maxsupport",
@@ -1956,7 +1932,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter149"
+                    "id": "parameter147"
                 },
                 {
                     "name": "Cimager.gridder.WProject.limitsupport",
@@ -1968,7 +1944,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter150"
+                    "id": "parameter148"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.limitsupport",
@@ -1980,7 +1956,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter151"
+                    "id": "parameter149"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.limitsupport",
@@ -1992,7 +1968,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter152"
+                    "id": "parameter150"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.limitsupport",
@@ -2004,13 +1980,37 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter153"
+                    "id": "parameter151"
                 },
                 {
                     "name": "Cimager.gridder.WProject.variablesupport",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
+                    "description": "If true, the support will be searched separately for each convolution function. This can speed things up considerably, unless costs to search the support dominates. It was also found that when variable support is used, the algorithm is more sensitive to cutoff value. Too high cutoff value has a significant impact on the image quality if the variable support is used.",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter152"
+                },
+                {
+                    "name": "Cimager.gridder.MPIWProject.variablesupport",
+                    "type": "Boolean",
+                    "options": [],
+                    "defaultValue": "False",
+                    "description": "If true, the support will be searched separately for each convolution function. This can speed things up considerably, unless costs to search the support dominates. It was also found that when variable support is used, the algorithm is more sensitive to cutoff value. Too high cutoff value has a significant impact on the image quality if the variable support is used.",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter153"
+                },
+                {
+                    "name": "Cimager.gridder.AWProject.variablesupport",
+                    "type": "Boolean",
+                    "options": [],
+                    "defaultValue": "False",
                     "description": "If true, the support will be searched separately for each convolution function. This can speed things up considerably, unless costs to search the support dominates. It was also found that when variable support is used, the algorithm is more sensitive to cutoff value. Too high cutoff value has a significant impact on the image quality if the variable support is used.",
                     "keyAttribute": false,
                     "positional": false,
@@ -2019,10 +2019,10 @@
                     "id": "parameter154"
                 },
                 {
-                    "name": "Cimager.gridder.MPIWProject.variablesupport",
+                    "name": "Cimager.gridder.AProjectWStack.variablesupport",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, the support will be searched separately for each convolution function. This can speed things up considerably, unless costs to search the support dominates. It was also found that when variable support is used, the algorithm is more sensitive to cutoff value. Too high cutoff value has a significant impact on the image quality if the variable support is used.",
                     "keyAttribute": false,
                     "positional": false,
@@ -2031,11 +2031,11 @@
                     "id": "parameter155"
                 },
                 {
-                    "name": "Cimager.gridder.AWProject.variablesupport",
+                    "name": "Cimager.gridder.WProject.offsetsupport",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, the support will be searched separately for each convolution function. This can speed things up considerably, unless costs to search the support dominates. It was also found that when variable support is used, the algorithm is more sensitive to cutoff value. Too high cutoff value has a significant impact on the image quality if the variable support is used.",
+                    "defaultValue": "False",
+                    "description": "If true, an offset of the convolution function will be treated separately (the support will be defined by size and offset, which can be non-zero in general). This option reduces the memory footprint and speeds up greeting. It can only be used in conjunction with variablesupport=true",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
@@ -2043,11 +2043,11 @@
                     "id": "parameter156"
                 },
                 {
-                    "name": "Cimager.gridder.AProjectWStack.variablesupport",
+                    "name": "Cimager.gridder.MPIWProject.offsetsupport",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, the support will be searched separately for each convolution function. This can speed things up considerably, unless costs to search the support dominates. It was also found that when variable support is used, the algorithm is more sensitive to cutoff value. Too high cutoff value has a significant impact on the image quality if the variable support is used.",
+                    "defaultValue": "False",
+                    "description": "If true, an offset of the convolution function will be treated separately (the support will be defined by size and offset, which can be non-zero in general). This option reduces the memory footprint and speeds up greeting. It can only be used in conjunction with variablesupport=true",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
@@ -2055,11 +2055,11 @@
                     "id": "parameter157"
                 },
                 {
-                    "name": "Cimager.gridder.WProject.offsetsupport",
+                    "name": "Cimager.gridder.AWProject.offsetsupport",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, an offset of the convolution function will be treated separately (the support will be defined by size and offset, which can be non-zero in general). This option reduces the memory footprint and speeds up greeting. It can only be used in conjunction with variablesupport=true",
+                    "defaultValue": "False",
+                    "description": "If true, an offset of the convolution function will be treated separately (the support will be defined by size and offset, which can be non-zero in general). This option reduces the memory footprint and speeds up greeting. It can only be used in conjunction with variablesupport=true.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
@@ -2067,40 +2067,16 @@
                     "id": "parameter158"
                 },
                 {
-                    "name": "Cimager.gridder.MPIWProject.offsetsupport",
+                    "name": "Cimager.gridder.AProjectWStack.offsetsupport",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, an offset of the convolution function will be treated separately (the support will be defined by size and offset, which can be non-zero in general). This option reduces the memory footprint and speeds up greeting. It can only be used in conjunction with variablesupport=true",
+                    "defaultValue": "False",
+                    "description": "If true, an offset of the convolution function will be treated separately (the support will be defined by size and offset, which can be non-zero in general). This option reduces the memory footprint and speeds up greeting. It can only be used in conjunction with variablesupport=true.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
                     "id": "parameter159"
-                },
-                {
-                    "name": "Cimager.gridder.AWProject.offsetsupport",
-                    "type": "Boolean",
-                    "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, an offset of the convolution function will be treated separately (the support will be defined by size and offset, which can be non-zero in general). This option reduces the memory footprint and speeds up greeting. It can only be used in conjunction with variablesupport=true.",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter160"
-                },
-                {
-                    "name": "Cimager.gridder.AProjectWStack.offsetsupport",
-                    "type": "Boolean",
-                    "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, an offset of the convolution function will be treated separately (the support will be defined by size and offset, which can be non-zero in general). This option reduces the memory footprint and speeds up greeting. It can only be used in conjunction with variablesupport=true.",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter161"
                 },
                 {
                     "name": "Cimager.gridder.WProject.tablename",
@@ -2112,7 +2088,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter162"
+                    "id": "parameter160"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.tablename",
@@ -2124,7 +2100,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter163"
+                    "id": "parameter161"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.tablename",
@@ -2136,7 +2112,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter164"
+                    "id": "parameter162"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.tablename",
@@ -2148,13 +2124,37 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter165"
+                    "id": "parameter163"
                 },
                 {
                     "name": "Cimager.gridder.WProject.usedouble",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
+                    "description": "If true, use double precision when calculating convolution functions in the WProject gridder. Double used to be the default, but there is little if any difference in the output with single precision.",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter164"
+                },
+                {
+                    "name": "Cimager.gridder.MPIWProject.usedouble",
+                    "type": "Boolean",
+                    "options": [],
+                    "defaultValue": "False",
+                    "description": "If true, use double precision when calculating convolution functions in the WProject gridder. Double used to be the default, but there is little if any difference in the output with single precision.",
+                    "keyAttribute": false,
+                    "positional": false,
+                    "precious": false,
+                    "readonly": false,
+                    "id": "parameter165"
+                },
+                {
+                    "name": "Cimager.gridder.AWProject.usedouble",
+                    "type": "Boolean",
+                    "options": [],
+                    "defaultValue": "False",
                     "description": "If true, use double precision when calculating convolution functions in the WProject gridder. Double used to be the default, but there is little if any difference in the output with single precision.",
                     "keyAttribute": false,
                     "positional": false,
@@ -2163,10 +2163,10 @@
                     "id": "parameter166"
                 },
                 {
-                    "name": "Cimager.gridder.MPIWProject.usedouble",
+                    "name": "Cimager.gridder.AProjectWStack.usedouble",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, use double precision when calculating convolution functions in the WProject gridder. Double used to be the default, but there is little if any difference in the output with single precision.",
                     "keyAttribute": false,
                     "positional": false,
@@ -2175,11 +2175,11 @@
                     "id": "parameter167"
                 },
                 {
-                    "name": "Cimager.gridder.AWProject.usedouble",
+                    "name": "Cimager.gridder.WProject.sharecf",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, use double precision when calculating convolution functions in the WProject gridder. Double used to be the default, but there is little if any difference in the output with single precision.",
+                    "defaultValue": "False",
+                    "description": "If true, use a (static) cache for the convolution functions in the WProject gridder. This saves both time and memory, especially for large images and spectral line cubes. Tests show no significant changes in continuum imaging but small differences in spectral cubes, it is not clear yet if these are a problem. Feedback welcome",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
@@ -2187,11 +2187,11 @@
                     "id": "parameter168"
                 },
                 {
-                    "name": "Cimager.gridder.AProjectWStack.usedouble",
+                    "name": "Cimager.gridder.MPIWProject.sharecf",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, use double precision when calculating convolution functions in the WProject gridder. Double used to be the default, but there is little if any difference in the output with single precision.",
+                    "defaultValue": "False",
+                    "description": "If true, use a (static) cache for the convolution functions in the WProject gridder. This saves both time and memory, especially for large images and spectral line cubes. Tests show no significant changes in continuum imaging but small differences in spectral cubes, it is not clear yet if these are a problem. Feedback welcome",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
@@ -2199,10 +2199,10 @@
                     "id": "parameter169"
                 },
                 {
-                    "name": "Cimager.gridder.WProject.sharecf",
+                    "name": "Cimager.gridder.AWProject.sharecf",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, use a (static) cache for the convolution functions in the WProject gridder. This saves both time and memory, especially for large images and spectral line cubes. Tests show no significant changes in continuum imaging but small differences in spectral cubes, it is not clear yet if these are a problem. Feedback welcome",
                     "keyAttribute": false,
                     "positional": false,
@@ -2211,40 +2211,16 @@
                     "id": "parameter170"
                 },
                 {
-                    "name": "Cimager.gridder.MPIWProject.sharecf",
+                    "name": "Cimager.gridder.AProjectWStack.sharecf",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, use a (static) cache for the convolution functions in the WProject gridder. This saves both time and memory, especially for large images and spectral line cubes. Tests show no significant changes in continuum imaging but small differences in spectral cubes, it is not clear yet if these are a problem. Feedback welcome",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
                     "id": "parameter171"
-                },
-                {
-                    "name": "Cimager.gridder.AWProject.sharecf",
-                    "type": "Boolean",
-                    "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, use a (static) cache for the convolution functions in the WProject gridder. This saves both time and memory, especially for large images and spectral line cubes. Tests show no significant changes in continuum imaging but small differences in spectral cubes, it is not clear yet if these are a problem. Feedback welcome",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter172"
-                },
-                {
-                    "name": "Cimager.gridder.AProjectWStack.sharecf",
-                    "type": "Boolean",
-                    "options": [],
-                    "defaultValue": "false",
-                    "description": "If true, use a (static) cache for the convolution functions in the WProject gridder. This saves both time and memory, especially for large images and spectral line cubes. Tests show no significant changes in continuum imaging but small differences in spectral cubes, it is not clear yet if these are a problem. Feedback welcome",
-                    "keyAttribute": false,
-                    "positional": false,
-                    "precious": false,
-                    "readonly": false,
-                    "id": "parameter173"
                 },
                 {
                     "name": "Cimager.gridder.WProject.cfrank",
@@ -2256,7 +2232,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter174"
+                    "id": "parameter172"
                 },
                 {
                     "name": "Cimager.gridder.MPIWProject.cfrank",
@@ -2268,7 +2244,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter175"
+                    "id": "parameter173"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.cfrank",
@@ -2280,7 +2256,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter176"
+                    "id": "parameter174"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.cfrank",
@@ -2292,7 +2268,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter177"
+                    "id": "parameter175"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.nwplanes",
@@ -2304,7 +2280,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter178"
+                    "id": "parameter176"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.nwplanes",
@@ -2316,7 +2292,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter179"
+                    "id": "parameter177"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.maxsupport",
@@ -2328,7 +2304,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter180"
+                    "id": "parameter178"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.maxsupport",
@@ -2340,7 +2316,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter181"
+                    "id": "parameter179"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.frequencydependent",
@@ -2352,7 +2328,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter182"
+                    "id": "parameter180"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.frequencydependent",
@@ -2364,31 +2340,31 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter183"
+                    "id": "parameter181"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.spheroidaltaper",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "Whether or not to apply an image-domain spheroidal taper to the A-function during gridding and degridding (but not to the mosaicing weights). The taper function is the same as the anti-aliasing function used in the SphFunc, WProject and WStack gridders.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter184"
+                    "id": "parameter182"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.spheroidaltaper",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "Whether or not to apply an image-domain spheroidal taper to the A-function during gridding and degridding (but not to the mosaicing weights). The taper function is the same as the anti-aliasing function used in the SphFunc, WProject and WStack gridders.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter185"
+                    "id": "parameter183"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.spheroidalweightscutoff",
@@ -2400,7 +2376,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter186"
+                    "id": "parameter184"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.spheroidalweightscutoff",
@@ -2412,7 +2388,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter187"
+                    "id": "parameter185"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.maxfeeds",
@@ -2424,7 +2400,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter188"
+                    "id": "parameter186"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.maxfeeds",
@@ -2436,7 +2412,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter189"
+                    "id": "parameter187"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.maxfields",
@@ -2448,7 +2424,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter190"
+                    "id": "parameter188"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.maxfields",
@@ -2460,7 +2436,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter191"
+                    "id": "parameter189"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.pointingtolerance",
@@ -2472,7 +2448,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter192"
+                    "id": "parameter190"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.pointingtolerance",
@@ -2484,7 +2460,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter193"
+                    "id": "parameter191"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.patolerance",
@@ -2496,7 +2472,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter194"
+                    "id": "parameter192"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.patolerance",
@@ -2508,7 +2484,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter195"
+                    "id": "parameter193"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.freqtolerance",
@@ -2520,7 +2496,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter196"
+                    "id": "parameter194"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.freqtolerance",
@@ -2532,7 +2508,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter197"
+                    "id": "parameter195"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination",
@@ -2544,7 +2520,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter198"
+                    "id": "parameter196"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination",
@@ -2556,7 +2532,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter199"
+                    "id": "parameter197"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.diameter",
@@ -2568,7 +2544,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter200"
+                    "id": "parameter198"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.diameter",
@@ -2580,7 +2556,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter201"
+                    "id": "parameter199"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.blockage",
@@ -2592,7 +2568,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter202"
+                    "id": "parameter200"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.blockage",
@@ -2604,7 +2580,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter203"
+                    "id": "parameter201"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.primarybeam",
@@ -2616,7 +2592,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter204"
+                    "id": "parameter202"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.primarybeam",
@@ -2628,7 +2604,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter205"
+                    "id": "parameter203"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.primarybeam.ASKAP_PB.image",
@@ -2640,7 +2616,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter206"
+                    "id": "parameter204"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.primarybeam.ASKAP_PB.image",
@@ -2652,7 +2628,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter207"
+                    "id": "parameter205"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.primarybeam.ASKAP_PB.taper",
@@ -2664,7 +2640,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter208"
+                    "id": "parameter206"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.primarybeam.ASKAP_PB.taper",
@@ -2676,7 +2652,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter209"
+                    "id": "parameter207"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.primarybeam.ASKAP_PB.taper.cutoff",
@@ -2688,7 +2664,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter210"
+                    "id": "parameter208"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.primarybeam.ASKAP_PB.taper.cutoff",
@@ -2700,7 +2676,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter211"
+                    "id": "parameter209"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.tapering",
@@ -2712,7 +2688,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter212"
+                    "id": "parameter210"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.tapering",
@@ -2724,7 +2700,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter213"
+                    "id": "parameter211"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.tapering.defocusing",
@@ -2736,7 +2712,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter214"
+                    "id": "parameter212"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.tapering.defocusing",
@@ -2748,7 +2724,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter215"
+                    "id": "parameter213"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.feedlegs",
@@ -2760,7 +2736,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter216"
+                    "id": "parameter214"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.feedlegs",
@@ -2772,7 +2748,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter217"
+                    "id": "parameter215"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.feedlegs.width",
@@ -2784,7 +2760,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter218"
+                    "id": "parameter216"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.feedlegs.width",
@@ -2796,7 +2772,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter219"
+                    "id": "parameter217"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.feedlegs.rotation",
@@ -2808,7 +2784,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter220"
+                    "id": "parameter218"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.feedlegs.rotation",
@@ -2820,7 +2796,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter221"
+                    "id": "parameter219"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.feedlegs.shadowing",
@@ -2832,7 +2808,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter222"
+                    "id": "parameter220"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.feedlegs.shadowing",
@@ -2844,7 +2820,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter223"
+                    "id": "parameter221"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.feedlegs.wedges",
@@ -2856,7 +2832,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter224"
+                    "id": "parameter222"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.feedlegs.wedges",
@@ -2868,7 +2844,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter225"
+                    "id": "parameter223"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.feedlegs.wedges.shadowing",
@@ -2880,7 +2856,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter226"
+                    "id": "parameter224"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.feedlegs.wedges.shadowing",
@@ -2892,7 +2868,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter227"
+                    "id": "parameter225"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.feedlegs.wedges.angle",
@@ -2904,7 +2880,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter228"
+                    "id": "parameter226"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.feedlegs.wedges.angle",
@@ -2916,7 +2892,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter229"
+                    "id": "parameter227"
                 },
                 {
                     "name": "Cimager.gridder.AWProject.illumination.feedlegs.wedges.startradius",
@@ -2928,7 +2904,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter230"
+                    "id": "parameter228"
                 },
                 {
                     "name": "Cimager.gridder.AProjectWStack.illumination.feedlegs.wedges.startradius",
@@ -2940,7 +2916,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter231"
+                    "id": "parameter229"
                 },
                 {
                     "name": "Cimager.solver.Clean.verbose",
@@ -2952,7 +2928,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter232"
+                    "id": "parameter230"
                 },
                 {
                     "name": "Cimager.solver.Dirty.verbose",
@@ -2964,7 +2940,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter233"
+                    "id": "parameter231"
                 },
                 {
                     "name": "Cimager.solver.Clean.tolerance",
@@ -2976,7 +2952,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter234"
+                    "id": "parameter232"
                 },
                 {
                     "name": "Cimager.solver.Dirty.tolerance",
@@ -2988,7 +2964,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter235"
+                    "id": "parameter233"
                 },
                 {
                     "name": "Cimager.solver.Clean.weightcutoff",
@@ -3000,7 +2976,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter236"
+                    "id": "parameter234"
                 },
                 {
                     "name": "Cimager.solver.Dirty.weightcutoff",
@@ -3012,34 +2988,34 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter237"
+                    "id": "parameter235"
                 },
                 {
                     "name": "Cimager.solver.Clean.weightcutoff.clean",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "This parameter defines whether the values below cutoff are masked out or not. By default, the are masked out and so S/N-based clean never finds optima among these values. If this parameter is true, the mask is actually sqrt(tolerance), which corresponds to truncation of the diagonal during normalisation. This potentially allows cleaning to happen, if no peak of the S/N is realised among these values.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter238"
+                    "id": "parameter236"
                 },
                 {
                     "name": "Cimager.solver.Dirty.weightcutoff.clean",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "This parameter defines whether the values below cutoff are masked out or not. By default, the are masked out and so S/N-based clean never finds optima among these values. If this parameter is true, the mask is actually sqrt(tolerance), which corresponds to truncation of the diagonal during normalisation. This potentially allows cleaning to happen, if no peak of the S/N is realised among these values.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter239"
+                    "id": "parameter237"
                 },
                 {
-                    "name": "Cimager.solver.Clean.algorithm", 
+                    "name": "Cimager.solver.Clean.algorithm",
                     "type": "String",
                     "options": [],
                     "defaultValue": "BasisfunctionMFS",
@@ -3048,7 +3024,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter240"
+                    "id": "parameter238"
                 },
                 {
                     "name": "Cimager.solver.Clean.scales",
@@ -3060,7 +3036,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter241"
+                    "id": "parameter239"
                 },
                 {
                     "name": "Cimager.solver.Clean.niter",
@@ -3072,7 +3048,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter242"
+                    "id": "parameter240"
                 },
                 {
                     "name": "Cimager.solver.Clean.gain",
@@ -3084,7 +3060,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter243"
+                    "id": "parameter241"
                 },
                 {
                     "name": "Cimager.solver.Clean.speedup",
@@ -3096,7 +3072,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter244"
+                    "id": "parameter242"
                 },
                 {
                     "name": "Cimager.solver.Clean.padding",
@@ -3108,7 +3084,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter245"
+                    "id": "parameter243"
                 },
                 {
                     "name": "Cimager.solver.Clean.logevery",
@@ -3120,7 +3096,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter246"
+                    "id": "parameter244"
                 },
                 {
                     "name": "Cimager.solver.Clean.saveintermediate",
@@ -3132,7 +3108,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter247"
+                    "id": "parameter245"
                 },
                 {
                     "name": "Cimager.solver.Clean.psfwidth",
@@ -3144,7 +3120,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter248"
+                    "id": "parameter246"
                 },
                 {
                     "name": "Cimager.solver.Clean.detectdivergence",
@@ -3156,19 +3132,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter249"
+                    "id": "parameter247"
                 },
                 {
                     "name": "Cimager.solver.Clean.orthogonal",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "Use orthogonal spatial basisfunctions - this does not appear to be as useful as expected - avoid in normal use",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter250"
+                    "id": "parameter248"
                 },
                 {
                     "name": "Cimager.solver.Clean.decoupled",
@@ -3180,7 +3156,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter251"
+                    "id": "parameter249"
                 },
                 {
                     "name": "Cimager.solver.Clean.useoverlapmask",
@@ -3192,19 +3168,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter252"
+                    "id": "parameter250"
                 },
                 {
                     "name": "Cimager.solver.Clean.usescalemask",
                     "type": "Boolean",
                     "options": [],
                     "defaultValue": "true",
-                    "description": "(BasisFunctionMFS) Use a bitmask to keep track of the location of model components for each scale. If false, use separate bool arrays for each scale (original code)",
+                    "description": "(BasisFunctionMFS) Use a bitmask to keep track of the location of model components for each scale. If False, use separate bool arrays for each scale (original code)",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter253"
+                    "id": "parameter251"
                 },
                 {
                     "name": "Cimager.solver.Clean.usescalepixels",
@@ -3216,19 +3192,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter254"
+                    "id": "parameter252"
                 },
                 {
                     "name": "Cimager.solver.Clean.usepixellist",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "(BasisFunctionMFS) Use a list of pixels above the clean threshold to do peak searching and residual cleaning instead of sarching and cleaning the full images",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter255"
+                    "id": "parameter253"
                 },
                 {
                     "name": "Cimager.solver.Clean.usepixellist.tolerance",
@@ -3240,7 +3216,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter256"
+                    "id": "parameter254"
                 },
                 {
                     "name": "Cimager.solver.Clean.usepixellist.nsigma",
@@ -3252,19 +3228,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter257"
+                    "id": "parameter255"
                 },
                 {
                     "name": "Cimager.solver.Clean.readscalemask",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "(BasisFunctionMFS) Read in an initial 2D scale mask. The clean will look for components at each scale only where the corresponding scale mask bit is set. Mask image size and scales must match the other inputs.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter258"
+                    "id": "parameter256"
                 },
                 {
                     "name": "Cimager.threshold.minorcycle",
@@ -3276,7 +3252,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter259"
+                    "id": "parameter257"
                 },
                 {
                     "name": "Cimager.threshold.majorcycle",
@@ -3288,19 +3264,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter260"
+                    "id": "parameter258"
                 },
                 {
                     "name": "Cimager.threshold.firstimage",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "In case of multiple images (e.g., main + offset) treat subsequent images as if theyre part of the first image. I.e., clean cant go deeper than it did in the first image at each major cycle.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter261"
+                    "id": "parameter259"
                 },
                 {
                     "name": "Cimager.threshold.masking",
@@ -3312,7 +3288,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter262"
+                    "id": "parameter260"
                 },
                 {
                     "name": "Cimager.preconditioner.Names",
@@ -3324,19 +3300,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter263"
+                    "id": "parameter261"
                 },
                 {
                     "name": "Cimager.preconditioner.preservecf",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
-                    "description": "Use a modified PSF to generate any preconditioner that is derived from the uv sampling function (e.g.WienerandRobust). This option takes a running mean over an approximate nearest-neighbour sampling function with a box width that is proportional to the support size of the gridding kernels. This enables post-gridding density weighting while preserving the gridding convolutions. Note that this is currently only used with the Wiener preconditioner and the WProject gridder. The default is normally false, but will be true if preconditioning is used.",
+                    "defaultValue": "False",
+                    "description": "Use a modified PSF to generate any preconditioner that is derived from the uv sampling function (e.g.WienerandRobust). This option takes a running mean over an approximate nearest-neighbour sampling function with a box width that is proportional to the support size of the gridding kernels. This enables post-gridding density weighting while preserving the gridding convolutions. Note that this is currently only used with the Wiener preconditioner and the WProject gridder. The default is normally False, but will be true if preconditioning is used.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter264"
+                    "id": "parameter262"
                 },
                 {
                     "name": "Cimager.preconditioner.Wiener.noisepower",
@@ -3348,19 +3324,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter265"
+                    "id": "parameter263"
                 },
                 {
                     "name": "Cimager.preconditioner.Wiener.normalise",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "This is an additional option for aWienerpreconditioner being constructed from an explicit value of the noise power (i.e.noisepower). If set to true, the PSF will be normalised to 1.0 before the filter is constructed, easing interpretation. Note, this option is incompatible withrobustness, because in that case the PSF is always normalised).",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter266"
+                    "id": "parameter264"
                 },
                 {
                     "name": "Cimager.preconditioner.Wiener.robustness",
@@ -3372,7 +3348,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter267"
+                    "id": "parameter265"
                 },
                 {
                     "name": "Cimager.preconditioner.Wiener.taper",
@@ -3384,7 +3360,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter268"
+                    "id": "parameter266"
                 },
                 {
                     "name": "Cimager.preconditioner.NormWiener.robustness",
@@ -3396,7 +3372,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter269"
+                    "id": "parameter267"
                 },
                 {
                     "name": "Cimager.preconditioner.Robust.robustness",
@@ -3408,7 +3384,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter270"
+                    "id": "parameter268"
                 },
                 {
                     "name": "Cimager.preconditioner.GaussianTaper",
@@ -3420,19 +3396,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter271"
+                    "id": "parameter269"
                 },
                 {
                     "name": "Cimager.preconditioner.GaussianTaper.isPsfSize",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, try to make the final fitted PSF the size given. This uses the restore.beam.cutoff parameter for the fit. A warning will appear in the log if the target PSF size was not achieved.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter272"
+                    "id": "parameter270"
                 },
                 {
                     "name": "Cimager.preconditioner.GaussianTaper.tolerance",
@@ -3444,7 +3420,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter273"
+                    "id": "parameter271"
                 },
                 {
                     "name": "Cimager.restore.preconditioner.Wiener.noisepower",
@@ -3456,19 +3432,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter274"
+                    "id": "parameter272"
                 },
                 {
                     "name": "Cimager.restore.preconditioner.Wiener.normalise",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "This is an additional option for a Wiener preconditioner being constructed from an explicit value of the noise power (i.e.noisepower). If set to true, the PSF will be normalised to 1.0 before the filter is constructed, easing interpretation. Note, this option is incompatible with robustness, because in that case the PSF is always normalised).",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter275"
+                    "id": "parameter273"
                 },
                 {
                     "name": "Cimager.restore.preconditioner.Wiener.robustness",
@@ -3480,7 +3456,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter276"
+                    "id": "parameter274"
                 },
                 {
                     "name": "Cimager.restore.preconditioner.Wiener.taper",
@@ -3492,7 +3468,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter277"
+                    "id": "parameter275"
                 },
                 {
                     "name": "Cimager.restore.preconditioner.NormWiener.robustness",
@@ -3504,7 +3480,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter278"
+                    "id": "parameter276"
                 },
                 {
                     "name": "Cimager.restore.preconditioner.Robust.robustness",
@@ -3516,7 +3492,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter279"
+                    "id": "parameter277"
                 },
                 {
                     "name": "Cimager.restore.preconditioner.GaussianTaper",
@@ -3528,19 +3504,19 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter280"
+                    "id": "parameter278"
                 },
                 {
                     "name": "Cimager.restore.preconditioner.GaussianTaper.isPsfSize",
                     "type": "Boolean",
                     "options": [],
-                    "defaultValue": "false",
+                    "defaultValue": "False",
                     "description": "If true, try to make the final fitted PSF the size given. This uses the restore.beam.cutoff parameter for the fit. A warning will appear in the log if the target PSF size was not achieved.",
                     "keyAttribute": false,
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter281"
+                    "id": "parameter279"
                 },
                 {
                     "name": "Cimager.restore.preconditioner.GaussianTaper.tolerance",
@@ -3552,7 +3528,7 @@
                     "positional": false,
                     "precious": false,
                     "readonly": false,
-                    "id": "parameter282"
+                    "id": "parameter280"
                 }
             ],
             "inputAppFields": [],
