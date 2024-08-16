@@ -1843,7 +1843,7 @@
             "fields": [
                 {
                     "name": "command",
-                    "value": "singularity exec --bind $PWD:/askapbuffer,/scratch:/scratch /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif imager",
+                    "value": "singularity exec --bind $PWD:/askapbuffer,/scratch:/scratch /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif imager -c %i0",
                     "defaultValue": "",
                     "description": "The command to be executed",
                     "readonly": false,
@@ -1923,7 +1923,7 @@
                 },
                 {
                     "name": "argumentPrefix",
-                    "value": "--",
+                    "value": "-",
                     "defaultValue": "--",
                     "description": "Prefix to each keyed argument on the command line",
                     "readonly": false,
@@ -2140,7 +2140,7 @@
                     "keyAttribute": false,
                     "encoding": "pickle",
                     "id": "5d779056-22bf-476b-a4fb-7fdd14ff7b73",
-                    "parameterType": "ApplicationArgument",
+                    "parameterType": "ComponentParameter",
                     "usage": "InputPort"
                 }
             ],
