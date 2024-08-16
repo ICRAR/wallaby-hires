@@ -2128,7 +2128,7 @@
                     "usage": "OutputPort"
                 },
                 {
-                    "name": "config",
+                    "name": "c",
                     "value": "",
                     "defaultValue": "",
                     "description": "",
