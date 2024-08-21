@@ -2004,7 +2004,7 @@
                 {
                     "name": "group_start",
                     "value": false,
-                    "defaultValue": "False",
+                    "defaultValue": "true",
                     "description": "Is this node the start of a group?",
                     "readonly": false,
                     "type": "Boolean",
@@ -2133,7 +2133,7 @@
                     "defaultValue": "",
                     "description": "",
                     "readonly": false,
-                    "type": "String",
+                    "type": "Object.File",
                     "precious": false,
                     "options": [],
                     "positional": false,
