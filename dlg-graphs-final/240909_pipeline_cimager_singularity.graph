@@ -31,7 +31,7 @@
             "key": -2,
             "name": "CopyApp",
             "description": "A simple APP that copies its inputs into its outputs. All inputs are copied into all outputs in the order they were declared in the graph. If an input is a container (e.g. a directory) it copies the content recursively.",
-            "x": 517.3473997380222,
+            "x": 537.664558856816,
             "y": 272.6105304862218,
             "radius": 25,
             "collapsed": false,
@@ -381,8 +381,8 @@
             "key": -11,
             "name": "residual_image",
             "description": "A standard file on a filesystem mounted to the deployment machine",
-            "x": 1047.331593813009,
-            "y": 173.59152955905105,
+            "x": 1032.819337299585,
+            "y": 176.4939808617359,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -714,7 +714,7 @@
             "fields": [
                 {
                     "name": "command",
-                    "value": "srun --export=ALL --ntasks 26 --ntasks-per-node 26 --job-name=imager singularity exec --bind $PWD:/askapbuffer,/scratch:/scratch /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif imager -c %i0",
+                    "value": "srun --export=ALL --ntasks 1 --ntasks-per-node 1 singularity exec --bind $PWD:/askapbuffer,/scratch:/scratch /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif imager -c %i0",
                     "defaultValue": "",
                     "description": "The command to be executed",
                     "readonly": false,
