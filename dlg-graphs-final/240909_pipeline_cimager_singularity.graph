@@ -191,7 +191,7 @@
                 },
                 {
                     "name": "Cimager.ncycles",
-                    "value": 1,
+                    "value": 3,
                     "defaultValue": "0",
                     "description": "Number of major cycles (and iterations over the dataset)",
                     "readonly": false,
@@ -311,7 +311,7 @@
                 },
                 {
                     "name": "Cimager.gridder.WProject.nwplanes",
-                    "value": 65,
+                    "value": 257,
                     "defaultValue": "65",
                     "description": "Number of w-planes. Number of w planes must be an odd positive number. For the WProject gridder this scales up the number of convolution functions calculated. For the WStack gridder this is the number of grids maintained. You may (and will) run out of memory for a large number of w planes, especially for the stacking algorithm",
                     "readonly": false,
@@ -442,7 +442,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.niter",
-                    "value": 100,
+                    "value": 800,
                     "defaultValue": "100",
                     "description": "Number of minor cycles",
                     "readonly": false,
@@ -586,7 +586,7 @@
                 },
                 {
                     "name": "Cimager.solver.Clean.logevery",
-                    "value": 48,
+                    "value": 50,
                     "defaultValue": "1",
                     "description": "How frequently to log progress in the minor cycle. Every nth iteration is reported (ie. iflogevery=100, every 100th iteration is reported), providing the iteration number, the peak residual, the objective function and the total flux.",
                     "readonly": false,
@@ -714,7 +714,7 @@
                 },
                 {
                     "name": "Cimager.preconditioner.Wiener.robustness",
-                    "value": 0,
+                    "value": 0.5,
                     "defaultValue": "0",
                     "description": "The noise power is derived from the given value of robustness to have roughly the same effect as the analogous parameter in Robust (i.e., -2.0 close to uniform weighting, +2.0 close to natural weighting). Note that the Wiener filter must be specified with eithernoisepowerorrobustness.",
                     "readonly": false,
@@ -858,7 +858,7 @@
                 },
                 {
                     "name": "Cimager.nwriters",
-                    "value": 2,
+                    "value": 25,
                     "defaultValue": "1",
                     "description": "The number of output cubes to generate in spectral cube mode.",
                     "readonly": false,
@@ -890,7 +890,7 @@
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "[25,111]",
+                    "value": "[250,0]",
                     "defaultValue": "",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
@@ -991,7 +991,7 @@
                 {
                     "name": "Cimager.write.weightsimage",
                     "value": true,
-                    "defaultValue": "",
+                    "defaultValue": "true",
                     "description": "",
                     "readonly": false,
                     "type": "Boolean",
