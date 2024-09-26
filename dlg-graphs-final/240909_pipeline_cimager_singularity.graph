@@ -1033,10 +1033,10 @@
             "color": "#2c2c2c",
             "drawOrderHint": 0,
             "key": -1,
-            "name": "CimagerParset (D0)",
+            "name": "CimagerParset (C9C)",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 383.51905695416843,
-            "y": 271.95127023074065,
+            "x": 379.03893283509865,
+            "y": 276.6474024879519,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -1058,7 +1058,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "encoding": "pickle",
-                    "id": "24f270ed-15e6-40e8-ab42-37c6e311b3a3",
+                    "id": "0856604b-0127-47ee-800b-f02ea44b6a44",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1074,7 +1074,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "encoding": "pickle",
-                    "id": "7a7e3b66-3583-41c3-97e1-a856b1d9e7ae",
+                    "id": "9db43deb-fb8e-4220-9b8e-4889d940ff25",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1090,7 +1090,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "encoding": "pickle",
-                    "id": "5a0469b0-eafb-4141-a129-3d58950de12f",
+                    "id": "31d2e9f7-d75a-4c97-9002-386e46574ad4",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1109,7 +1109,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "f06d931a-43f5-49a1-bf3a-d7176395c918",
+                    "id": "3c5640b0-aed7-49c7-8779-50ee0a2178ee",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1125,7 +1125,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "fcd4a4f6-4ca1-4d64-8f09-0a88603ff4f0",
+                    "id": "9bbf512e-391f-4029-bf2c-81bedfa5a6e0",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1141,7 +1141,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "56a0c540-421e-4e0d-8c40-3329943470de",
+                    "id": "d9b0dda7-dc0f-4f85-a86a-3286ab368976",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1157,7 +1157,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "e9796d77-f252-4f64-a136-d78471891a8a",
+                    "id": "21ed0e30-2b4f-412e-979e-e17294847fc5",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1173,7 +1173,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "82775b82-94c8-4221-af61-b16f37ae8df6",
+                    "id": "53b6b59b-638b-4f28-a2ab-2962403b475b",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1189,13 +1189,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "c59e49db-91cf-4587-9e55-12e3ca32ec8d",
+                    "id": "19476eec-7ecb-4cc2-9980-f00d72146642",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.ncycles",
-                    "value": 3,
+                    "value": 1,
                     "defaultValue": "0",
                     "description": "Number of major cycles (and iterations over the dataset)",
                     "readonly": false,
@@ -1205,7 +1205,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "encoding": "pickle",
-                    "id": "e6bfc34e-7181-43b9-9545-a683b37f1661",
+                    "id": "687b7471-3eed-41da-b670-618eac0dfb93",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1221,7 +1221,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "58dcecfa-9435-469f-a63d-2733f8f39492",
+                    "id": "d6a35fed-c87e-4653-baa0-925af3ae9cf9",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1237,7 +1237,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "91e55423-d511-4171-b265-09c8e6b8454c",
+                    "id": "19b480e4-c89e-4993-9beb-da50c3bbd2fa",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1253,7 +1253,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "9186b712-b24f-44a0-9e69-cb34dd7a1aff",
+                    "id": "72117c79-4392-461c-8a64-b47eb91a5c0c",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1269,7 +1269,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "242f9092-5ea7-4006-9bed-0909f92b1180",
+                    "id": "c423bf6c-c52c-4b9d-8dc3-d8bde5ea4fc8",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1293,7 +1293,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "8fa01db1-86ba-4863-a2bc-396b2e26128b",
+                    "id": "66357fc3-89b0-4b4f-9a08-c4213b4fedbe",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1309,13 +1309,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "063931c6-008c-47a6-b936-07b57f1750f8",
+                    "id": "2929064f-2c4f-4493-b724-bfc9b4a752d9",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.gridder.WProject.nwplanes",
-                    "value": 257,
+                    "value": 65,
                     "defaultValue": "65",
                     "description": "Number of w-planes. Number of w planes must be an odd positive number. For the WProject gridder this scales up the number of convolution functions calculated. For the WStack gridder this is the number of grids maintained. You may (and will) run out of memory for a large number of w planes, especially for the stacking algorithm",
                     "readonly": false,
@@ -1325,7 +1325,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "0018c89e-8d84-47e9-994e-2f86e636b6f4",
+                    "id": "beaec92d-d47f-400d-a8f7-5774d8d2b113",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1341,13 +1341,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "d8d84421-547f-45c5-8a31-5859d7be69cb",
+                    "id": "372aa4ac-8600-47fb-9712-1f6dd1cd4b4b",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.gridder.WProject.maxsupport",
-                    "value": 1024,
+                    "value": 256,
                     "defaultValue": "256",
                     "description": "The largest allowed support size in pixels. The grid used to compute the convolution function (before the support is searched and the appropriate inner part of the grid is extracted) is initialised to have the size equal to the smallest of maxsupport and the image size. WProject uses maxsupport x maxsupport grid at the moment regardless of the image size.",
                     "readonly": false,
@@ -1357,7 +1357,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "9864be91-e39f-44ea-9f08-0717e6797f54",
+                    "id": "90b370c4-08b8-4ba2-82fc-33cd87eb2765",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1373,7 +1373,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "25c63208-0301-4c1c-8a9d-fa6d816391e2",
+                    "id": "80825659-3001-422a-b21c-d0807534485d",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1389,7 +1389,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "3f94020b-2ba4-426f-bc99-36775eaa371b",
+                    "id": "882f6313-6e23-43b7-80a6-c23fdbd86117",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1405,7 +1405,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "8046cb4f-6b03-4d6f-b895-824b8d4de6aa",
+                    "id": "0484cf7f-b749-42d3-b81e-fa55b3d8cfb8",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1424,7 +1424,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "de430a0d-472f-413c-aa59-c3f12b90ddf0",
+                    "id": "a9fcf506-4d26-4b81-a041-4fb605f19bef",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1440,13 +1440,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "5fb1f061-af4c-4845-9050-43d94a90fefe",
+                    "id": "526db67d-9d5d-4bf5-8a8c-d66fd8d2f800",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.solver.Clean.niter",
-                    "value": 800,
+                    "value": 100,
                     "defaultValue": "100",
                     "description": "Number of minor cycles",
                     "readonly": false,
@@ -1456,7 +1456,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "encoding": "pickle",
-                    "id": "9eaa4357-9d7c-4a42-9200-ff9466c897c2",
+                    "id": "fe77ab21-f757-4c34-bbf8-82b3cb7f9cff",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1472,7 +1472,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "3d636277-83e6-4a60-91c6-decadcd732a1",
+                    "id": "9ec6b300-565c-4502-9f53-9a7cd2091ac4",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1488,7 +1488,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "3ef22732-d21b-40e2-a686-5796cade3ecd",
+                    "id": "3ae53833-2f14-4c87-a1cf-7c4ca40b12e1",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1504,7 +1504,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "74008aed-2e8b-49e1-bb31-e638fac13a86",
+                    "id": "cd4a17f1-e012-47e6-a681-7c87684747ee",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1520,7 +1520,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "e55c85e7-1e6a-473c-9f93-cd1aaf3094a2",
+                    "id": "1bb11eae-fb3c-487c-ba0d-43631957b910",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1536,7 +1536,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "18fa18a1-6472-4ab1-9f26-d336bed105a5",
+                    "id": "277f526d-b4af-4e68-9ea1-81791f4d82a0",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1552,7 +1552,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "9bad377d-a6ee-4dab-aac7-47027166373f",
+                    "id": "b92e8c11-55fc-4417-ba71-c75b6757316e",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1568,7 +1568,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "b10428c8-ae9f-4378-be71-f5c0f8328a4c",
+                    "id": "9a9c38ed-8ac5-4636-95d8-ac35bbfd3035",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1584,13 +1584,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "1dcdca8c-07e6-479d-89e4-e0cc36676498",
+                    "id": "77139910-73d8-4861-8dcb-1592d4d853f3",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.solver.Clean.logevery",
-                    "value": 50,
+                    "value": 48,
                     "defaultValue": "1",
                     "description": "How frequently to log progress in the minor cycle. Every nth iteration is reported (ie. iflogevery=100, every 100th iteration is reported), providing the iteration number, the peak residual, the objective function and the total flux.",
                     "readonly": false,
@@ -1600,7 +1600,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "ca8607a5-68bc-4d69-96ac-bdb8ba2ad599",
+                    "id": "36d70c8d-5aad-4bdf-a128-b36a557ac662",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1616,7 +1616,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "a30243fe-0083-4e33-a1d1-4cffd871c6e5",
+                    "id": "0794aa35-059b-4ef3-861f-f1260e4d29f2",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1632,7 +1632,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "7857ce6e-12ab-437f-a419-45cf98112079",
+                    "id": "d63a7dbf-cec1-43c5-bf8c-ebc43c60f07e",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1648,7 +1648,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "9200ee0f-5dcc-47f7-90b5-87ab89d62ca4",
+                    "id": "96d97609-58ee-4a47-bc2c-81f430cd3017",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1664,7 +1664,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "0e421a17-c4b3-48dd-a0f9-5eb2a5520218",
+                    "id": "1a27384e-28d5-4502-85bb-830aee98b559",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1680,7 +1680,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "1f76126b-d2e1-4f77-88ad-dacfd3eb3df6",
+                    "id": "8d734c19-c6fc-42e4-9d01-430514f971b7",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1696,7 +1696,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "bb658bc6-4a31-481b-a8f9-991c82e332fe",
+                    "id": "1679b4bd-bb84-4750-bc42-8305e5da2892",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1712,13 +1712,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "841b3d6e-2d7b-4937-8158-f6d1d3a09b82",
+                    "id": "2c9a007c-dd40-4aee-81d8-f16943d1c099",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.preconditioner.Wiener.robustness",
-                    "value": 0.5,
+                    "value": 0,
                     "defaultValue": "0",
                     "description": "The noise power is derived from the given value of robustness to have roughly the same effect as the analogous parameter in Robust (i.e., -2.0 close to uniform weighting, +2.0 close to natural weighting). Note that the Wiener filter must be specified with eithernoisepowerorrobustness.",
                     "readonly": false,
@@ -1728,7 +1728,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "f32951af-e59f-4a1c-8737-7ec33abd7057",
+                    "id": "21f7ccb0-bee9-4eea-8043-d04bdb4d15c4",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1744,7 +1744,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "cd9ac829-8edf-4436-b3bc-b729b4ee9474",
+                    "id": "af79d1fb-3ba6-4a55-a795-afbdb32c40cb",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1760,7 +1760,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "50e7f4c2-5c91-4edb-a465-a6d972a4e594",
+                    "id": "d2d6cf1b-c18f-4668-89ae-aa4e36d70397",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1776,7 +1776,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "bd942fe2-0fc0-4dc9-bd03-4ba8eaf43a82",
+                    "id": "06be81a3-4d7e-47ed-8158-7ab0594f92d1",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1792,13 +1792,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "282939ce-9fd0-48ec-8c7c-a10d5d7ef8f8",
+                    "id": "7637f846-c018-4105-8b79-f3cfea34e726",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.MinUV",
-                    "value": 12,
+                    "value": 10,
                     "defaultValue": "0",
                     "description": "Select data based on the uv-distance (in metres). Only visibility points corresponding to uv-distance greater than the given value (defined in metres) are read from the measurement set. Note, the selection is done without taking frequency information into account.",
                     "readonly": false,
@@ -1808,7 +1808,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "e830e00c-c92e-4cbb-8097-9d9e669741a5",
+                    "id": "72e21eca-5941-43c2-92f9-89d6635db28e",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1824,13 +1824,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "f0f4d5a0-87db-4df8-a5a3-95f8fb590450",
+                    "id": "8dceaee5-cfef-42fd-ae47-3d5f4f84d725",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.nchanpercore",
-                    "value": 10,
+                    "value": 1,
                     "defaultValue": "1",
                     "description": "",
                     "readonly": false,
@@ -1840,7 +1840,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "encoding": "pickle",
-                    "id": "0bc5981f-2def-45ca-a46a-72f04ced82d6",
+                    "id": "a4d5f0a5-deb2-4680-bf10-0838f7ee5879",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1856,13 +1856,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "c5963245-68c9-4587-ad46-edf8789574d5",
+                    "id": "63a2815f-539b-4e5c-8bff-3663ba7a4912",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.nwriters",
-                    "value": 1,
+                    "value": 2,
                     "defaultValue": "1",
                     "description": "The number of output cubes to generate in spectral cube mode.",
                     "readonly": false,
@@ -1872,7 +1872,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "encoding": "pickle",
-                    "id": "40839826-0e99-49ae-b615-7d866f0b1bd0",
+                    "id": "3c707e9d-3a4a-4c4e-b6e5-39c2b844e45a",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1888,13 +1888,13 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "b86488c3-ed38-4512-b868-1e701f4d9a90",
+                    "id": "d13d520f-f971-4eb7-ae26-73960354ac8b",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.Channels",
-                    "value": "[250,0]",
+                    "value": "[9,125]",
                     "defaultValue": "",
                     "description": "Channels to be selected from the measurement set. Syntax is [<number>,<start>]. Defaults to all the channels.",
                     "readonly": false,
@@ -1904,7 +1904,7 @@
                     "positional": false,
                     "keyAttribute": true,
                     "encoding": "pickle",
-                    "id": "09ffdcab-3ae4-4f35-bf90-86ac95f98aae",
+                    "id": "a984df4a-523e-4a7a-93b4-74a8da521edd",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1920,7 +1920,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "db55b851-2ec7-4cef-a967-3828b0a095e0",
+                    "id": "9b21cebd-072b-4bec-8115-3bac44d0d0d4",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1936,7 +1936,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "48e55ca7-a228-49b2-bf28-757cb39fb93b",
+                    "id": "72a96046-9bb6-49d6-a20b-085c773ffa5f",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1956,7 +1956,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "ca2a6628-6943-48ec-9514-424809bd6e6b",
+                    "id": "2274813d-91d2-4bce-a5aa-84c6f1740c45",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1972,7 +1972,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "c619dd16-1792-43bf-9e4e-a3b8c9045477",
+                    "id": "4b1ef8cc-3f0a-4186-a963-9768dc7727a8",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -1988,14 +1988,14 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "46c1afc2-ea68-4d29-868e-2e3879d7cdb7",
+                    "id": "7c7c1b70-7059-4552-9ad2-46fd20b3c2cf",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
                 {
                     "name": "Cimager.write.weightsimage",
                     "value": true,
-                    "defaultValue": "true",
+                    "defaultValue": "",
                     "description": "",
                     "readonly": false,
                     "type": "Boolean",
@@ -2004,7 +2004,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "e03c6a13-01cd-4c1d-9083-501de2adb26e",
+                    "id": "2b48d68b-a1af-43a5-8c06-ddb80a30e13d",
                     "parameterType": "ApplicationArgument",
                     "usage": "NoPort"
                 },
@@ -2020,7 +2020,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "ef69a674-2969-4d9d-a9a1-1ac50a54ed86",
+                    "id": "94b4c849-24b8-46d0-90a9-1aa437f823f6",
                     "parameterType": "ConstraintParameter",
                     "usage": "NoPort"
                 },
@@ -2036,7 +2036,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "6f224bd7-edb9-4a2b-9f93-022c3db225e4",
+                    "id": "6f6de895-3af3-4ea1-98f4-6bdbb65efee8",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2059,7 +2059,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "6ef5b977-ea8b-40fe-9d19-330447d5d3db",
+                    "id": "00ce9f1d-1c79-4b1b-986c-ee01553d656d",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2075,7 +2075,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "57d582ef-346d-4ea7-848d-3a94fb0b53c8",
+                    "id": "a3dcc99a-bd49-4e50-b029-19da09ae4bb1",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2091,7 +2091,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "6ee506c2-cf6a-4e9f-b615-a5818cd155ea",
+                    "id": "e284131c-0a9c-4fdb-84c9-f1cb47d1598c",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2107,7 +2107,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "2a0f1378-d3a4-47f7-9989-ac0c1c9d078d",
+                    "id": "e43917d4-64af-450b-868c-cd8afb8aeaa3",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2123,7 +2123,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "0c8dd2a5-166d-4bdf-87c2-f2998decdde4",
+                    "id": "ea4de23a-fd64-4914-8d67-ba36b74aca82",
                     "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
@@ -2139,7 +2139,7 @@
                     "positional": false,
                     "keyAttribute": false,
                     "encoding": "pickle",
-                    "id": "f20c3ba7-7ebb-4193-b23b-0f7935d23dcd",
+                    "id": "4d4fe4a5-d39f-474a-8925-fe636f042618",
                     "parameterType": "ComponentParameter",
                     "usage": "OutputPort"
                 }
@@ -2191,7 +2191,7 @@
         },
         {
             "from": -1,
-            "fromPort": "f20c3ba7-7ebb-4193-b23b-0f7935d23dcd",
+            "fromPort": "4d4fe4a5-d39f-474a-8925-fe636f042618",
             "to": -2,
             "toPort": "da3f2498-cd24-451f-8336-1724d9300606",
             "loop_aware": "0",
