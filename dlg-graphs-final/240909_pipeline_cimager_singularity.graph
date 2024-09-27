@@ -714,7 +714,7 @@
             "fields": [
                 {
                     "name": "command",
-                    "value": "srun --jobid=$SLURM_JOBID --export=ALL --ntasks 26 --ntasks-per-node 26 singularity exec --bind $PWD:/askapbuffer,/scratch:/scratch /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif cimager -c %i0",
+                    "value": "srun --jobid=$SLURM_JOBID singularity exec --bind $PWD:/askapbuffer,/scratch:/scratch /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif cimager -c %i0",
                     "defaultValue": "",
                     "description": "The command to be executed",
                     "readonly": false,
