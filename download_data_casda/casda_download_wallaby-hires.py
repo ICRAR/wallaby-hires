@@ -155,8 +155,8 @@ async def main(argv):
 
     casda = Casda()
     # casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
-    # casda.login(username=parser["CASDA"]["username"], password=parser["CASDA"]["password"])
-    casda.login(username=parser["CASDA"]["username"], store_password=True)    
+    casda.login(username=parser["CASDA"]["username"], password=parser["CASDA"]["password"])
+    # casda.login(username=parser["CASDA"]["username"], store_password=True)    
 
     # Stage the data (retrieve the list of URLs to download)
     url_list = casda.stage_data(res, verbose=True)
