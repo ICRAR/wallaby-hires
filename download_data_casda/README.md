@@ -10,16 +10,16 @@ time python3 casda_download_filename.py -f "HIPASSJ1318-21" -o "/home/ganiruddha
 
 3) On Setonix:
 Before running any of the download scripts: (On Setonix)
-# Create a virtual environment
+### Create a virtual environment
 python -m venv myenv
 
-# Activate the virtual environment
+### Activate the virtual environment
 source myenv/bin/activate
 
-# Install the required packages (Example)
+### Install the required packages (Example)
 pip install astropy 
 
-# Command 
+### Command 
 time python3 casda_download_filename.py -f "HIPASSJ1318-21" -o "/scratch/pawsey0411/ganiruddha/Setonix/download_data_casda/HIPASSJ1318-21" -p "WALLABY" -c "casda.ini" --timeout 1800
 
 How to run it: casda_download_wallaby-hires.py
