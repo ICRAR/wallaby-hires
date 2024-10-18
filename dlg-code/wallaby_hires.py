@@ -1,12 +1,9 @@
 """
 Start date: 10/04/24
-
 Description: All functions neeeded for WALLABY hires pipeline
-Taken from: /home/gayatri/dlg/code
-
 """
 
-# Importing required libraries 
+# Importing all the required libraries 
 import csv
 from typing import BinaryIO
 import numpy as np 
@@ -215,13 +212,13 @@ def read_and_process_csv_file_output_all_dynamic_parset(filename: str) -> list:
                 'Cimager.Images.direction': f"[{RA_string},{Dec_string}, J2000]",
                 'Vsys': Vsys,
                 'imcontsub.inputfitscube': f"image.restored.{name}",
-                'imcontsub.outputfitscube': f"image.restored.i.{name}.contsub",
-                'linmos.names': f"[image.restored.i.{name}.contsub]",
-                'linmos.weights': f"[weights.i.{name}]",
-                'linmos.outname': f"image.restored.i.{name}.contsub_holo",
-                'linmos.outweight': f"weights.i.{name}.contsub_holo",
+                'imcontsub.outputfitscube': f"image.restored.{name}.contsub",
+                'linmos.names': f"[image.restored.{name}.contsub]",
+                'linmos.weights': f"[weights.{name}]",
+                'linmos.outname': f"image.restored.{name}.contsub_holo",
+                'linmos.outweight': f"weights.{name}.contsub_holo",
                 'linmos.feeds.centre': f"[{RA_beam_string},{Dec_beam_string}]",
-                f'linmos.feeds.image.restored.i.{name}.contsub': '[0.0,0.0]'
+               f'linmos.feeds.image.restored.{name}.contsub': '[0.0,0.0]'
             }
             
             data.append(output_dict)
@@ -311,7 +308,6 @@ def parset_mixin_linmos(parset: dict, mixin: list) -> dict:
     serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
     return serialp.encode("utf-8") 
 
-# 22/05/24
 # Code for calculating and plotting the difference image 
 # Location on Gayatri Desktop: http://localhost:8888/notebooks/Desktop/DIA-24/comparing_images_220524.ipynb#
 def calculate_difference_image(given_image, reference_image, start_channel=111, end_channel=135):
@@ -348,3 +344,219 @@ def calculate_difference_image(given_image, reference_image, start_channel=111, 
 
     # Returning the difference image
     return diff_image
+
+
+# 14/10/24
+# Auto-download from casda 
+# https://github.com/ICRAR/wallaby-hires/blob/main/download_data_casda/casda_download_filename.py
+# Code taken from: http://localhost:8888/lab/tree/dlg/testdata/casda_download_testing_code.ipynb
+
+# Importing required modules 
+import os
+import sys
+import logging
+import json
+import urllib
+import asyncio
+import argparse
+import astropy
+import configparser
+from astroquery.utils.tap.core import TapPlus
+from astroquery.casda import Casda
+import concurrent.futures
+import time 
+import csv
+import pandas as pd
+
+# HIPASS Query with filename pattern 
+HIPASS_QUERY_FILENAME = (
+    "SELECT * FROM ivoa.obscore WHERE "
+    "filename LIKE '$filename%'"
+)
+
+# URL = "https://casda.csiro.au/casda_vo_tools/tap"
+
+# TAP Query function
+def tap_query(filename):
+    """
+    Queries the CASDA TAP service for a given filename.
+    
+    Args:
+    - filename (str): The name of the file to query.
+    
+    Returns:
+    - res (astropy.Table): Table with query result (files to download).
+    """ 
+
+    # URL = "https://casda.csiro.au/casda_vo_tools/tap"
+    
+    query = HIPASS_QUERY_FILENAME.replace("$filename", filename)
+    # print(f"TAP Query: {query}")
+
+    casdatap = TapPlus(url="https://casda.csiro.au/casda_vo_tools/tap", verbose=False)
+    job = casdatap.launch_job_async(query)
+    res = job.get_results()
+    # print(f"Query result: {res}")
+    return res
+
+
+# TAP Query function that reads from a CSV file
+def tap_query_from_csv(test_catalogue):
+    """
+    Reads a CSV file and performs a TAP query for each entry.
+    
+    Args:
+    - test_catalogue (str): The path to the CSV file.
+    
+    Returns:
+    - results (list): A list of query results for each entry in the CSV.
+    """
+    results = []
+
+    with open(test_catalogue, mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        
+        for row in csv_reader:
+            filename = row['Name']  
+            print(f"Querying for: {filename}")
+            
+            # Perform the TAP query using the filename from CSV
+            result = tap_query(filename)  
+            results.append(result)
+    
+    return results
+
+# Download files based on url provided 
+def download_file(url, check_exists, output, timeout, buffer=4194304):
+    # Large timeout is necessary as the file may need to be stage from tape
+
+    """
+    Download a file from a given URL and save it to a specified output directory.
+
+    Parameters:
+    - url (str): The URL of the file to be downloaded.
+    - check_exists (bool): If True, the function checks if the file already exists with the same size before downloading.
+    - output (str): The directory path where the downloaded file will be saved.
+    - timeout (int): The maximum time (in seconds) to wait for the server to respond.
+    - buffer (int): The size of the buffer to be used when reading data from the URL. Default is 4MB (4194304 bytes).
+    
+    Returns:
+    - filepath (str): The path of the downloaded file.
+    
+    Raises:
+    - ValueError: If the URL is empty or the file size doesn't match the expected size after download.
+    """
+    
+    try:
+        os.makedirs(output)
+    except:
+        pass
+
+    if url is None:
+        raise ValueError('URL is empty')
+
+    with urllib.request.urlopen(url, timeout=timeout) as r:
+        filename = r.info().get_filename()
+        filepath = f"{output}/{filename}"
+
+        # Check if file already exists, and modify the filename if necessary
+        if os.path.exists(filepath):
+            base, ext = os.path.splitext(filename)
+            counter = 2
+            new_filepath = filepath
+            
+            # Continue incrementing the filename until a unique one is found
+            while os.path.exists(new_filepath):
+                new_filename = f"{base}_{counter}{ext}"
+                new_filepath = f"{output}/{new_filename}"
+                counter += 1
+            filepath = new_filepath
+
+        http_size = int(r.info()['Content-Length'])
+
+        if check_exists:
+            try:
+                file_size = os.path.getsize(filepath)
+                if file_size == http_size:
+                    print(f"File exists, ignoring: {os.path.basename(filepath)}")
+                    # File exists and is same size; do nothing
+                    return filepath
+            except FileNotFoundError:
+                pass
+
+        print(f"Downloading: {filepath} size: {http_size}")
+        count = 0
+        with open(filepath, 'wb') as o:
+            while http_size > count:
+                buff = r.read(buffer)
+                if not buff:
+                    break
+                o.write(buff)
+                count += len(buff)
+
+        download_size = os.path.getsize(filepath)
+        if http_size != download_size:
+            raise ValueError(f"File size does not match file {download_size} and http {http_size}")
+
+        print(f"Download complete: {os.path.basename(filepath)}")
+
+        return filepath
+    
+# casda_download: SKIP download if "filename" exists
+def casda_download(credentials, test_catalogue, output_path, timeout_seconds):
+    """
+    Download data from CASDA based on the provided credentials and a test catalogue.
+
+    Parameters:
+    - credentials (str): The path to the file containing CASDA credentials.
+    - test_catalogue (str): The path to the CSV file containing source information.
+    - output_path (str): The directory path where downloaded files will be saved.
+    - timeout_seconds (int): The maximum time (in seconds) to wait for each download request.
+    
+    Returns:
+    - None: The function saves downloaded files to the specified output path.
+    """
+    
+    # Read credentials from the provided file
+    parser = configparser.ConfigParser()
+    parser.read(credentials)
+
+    # Initialize CASDA instance
+    casda = Casda()
+    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
+
+    # Read the CSV file and iterate over the 'Source' column
+    with open(test_catalogue, mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+
+        for row in csv_reader:
+            filename = row['Name']  # Access the 'Name' field in the CSV
+            print(f"Querying for: {filename}")
+
+            # Modify the output path dynamically based on the filename
+            dynamic_output_path = os.path.join(output_path, filename)
+            
+            # Check if the directory exists
+            if os.path.exists(dynamic_output_path):
+                print(f"Folder with filename {filename} already exists. Skipping download.")
+                continue  # Skip to the next file if the directory exists
+
+            # Ensure that the directory is created if it doesn't exist
+            os.makedirs(dynamic_output_path)
+            print(f"Saving files to: {dynamic_output_path}")
+
+            # Perform the TAP query using the filename from the CSV
+            res = tap_query(filename) 
+            url_list = casda.stage_data(res, verbose=True)
+            print(f"Staging data URLs for {filename}")
+
+            # Download files concurrently
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+                futures = []
+                for url in url_list:
+                    if url.endswith('checksum'):
+                        continue
+                    futures.append(executor.submit(download_file, url=url, check_exists=True, output=dynamic_output_path, timeout=timeout_seconds))
+
+                for future in concurrent.futures.as_completed(futures):
+                    file_list.append(future.result())
