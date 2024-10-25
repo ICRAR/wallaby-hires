@@ -4,10 +4,31 @@ Description: All functions neeeded for WALLABY hires pipeline
 """
 
 # Importing all the required libraries 
-import csv
 from typing import BinaryIO
 import numpy as np 
 
+import os
+import sys
+import logging
+import json
+import urllib
+import asyncio
+import argparse
+import astropy
+import configparser
+from astroquery.utils.tap.core import TapPlus
+from astroquery.casda import Casda
+import concurrent.futures
+import time
+from astropy.table import Table
+
+import urllib.request
+
+import csv
+import pandas as pd
+
+# To un-tar the files
+import tarfile
 
 def Cimager_test(input_dict):
     for key, value in input_dict.items():
@@ -426,26 +447,9 @@ def tap_query_from_csv(test_catalogue):
     
     return results
 
-# Download files based on url provided 
+# Latest correct download code
 def download_file(url, check_exists, output, timeout, buffer=4194304):
-    # Large timeout is necessary as the file may need to be stage from tape
-
-    """
-    Download a file from a given URL and save it to a specified output directory.
-
-    Parameters:
-    - url (str): The URL of the file to be downloaded.
-    - check_exists (bool): If True, the function checks if the file already exists with the same size before downloading.
-    - output (str): The directory path where the downloaded file will be saved.
-    - timeout (int): The maximum time (in seconds) to wait for the server to respond.
-    - buffer (int): The size of the buffer to be used when reading data from the URL. Default is 4MB (4194304 bytes).
-    
-    Returns:
-    - filepath (str): The path of the downloaded file.
-    
-    Raises:
-    - ValueError: If the URL is empty or the file size doesn't match the expected size after download.
-    """
+    # Large timeout is necessary as the file may need to be staged from tape
     
     try:
         os.makedirs(output)
@@ -461,13 +465,13 @@ def download_file(url, check_exists, output, timeout, buffer=4194304):
 
         # Check if file already exists, and modify the filename if necessary
         if os.path.exists(filepath):
-            base, ext = os.path.splitext(filename)
+            base, ext = filename.rsplit('_10arc_split', 1)
             counter = 2
             new_filepath = filepath
             
             # Continue incrementing the filename until a unique one is found
             while os.path.exists(new_filepath):
-                new_filename = f"{base}_{counter}{ext}"
+                new_filename = f"{base}_10arc_split_{counter}{ext}"
                 new_filepath = f"{output}/{new_filename}"
                 counter += 1
             filepath = new_filepath
@@ -501,8 +505,32 @@ def download_file(url, check_exists, output, timeout, buffer=4194304):
         print(f"Download complete: {os.path.basename(filepath)}")
 
         return filepath
-    
-# casda_download: SKIP download if "filename" exists
+
+# Function to un-tar files 
+def untar_file(tar_file, output_dir='.'):
+    """
+    Extracts a tar file (.tar, .tar.gz, .tar.bz2) to the specified output directory.
+
+    Parameters:
+    - tar_file: Path to the tar file to extract.
+    - output_dir: Directory where the contents will be extracted. Defaults to the current directory.
+    """
+    try:
+        # Extract the filename without the '.tar' extension to create a new directory
+        base_name = os.path.basename(tar_file).replace('.tar', '')
+        extract_dir = os.path.join(output_dir, base_name)
+
+        # Create the target directory for extraction
+        os.makedirs(extract_dir, exist_ok=True)
+        
+        with tarfile.open(tar_file) as tar:
+            tar.extractall(path=extract_dir)
+            print(f"{tar_file} un-tarred to {extract_dir}")
+
+    except Exception as e:
+        print(f"Failed to untar {tar_file}: {e}")
+
+# Latest OG casda_download code 
 def casda_download(credentials, test_catalogue, output_path, timeout_seconds):
     """
     Download data from CASDA based on the provided credentials and a test catalogue.
@@ -522,7 +550,6 @@ def casda_download(credentials, test_catalogue, output_path, timeout_seconds):
     parser.read(credentials)
 
     # Initialize CASDA instance
-    casda = Casda()
     casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
 
     # Read the CSV file and iterate over the 'Source' column
@@ -538,8 +565,9 @@ def casda_download(credentials, test_catalogue, output_path, timeout_seconds):
             
             # Check if the directory exists
             if os.path.exists(dynamic_output_path):
-                print(f"Folder with filename {filename} already exists. Skipping download.")
-                continue  # Skip to the next file if the directory exists
+                print(f"Folder with filename {filename} already exists. Download skipped.")
+                
+                continue  # Skip to the next file after checking for tar files
 
             # Ensure that the directory is created if it doesn't exist
             os.makedirs(dynamic_output_path)
@@ -551,6 +579,7 @@ def casda_download(credentials, test_catalogue, output_path, timeout_seconds):
             print(f"Staging data URLs for {filename}")
 
             # Download files concurrently
+            file_list = []
             with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
                 futures = []
                 for url in url_list:
@@ -560,3 +589,13 @@ def casda_download(credentials, test_catalogue, output_path, timeout_seconds):
 
                 for future in concurrent.futures.as_completed(futures):
                     file_list.append(future.result())
+
+            # Once all downloads are complete, untar all tar files in the directory
+            print(f"Untarring files for: {filename}")
+            for file in os.listdir(dynamic_output_path):
+                file_path = os.path.join(dynamic_output_path, file)
+                
+                # Check if the file ends with '.tar' and is a valid tar file
+                if file.endswith('.tar') and tarfile.is_tarfile(file_path):
+                    untar_file(file_path, dynamic_output_path)
+            
