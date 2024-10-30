@@ -5263,7 +5263,7 @@
                 },
                 {
                     "name": "filename",
-                    "value": "/scratch/pawsey0411/gayatri/dlg/testdata/casda_download/hipass_ms_file_details.csv",
+                    "value": "$DLG_ROOT/testdata/casda_download/hipass_ms_file_details.csv",
                     "defaultValue": "$DLG_ROOT/testdata/test_catalogue_240624_HIPASS_3_footprints.csv",
                     "description": "",
                     "readonly": false,
@@ -6252,14 +6252,6 @@
             "fromPort": "eb95cb41-6295-4460-889e-efdfd4567608",
             "to": -4,
             "toPort": "a70e2e69-9764-4a10-94f8-3913089a5b7b",
-            "loop_aware": "0",
-            "closesLoop": false
-        },
-        {
-            "from": -4,
-            "fromPort": "a70e2e69-9764-4a10-94f8-3913089a5b7b",
-            "to": -1,
-            "toPort": "689981ac-3a00-48a4-a2c4-d1bd9f5194ac",
             "loop_aware": "0",
             "closesLoop": false
         }
