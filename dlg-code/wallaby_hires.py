@@ -449,6 +449,9 @@ def tap_query_from_csv(test_catalogue):
 
 # Latest correct download code
 def download_file(url, check_exists, output, timeout, buffer=4194304):
+    """
+    
+    """
     # Large timeout is necessary as the file may need to be staged from tape
     
     try:
@@ -599,3 +602,259 @@ def casda_download(credentials, test_catalogue, output_path, timeout_seconds):
                 if file.endswith('.tar') and tarfile.is_tarfile(file_path):
                     untar_file(file_path, dynamic_output_path)
             
+
+# Generating .csv file for input to the bigger pipeline
+def extract_ms_files(input_csv, output_csv, search_path):
+    # Load the original catalogue CSV
+    df = pd.read_csv(input_csv)
+    
+    # Prepare a list to store the output rows
+    output_data = []
+    
+    # Iterate through each row in the input CSV
+    for index, row in df.iterrows():
+        # Get the HIPASS name, RA, DEC, and Vsys from the row
+        name = row['Name']
+        ra = row['RA']
+        dec = row['DEC']
+        vsys = row['Vsys']
+        
+        # Define the directory path to search for .ms files
+        folder_path = os.path.join(search_path, name)
+        
+        # Check if the directory exists
+        if os.path.isdir(folder_path):
+            # List all files in the directory ending with .ms
+            ms_files = [f for f in os.listdir(folder_path) if f.endswith('.ms')]
+            
+            # Add each .ms file to the output data with specified formatting
+            for ms_file in ms_files:
+                # Remove the .ms extension
+                ms_name = ms_file.replace('.ms', '')
+                # Append to output data
+                output_data.append([ms_name, ra, dec, vsys])
+    
+    # Create a DataFrame for the output data
+    output_df = pd.DataFrame(output_data, columns=['Name', 'RA', 'DEC', 'Vsys'])
+    
+    # Save to CSV without the header
+    output_df.to_csv(output_csv, index=False, header=False) 
+
+# Download + Process
+def process_and_download_data(credentials, input_csv, output_path, timeout_seconds, search_path):
+    
+    # Read credentials from the provided file
+    parser = configparser.ConfigParser()
+    parser.read(credentials)
+
+    # Initialize CASDA instance
+    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
+
+    # Prepare a list to store the output rows for .ms files
+    output_data = []
+
+    # Iterate through each row in the input CSV to download data
+    with open(input_csv, mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+
+        for row in csv_reader:
+            name = row['Name']
+            print(f"Querying for: {name}")
+
+            # Modify the output path dynamically based on the filename
+            dynamic_output_path = os.path.join(output_path, name)
+
+            # Check if the directory exists
+            if os.path.exists(dynamic_output_path):
+                print(f"Folder with filename {name} already exists. Download skipped.")
+                continue  # Skip to the next file if the directory already exists
+
+            # Ensure that the directory is created if it doesn't exist
+            os.makedirs(dynamic_output_path)
+            print(f"Saving files to: {dynamic_output_path}")
+
+            # Perform the TAP query using the name from the CSV
+            res = tap_query(name)
+            url_list = casda.stage_data(res, verbose=True)
+            print(f"Staging data URLs for {name}")
+
+            # Download files concurrently
+            file_list = []
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+                futures = []
+                for url in url_list:
+                    if url.endswith('checksum'):
+                        continue
+                    futures.append(executor.submit(download_file, url=url, check_exists=True, output=dynamic_output_path, timeout=timeout_seconds))
+
+                for future in concurrent.futures.as_completed(futures):
+                    file_list.append(future.result())
+
+            # Once all downloads are complete, untar all tar files in the directory
+            print(f"Untarring files for: {name}")
+            for file in os.listdir(dynamic_output_path):
+                file_path = os.path.join(dynamic_output_path, file)
+
+                # Check if the file ends with '.tar' and is a valid tar file
+                if file.endswith('.tar') and tarfile.is_tarfile(file_path):
+                    untar_file(file_path, dynamic_output_path)
+
+    # After all downloads, perform the extraction of .ms files
+    df = pd.read_csv(input_csv)
+    
+    for index, row in df.iterrows():
+        name = row['Name']
+        ra = row['RA']
+        dec = row['DEC']
+        vsys = row['Vsys']
+
+        print(f"Generating I/P .csv file for {index + 1}: Name={name}, RA={ra}, DEC={dec}, Vsys={vsys}")
+
+        folder_path = os.path.join(search_path, name)
+
+        if os.path.isdir(folder_path):
+            ms_files = [f for f in os.listdir(folder_path) if f.endswith('.ms')]
+
+            for ms_file in ms_files:
+                ms_name = ms_file.replace('.ms', '')
+                output_data.append([ms_name, ra, dec, vsys])
+
+    output_df = pd.DataFrame(output_data, columns=['Name', 'RA', 'DEC', 'Vsys'])
+    output_csv_path = os.path.join(output_path, 'hipass_ms_file_details.csv')
+    output_df.to_csv(output_csv_path, index=False, header=False)
+    print(f"Output saved to {output_csv_path}")
+
+    return output_csv_path
+
+# 30/10/24
+def degrees_to_hms(degrees):
+    """Convert degrees to hours-minutes-seconds."""
+    hours = degrees / 15.0  # Convert degrees to hours
+    h = int(hours)  # Integer part of hours
+    m = int((hours - h) * 60)  # Integer part of minutes
+    s = (hours - h - m / 60.0) * 3600  # Seconds
+
+    return h, m, s
+
+def degrees_to_dms(degrees):
+    """Convert degrees to degrees-minutes-seconds."""
+    d = int(degrees)  # Integer part of degrees
+    m = int(abs(degrees - d) * 60)  # Integer part of minutes
+    s = (abs(degrees) - abs(d) - m / 60.0) * 3600  # Seconds
+
+    return d, m, s
+
+# 30/10/24
+# HIPASS Query with filename pattern to extract RA, DEC and Vsys
+HIPASS_QUERY_RA_DEC_VSYS = (
+    "SELECT RAJ2000, DEJ2000, VSys FROM \"J/AJ/128/16/table2\" WHERE "
+    "HIPASS LIKE '$filename'"
+)
+
+URL_2 = 'http://tapvizier.cds.unistra.fr/TAPVizieR/tap' 
+
+def tap_query_RA_DEC_VSYS(filename):
+    # Check if 'HIPASS' is in the filename and extract the portion after it
+    if 'HIPASS' in filename:
+        extracted_name = filename[filename.index('HIPASS') + len('HIPASS'):]  # Get the part after 'HIPASS'
+        extracted_name = extracted_name.strip()  # Remove any leading or trailing whitespace
+    else:
+        extracted_name = filename  # If 'HIPASS' is not found, use the filename as is
+
+    query = HIPASS_QUERY_RA_DEC_VSYS.replace("$filename", extracted_name)
+    print(f"RA DEC VSYS Query: {query}")
+
+    casdatap = TapPlus(url=URL_2, verbose=False)
+    job = casdatap.launch_job_async(query)
+    res = job.get_results()
+    print(f"Query result: {res}")
+    return res
+
+# Query on Topcat
+# select RAJ2000, DEJ2000, VSys from "J/AJ/128/16/table2" where HIPASS like 'J1318-21'
+
+# 30/10/24: Everything happens in the same folder 
+def process_and_download_data_same_folder(credentials, input_csv, processed_catalogue, timeout_seconds):
+    # Read credentials from the provided file
+    parser = configparser.ConfigParser()
+    parser.read(credentials)
+
+    # Initialize CASDA instance
+    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
+
+    # Prepare a list to store the output rows for .ms files
+    output_data = []
+
+    # Load the processed catalogue to check for already processed sources
+    processed_catalogue = pd.read_csv(processed_catalogue) 
+    processed_sources = set(processed_catalogue['Name']) 
+
+    with open(input_csv, mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+
+        for row in csv_reader:
+            name = row['Name']
+            
+            # Check if the source has already been processed
+            if name in processed_sources:
+                print(f"{name} already processed")
+                continue  # Skip to the next row if the source is processed
+
+            print(f"Querying for: {name}")
+
+            # Get RA, DEC, and Vsys from the query
+            res = tap_query_RA_DEC_VSYS(name)  
+
+            # Assuming res returns a DataFrame with the required values, extract them
+            if not res or len(res) == 0:
+                print(f"No results found for {name}. Skipping...")
+                continue
+
+            ra = res['RAJ2000'][0] 
+            dec = res['DEJ2000'][0]
+            vsys = res['VSys'][0]
+            print(f"Retrieved RA={ra}, DEC={dec}, VSys={vsys} for {name}")
+
+            # Convert RA and DEC from degrees to hms and dms formats
+            ra_h, ra_m, ra_s = degrees_to_hms(ra)
+            dec_d, dec_m, dec_s = degrees_to_dms(dec)
+            print(f"Converted RA={ra_h}h {ra_m}m {ra_s:.2f}s, DEC={dec_d}° {dec_m}′ {dec_s:.2f}″ for {name}")
+
+            # Get filenames 
+            res = tap_query(name)
+            url_list = casda.stage_data(res, verbose=True)
+            print(f"Staging data URLs for {name}")
+
+            files = res['filename']
+            for file in files:
+                file_no_tar = file.replace('.tar', '')
+                print(file_no_tar)
+                output_data.append([file_no_tar, f"{ra_h}: {ra_m}: {ra_s:.2f}", f"{dec_d}: {dec_m}: {dec_s:.2f}", vsys])
+            
+            # Stage data for download
+            url_list = casda.stage_data(res, verbose=True)
+            print(f"Staging data URLs for {name}")
+
+            # Download files concurrently in the current working directory
+            file_list = []
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+                futures = [
+                    executor.submit(download_file, url=url, check_exists=True, output='.', timeout=timeout_seconds)
+                    for url in url_list if not url.endswith('checksum')
+                ]
+
+                for future in concurrent.futures.as_completed(futures):
+                    file_list.append(future.result())
+
+            # Untar files in the current working directory
+            print(f"Untarring files for: {name}")
+            for file in file_list:
+                if file.endswith('.tar') and tarfile.is_tarfile(file):
+                    untar_file(file, '.')
+
+    output_df = pd.DataFrame(output_data, columns=['Name', 'RA', 'DEC', 'Vsys'])
+    output_csv_path = os.path.join('.', 'hipass_ms_file_details.csv')
+    output_df.to_csv(output_csv_path, index=False, header=False)
+    print(f"Output saved to {output_csv_path}")
+
+    return output_csv_path
