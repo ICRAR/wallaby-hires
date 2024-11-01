@@ -3765,7 +3765,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "keyAttribute": false,
+                    "keyAttribute": true,
                     "encoding": "pickle",
                     "id": "4b5f77a0-905c-4549-82fc-8f262cdccf6d",
                     "parameterType": "ComponentParameter",
