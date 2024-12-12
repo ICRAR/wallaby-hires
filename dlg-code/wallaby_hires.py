@@ -10,6 +10,7 @@ import numpy as np
 import os
 import sys
 import logging
+import requests
 import json
 import urllib
 import asyncio
@@ -21,22 +22,46 @@ from astroquery.casda import Casda
 import concurrent.futures
 import time
 from astropy.table import Table
-
 import urllib.request
-
 import csv
 import pandas as pd
+
+logging.basicConfig()
+logging.getLogger().setLevel(logging.INFO)
 
 # To un-tar the files
 import tarfile
 
 def Cimager_test(input_dict):
+    """
+    Print each key-value pair in the input dictionary.
+
+    Parameters:
+    -----------
+    - input_dict (dict): The dictionary containing key-value pairs to be printed.
+    
+    Returns:
+    --------
+    None
+    """
     for key, value in input_dict.items():
         print(f"{key}: {value}")
 
-def combine(str1, str2):
+def combine(str1, str2): 
+    """
+    Combine two input strings representing key-value pairs, removing conflicts and empty values.
+    
+    Parameters:
+    -----------
+    - str1 (str): The first string, with lines in "key=value" format.
+    - str2 (str): The second string, also with lines in "key=value" format.
+    
+    Returns:
+    --------
+    - str: The combined key-value pairs as a single string, with conflicts resolved.
     lines1 = str1.strip().split('\n')
     lines2 = str2.strip().split('\n')
+    """ 
     
     # Create dictionaries from lines
     dict1 = {line.split('=')[0]: line.split('=')[1] for line in lines1 if line.strip()}
@@ -69,17 +94,19 @@ def merge_dictionaries(static_dict, dynamic_dict)->dict:
     Merge two dictionaries.
     
     Parameters:
+    -----------
     - dict1 (dict): The first dictionary. 
     - dict2 (dict): The second dictionary.
     
     Returns:
+    --------
     - dict: The merged dictionary.
     """
     merged_dict = static_dict.copy()
     merged_dict.update(dynamic_dict)
     return merged_dict
 
-# Andreas's function 
+# Mixing parsets 
 def parset_mixin(parset: dict, mixin: dict) -> bytes:
     """
     Update parset with dict values.
@@ -182,7 +209,6 @@ def parset_mixin_gayatri(parset: dict, mixin: list) -> dict:
     serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
     return serialp.encode("utf-8")
 
-# 11/04/24 
 # Updated read & process where it generates a combined dynamic parset 
 def read_and_process_csv_file_output_all_dynamic_parset(filename: str) -> list:
     """
@@ -253,7 +279,6 @@ def read_and_process_csv_file_output_all_dynamic_parset(filename: str) -> list:
     
     return data
 
-# 12/04/24 
 # Combine: Cimager parset 
 def parset_mixin_cimager(parset: dict, mixin: list) -> dict:
     """
@@ -330,18 +355,20 @@ def parset_mixin_linmos(parset: dict, mixin: list) -> dict:
     return serialp.encode("utf-8") 
 
 # Code for calculating and plotting the difference image 
-# Location on Gayatri Desktop: http://localhost:8888/notebooks/Desktop/DIA-24/comparing_images_220524.ipynb#
+# Location on Gayatri laptop: Desktop/DIA-24/comparing_images_220524.ipynb
 def calculate_difference_image(given_image, reference_image, start_channel=111, end_channel=135):
     """
     Computes the difference image between the given image and the reference image for the specified channel range.
 
     Parameters:
+    -----------
     - given_image: numpy array, the original image (expected shape: [total_channels, 1, height, width])
     - reference_image: numpy array, the reference image to subtract (expected shape: [total_channels, 1, height, width])
     - start_channel: int, the starting channel number (inclusive)
     - end_channel: int, the ending channel number (inclusive)
 
     Returns:
+    --------
     - diff_image: numpy array, the difference image
     """
     # Checking if the input images have the same shape
@@ -366,46 +393,23 @@ def calculate_difference_image(given_image, reference_image, start_channel=111, 
     # Returning the difference image
     return diff_image
 
-
-# 14/10/24
-# Auto-download from casda 
-# https://github.com/ICRAR/wallaby-hires/blob/main/download_data_casda/casda_download_filename.py
-# Code taken from: http://localhost:8888/lab/tree/dlg/testdata/casda_download_testing_code.ipynb
-
-# Importing required modules 
-import os
-import sys
-import logging
-import json
-import urllib
-import asyncio
-import argparse
-import astropy
-import configparser
-from astroquery.utils.tap.core import TapPlus
-from astroquery.casda import Casda
-import concurrent.futures
-import time 
-import csv
-import pandas as pd
-
 # HIPASS Query with filename pattern 
 HIPASS_QUERY_FILENAME = (
     "SELECT * FROM ivoa.obscore WHERE "
     "filename LIKE '$filename%'"
 )
 
-# URL = "https://casda.csiro.au/casda_vo_tools/tap"
-
 # TAP Query function
 def tap_query(filename):
     """
     Queries the CASDA TAP service for a given filename.
     
-    Args:
+    Parameters:
+    -----------
     - filename (str): The name of the file to query.
     
     Returns:
+    --------
     - res (astropy.Table): Table with query result (files to download).
     """ 
 
@@ -420,16 +424,17 @@ def tap_query(filename):
     # print(f"Query result: {res}")
     return res
 
-
 # TAP Query function that reads from a CSV file
 def tap_query_from_csv(test_catalogue):
     """
     Reads a CSV file and performs a TAP query for each entry.
     
-    Args:
+    Parameters:
+    -----------
     - test_catalogue (str): The path to the CSV file.
     
     Returns:
+    --------
     - results (list): A list of query results for each entry in the CSV.
     """
     results = []
@@ -447,11 +452,25 @@ def tap_query_from_csv(test_catalogue):
     
     return results
 
-# Latest correct download code
+# Code to download files from casda 
 def download_file(url, check_exists, output, timeout, buffer=4194304):
     """
-    
+    Downloads a file from the specified URL to the given output directory. 
+    If a file with the same name already exists, it increments a counter in 
+    the filename to avoid overwriting.
+
+    Parameters:
+    - url (str): The URL of the file to download.
+    - check_exists (bool): If True, checks if the file already exists in the 
+      output directory and has the same size; skips download if so.
+    - output (str): Path to the directory where the file will be saved.
+    - timeout (int): The maximum time (in seconds) to wait for a server response.
+    - buffer (int): Buffer size for reading data in chunks during download (default is 4MB).
+
+    Returns:
+    - str: The path of the downloaded file.
     """
+    
     # Large timeout is necessary as the file may need to be staged from tape
     
     try:
@@ -515,8 +534,14 @@ def untar_file(tar_file, output_dir='.'):
     Extracts a tar file (.tar, .tar.gz, .tar.bz2) to the specified output directory.
 
     Parameters:
+    -----------
     - tar_file: Path to the tar file to extract.
     - output_dir: Directory where the contents will be extracted. Defaults to the current directory.
+
+    Returns:
+    --------
+    None
+
     """
     try:
         # Extract the filename without the '.tar' extension to create a new directory
@@ -533,202 +558,21 @@ def untar_file(tar_file, output_dir='.'):
     except Exception as e:
         print(f"Failed to untar {tar_file}: {e}")
 
-# Latest OG casda_download code 
-def casda_download(credentials, test_catalogue, output_path, timeout_seconds):
+def degrees_to_hms(degrees):
     """
-    Download data from CASDA based on the provided credentials and a test catalogue.
+    Convert RA given in degrees to hours-minutes-seconds.
 
     Parameters:
-    - credentials (str): The path to the file containing CASDA credentials.
-    - test_catalogue (str): The path to the CSV file containing source information.
-    - output_path (str): The directory path where downloaded files will be saved.
-    - timeout_seconds (int): The maximum time (in seconds) to wait for each download request.
-    
+    ----------
+    - degrees (float): The angle in degrees to be converted.
+
     Returns:
-    - None: The function saves downloaded files to the specified output path.
+    --------
+    - tuple: A tuple (h, m, s) where:
+      - h (int): Hours component of RA.
+      - m (int): Minutes component of RA.
+      - s (float): Seconds component of RA.  
     """
-    
-    # Read credentials from the provided file
-    parser = configparser.ConfigParser()
-    parser.read(credentials)
-
-    # Initialize CASDA instance
-    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
-
-    # Read the CSV file and iterate over the 'Source' column
-    with open(test_catalogue, mode='r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-
-        for row in csv_reader:
-            filename = row['Name']  # Access the 'Name' field in the CSV
-            print(f"Querying for: {filename}")
-
-            # Modify the output path dynamically based on the filename
-            dynamic_output_path = os.path.join(output_path, filename)
-            
-            # Check if the directory exists
-            if os.path.exists(dynamic_output_path):
-                print(f"Folder with filename {filename} already exists. Download skipped.")
-                
-                continue  # Skip to the next file after checking for tar files
-
-            # Ensure that the directory is created if it doesn't exist
-            os.makedirs(dynamic_output_path)
-            print(f"Saving files to: {dynamic_output_path}")
-
-            # Perform the TAP query using the filename from the CSV
-            res = tap_query(filename) 
-            url_list = casda.stage_data(res, verbose=True)
-            print(f"Staging data URLs for {filename}")
-
-            # Download files concurrently
-            file_list = []
-            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-                futures = []
-                for url in url_list:
-                    if url.endswith('checksum'):
-                        continue
-                    futures.append(executor.submit(download_file, url=url, check_exists=True, output=dynamic_output_path, timeout=timeout_seconds))
-
-                for future in concurrent.futures.as_completed(futures):
-                    file_list.append(future.result())
-
-            # Once all downloads are complete, untar all tar files in the directory
-            print(f"Untarring files for: {filename}")
-            for file in os.listdir(dynamic_output_path):
-                file_path = os.path.join(dynamic_output_path, file)
-                
-                # Check if the file ends with '.tar' and is a valid tar file
-                if file.endswith('.tar') and tarfile.is_tarfile(file_path):
-                    untar_file(file_path, dynamic_output_path)
-            
-
-# Generating .csv file for input to the bigger pipeline
-def extract_ms_files(input_csv, output_csv, search_path):
-    # Load the original catalogue CSV
-    df = pd.read_csv(input_csv)
-    
-    # Prepare a list to store the output rows
-    output_data = []
-    
-    # Iterate through each row in the input CSV
-    for index, row in df.iterrows():
-        # Get the HIPASS name, RA, DEC, and Vsys from the row
-        name = row['Name']
-        ra = row['RA']
-        dec = row['DEC']
-        vsys = row['Vsys']
-        
-        # Define the directory path to search for .ms files
-        folder_path = os.path.join(search_path, name)
-        
-        # Check if the directory exists
-        if os.path.isdir(folder_path):
-            # List all files in the directory ending with .ms
-            ms_files = [f for f in os.listdir(folder_path) if f.endswith('.ms')]
-            
-            # Add each .ms file to the output data with specified formatting
-            for ms_file in ms_files:
-                # Remove the .ms extension
-                ms_name = ms_file.replace('.ms', '')
-                # Append to output data
-                output_data.append([ms_name, ra, dec, vsys])
-    
-    # Create a DataFrame for the output data
-    output_df = pd.DataFrame(output_data, columns=['Name', 'RA', 'DEC', 'Vsys'])
-    
-    # Save to CSV without the header
-    output_df.to_csv(output_csv, index=False, header=False) 
-
-# Download + Process
-def process_and_download_data(credentials, input_csv, output_path, timeout_seconds, search_path):
-    
-    # Read credentials from the provided file
-    parser = configparser.ConfigParser()
-    parser.read(credentials)
-
-    # Initialize CASDA instance
-    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
-
-    # Prepare a list to store the output rows for .ms files
-    output_data = []
-
-    # Iterate through each row in the input CSV to download data
-    with open(input_csv, mode='r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-
-        for row in csv_reader:
-            name = row['Name']
-            print(f"Querying for: {name}")
-
-            # Modify the output path dynamically based on the filename
-            dynamic_output_path = os.path.join(output_path, name)
-
-            # Check if the directory exists
-            if os.path.exists(dynamic_output_path):
-                print(f"Folder with filename {name} already exists. Download skipped.")
-                continue  # Skip to the next file if the directory already exists
-
-            # Ensure that the directory is created if it doesn't exist
-            os.makedirs(dynamic_output_path)
-            print(f"Saving files to: {dynamic_output_path}")
-
-            # Perform the TAP query using the name from the CSV
-            res = tap_query(name)
-            url_list = casda.stage_data(res, verbose=True)
-            print(f"Staging data URLs for {name}")
-
-            # Download files concurrently
-            file_list = []
-            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-                futures = []
-                for url in url_list:
-                    if url.endswith('checksum'):
-                        continue
-                    futures.append(executor.submit(download_file, url=url, check_exists=True, output=dynamic_output_path, timeout=timeout_seconds))
-
-                for future in concurrent.futures.as_completed(futures):
-                    file_list.append(future.result())
-
-            # Once all downloads are complete, untar all tar files in the directory
-            print(f"Untarring files for: {name}")
-            for file in os.listdir(dynamic_output_path):
-                file_path = os.path.join(dynamic_output_path, file)
-
-                # Check if the file ends with '.tar' and is a valid tar file
-                if file.endswith('.tar') and tarfile.is_tarfile(file_path):
-                    untar_file(file_path, dynamic_output_path)
-
-    # After all downloads, perform the extraction of .ms files
-    df = pd.read_csv(input_csv)
-    
-    for index, row in df.iterrows():
-        name = row['Name']
-        ra = row['RA']
-        dec = row['DEC']
-        vsys = row['Vsys']
-
-        print(f"Generating I/P .csv file for {index + 1}: Name={name}, RA={ra}, DEC={dec}, Vsys={vsys}")
-
-        folder_path = os.path.join(search_path, name)
-
-        if os.path.isdir(folder_path):
-            ms_files = [f for f in os.listdir(folder_path) if f.endswith('.ms')]
-
-            for ms_file in ms_files:
-                ms_name = ms_file.replace('.ms', '')
-                output_data.append([ms_name, ra, dec, vsys])
-
-    output_df = pd.DataFrame(output_data, columns=['Name', 'RA', 'DEC', 'Vsys'])
-    output_csv_path = os.path.join(output_path, 'hipass_ms_file_details.csv')
-    output_df.to_csv(output_csv_path, index=False, header=False)
-    print(f"Output saved to {output_csv_path}")
-
-    return output_csv_path
-
-# 30/10/24
-def degrees_to_hms(degrees):
-    """Convert degrees to hours-minutes-seconds."""
     hours = degrees / 15.0  # Convert degrees to hours
     h = int(hours)  # Integer part of hours
     m = int((hours - h) * 60)  # Integer part of minutes
@@ -737,23 +581,48 @@ def degrees_to_hms(degrees):
     return h, m, s
 
 def degrees_to_dms(degrees):
-    """Convert degrees to degrees-minutes-seconds."""
+    """
+    Convert DEC given in degrees to degrees-minutes-seconds.
+
+    Parameters:
+    ----------
+    - degrees (float): The angle in degrees to be converted.
+
+    Returns:
+    --------
+    - tuple: A tuple (d, m, s) where:
+      - d (int): Degrees component of the angle.
+      - m (int): Minutes component of the angle.
+      - s (float): Seconds component of the angle.
+    """
     d = int(degrees)  # Integer part of degrees
     m = int(abs(degrees - d) * 60)  # Integer part of minutes
     s = (abs(degrees) - abs(d) - m / 60.0) * 3600  # Seconds
 
     return d, m, s
 
-# 30/10/24
 # HIPASS Query with filename pattern to extract RA, DEC and Vsys
 HIPASS_QUERY_RA_DEC_VSYS = (
     "SELECT RAJ2000, DEJ2000, VSys FROM \"J/AJ/128/16/table2\" WHERE "
     "HIPASS LIKE '$filename'"
 )
+# Query on Topcat
+# select RAJ2000, DEJ2000, VSys from "J/AJ/128/16/table2" where HIPASS like 'J1318-21'
 
 URL_2 = 'http://tapvizier.cds.unistra.fr/TAPVizieR/tap' 
-
+# TAP Query function to get the RA, DEC and Vsys values from Vizier table 
 def tap_query_RA_DEC_VSYS(filename):
+    """
+    Executes a TAP query to retrieve Right Ascension (RA), Declination (DEC),
+    and systemic velocity (VSYS) information based on the provided filename.
+    
+    Parameters:
+    - filename (str): The name of the file, expected to contain 'HIPASS' if applicable.
+
+    Returns:
+    - Table: The query results in an Astropy Table format.
+    """
+
     # Check if 'HIPASS' is in the filename and extract the portion after it
     if 'HIPASS' in filename:
         extracted_name = filename[filename.index('HIPASS') + len('HIPASS'):]  # Get the part after 'HIPASS'
@@ -770,11 +639,22 @@ def tap_query_RA_DEC_VSYS(filename):
     print(f"Query result: {res}")
     return res
 
-# Query on Topcat
-# select RAJ2000, DEJ2000, VSys from "J/AJ/128/16/table2" where HIPASS like 'J1318-21'
-
-# 30/10/24: Everything happens in the same folder 
+# check and download data 
 def process_and_download_data_same_folder(credentials, input_csv, processed_catalogue, timeout_seconds):
+    """
+    Processes an input catalogue to check for existing sources, queries unprocessed sources, 
+    retrieves relevant data, stages files for download, and saves the processed details to a CSV.
+
+    Parameters:
+    - credentials (str): Path to the CASDA credentials file.
+    - input_csv (str): Path to the input CSV file with source names.
+    - processed_catalogue (str): Path to the catalogue of already processed sources.
+    - timeout_seconds (int): Timeout setting in seconds for download operations.
+
+    Returns:
+    - None: Outputs the results to 'hipass_ms_file_details.csv' in the working directory.
+    """
+    
     # Read credentials from the provided file
     parser = configparser.ConfigParser()
     parser.read(credentials)
@@ -826,10 +706,24 @@ def process_and_download_data_same_folder(credentials, input_csv, processed_cata
             print(f"Staging data URLs for {name}")
 
             files = res['filename']
+            filename_counts = {}  # Dictionary to keep track of duplicate counts for each file
             for file in files:
-                file_no_tar = file.replace('.tar', '')
-                print(file_no_tar)
-                output_data.append([file_no_tar, f"{ra_h}: {ra_m}: {ra_s:.2f}", f"{dec_d}: {dec_m}: {dec_s:.2f}", vsys])
+                # Remove the .tar extension from the filename
+                file_no_tar = file.replace('.ms.tar', '')
+            
+                # Check if the filename already exists in the dictionary
+                if file_no_tar in filename_counts:
+                    # Increment the counter for this filename
+                    filename_counts[file_no_tar] += 1
+                    # Insert the counter before the .ms suffix
+                    new_filename = f"{file_no_tar}_{filename_counts[file_no_tar]}"
+                else:
+                    # First occurrence of the filename, set counter to 1
+                    filename_counts[file_no_tar] = 1
+                    new_filename = file_no_tar  # Keep the original filename on the first occurrence
+            
+                print(f"File {new_filename} added to i/p for pipeline part B")
+                output_data.append([new_filename, f"{ra_h}: {ra_m}: {ra_s:.2f}", f"{dec_d}: {dec_m}: {dec_s:.2f}", vsys])
             
             # Stage data for download
             url_list = casda.stage_data(res, verbose=True)
@@ -853,8 +747,333 @@ def process_and_download_data_same_folder(credentials, input_csv, processed_cata
                     untar_file(file, '.')
 
     output_df = pd.DataFrame(output_data, columns=['Name', 'RA', 'DEC', 'Vsys'])
-    output_csv_path = os.path.join('.', 'hipass_ms_file_details.csv')
-    output_df.to_csv(output_csv_path, index=False, header=False)
-    print(f"Output saved to {output_csv_path}")
+    output_csv = os.path.join('.', 'hipass_ms_file_details.csv')
+    output_df.to_csv(output_csv, index=False, header=False)
+    print(f"Output saved to {output_csv}")
 
-    return output_csv_path
+# Test imager 
+def imager():
+    """
+    Generates a unique filename for the imager output with a 'image_N.fits' format and creates the file.
+
+    Parameters:
+    - None
+    
+    Returns:
+    - None: Prints a confirmation message with the filename created.
+    """
+
+    # Base filename
+    base_name = "image"
+    extension = ".fits"
+    filename = f"{base_name}{extension}"
+    counter = 1
+
+    # Check if the file already exists and find the next available filename
+    while os.path.exists(filename):
+        counter += 1
+        filename = f"{base_name}_{counter}{extension}"
+    
+    # Create the new file
+    with open(filename, "w") as file:
+        file.write("")
+
+    print("imager step complete")
+    print(f"Output file created: {filename}")
+
+# Test imcontsub 
+def imcontsub():
+    """
+    Generates a unique filename for the imcontsub output with a 'image_N.contsub.fits' extension and creates the file.
+
+    Parameters:
+    - None
+    
+    Returns:
+    - None: Prints a confirmation message with the filename created.
+    """
+
+    # Base filename
+    base_name = "image"
+    extension = ".contsub.fits"
+    filename = f"{base_name}{extension}"
+    counter = 1
+
+    # Check if the file already exists and find the next available filename
+    while os.path.exists(filename):
+        counter += 1
+        filename = f"{base_name}_{counter}{extension}"
+    
+    # Create the new file
+    with open(filename, "w") as file:
+        file.write("")
+
+    print("imcontsub step complete")
+    print(f"Output file created: {filename}")
+
+# Test linmos
+def linmos():
+    """
+    Generates a unique filename for the imcontsub output with a 'image_N.contsub_holo.fits' extension and creates the file.
+
+    Parameters:
+    - None
+    
+    Returns:
+    - None: Prints a confirmation message with the filename created.
+    """
+
+    # Base filename
+    base_name = "image"
+    extension = ".contsub_holo.fits"
+    filename = f"{base_name}{extension}"
+    counter = 1
+
+    # Check if the file already exists and find the next available filename
+    while os.path.exists(filename):
+        counter += 1
+        filename = f"{base_name}_{counter}{extension}"
+    
+    # Create the new file
+    with open(filename, "w") as file:
+        file.write("")
+
+    print("linmos step complete")
+    print(f"Output file created: {filename}")
+
+# Test mosaic
+def mosaic():
+    """
+    Generates unique filenames for the final mosaic output and corresponding weights file, 
+    both with a '.10arc.final_mosaic.fits' extension, and creates each file.
+
+    Parameters:
+    - None
+    
+    Returns:
+    - None: Prints confirmation messages with the filenames created.
+    """
+
+    # Base filename
+    base_name = "image"
+    extension = ".10arc.final_mosaic.fits"
+    filename = f"{base_name}{extension}"
+    counter = 1
+    
+    # Check if the file already exists and find the next available filename
+    while os.path.exists(filename):
+        counter += 1
+        filename = f"{base_name}_{counter}{extension}"
+    
+    # Create the new file
+    with open(filename, "w") as file:
+        file.write("")
+
+    # Repeat the same for weights 
+    weights_name = 'weights'
+    weights_filename = f"{weights_name}{extension}"
+    weights_counter = 1
+
+    # Check if the file already exists and find the next available filename
+    while os.path.exists(weights_filename):
+        weights_counter += 1
+        weights_filename = f"{weights_name}_{weights_counter}{extension}"
+    
+    # Create the new file
+    with open(weights_filename, "w") as file:
+        file.write("")
+
+    print("mosaic step complete")
+    print(f"Output file created: {filename}")
+    print(f"Output file created: {weights_filename}")
+
+
+# Code for the downloading evaluation Files workflow
+
+# HIPASS Query with filename pattern 
+HIPASS_QUERY_FILENAME = (
+    "SELECT * FROM ivoa.obscore WHERE "
+    "filename LIKE '$filename%'"
+)
+
+URL = "https://casda.csiro.au/casda_vo_tools/tap"
+
+# TAP Query function
+def tap_query_filename_visibility(filename):
+    """
+    Queries the CASDA TAP service for a given filename.
+    
+    Args:
+    - filename (str): The name of the file to query.
+    
+    Returns:
+    - res (astropy.Table): Table with query result (files to download).
+    """ 
+
+    query = HIPASS_QUERY_FILENAME.replace("$filename", filename)
+    print(f"TAP Query: {query}")
+
+    casdatap = TapPlus(url=URL, verbose=False)
+    job = casdatap.launch_job_async(query)
+    res = job.get_results()
+    print(f"Query result: {res}")
+    return res
+
+# HIPASS Query with SBID pattern 
+HIPASS_QUERY_sbid = (
+    "SELECT * FROM casda.observation_evaluation_file WHERE "
+    "sbid = '$sbid'"
+)
+
+URL = "https://casda.csiro.au/casda_vo_tools/tap"
+
+# TAP Query function
+def tap_query_sbid_evaluation(sbid):
+    """
+    Queries the CASDA TAP service for a given filename.
+    
+    Args:
+    - sbid (int): The sbid to query.
+    
+    Returns:
+    - res (astropy.Table): Table with query result (files to download).
+    """ 
+
+    query = HIPASS_QUERY_sbid.replace("$sbid", str(sbid))  # Convert sbid to string
+    print(f"TAP Query: {query}")
+
+    casdatap = TapPlus(url=URL, verbose=False)
+    job = casdatap.launch_job_async(query)
+    res = job.get_results()
+    print(f"Query result: {res}")
+    return res
+
+# test versions (without implementing download)
+logging.basicConfig()
+logging.getLogger().setLevel(logging.INFO)
+
+DID_URL = "https://casda.csiro.au/casda_data_access/metadata/evaluationEncapsulation"
+EVAL_URL = "https://data.csiro.au/casda_vo_proxy/vo/datalink/links?ID="
+
+def download_evaluation_files(filename, project_code, credentials_path):
+
+    # Step 1: Create sbid_visibility_dict 
+    sbid_visibility_dict = {}
+    res = tap_query_filename_visibility(filename)
+    sbid_visibility_dict = {}
+    for obs_id, visibility in zip(obs_id_list, visibility_list):
+        sbid_visibility_dict.setdefault(obs_id, []).append(visibility)
+
+    # Update the same dictionary by modifying keys
+    sbid_visibility_dict = {key.replace('ASKAP-', ''): value for key, value in sbid_visibility_dict.items()}
+    
+    # Step 2: Create sbid_evaluation_dict from sbid_visibility_dict
+    # Initialize the dictionary to store results
+    sbid_evaluation_dict = {}
+
+    # Extract unique SBIDs from sbid_visibility_dict
+    unique_sbid_set = sbid_visibility_dict.keys()
+
+    for sbid in unique_sbid_set:
+        # Run the TAP query for the current SBID
+        res = tap_query_sbid_evaluation(sbid)
+
+        # Check if the result is not empty
+        if len(res) > 0:
+            # Convert the result to an Astropy Table for easier processing
+            table = Table(res)
+
+            # Ensure the necessary columns exist
+            if "filename" in table.colnames and "filesize" in table.colnames:
+                # Find the row with the largest filesize
+                largest_file_row = table[table['filesize'].argmax()]
+                filename = largest_file_row['filename']  # Get the filename
+            else:
+                filename = None  # If columns are missing, set to None
+        else:
+            filename = None  # If query result is empty, set to None
+
+        # Add the SBID and its corresponding filename to the dictionary
+        sbid_evaluation_dict[sbid] = filename
+
+    # Convert np.str_ values to plain strings in sbid_evaluation_dict
+    sbid_evaluation_dict = {key: str(value) for key, value in sbid_evaluation_dict.items()}
+
+    # Print the two dictionaries 
+    # Print the updated sbid_visibility_dict
+    print("sbid_visibility_dict:")
+    print(sbid_visibility_dict)
+    
+    # Print the updated dictionary
+    print("sbid_evaluation_dict:")
+    print(sbid_evaluation_dict)
+
+    # Step 3: Downloading the required evaluation files
+    # Read credentials from the provided file
+    parser = configparser.ConfigParser()
+    parser.read(credentials_path)
+    username = parser["CASDA"]["username"]
+    password = parser["CASDA"]["password"]
+
+    # Initialize CASDA instance
+    casda = Casda(username, password)
+
+    # Iterate through the dictionaries
+    for sbid, required_filename in sbid_evaluation_dict.items():
+        print(f"Processing SBID: {sbid}")
+
+        # Remove 'ASKAP-' prefix if present
+        sbid = str(sbid).replace('ASKAP-', '')
+
+        # Fetch the DID (data identification) for the sbid and project code
+        url = f"{DID_URL}?projectCode={project_code}&sbid={sbid}"
+        logging.info(f"Requesting data from: {url}")
+        res = requests.get(url)
+        if res.status_code != 200:
+            raise Exception(f"Error fetching data: {res.reason} (HTTP {res.status_code})")
+
+        logging.info(f"Response received: {res.json()}")
+
+        # Filter evaluation files
+        evaluation_files = [f for f in res.json() if "evaluation" in f]
+        evaluation_files.sort()
+
+        if not evaluation_files:
+            logging.warning(f"No evaluation files found for projectCode={project_code} and sbid={sbid}.")
+            return
+
+        logging.info(f"Found evaluation files: {evaluation_files}")
+
+        # Prepare the table for staging
+        t = Table()
+        t["access_url"] = [f"{EVAL_URL}{f}" for f in evaluation_files]
+
+        # Stage files for download
+        url_list = casda.stage_data(t)
+        logging.info(f"Staging files: {url_list}")
+
+        # Check which files need to be downloaded and filter by required filename
+        download_url_list = []
+        for url in url_list:
+            filename = url.split("?")[0].rsplit("/", 1)[1]
+            if filename == required_filename:
+                download_url_list.append(url)
+
+        # View the download_url_list
+        print("Files staged for download:")
+        for idx, url in enumerate(download_url_list, start=1):
+            print(f"- link {idx}: {url}")
+
+        # Download the required files
+        # Uncomment this section for actual downloading
+        # Define the download directory as the current working directory
+        download_dir = os.getcwd()
+        
+        # Download the required files
+        if download_url_list:
+            print(f"Downloading files to: {download_dir}")
+            filelist = casda.download_files(download_url_list, savedir=download_dir)
+            logging.info(f"Downloaded files: {filelist}")
+            logging.info(f"All files have been downloaded to {download_dir}.")
+        else:
+            logging.warning("No files staged for download.")
