@@ -1,6 +1,6 @@
 """
 Start date: 10/04/24
-Description: All functions neeeded for WALLABY hires pipeline
+Description: All functions neeeded for the WALLABY hires pipeline to process the HIPASS sources
 """
 
 # Importing all the required libraries 
@@ -960,7 +960,13 @@ def download_evaluation_files(filename, project_code, credentials_path):
     # Step 1: Create sbid_visibility_dict 
     sbid_visibility_dict = {}
     res = tap_query_filename_visibility(filename)
-    sbid_visibility_dict = {}
+
+    obs_id_list = list(res['obs_id']) 
+    obs_id_list = [str(item) for item in obs_id_list]
+
+    visibility_list = list(res['filename'])
+    visibility_list = [str(item) for item in visibility_list]
+   
     for obs_id, visibility in zip(obs_id_list, visibility_list):
         sbid_visibility_dict.setdefault(obs_id, []).append(visibility)
 
