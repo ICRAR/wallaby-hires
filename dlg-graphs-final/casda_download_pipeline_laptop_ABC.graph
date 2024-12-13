@@ -1713,8 +1713,8 @@
             "key": -16,
             "name": "CimagerStaticNew",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
-            "x": 802.8426044480382,
-            "y": 1089.2580717564263,
+            "x": 800.9137630007934,
+            "y": 1122.048376359582,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -3966,10 +3966,10 @@
             "color": "#0059a5",
             "drawOrderHint": 0,
             "key": -4,
-            "name": "process_and_download_data_same_folder",
+            "name": "process_and_download",
             "description": "Reads a CSV file and returns its contents as a list of lists.\n    ",
-            "x": -101.51384667747674,
-            "y": 465.4644059147034,
+            "x": -39.79092036565338,
+            "y": 465.4644059147033,
             "radius": 25,
             "collapsed": false,
             "subject": null,
@@ -4041,7 +4041,7 @@
                     "encoding": "pickle",
                     "id": "b83ec09f-f0c0-4787-a914-ca3b7bed157a",
                     "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
+                    "usage": "InputPort"
                 },
                 {
                     "name": "output_csv_path",
@@ -4058,6 +4058,22 @@
                     "id": "7e7d5d14-554c-4d10-9980-dfe186aefd9f",
                     "parameterType": "ComponentParameter",
                     "usage": "OutputPort"
+                },
+                {
+                    "name": "project_code",
+                    "value": "AS102",
+                    "defaultValue": "",
+                    "description": "",
+                    "readonly": false,
+                    "type": "String",
+                    "precious": false,
+                    "options": [],
+                    "positional": false,
+                    "keyAttribute": true,
+                    "encoding": "pickle",
+                    "id": "f95d57d5-c1a6-4b41-ab8a-8e56260c4f9b",
+                    "parameterType": "ComponentParameter",
+                    "usage": "InputPort"
                 },
                 {
                     "name": "input_parser",
@@ -4169,8 +4185,8 @@
                 },
                 {
                     "name": "func_name",
-                    "value": "wallaby_hires.process_and_download_data_same_folder",
-                    "defaultValue": "wallaby_hires.process_and_download_data",
+                    "value": "wallaby_hires.process_and_download",
+                    "defaultValue": "wallaby_hires.process_and_download",
                     "description": "Complete import path of function",
                     "readonly": true,
                     "type": "String",
