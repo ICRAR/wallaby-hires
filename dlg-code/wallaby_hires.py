@@ -3,25 +3,46 @@ Start date: 10/04/24
 Description: All functions neeeded for the WALLABY hires pipeline to process the HIPASS sources
 """
 
-## Importing required modules 
+# Importing required modules
+
+# Used here for functions to interact with the operating system such as os.path, os.mkdirs, os.getcwd etc 
 import os
+
+# Access and interact with Python runtime environment
 import sys
-import logging
+
+# To parse and manipulate JSON data
 import json
+
+# To fetch or handle URLS and their contents 
 import urllib
+import urllib.request
+
+# To support asynchronous programming.
 import asyncio
+
+# To parse command-line arguments 
 import argparse
+
+# Core package for astronomy & astrophysics 
 import astropy
+from astropy.table import Table
+
+# To work with config files 
 import configparser
+
+# Interface with TAP (Table Access Protocol) services for querying databases
 from astroquery.utils.tap.core import TapPlus
+
+# Interface with CASDA i.e. CSIRO ASKAP Data Archive 
 from astroquery.casda import Casda
+
+# To execute tasks asynchronously with threads or processes
 import concurrent.futures
 
 # Used here to see how much time a given code segment took to run 
 import time
-from astropy.table import Table
 
-import urllib.request
 
 # Used here to work with CSV files 
 import csv
@@ -34,9 +55,11 @@ import tarfile
 
 import requests
 
-# Used here 
+# Used here to create a copy of a given dictionary 
 import copy
 
+# Provides a flexible framework for logging messages
+import logging
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
 
@@ -811,26 +834,26 @@ def process_and_download_data_same_folder(credentials, input_csv, processed_cata
             
             # COMMENT: this section on/off while testing on laptop
             
-            # # Stage data for download
-            # url_list = casda.stage_data(res, verbose=True)
-            # print(f"Staging data URLs for {name}")
+            # Stage data for download
+            url_list = casda.stage_data(res, verbose=True)
+            print(f"Staging data URLs for {name}")
 
-            # # Download files concurrently in the current working directory
-            # file_list = []
-            # with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-            #     futures = [
-            #         executor.submit(download_file, url=url, check_exists=True, output='.', timeout=timeout_seconds)
-            #         for url in url_list if not url.endswith('checksum')
-            #     ]
+            # Download files concurrently in the current working directory
+            file_list = []
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+                futures = [
+                    executor.submit(download_file, url=url, check_exists=True, output='.', timeout=timeout_seconds)
+                    for url in url_list if not url.endswith('checksum')
+                ]
 
-            #     for future in concurrent.futures.as_completed(futures):
-            #         file_list.append(future.result())
+                for future in concurrent.futures.as_completed(futures):
+                    file_list.append(future.result())
 
-            # # Untar files in the current working directory
-            # print(f"Untarring files for: {name}")
-            # for file in file_list:
-            #     if file.endswith('.tar') and tarfile.is_tarfile(file):
-            #         untar_file(file, '.')
+            # Untar files in the current working directory
+            print(f"Untarring files for: {name}")
+            for file in file_list:
+                if file.endswith('.tar') and tarfile.is_tarfile(file):
+                    untar_file(file, '.')
 
     output_df = pd.DataFrame(output_data, columns=['Name', 'RA', 'DEC', 'Vsys'])
     output_csv = os.path.join('.', 'hipass_ms_file_details.csv')
@@ -972,7 +995,6 @@ def mosaic():
     print("mosaic step complete")
     print(f"Output file created: {filename}")
     print(f"Output file created: {weights_filename}")
-
 
 # Code for the downloading evaluation Files workflow
 
@@ -1232,7 +1254,7 @@ def process_and_download(credentials, input_csv, processed_catalogue, timeout_se
                 for idx, url in enumerate(download_url_list, start=1):
                     print(f"- link {idx}: {url}")
 
-                # Comment this section while testing on laptop 
+                # COMMENT: this section on/off while testing on laptop (DOWNLOADS evaluation files)
                 # Download the required files
                 # Define the download directory as the current working directory
                 download_dir = os.getcwd()
@@ -1267,7 +1289,7 @@ def process_and_download(credentials, input_csv, processed_catalogue, timeout_se
                 print(f"Extracted '{tar_file}' to '{tar_file_folder_name}'")
 
             # Get RA, DEC, and Vsys from the query
-            res = tap_query_RA_DEC_VSYS(name)  
+            res = tap_query_RA_DEC_VSYS(name) 
 
             # Assuming res returns a DataFrame with the required values, extract them
             if not res or len(res) == 0:
@@ -1309,29 +1331,28 @@ def process_and_download(credentials, input_csv, processed_catalogue, timeout_se
                 print(f"File {new_filename} added to i/p for pipeline part B")
                 output_data.append([new_filename, f"{ra_h}: {ra_m}: {ra_s:.2f}", f"{dec_d}: {dec_m}: {dec_s:.2f}", vsys])
             
-            # COMMENT: this section on/off while testing on laptop
+            # COMMENT: this section on/off while testing on laptop (DOWNLOADS .ms files)
             
-            # # Stage data for download
-            # url_list = casda.stage_data(res, verbose=True)
-            # print(f"Staging data URLs for {name}")
+            # Stage data for download
+            url_list = casda.stage_data(res, verbose=True)
+            print(f"Staging data URLs for {name}")
 
-            # # Download files concurrently in the current working directory
-            # file_list = []
-            # with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-            #     futures = [
-            #         executor.submit(download_file, url=url, check_exists=True, output='.', timeout=timeout_seconds)
-            #         for url in url_list if not url.endswith('checksum')
-            #     ]
+            # Download files concurrently in the current working directory
+            file_list = []
+            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+                futures = [
+                    executor.submit(download_file, url=url, check_exists=True, output='.', timeout=timeout_seconds)
+                    for url in url_list if not url.endswith('checksum')
+                ]
 
-            #     for future in concurrent.futures.as_completed(futures):
-            #         file_list.append(future.result())
+                for future in concurrent.futures.as_completed(futures):
+                    file_list.append(future.result())
 
-            # # Untar files in the current working directory
-            # print(f"Untarring files for: {name}")
-            # for file in file_list:
-            #     if file.endswith('.tar') and tarfile.is_tarfile(file):
-            #         untar_file(file, '.')
-
+            # Untar files in the current working directory
+            print(f"Untarring files for: {name}")
+            for file in file_list:
+                if file.endswith('.tar') and tarfile.is_tarfile(file):
+                    untar_file(file, '.')
 
     # Creates a df with with filename, RA, DEC and System Velocity 
     output_df = pd.DataFrame(output_data, columns=['Name', 'RA', 'DEC', 'Vsys'])
