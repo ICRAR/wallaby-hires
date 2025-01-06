@@ -43,7 +43,6 @@ import concurrent.futures
 # Used here to see how much time a given code segment took to run 
 import time
 
-
 # Used here to work with CSV files 
 import csv
 
