@@ -1,6 +1,6 @@
 """
 Start date: 10/04/24
-Description: All functions neeeded for the WALLABY hires pipeline to process the HIPASS sources
+Description: All functions neeeded for the WALLABY hires pipeline to process the HIPASS sources. 
 """
 
 # Importing required modules
@@ -336,7 +336,10 @@ def read_and_process_csv_file_output_all_dynamic_parset(filename: str) -> list:
     with open(filename, 'r') as file:
         # Create a CSV reader
         reader = csv.reader(file)
-        
+
+        # Skip the header row
+        next(reader)
+
         # Read and process each row, including the header
         for row in reader:
             
@@ -566,6 +569,7 @@ def download_file(url, check_exists, output, timeout, buffer=4194304):
     the filename to avoid overwriting.
 
     Parameters:
+    -----------
     - url (str): The URL of the file to download.
     - check_exists (bool): If True, checks if the file already exists in the 
       output directory and has the same size; skips download if so.
@@ -574,6 +578,7 @@ def download_file(url, check_exists, output, timeout, buffer=4194304):
     - buffer (int): Buffer size for reading data in chunks during download (default is 4MB).
 
     Returns:
+    --------
     - str: The path of the downloaded file.
     """
     
@@ -723,9 +728,11 @@ def tap_query_RA_DEC_VSYS(filename):
     and systemic velocity (VSYS) information based on the provided filename.
     
     Parameters:
+    -----------
     - filename (str): The name of the file, expected to contain 'HIPASS' if applicable.
 
     Returns:
+    --------
     - Table: The query results in an Astropy Table format.
     """
 
@@ -752,12 +759,14 @@ def process_and_download_data_same_folder(credentials, input_csv, processed_cata
     retrieves relevant data, stages files for download, and saves the processed details to a CSV.
 
     Parameters:
+    -----------
     - credentials (str): Path to the CASDA credentials file.
     - input_csv (str): Path to the input CSV file with source names.
     - processed_catalogue (str): Path to the catalogue of already processed sources.
     - timeout_seconds (int): Timeout setting in seconds for download operations.
 
     Returns:
+    --------
     - None: Outputs the results to 'hipass_ms_file_details.csv' in the working directory.
     """
     
@@ -865,9 +874,11 @@ def imager():
     Generates a unique filename for the imager output with a 'image_N.fits' format and creates the file.
 
     Parameters:
+    -----------
     - None
     
     Returns:
+    --------
     - None: Prints a confirmation message with the filename created.
     """
 
@@ -895,9 +906,11 @@ def imcontsub():
     Generates a unique filename for the imcontsub output with a 'image_N.contsub.fits' extension and creates the file.
 
     Parameters:
+    -----------
     - None
     
     Returns:
+    --------
     - None: Prints a confirmation message with the filename created.
     """
 
@@ -925,9 +938,11 @@ def linmos():
     Generates a unique filename for the imcontsub output with a 'image_N.contsub_holo.fits' extension and creates the file.
 
     Parameters:
+    -----------
     - None
     
     Returns:
+    --------
     - None: Prints a confirmation message with the filename created.
     """
 
@@ -956,9 +971,11 @@ def mosaic():
     both with a '.10arc.final_mosaic.fits' extension, and creates each file.
 
     Parameters:
+    -----------
     - None
     
     Returns:
+    --------
     - None: Prints confirmation messages with the filenames created.
     """
 
@@ -1014,6 +1031,7 @@ def tap_query_filename_visibility(filename):
     - filename (str): The name of the file to query.
     
     Returns:
+    --------
     - res (astropy.Table): Table with query result (files to download).
     """ 
 
@@ -1043,6 +1061,7 @@ def tap_query_sbid_evaluation(sbid):
     - sbid (int): The sbid to query.
     
     Returns:
+    --------
     - res (astropy.Table): Table with query result (files to download).
     """ 
 
@@ -1070,6 +1089,7 @@ def process_and_download(credentials, input_csv, processed_catalogue, timeout_se
     retrieves relevant data, stages files for download, and saves the processed details to a CSV.
 
     Parameters:
+    -----------
     - credentials (str): Path to the CASDA credentials file.
     - input_csv (str): Path to the input CSV file with source names.
     - processed_catalogue (str): Path to the catalogue of already processed sources.
@@ -1077,6 +1097,7 @@ def process_and_download(credentials, input_csv, processed_catalogue, timeout_se
     - project_code (str): Code of the project. 
 
     Returns:
+    --------
     - None: Outputs the results to 'hipass_ms_file_details.csv' in the working directory.
     """
     
@@ -1539,10 +1560,12 @@ def filter_unprocessed_data(input_csv, processed_catalogue):
     and save the unprocessed details to a new CSV.
 
     Parameters:
+    -----------
     - input_csv (str): Path to the input CSV file with source names.
     - processed_catalogue (str): Path to the catalogue of already processed sources.
 
     Returns:
+    --------
     - None: Outputs the unprocessed sources to 'test_catalogue_unprocessed.csv' in the working directory.
     """
     # Load the processed catalogue to check for already processed sources
@@ -1565,6 +1588,7 @@ def process_data(credentials, input_csv:str, processed_catalogue, timeout_second
     Processes an input catalogue of unprocessed sources to retrieve relevant data, and saves the processed details to a CSV.
 
     Parameters:
+    -----------
     - credentials (str): Path to the CASDA credentials file.
     - input_csv (str): Path to the input CSV file with source names.
     - processed_catalogue (str): Path to the catalogue of already processed sources.
@@ -1572,6 +1596,7 @@ def process_data(credentials, input_csv:str, processed_catalogue, timeout_second
     - project_code (str): Code of the project. 
 
     Returns:
+    --------
     - None: Outputs the results to 'hipass_ms_file_details.csv' in the working directory.
     """
     
@@ -1765,6 +1790,7 @@ def download_data_ms(credentials, input_csv:str, processed_catalogue, timeout_se
     Downloads and untars the .ms files for a given HIPASS source. 
     
     Parameters:
+    -----------
     - credentials (str): Path to the CASDA credentials file.
     - input_csv (str): Path to the input CSV file with source names.
     - processed_catalogue (str): Path to the catalogue of already processed sources.
@@ -1772,6 +1798,7 @@ def download_data_ms(credentials, input_csv:str, processed_catalogue, timeout_se
     - project_code (str): Code of the project. 
 
     Returns:
+    --------
     - None
     """
     
@@ -1836,11 +1863,12 @@ def download_data_ms(credentials, input_csv:str, processed_catalogue, timeout_se
 
     print(f".ms files downloaded")
 
-def download_data_eval(credentials, input_csv:str, processed_catalogue, timeout_seconds, project_code):
+def download_data_eval(credentials, input_csv, processed_catalogue, timeout_seconds, project_code):
     """
     Downloads and untars the evaluation files for a given HIPASS source. 
 
     Parameters:
+    -----------
     - credentials (str): Path to the CASDA credentials file.
     - input_csv (str): Path to the input CSV file with source names.
     - processed_catalogue (str): Path to the catalogue of already processed sources.
@@ -1848,6 +1876,7 @@ def download_data_eval(credentials, input_csv:str, processed_catalogue, timeout_
     - project_code (str): Code of the project. 
 
     Returns:
+    --------
     - None
     """
     
@@ -1867,7 +1896,7 @@ def download_data_eval(credentials, input_csv:str, processed_catalogue, timeout_
     processed_catalogue = pd.read_csv(processed_catalogue) 
     processed_sources = set(processed_catalogue['Name']) 
 
-    with open(un_processed_csv, mode='r') as csv_file:
+    with open(input_csv, mode='r') as csv_file:
         csv_reader = csv.DictReader(csv_file)
 
         # For every row i.e. HIPASS source 
@@ -2027,10 +2056,12 @@ def process_data_1(credentials, input_csv):
     Processes an input catalogue of unprocessed sources to retrieve relevant data, and saves the processed details to a CSV.
 
     Parameters:
+    -----------
     - credentials (str): Path to the CASDA credentials file.
     - input_csv (str): Path to the input CSV file with source names.
 
     Returns:
+    --------
     - None: Outputs the results to 'hipass_ms_file_details.csv' in the working directory.
     """
     
@@ -2188,11 +2219,13 @@ def download_data_ms_1(credentials, input_csv, timeout_seconds):
     Downloads and untars the .ms files for a given HIPASS source. 
     
     Parameters:
+    -----------
     - credentials (str): Path to the CASDA credentials file.
     - input_csv (str): Path to the input CSV file with source names.
     - timeout_seconds (int): Timeout setting in seconds for download operations.
 
     Returns:
+    --------
     - None
     """
     
@@ -2245,11 +2278,13 @@ def download_data_eval_1(credentials, input_csv, project_code):
     Downloads and untars the evaluation files for a given HIPASS source. 
 
     Parameters:
+    -----------
     - credentials (str): Path to the CASDA credentials file.
     - input_csv (str): Path to the input CSV file with source names.
     - project_code (str): Code of the project. 
 
     Returns:
+    --------
     - None
     """
     
@@ -2400,6 +2435,7 @@ def download_data_ms_returns_urls(credentials, input_csv, processed_catalogue, t
     Downloads and untars the .ms files for a given HIPASS source. 
     
     Parameters:
+    -----------
     - credentials (str): Path to the CASDA credentials file.
     - input_csv (str): Path to the input CSV file with source names.
     - processed_catalogue (str): Path to the catalogue of already processed sources.
@@ -2407,6 +2443,7 @@ def download_data_ms_returns_urls(credentials, input_csv, processed_catalogue, t
     - project_code (str): Code of the project. 
 
     Returns:
+    --------
     - List of urls corresponding to the .ms that need to be downloaded.
     """
     
