@@ -848,7 +848,7 @@ def process_and_download_data_same_folder(credentials, input_csv, processed_cata
 
             # Download files concurrently in the current working directory
             file_list = []
-            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
                 futures = [
                     executor.submit(download_file, url=url, check_exists=True, output='.', timeout=timeout_seconds)
                     for url in url_list if not url.endswith('checksum')
@@ -1362,7 +1362,7 @@ def process_and_download(credentials, input_csv, processed_catalogue, timeout_se
 
             # Download files concurrently in the current working directory
             file_list = []
-            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
                 futures = [
                     executor.submit(download_file, url=url, check_exists=True, output='.', timeout=timeout_seconds)
                     for url in url_list if not url.endswith('checksum')
@@ -1842,8 +1842,8 @@ def download_data_ms(credentials, input_csv:str, processed_catalogue, timeout_se
             file_list = []
             
             # ThreadPoolExecuter created with a maximum of N threads, meaning upto N file downloads can happen simultaneously
-            # Test max_worker values: 4, 6, 12, 16, 32, 64 
-            with concurrent.futures.ThreadPoolExecutor(max_workers=16) as executor:
+            # Test max_worker values: 4, 6, 12, 16, 32, 64; keep it at max_workers=10
+            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
                 
                 # List of futures, where each future represents a task to be submitted to the executor 
                 futures = [
@@ -2253,7 +2253,7 @@ def download_data_ms_1(credentials, input_csv, timeout_seconds):
             file_list = []
             
             # ThreadPoolExecuter created with a maximum of 4 threads
-            with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
                 
                 # List of futures, where each future represents a task to be submitted to the executor 
                 futures = [
@@ -2502,7 +2502,7 @@ def download_data_ms_url(download_url, timeout_seconds):
     """
 
     # Download the file
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         future = executor.submit(download_file, url=download_url, check_exists=True, output='.', timeout=timeout_seconds)
         
         # Get the downloaded file name
