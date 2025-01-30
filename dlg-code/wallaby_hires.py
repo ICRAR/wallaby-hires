@@ -363,9 +363,10 @@ def read_and_process_csv_file_output_all_dynamic_parset(filename: str) -> list:
 
             # Create the desired output dictionary
             output_dict = {
-                'Cimager.dataset': f"$DLG_ROOT/testdata/{name}.ms",
+                'Cimager.dataset': f"{name}.ms",
                 'Cimager.Images.Names': f"[image.{name}]",
                 'Cimager.Images.direction': f"[{RA_string},{Dec_string}, J2000]",
+                'Cimager.write.weightsimage': 'true',
                 'Vsys': Vsys,
                 'imcontsub.inputfitscube': f"image.restored.{name}",
                 'imcontsub.outputfitscube': f"image.restored.{name}.contsub",
@@ -385,7 +386,6 @@ def read_and_process_csv_file_output_all_dynamic_parset(filename: str) -> list:
         else:
             print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
 
-    
     return data
 
 # Combine: Cimager parset 
