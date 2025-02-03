@@ -388,6 +388,78 @@ def read_and_process_csv_file_output_all_dynamic_parset(filename: str) -> list:
 
     return data
 
+def read_process_csv(filename: str) -> list:
+    """
+    Reads a CSV file and processes its contents, returning a list of dictionaries.
+
+    Parameters:
+    -----------
+    filename: The name of the CSV file to be read.
+
+    Returns:
+    -------
+    list: A list of dictionaries representing each processed row of the CSV file.
+    """
+
+    # List to store the source dictionary 
+    data = []  
+
+    # Opening the .csv file 
+    with open(filename, 'r') as file:
+        # Create a CSV reader
+        reader = csv.reader(file)
+
+        # Skip the header row
+        next(reader)
+
+        # Read and process each row, including the header
+        for row in reader:
+            
+            # Extract individual parameters
+            name = str(row[0]).strip()
+            RA = str(row[1]).strip()
+            RA_split = RA.split(':')
+            RA_hh, RA_mm, RA_ss = map(str.strip, RA_split)
+            RA_string = f"{RA_hh}h{RA_mm}m{RA_ss}s"
+            
+            Dec = str(row[2]).strip()
+            Dec_split = Dec.split(':')
+            Dec_dd, Dec_mm, Dec_ss = map(str.strip, Dec_split)
+            Dec_string = f"{Dec_dd}.{Dec_mm}.{Dec_ss}"
+            
+            Vsys = float(row[3])
+
+            # Additional parameters
+            RA_beam_string = RA_string
+            Dec_beam_string = Dec_string
+
+            # Create the desired output dictionary
+            output_dict = {
+                'Cimager.dataset': f"{name}.ms",
+                'Cimager.Images.Names': f"[image.{name}]",
+                'Cimager.Images.direction': f"[{RA_string},{Dec_string}, J2000]",
+                'Cimager.write.weightsimage': 'true',
+                'Vsys': Vsys,
+                'imcontsub.inputfitscube': f"image.restored.{name}",
+                'imcontsub.outputfitscube': f"image.restored.{name}.contsub",
+                'linmos.names': f"[image.restored.{name}.contsub]",
+                'linmos.weights': f"[weights.{name}]",
+                'linmos.outname': f"image.restored.{name}.contsub_holo",
+                'linmos.outweight': f"weights.{name}.contsub_holo",
+                'linmos.feeds.centre': f"[{RA_beam_string},{Dec_beam_string}]",
+               f'linmos.feeds.image.restored.{name}.contsub': '[0.0,0.0]'
+            }
+            
+            data.append(output_dict)
+
+        # Check if the file is empty
+        if not data:
+            print(f"Warning: CSV file '{filename}' is empty.")
+        else:
+            print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
+
+    return data
+
 # Combine: Cimager parset 
 def parset_mixin_cimager(parset: dict, mixin: list) -> dict:
     """
