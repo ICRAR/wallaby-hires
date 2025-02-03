@@ -4276,7 +4276,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "encoding": "pickle",
+                    "encoding": "utf-8",
                     "id": "1d37e380-9a02-4213-ab6a-a1c8c50ba950",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputPort"
