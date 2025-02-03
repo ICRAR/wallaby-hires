@@ -4276,7 +4276,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "encoding": "pickle",
+                    "encoding": "path",
                     "id": "1d37e380-9a02-4213-ab6a-a1c8c50ba950",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputPort"
@@ -4291,7 +4291,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "encoding": "pickle",
+                    "encoding": "path",
                     "id": "9e495450-fecd-4065-bed5-5cbe13946f51",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputPort"
@@ -4306,7 +4306,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "encoding": "pickle",
+                    "encoding": "path",
                     "id": "8d9308a8-f981-48c9-8d84-e9b7c955ec18",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputPort"
@@ -4336,7 +4336,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "encoding": "path",
+                    "encoding": "pickle",
                     "id": "0cd4c054-42d9-4cfb-98ac-ca1df63ca67b",
                     "parameterType": "ComponentParameter",
                     "usage": "OutputPort"
@@ -4354,7 +4354,7 @@
                     "encoding": "pickle",
                     "id": "062b3120-33b4-46ca-b61e-7454c516da95",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputPort"
+                    "usage": "NoPort"
                 },
                 {
                     "name": "input_parser",
