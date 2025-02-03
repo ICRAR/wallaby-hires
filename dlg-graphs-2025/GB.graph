@@ -4276,7 +4276,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "encoding": "path",
+                    "encoding": "pickle",
                     "id": "1d37e380-9a02-4213-ab6a-a1c8c50ba950",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputPort"
@@ -4336,7 +4336,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "encoding": "pickle",
+                    "encoding": "path",
                     "id": "0cd4c054-42d9-4cfb-98ac-ca1df63ca67b",
                     "parameterType": "ComponentParameter",
                     "usage": "OutputPort"
@@ -4354,48 +4354,6 @@
                     "encoding": "pickle",
                     "id": "062b3120-33b4-46ca-b61e-7454c516da95",
                     "parameterType": "ApplicationArgument",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "input_parser",
-                    "value": "path",
-                    "defaultValue": "pickle",
-                    "description": "Input port parsing technique",
-                    "readonly": false,
-                    "type": "Select",
-                    "precious": false,
-                    "options": [
-                        "pickle",
-                        "eval",
-                        "npy",
-                        "path",
-                        "dataurl"
-                    ],
-                    "positional": false,
-                    "encoding": "pickle",
-                    "id": "dcde30b1-e96c-4df3-bd90-499a566b38bd",
-                    "parameterType": "ComponentParameter",
-                    "usage": "NoPort"
-                },
-                {
-                    "name": "output_parser",
-                    "value": "pickle",
-                    "defaultValue": "pickle",
-                    "description": "Output port parsing technique",
-                    "readonly": false,
-                    "type": "Select",
-                    "precious": false,
-                    "options": [
-                        "pickle",
-                        "eval",
-                        "npy",
-                        "path",
-                        "dataurl"
-                    ],
-                    "positional": false,
-                    "encoding": "pickle",
-                    "id": "afd566dc-c103-4642-99db-76a3e4ab0a48",
-                    "parameterType": "ComponentParameter",
                     "usage": "NoPort"
                 },
                 {
