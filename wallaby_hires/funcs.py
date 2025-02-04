@@ -1,450 +1,37 @@
 """
 Start date: 10/04/24
-Description: All functions neeeded for the WALLABY hires pipeline to process the HIPASS sources. 
+End date: 
+Description: All functions neeeded for the WALLABY hires test & deploy pipelines to process the HIPASS sources. 
 """
 
 # Importing required modules
 
-# Used here for functions to interact with the operating system such as os.path, os.mkdirs, os.getcwd etc 
 import os
-
-# Access and interact with Python runtime environment
 import sys
-
-# To parse and manipulate JSON data
 import json
-
-# To fetch or handle URLS and their contents 
 import urllib
 import urllib.request
-
-# To support asynchronous programming.
 import asyncio
-
-# To parse command-line arguments 
 import argparse
-
-# Core package for astronomy & astrophysics 
 import astropy
 from astropy.table import Table
 from astropy import units as u
 from astropy import constants
-
-# To work with config files 
 import configparser
-
-# Interface with TAP (Table Access Protocol) services for querying databases
 from astroquery.utils.tap.core import TapPlus
-
-# Interface with CASDA i.e. CSIRO ASKAP Data Archive 
 from astroquery.casda import Casda
-
-# To execute tasks asynchronously with threads or processes
 import concurrent.futures
-
-# Used here to see how much time a given code segment took to run 
 import time
-
-# Used here to work with CSV files 
 import csv
-
-# Used here to work with dataframes 
 import pandas as pd
-
-# Used here to un-tar the files
 import tarfile
-
 import requests
-
-# Used here to create a copy of a given dictionary 
 import copy
-
-# Provides a flexible framework for logging messages
 import logging
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
-
-# To un-tar the files
 import tarfile
-
 from typing import BinaryIO
-
-def parset_mixin(parset: dict, mixin: dict) -> bytes:
-    """
-    Update parset with dict values.
-
-    Parameters
-    ----------
-    parset: standard parset dictionary
-    mixin: Could be a plain key-value dictionary or another parset.
-
-    Returns
-    -------
-        The binary encoded YANDA parset. 
-    """
-    for key, value in mixin.items():
-        if key in parset:
-            parset[key]["value"] = value
-        else:
-            parset.update({key: {"value": value, "type": "string", "description": ""}})
-    serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
-    return serialp.encode("utf-8")
-
-def velocity2channel(velocity:float, low_freq:float=1404.354, high_freq:float=1408.979, nchan:int=250) -> int:
-    """
-    Calculates the channel number from a redshift velocity. Default values are for
-    ASKAP WALLABY observations.
-
-    Parameters
-    ----------
-    low_freq: lower frequency limit of the data
-    high_freq: upper frequency limit of the data
-    nchan: number of channels between low_freq and high_freq
-
-    Returns
-    -------
-        The channel containing the velocity. 
-    """
-    velocity = velocity * u.km/u.s
-    h1_rest_freq = 1420.405752
-    chan_width = (high_freq - low_freq) / nchan
-    vel_width =  chan_width / h1_rest_freq * constants.codata.c.to(u.km/u.s)
-    low_vel = (h1_rest_freq - high_freq) / h1_rest_freq * constants.codata.c.to(u.km/u.s)
-    high_vel = (h1_rest_freq - low_freq) / h1_rest_freq * constants.codata.c.to(u.km/u.s)
-    if velocity > high_vel or velocity < low_vel:
-        print(f"Provided velocity not in range [{low_vel:+.3f}:{high_vel:+.3f}]")
-        return -1
-    return(int(((high_vel - velocity) / vel_width).value))
-
-# Merge dictionaries (template)
-def merge_dictionaries(static_dict:dict, dynamic_dict:dict)-> dict: 
-    """
-    Merge two dictionaries.
-    
-    Parameters
-    ----------
-    static_dict: The first dictionary. 
-    dynamic_dict: The second dictionary.
-    
-    Returns
-    -------
-    dict
-        The merged dictionary.
-    """
-
-    merged_dict = static_dict.copy()
-    merged_dict.update(dynamic_dict)
-
-    return merged_dict
-
-def Cimager_test(input_dict:dict):
-    """
-    Print each key-value pair in the input dictionary.
-
-    Parameters
-    ----------
-    input_dict: The dictionary containing key-value pairs to be printed.
-    
-    Returns
-    -------
-    None
-    """
-    for key, value in input_dict.items():
-        print(f"{key}: {value}")
-
-def combine(str1:str, str2:str)-> str: 
-    """
-    Combine two input strings representing key-value pairs, removing conflicts and empty values.
-    
-    Parameters
-    ----------
-    str1: The first string, with lines in "key=value" format.
-    str2: The second string, also with lines in "key=value" format.
-    
-    Returns
-    -------
-        The combined key-value pairs as a single string, with conflicts resolved.
-    """ 
-    
-    # Create dictionaries from lines
-    dict1 = {line.split('=')[0]: line.split('=')[1] for line in lines1 if line.strip()}
-    dict2 = {line.split('=')[0]: line.split('=')[1] for line in lines2 if line.strip()}
-    
-    # Combine dictionaries
-    combined_dict = {}
-    for key, value in dict1.items():
-        if value.strip() != '' and value.strip() != 'None':
-            combined_dict[key] = value
-    for key, value in dict2.items():
-        if key not in combined_dict or (value.strip() != '' and value.strip() != 'None'):
-            combined_dict[key] = value
-    
-    # Remove conflicting occurrences
-    for key in combined_dict.keys():
-        if '[' in key and ']' in key:
-            base_key = key.split('[')[0]
-            for k in combined_dict.keys():
-                if base_key == k.split('[')[0] and '[' not in k:
-                    del combined_dict[k]
-    
-    # Convert dictionary back to string
-    result = '\n'.join([f"{key}={value}" for key, value in combined_dict.items()])
-
-    return result
-
-# Mixing parsets 
-def parset_mixin_2(parset: dict, mixin: list, prefix:str="") -> bytes:
-    """
-    Update parset with dict values.
-
-    Parameters
-    ----------
-    parset: standard parset dictionary
-    mixin: Could be a plain key-value dictionary or another parset.
-
-    Returns
-    -------
-        binary encoded YANDA parset. 
-    """
-
-    for item in mixin:
-        for key, value in item.items():
-            if key in parset:
-                if prefix and key.startswith(prefix):
-                    parset[key]["value"] = value
-                else:
-                    parset[key]["value"] = value
-            else:
-                parset.update({key: {"value": value, "type": "string", "description": ""}})
-    serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
-
-    return serialp.encode("utf-8")
-
-# Reading sources from the catalogue and returning each source in a list of dynamic parset dictionaries 
-def read_and_process_csv_file_output_dynamic_parset(filename: str) -> list:
-    """
-    Reads a CSV file and processes its contents, returning a list of dictionaries.
-
-    Parameters
-    ----------
-    filename: The name of the CSV file to be read.
-
-    Returns
-    -------
-        A list of dictionaries representing each processed row of the CSV file.
-    """
-
-    # List to store the source dictionary 
-    data = []  
-
-    # Opening the .csv file 
-    with open(filename, 'r') as file:
-        # Create a CSV reader
-        reader = csv.reader(file)
-        
-        # Read and process each row, including the header
-        for row in reader:
-            
-            # Extract individual parameters
-            name = str(row[0]).strip()
-            RA = str(row[1]).strip()
-            RA_split = RA.split(':')
-            RA_hh, RA_mm, RA_ss = map(str.strip, RA_split)
-            RA_string = f"{RA_hh}:{RA_mm}:{RA_ss}"
-            
-            Dec = str(row[2]).strip()
-            Dec_split = Dec.split(':')
-            Dec_dd, Dec_mm, Dec_ss = map(str.strip, Dec_split)
-            Dec_string = f"{Dec_dd}:{Dec_mm}:{Dec_ss}"
-            
-            Vsys = float(row[3])
-
-            # Create the desired output dictionary
-            output_dict = {
-                'Cimager.dataset': f"$DLG_ROOT/testdata/{name}",
-                'Cimager.Images.Names': f"[image.{name}]",
-                'Cimager.Images.direction': f"[{RA_string},{Dec_string} J2000]",
-                'Vsys': Vsys
-            }
-            
-            data.append(output_dict)
-
-        # Check if the file is empty
-        if not data:
-            print(f"Warning: CSV file '{filename}' is empty.")
-        else:
-            print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
-
-    return data
-
-# Updated read_and_process which also includes the evaluation file locations
-def read_and_process_csv(filename: str) -> list:
-    """
-    Reads a CSV file and processes its contents, returning a list of dictionaries.
-
-    Parameters
-    ----------
-    filename: The name of the CSV file to be read.
-
-    Returns
-    -------
-        A list of dictionaries representing each processed row of the CSV file.
-    """
-
-    # List to store the source dictionary 
-    data = []  
-
-    # Opening the .csv file 
-    with open(filename, 'r') as file:
-        # Create a CSV reader
-        reader = csv.reader(file)
-
-        # Read and process each row, including the header
-        for row in reader:
-            # Extract individual parameters
-            name = str(row[0]).strip()
-            RA = str(row[1]).strip()
-            RA_split = RA.split(':')
-            RA_hh, RA_mm, RA_ss = map(str.strip, RA_split)
-            RA_string = f"{RA_hh}h{RA_mm}m{RA_ss}s"
-
-            Dec = str(row[2]).strip()
-            Dec_split = Dec.split(':')
-            Dec_dd, Dec_mm, Dec_ss = map(str.strip, Dec_split)
-            Dec_string = f"{Dec_dd}.{Dec_mm}.{Dec_ss}"
-
-            Vsys = float(row[3])
-
-            # Read the evaluation file parameter
-            evaluation_file = str(row[5]).strip()
-
-            # Additional parameters
-            RA_beam_string = RA_string
-            Dec_beam_string = Dec_string
-
-            # Create the desired output dictionary
-            output_dict = {
-                'Cimager.dataset': f"$DLG_ROOT/testdata/{name}.ms",
-                'Cimager.Images.Names': f"[image.{name}]",
-                'Cimager.Images.direction': f"[{RA_string},{Dec_string}, J2000]",
-                'Vsys': Vsys,
-                'imcontsub.inputfitscube': f"image.restored.{name}",
-                'imcontsub.outputfitscube': f"image.restored.{name}.contsub",
-                'linmos.names': f"[image.restored.{name}.contsub]",
-                'linmos.weights': f"[weights.{name}]",
-                'linmos.outname': f"image.restored.{name}.contsub_holo",
-                'linmos.outweight': f"weights.{name}.contsub_holo",
-                'linmos.feeds.centre': f"[{RA_beam_string},{Dec_beam_string}]",
-                f'linmos.feeds.image.restored.{name}.contsub': '[0.0,0.0]',
-                'linmos.primarybeam.ASKAP_PB.image': evaluation_file
-            }
-
-            data.append(output_dict)
-
-        # Check if the file is empty
-        if not data:
-            print(f"Warning: CSV file '{filename}' is empty.")
-        else:
-            print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
-
-    return data 
-
-# static and dynamic parset mixing 
-def parset_mixin_gayatri(parset: dict, mixin: list) -> bytes:
-    """
-    Update parset with values from a list of dictionaries.
-
-    Parameters
-    ----------
-    parset: standard parset dictionary
-    mixin: List of dictionaries containing key-value pairs to update parset
-
-    Returns
-    -------
-        Updated parset dictionary. 
-    """
-    for item in mixin:
-        for key, value in item.items():
-            if key in parset:
-                parset[key]["value"] = value
-            else:
-                parset.update({key: {"value": value, "type": "string", "description": ""}})
-
-    serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
-    return serialp.encode("utf-8")
-
-# Updated read & process where it generates a combined dynamic parset 
-def read_and_process_csv_file_output_all_dynamic_parset(filename: str) -> list:
-    """
-    Reads a CSV file and processes its contents, returning a list of dictionaries.
-
-    Parameters
-    ----------
-    filename: The name of the CSV file to be read.
-
-    Returns
-    -------
-        A list of dictionaries representing each processed row of the CSV file.
-    """
-
-    # List to store the source dictionary 
-    data = []  
-
-    # Opening the .csv file 
-    with open(filename, 'r') as file:
-        # Create a CSV reader
-        reader = csv.reader(file)
-
-        # Skip the header row
-        next(reader)
-
-        # Read and process each row, including the header
-        for row in reader:
-            
-            # Extract individual parameters
-            name = str(row[0]).strip()
-            RA = str(row[1]).strip()
-            RA_split = RA.split(':')
-            RA_hh, RA_mm, RA_ss = map(str.strip, RA_split)
-            RA_string = f"{RA_hh}h{RA_mm}m{RA_ss}s"
-            
-            Dec = str(row[2]).strip()
-            Dec_split = Dec.split(':')
-            Dec_dd, Dec_mm, Dec_ss = map(str.strip, Dec_split)
-            Dec_string = f"{Dec_dd}.{Dec_mm}.{Dec_ss}"
-            
-            Vsys = float(row[3])
-
-            # Additional parameters
-            RA_beam_string = RA_string
-            Dec_beam_string = Dec_string
-
-            # Create the desired output dictionary
-            output_dict = {
-                'Cimager.dataset': f"{name}.ms",
-                'Cimager.Images.Names': f"[image.{name}]",
-                'Cimager.Images.direction': f"[{RA_string},{Dec_string}, J2000]",
-                'Cimager.write.weightsimage': 'true',
-                'Vsys': Vsys,
-                'imcontsub.inputfitscube': f"image.restored.{name}",
-                'imcontsub.outputfitscube': f"image.restored.{name}.contsub",
-                'linmos.names': f"[image.restored.{name}.contsub]",
-                'linmos.weights': f"[weights.{name}]",
-                'linmos.outname': f"image.restored.{name}.contsub_holo",
-                'linmos.outweight': f"weights.{name}.contsub_holo",
-                'linmos.feeds.centre': f"[{RA_beam_string},{Dec_beam_string}]",
-               f'linmos.feeds.image.restored.{name}.contsub': '[0.0,0.0]'
-            }
-            
-            data.append(output_dict)
-
-        # Check if the file is empty
-        if not data:
-            print(f"Warning: CSV file '{filename}' is empty.")
-        else:
-            print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
-
-    return data
 
 def process_csv(filename: str) -> list:
     """
@@ -518,7 +105,6 @@ def process_csv(filename: str) -> list:
 
     return data
 
-# Combine: Cimager parset 
 def parset_mixin_cimager(parset: dict, mixin: list) -> bytes:
     """
     Update parset with values from a list of dictionaries where keys start with 'Cimager'.
@@ -543,7 +129,6 @@ def parset_mixin_cimager(parset: dict, mixin: list) -> bytes:
     serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
     return serialp.encode("utf-8")
 
-# Combine: imcontsub parset 
 def parset_mixin_imcontsub(parset: dict, mixin: list) -> bytes:
     """
     Update parset with values from a list of dictionaries where keys start with 'imcontsub'.
@@ -568,7 +153,6 @@ def parset_mixin_imcontsub(parset: dict, mixin: list) -> bytes:
     serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
     return serialp.encode("utf-8")
 
-# Combine: linmos parset
 def parset_mixin_linmos(parset: dict, mixin: list) -> bytes:
     """
     Update parset with values from a list of dictionaries where keys start with 'linmos'.
@@ -593,46 +177,7 @@ def parset_mixin_linmos(parset: dict, mixin: list) -> bytes:
     serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
     return serialp.encode("utf-8") 
 
-# Code for calculating and plotting the difference image 
-# Location on Gayatri laptop: Desktop/DIA-24/comparing_images_220524.ipynb
-def calculate_difference_image(given_image, reference_image, start_channel:int, end_channel:int):
-    """
-    Computes the difference image between the given image and the reference image for the specified channel range.
-
-    Parameters
-    ----------
-    given_image: numpy array, the original image (expected shape: [total_channels, 1, height, width])
-    reference_image: numpy array, the reference image to subtract (expected shape: [total_channels, 1, height, width])
-    start_channel: The starting channel number (inclusive). 
-    end_channel: The ending channel number (inclusive).
-
-    Returns
-    -------
-        The difference image (numpy array). 
-    """
-    # Checking if the input images have the same shape
-    if given_image.shape != reference_image.shape:
-        raise ValueError("The given image and reference image must have the same shape.")
-    
-    # Converting to 0-based indexing
-    start_index = start_channel - 1
-    end_index = end_channel - 1
-
-    # Validating the channel range
-    if start_index < 0 or end_index >= given_image.shape[0] or start_index > end_index:
-        raise ValueError("Invalid channel range specified.")
-    
-    # Extracting the data corresponding to the specified channels
-    selected_given_channels = given_image[start_index:end_index + 1, :, :, :]
-    selected_reference_channels = reference_image[start_index:end_index + 1, :, :, :]
-    
-    # Create the difference image
-    diff_image = selected_given_channels - selected_reference_channels
-
-    # Returning the difference image
-    return diff_image
-
-# HIPASS Query with filename pattern 
+# HIPASS query with filename pattern 
 HIPASS_QUERY_FILENAME = (
     "SELECT * FROM ivoa.obscore WHERE "
     "filename LIKE '$filename%'"
@@ -700,10 +245,10 @@ def download_file(url:str, check_exists:bool, output:str, timeout:int, buffer=41
 
     Parameters
     ----------
-    - url: The URL of the file to download.
+    - url: URL of the file to download.
     - check_exists: If True, checks if the file already exists in the output directory and has the same size; skips download if so.
     - output: Path to the directory where the file will be saved.
-    - timeout: The maximum time (in seconds) to wait for a server response.
+    - timeout: Maximum time in seconds to wait for a server response.
     - buffer: Buffer size for reading data in chunks during download (default is 4MB).
 
     Returns
@@ -992,7 +537,8 @@ def process_and_download_data_same_folder(credentials:str, input_csv:str, proces
 # Test imager 
 def imager():
     """
-    Generates a unique filename for the imager output with a 'image_N.fits' format, creates the file and prints a confirmation message with the filename created.
+    Generates a unique filename for the imager output with a 'image_N.fits' format, 
+    creates the file and prints a confirmation message with the filename created.
 
     Parameters
     ----------
@@ -1024,7 +570,8 @@ def imager():
 # Test imcontsub 
 def imcontsub():
     """
-    Generates a unique filename for the imcontsub output with a 'image_N.contsub.fits' extension, creates the file and prints a confirmation message with the filename created.
+    Generates a unique filename for the imcontsub output with a 'image_N.contsub.fits' extension, 
+    creates the file and prints a confirmation message with the filename created.
 
     Parameters
     ----------
@@ -1056,7 +603,8 @@ def imcontsub():
 # Test linmos
 def linmos():
     """
-    Generates a unique filename for the imcontsub output with a 'image_N.contsub_holo.fits' extension, creates the file and prints a confirmation message with the filename created.
+    Generates a unique filename for the imcontsub output with a 'image_N.contsub_holo.fits' extension, 
+    creates the file and prints a confirmation message with the filename created.
 
     Parameters
     ----------
@@ -1988,7 +1536,7 @@ def download_data_ms(credentials:str, input_csv:str, processed_catalogue:str, ti
             file_list = []
             
             # ThreadPoolExecuter created with a maximum of N threads, meaning upto N file downloads can happen simultaneously
-            # Test max_worker values: 4, 6, 12, 16, 32, 64; keep it at max_workers=10
+            # Tested max_worker values: 4, 6, 12, 16, 32, 64; keep it at max_workers=10
             with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
                 
                 # List of futures, where each future represents a task to be submitted to the executor 
@@ -2196,466 +1744,3 @@ def download_data_eval(credentials:str, input_csv:str, processed_catalogue:str, 
                 print(f"Extracted '{tar_file}' to '{tar_file_folder_name}'")
 
     print(f"Evaluation files downloaded!")
-
-def process_data_1(credentials:str, input_csv:str):
-    """
-    Processes an input catalogue of unprocessed sources to retrieve relevant data, saves the processed details to a CSV, and outputs the results to 'hipass_ms_file_details.csv' in the working directory.
-
-    Parameters
-    ----------
-    credentials: Path to the CASDA credentials file.
-    input_csv: Path to the input CSV file with source names.
-
-    Returns
-    -------
-    None
-    """
-    
-    # Read credentials from the provided file
-    parser = configparser.ConfigParser()
-    parser.read(credentials)
-
-    # Initialize CASDA instance
-    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
-
-    # Prepare a list to store the output rows for .ms files
-    output_data = []
-
-    # Initialize the updated_vis_eval_dict
-    updated_vis_eval_dict = {}
-
-    with open(input_csv, mode='r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-
-        # For every row i.e. HIPASS source 
-        for row in csv_reader:
-            name = row['Name']
-            print(f"Querying for: {name}")
-
-            # Step 1: Create sbid_visibility_dict 
-            sbid_visibility_dict = {}
-            res = tap_query_filename_visibility(name)
-
-            for obs_id, visibility in zip(map(str, res['obs_id']), map(str, res['filename'])):
-                sbid_visibility_dict.setdefault(obs_id, []).append(visibility)
-
-            # Update sbid_visibility_dict (modifying the keys)
-            sbid_visibility_dict = {key.replace('ASKAP-', ''): value for key, value in sbid_visibility_dict.items()}
-
-            # Step 2: Create sbid_evaluation_dict from sbid_visibility_dict
-            sbid_evaluation_dict = {}
-
-            # For every unique SBID
-            for sbid in sbid_visibility_dict.keys():
-                # Run the TAP query for the current SBID
-                res = tap_query_sbid_evaluation(sbid)
-
-                # Check if the result is not empty
-                if len(res) > 0:
-                    # Convert the result to an Astropy Table for easier processing
-                    table = Table(res)
-
-                    # Ensure the necessary columns exist
-                    if "filename" in table.colnames and "filesize" in table.colnames:
-                        # Find the row with the largest filesize
-                        largest_file_row = table[table['filesize'].argmax()]
-                        filename = largest_file_row['filename']  # Get the filename
-                    else:
-                        filename = None  # If columns are missing, set to None
-                else:
-                    filename = None  # If query result is empty, set to None
-
-                # Add the SBID and its corresponding filename to the dictionary
-                sbid_evaluation_dict[sbid] = filename
-
-            # Convert np.str_ values to plain strings in sbid_evaluation_dict
-            sbid_evaluation_dict = {key: str(value) for key, value in sbid_evaluation_dict.items()}
-
-            # Creating a new vis, eval dict based on the above two dictionaries 
-            vis_eval_dict = {sbid_evaluation_dict[key]: value for key, value in sbid_visibility_dict.items()}
-
-            # Rename the values of the dict accordingly 
-            # Make a deep copy of the dictionary
-            updated_vis_eval_dict = copy.deepcopy(vis_eval_dict)
-
-            # Dictionary to track the occurrence of filenames
-            occurrence_count = {}
-
-            # Iterate through the copy and rename duplicates
-            for key, file_list in updated_vis_eval_dict.items():
-                for i, filename in enumerate(file_list):
-                    # If the filename has been seen before
-                    if filename in occurrence_count:
-                        occurrence_count[filename] += 1  # Increment the occurrence count
-                        # Rename the file by appending _N
-                        name_parts = filename.split('.ms.tar')  # Split to add suffix
-                        new_name = f"{name_parts[0]}_{occurrence_count[filename]}.ms.tar"
-                        file_list[i] = new_name  # Replace with the new name
-                    else:
-                        # If first occurrence, initialise count
-                        occurrence_count[filename] = 1
-
-            # Print updated_vis_eval_dict
-            print("updated_vis_eval_dict:")
-            print(updated_vis_eval_dict)
-
-            # Step 3: Get RA, DEC, and Vsys from the query
-            res = tap_query_RA_DEC_VSYS(name) 
-
-            # Assuming res returns a DataFrame with the required values, extract them
-            if not res or len(res) == 0:
-                print(f"No results found for {name}. Skipping...")
-                continue
-
-            ra = res['RAJ2000'][0] 
-            dec = res['DEJ2000'][0]
-            vsys = res['VSys'][0]
-            print(f"Retrieved RA={ra}, DEC={dec}, VSys={vsys} for {name}")
-
-            # Convert RA and DEC from degrees to hms and dms formats
-            ra_h, ra_m, ra_s = degrees_to_hms(ra)
-            dec_d, dec_m, dec_s = degrees_to_dms(dec)
-            print(f"Converted RA={ra_h}h {ra_m}m {ra_s:.2f}s, DEC={dec_d}° {dec_m}′ {dec_s:.2f}″ for {name}")
-
-            # Step 4: Get filenames 
-            res = tap_query(name)
-            files = res['filename']
-
-            # Dictionary to keep track of duplicate counts for each file
-            filename_counts = {}  
-            for file in files:
-                # Remove the .tar extension from the filename
-                file_no_tar = file.replace('.ms.tar', '')
-            
-                # Check if the filename already exists in the dictionary
-                if file_no_tar in filename_counts:
-                    # Increment the counter for this filename
-                    filename_counts[file_no_tar] += 1
-                    # Insert the counter before the .ms suffix
-                    new_filename = f"{file_no_tar}_{filename_counts[file_no_tar]}"
-                else:
-                    # First occurrence of the filename, set counter to 1
-                    filename_counts[file_no_tar] = 1
-                    # Keep the original filename on the first occurrence
-                    new_filename = file_no_tar  
-            
-                print(f"File {new_filename} added to i/p for pipeline part B")
-                output_data.append([new_filename, f"{ra_h}: {ra_m}: {ra_s:.2f}", f"{dec_d}: {dec_m}: {dec_s:.2f}", vsys])
-            
-    # Step 5 Creates a df with with filename, RA, DEC and System Velocity 
-    output_df = pd.DataFrame(output_data, columns=['Name', 'RA', 'DEC', 'Vsys'])
-
-    # Step 6 Add an additional column i.e. the evaluation file, using apply to create the new column 
-    output_df['evaluation_file'] = output_df['Name'].apply(find_evaluation_file, args=(updated_vis_eval_dict,))
-
-    # Step 7
-    # Define the suffix to append to evaluation_file for creating evaluation_file_path
-    suffix = "LinmosBeamImages/akpb.iquv.square_6x6.54.1295MHz.SB32736.cube.fits"
-
-    # Create a new column evaluation_file_path by combining evaluation_file with the suffix
-    output_df['evaluation_file_path'] = output_df['evaluation_file'].apply(lambda x: None if pd.isnull(x) else x.replace('.tar', f"/{suffix}"))
-    
-    # Step 8
-    output_csv = os.path.join('.', 'hipass_ms_file_details.csv')
-    output_df.to_csv(output_csv, index=False, header=True)
-    print(f"Output saved to {output_csv}")
-
-def download_data_ms_1(credentials:str, input_csv:str, timeout_seconds:int):
-    """
-    Downloads and untars the .ms files for a given HIPASS source. 
-    
-    Parameters
-    ----------
-    credentials: Path to the CASDA credentials file.
-    input_csv: Path to the input CSV file with source names.
-    timeout_seconds: Timeout setting in seconds for download operations.
-
-    Returns
-    -------
-    None
-    """
-    
-    # Read credentials from the provided file
-    parser = configparser.ConfigParser()
-    parser.read(credentials)
-
-    # Initialize CASDA instance
-    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
-
-    with open(input_csv, mode='r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-
-        # For every row i.e. HIPASS source 
-        for row in csv_reader:
-            name = row['Name']
-            print(f"Downloading for: {name}")
-
-            # Get filenames from the query
-            res = tap_query(name)
-            url_list = casda.stage_data(res, verbose=True)
-            
-            # Download files concurrently in the current working directory
-            # Empty list to store downloaded filenames 
-            file_list = []
-            
-            # ThreadPoolExecuter created with a maximum of 4 threads
-            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-                
-                # List of futures, where each future represents a task to be submitted to the executor 
-                futures = [
-                    executor.submit(download_file, url=url, check_exists=True, output='.', timeout=timeout_seconds)
-                    for url in url_list if not url.endswith('checksum')
-                ]
-
-                # For each completed future, save the file-name to file_list
-                for future in concurrent.futures.as_completed(futures):
-                    file_list.append(future.result())
-
-            # Untar files in the current working directory
-            print(f"Untarring files for: {name}")
-            for file in file_list:
-                if file.endswith('.tar') and tarfile.is_tarfile(file):
-                    untar_file(file, '.')
-
-    print(f".ms files downloaded and un-tarred")
-
-def download_data_eval_1(credentials:str, input_csv:str, project_code:str):
-    """
-    Downloads and untars the evaluation files for a given HIPASS source. 
-
-    Parameters
-    ----------
-    credentials: Path to the CASDA credentials file.
-    input_csv: Path to the input CSV file with source names.
-    project_code: Code of the project. 
-
-    Returns
-    -------
-    None
-    """
-    
-     # Read credentials from the provided file
-    parser = configparser.ConfigParser()
-    parser.read(credentials)
-
-    # Initialize CASDA instance
-    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
-
-    # Prepare a list to store the output rows for .ms files
-    output_data = []
-
-    with open(input_csv, mode='r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-
-        # For every row i.e. HIPASS source 
-        for row in csv_reader:
-            name = row['Name']
-            print(f"Downloading evaluation files for: {name}")
-
-            # Step 1: Create sbid_visibility_dict 
-            sbid_visibility_dict = {}
-            res = tap_query_filename_visibility(name)
-
-            for obs_id, visibility in zip(map(str, res['obs_id']), map(str, res['filename'])):
-                sbid_visibility_dict.setdefault(obs_id, []).append(visibility)
-
-            # Update the same dictionary by modifying keys
-            sbid_visibility_dict = {key.replace('ASKAP-', ''): value for key, value in sbid_visibility_dict.items()}
-
-            # Step 2: Create sbid_evaluation_dict from sbid_visibility_dict
-            sbid_evaluation_dict = {}
-
-            # Extract unique SBIDs from sbid_visibility_dict
-            unique_sbid_set = sbid_visibility_dict.keys()
-
-            for sbid in unique_sbid_set:
-                # Run the TAP query for the current SBID
-                res = tap_query_sbid_evaluation(sbid)
-
-                # Check if the result is not empty
-                if len(res) > 0:
-                    # Convert the result to an Astropy Table for easier processing
-                    table = Table(res)
-
-                    # Ensure the necessary columns exist
-                    if "filename" in table.colnames and "filesize" in table.colnames:
-                        # Find the row with the largest filesize
-                        largest_file_row = table[table['filesize'].argmax()]
-                        filename = largest_file_row['filename']  # Get the filename
-                    else:
-                        filename = None  # If columns are missing, set to None
-                else:
-                    filename = None  # If query result is empty, set to None
-
-                # Add the SBID and its corresponding filename to the dictionary
-                sbid_evaluation_dict[sbid] = filename
-
-            # Convert np.str_ values to plain strings in sbid_evaluation_dict
-            sbid_evaluation_dict = {key: str(value) for key, value in sbid_evaluation_dict.items()}
-
-            # Step 3: Downloading the required evaluation files
-            # Iterate through the dictionaries
-            for sbid, required_filename in sbid_evaluation_dict.items():
-                print(f"Processing SBID: {sbid}")
-
-                # Remove 'ASKAP-' prefix if present
-                sbid = str(sbid).replace('ASKAP-', '')
-
-                # Fetch the DID (data identification) for the sbid and project code
-                url = f"{DID_URL}?projectCode={project_code}&sbid={sbid}"
-                logging.info(f"Requesting data from: {url}")
-                res = requests.get(url)
-                if res.status_code != 200:
-                    raise Exception(f"Error fetching data: {res.reason} (HTTP {res.status_code})")
-
-                logging.info(f"Response received: {res.json()}")
-
-                # Filter evaluation files
-                evaluation_files = [f for f in res.json() if "evaluation" in f]
-                evaluation_files.sort()
-
-                if not evaluation_files:
-                    logging.warning(f"No evaluation files found for projectCode={project_code} and sbid={sbid}.")
-                    return
-
-                logging.info(f"Found evaluation files: {evaluation_files}")
-
-                # Prepare the table for staging
-                t = Table()
-                t["access_url"] = [f"{EVAL_URL}{f}" for f in evaluation_files]
-
-                # Stage files for download
-                url_list = casda.stage_data(t)
-                logging.info(f"Staging files: {url_list}")
-
-                # Check which files need to be downloaded and filter by required filename
-                download_url_list = []
-                for url in url_list:
-                    filename = url.split("?")[0].rsplit("/", 1)[1]
-                    if filename == required_filename:
-                        download_url_list.append(url)
-
-                # View the download_url_list
-                print("Files staged for download:")
-                for idx, url in enumerate(download_url_list, start=1):
-                    print(f"- link {idx}: {url}")
-
-                # Download the required files
-                # Define the download directory as the current working directory
-                download_dir = os.getcwd()
-                
-                # Download the required files
-                if download_url_list:
-                    print(f"Downloading files to: {download_dir}")
-                    filelist = casda.download_files(download_url_list, savedir=download_dir)
-                    logging.info(f"Downloaded files: {filelist}")
-                    logging.info(f"All files have been downloaded to {download_dir}.")
-                else:
-                    logging.warning("No files staged for download.")
-
-            # Step 4: Untar all the evaluation files
-            # Download directory would be the current working directory 
-            download_dir = os.getcwd()
-
-            # Iterating through dict values to untar each file 
-            for sbid, tar_file in sbid_evaluation_dict.items():
-                
-                tar_path = os.path.join(download_dir, tar_file)
-
-                tar_file_folder_name = os.path.splitext(tar_file)[0]
-                
-                # Create the folder if it doesn't already exist
-                os.makedirs(tar_file_folder_name, exist_ok=True)
-                        
-                # Extract the .tar file into the folder
-                with tarfile.open(tar_path, "r") as tar:
-                    tar.extractall(path=tar_file_folder_name)
-                        
-                print(f"Extracted '{tar_file}' to '{tar_file_folder_name}'")
-
-    print(f"evaluation files downloaded and un-tarred!")
-
-def download_data_ms_returns_urls(credentials:str, input_csv:str, processed_catalogue:str, timeout_seconds:int, project_code:str) -> list:
-    """
-    Downloads and untars the .ms files for a given HIPASS source. 
-    
-    Parameters
-    ----------
-    credentials: Path to the CASDA credentials file.
-    input_csv: Path to the input CSV file with source names.
-    processed_catalogue: Path to the catalogue of already processed sources.
-    timeout_seconds: Timeout setting in seconds for download operations.
-    project_code: Code of the project. 
-
-    Returns
-    -------
-        List of urls corresponding to the .ms that need to be downloaded.
-    """
-    
-    # Read credentials from the provided file
-    parser = configparser.ConfigParser()
-    parser.read(credentials)
-    username = parser["CASDA"]["username"]
-    password = parser["CASDA"]["password"]
-
-    # Initialize CASDA instance
-    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
-
-    # Prepare a list to store the output rows for .ms files
-    output_data = []
-
-    # Load the processed catalogue to check for already processed sources
-    processed_catalogue = pd.read_csv(processed_catalogue) 
-    processed_sources = set(processed_catalogue['Name']) 
-
-    with open(input_csv, mode='r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-
-        # For every row i.e. HIPASS source 
-        for row in csv_reader:
-            name = row['Name']
-
-            # Check if the source has already been processed
-            if name in processed_sources:
-                print(f"{name} already processed")
-                continue  
-
-            print(f"Querying for: {name}")
-
-            # Get filenames from the query
-            res = tap_query(name)
-            url_list = casda.stage_data(res, verbose=True)
-            # print(f"url_list: {url_list}")
-            # print(type(url_list))
-            # print(len(url_list))
-                    
-    print(f"url_list received.")
-    return url_list
-
-def download_data_ms_url(download_url:str, timeout_seconds:int):
-    """
-    Downloads and untars the .ms files for a given HIPASS source from a given URL.
-
-    Parameters
-    ----------
-    download_url: The URL to be downloaded.
-    timeout_seconds: Timeout setting in seconds for download operations.
-
-    Returns
-    -------
-        None
-    """
-
-    # Download the file
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        future = executor.submit(download_file, url=download_url, check_exists=True, output='.', timeout=timeout_seconds)
-        
-        # Get the downloaded file name
-        downloaded_file = future.result()  
-
-    # Untar the file if it is a tar archive
-    if downloaded_file.endswith('.tar') and tarfile.is_tarfile(downloaded_file):
-        print(f"Untarring file: {downloaded_file}")
-        untar_file(downloaded_file, '.')
-
-    print(f"{download_url} downloaded and untarred successfully.")
