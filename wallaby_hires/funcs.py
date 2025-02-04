@@ -234,7 +234,8 @@ def process_data(credentials:str, input_csv:str, processed_catalogue:str, timeou
     output_df.to_csv(output_csv, index=False, header=True)
     print(f"Output saved to {output_csv}")
 
-def process_csv(filename: str) -> list:
+# Updated read_and_process which also includes the evaluation file locations
+def read_and_process_csv(filename: str) -> list:
     """
     Reads a CSV file and processes its contents, returning a list of dictionaries.
 
@@ -255,25 +256,24 @@ def process_csv(filename: str) -> list:
         # Create a CSV reader
         reader = csv.reader(file)
 
-        # Skip the header row
-        next(reader)
-
         # Read and process each row, including the header
         for row in reader:
-            
             # Extract individual parameters
             name = str(row[0]).strip()
             RA = str(row[1]).strip()
             RA_split = RA.split(':')
             RA_hh, RA_mm, RA_ss = map(str.strip, RA_split)
             RA_string = f"{RA_hh}h{RA_mm}m{RA_ss}s"
-            
+
             Dec = str(row[2]).strip()
             Dec_split = Dec.split(':')
             Dec_dd, Dec_mm, Dec_ss = map(str.strip, Dec_split)
             Dec_string = f"{Dec_dd}.{Dec_mm}.{Dec_ss}"
-            
+
             Vsys = float(row[3])
+
+            # Read the evaluation file parameter
+            evaluation_file = str(row[5]).strip()
 
             # Additional parameters
             RA_beam_string = RA_string
@@ -281,7 +281,7 @@ def process_csv(filename: str) -> list:
 
             # Create the desired output dictionary
             output_dict = {
-                'Cimager.dataset': f"{name}.ms",
+                'Cimager.dataset': f"$DLG_ROOT/testdata/{name}.ms",
                 'Cimager.Images.Names': f"[image.{name}]",
                 'Cimager.Images.direction': f"[{RA_string},{Dec_string}, J2000]",
                 'Cimager.write.weightsimage': 'true',
@@ -293,9 +293,10 @@ def process_csv(filename: str) -> list:
                 'linmos.outname': f"image.restored.{name}.contsub_holo",
                 'linmos.outweight': f"weights.{name}.contsub_holo",
                 'linmos.feeds.centre': f"[{RA_beam_string},{Dec_beam_string}]",
-               f'linmos.feeds.image.restored.{name}.contsub': '[0.0,0.0]'
+                f'linmos.feeds.image.restored.{name}.contsub': '[0.0,0.0]',
+                'linmos.primarybeam.ASKAP_PB.image': evaluation_file
             }
-            
+
             data.append(output_dict)
 
         # Check if the file is empty
@@ -304,82 +305,42 @@ def process_csv(filename: str) -> list:
         else:
             print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
 
-    return data
+    return data 
 
-def parset_mixin_cimager(parset: dict, mixin: list) -> bytes:
+def parset_mixing(static_parset: dict, dynamic_parset: list, prefix: str="") -> bytes
     """
-    Update parset with values from a list of dictionaries where keys start with 'Cimager'.
+    Update parset with dict values.
 
     Parameters
     ----------
-    parset: standard parset dictionary.
-    mixin: List of dictionaries containing key-value pairs to update parset.
+    static_parset: Standard parset dictionary
+    dynamic_parset: List of dictionaries containing key-value pairs to update parset.
+    prefix: Prefix to filter which keys should be updated.
 
     Returns
     -------
-        Updated parset dictionary, with only Cimager parameters combined. 
+        Binary encoded combined parset. 
     """
 
-    for item in mixin:
+    for item in dynamic_parset:
         for key, value in item.items():
-            if key.startswith("Cimager"):
-                if key in parset:
-                    parset[key]["value"] = value
+            if prefix:
+                # Update only if key starts with prefix
+                if key.startswith(prefix):
+                    if key in static_parset:
+                        static_parset[key]["value"] = value
+                    else:
+                        static_parset[key] = {"value": value, "type": "string", "description": ""}
+            else:
+                # Update all keys if no prefix is provided
+                if key in static_parset:
+                    static_parset[key]["value"] = value
                 else:
-                    parset.update({key: {"value": value, "type": "string", "description": ""}})
-    
-    serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
+                    static_parset[key] = {"value": value, "type": "string", "description": ""}
+
+    serialp = "\n".join(f"{x}={y['value']}" for x, y in static_parset.items())
+
     return serialp.encode("utf-8")
-
-def parset_mixin_imcontsub(parset: dict, mixin: list) -> bytes:
-    """
-    Update parset with values from a list of dictionaries where keys start with 'imcontsub'.
-
-    Parameters
-    ----------
-    parset: standard parset dictionary. 
-    mixin: List of dictionaries containing key-value pairs to update parset.
-
-    Returns
-    -------
-        Updated parset dictionary. 
-    """
-
-    for item in mixin:
-        for key, value in item.items():
-            if key.startswith("imcontsub"):
-                if key in parset:
-                    parset[key]["value"] = value
-                else:
-                    parset.update({key: {"value": value, "type": "string", "description": ""}})
-                        
-    serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
-    return serialp.encode("utf-8")
-
-def parset_mixin_linmos(parset: dict, mixin: list) -> bytes:
-    """
-    Update parset with values from a list of dictionaries where keys start with 'linmos'.
-
-    Parameters
-    ----------
-    parset: standard parset dictionary
-    mixin: List of dictionaries containing key-value pairs to update parset
-
-    Returns
-    -------
-        Updated parset dictionary. 
-    """
-
-    for item in mixin:
-        for key, value in item.items():
-            if key.startswith("linmos"):
-                if key in parset:
-                    parset[key]["value"] = value
-                else:
-                    parset.update({key: {"value": value, "type": "string", "description": ""}})
-                        
-    serialp = "\n".join(f"{x}={y['value']}" for x, y in parset.items())
-    return serialp.encode("utf-8") 
 
 # HIPASS query with filename pattern 
 HIPASS_QUERY_FILENAME = (
