@@ -4276,7 +4276,7 @@
                     "precious": false,
                     "options": [],
                     "positional": false,
-                    "encoding": "utf-8",
+                    "encoding": "path",
                     "id": "1d37e380-9a02-4213-ab6a-a1c8c50ba950",
                     "parameterType": "ApplicationArgument",
                     "usage": "InputPort"
@@ -4578,7 +4578,7 @@
                     "encoding": "pickle",
                     "id": "da9c6ab6-a2bf-40df-a62d-d41135ed9c62",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "OutputPort"
                 }
             ],
             "inputAppFields": [],
@@ -4601,7 +4601,7 @@
             "id": "8726b66f-5613-4613-8160-0c9aa62addef",
             "name": "test_catalogue_processed.csv",
             "description": "A standard file on a filesystem mounted to the deployment machine",
-            "x": 399.16143406957224,
+            "x": 399.80626179940157,
             "y": 1596.6457348954955,
             "subject": null,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
@@ -4727,7 +4727,7 @@
                     "encoding": "pickle",
                     "id": "25476d0c-9d70-442e-ba4e-bf9ee67bda86",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "OutputPort"
                 }
             ],
             "inputAppFields": [],
@@ -4876,7 +4876,7 @@
                     "encoding": "pickle",
                     "id": "57d73d08-1e70-4222-b359-6546aa02475b",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "OutputPort"
                 }
             ],
             "inputAppFields": [],
