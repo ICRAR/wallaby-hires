@@ -38,11 +38,16 @@ def process_data(credentials:str, input_csv:str, processed_catalogue:str, timeou
 
     Parameters
     ----------
-    credentials: Path to the CASDA credentials file.
-    input_csv: Path to the input CSV file with source names.
-    processed_catalogue: Path to the catalogue of already processed sources.
-    timeout_seconds: Timeout setting in seconds for download operations.
-    project_code: Code of the project. 
+    credentials: 
+        Path to the CASDA credentials file.
+    input_csv: 
+        Path to the input CSV file with source names.
+    processed_catalogue: 
+        Path to the catalogue of already processed sources.
+    timeout_seconds: 
+        Timeout setting in seconds for download operations.
+    project_code: 
+        Code of the project. 
 
     Returns
     -------
@@ -241,10 +246,12 @@ def read_and_process_csv(filename: str) -> list:
 
     Parameters
     ----------
-    filename: The name of the CSV file to be read.
+    filename: 
+        The name of the CSV file to be read.
 
     Returns
     -------
+    list
         A list of dictionaries representing each processed row of the CSV file.
     """
 
@@ -307,18 +314,22 @@ def read_and_process_csv(filename: str) -> list:
 
     return data 
 
-def parset_mixing(static_parset: dict, dynamic_parset: list, prefix: str="") -> bytes
+def parset_mixing(static_parset: dict, dynamic_parset: list, prefix: str="") -> bytes:
     """
     Update parset with dict values.
 
     Parameters
     ----------
-    static_parset: Standard parset dictionary
-    dynamic_parset: List of dictionaries containing key-value pairs to update parset.
-    prefix: Prefix to filter which keys should be updated.
+    static_parset: 
+        Standard parset dictionary
+    dynamic_parset: 
+        List of dictionaries containing key-value pairs to update parset.
+    prefix: 
+        Prefix to filter which keys should be updated.
 
     Returns
     -------
+    bytes
         Binary encoded combined parset. 
     """
 
@@ -380,14 +391,20 @@ def download_file(url:str, check_exists:bool, output:str, timeout:int, buffer=41
 
     Parameters
     ----------
-    url: URL of the file to download.
-    check_exists: If True, checks if the file already exists in the output directory and has the same size; skips download if so.
-    output: Path to the directory where the file will be saved.
-    timeout: Maximum time in seconds to wait for a server response.
-    buffer: Buffer size for reading data in chunks during download (default is 4MB).
+    url: 
+        URL of the file to download.
+    check_exists: 
+        If True, checks if the file already exists in the output directory and has the same size; skips download if so.
+    output: 
+        Path to the directory where the file will be saved.
+    timeout: 
+        Maximum time in seconds to wait for a server response.
+    buffer: 
+        Buffer size for reading data in chunks during download (default is 4MB).
 
     Returns
     -------
+    str
         The path of the downloaded file.
     """
     
@@ -455,8 +472,10 @@ def untar_file(tar_file:str, output_dir='.'):
 
     Parameters
     ----------
-    tar_file: Path to the tar file to extract.
-    output_dir: Directory where the contents will be extracted. Defaults to the current directory.
+    tar_file: 
+        Path to the tar file to extract.
+    output_dir: 
+        Directory where the contents will be extracted. Defaults to the current directory.
 
     Returns
     -------
@@ -484,10 +503,12 @@ def degrees_to_hms(degrees:float)->tuple:
 
     Parameters
     ----------
-    degrees: The RA angle in degrees to be converted.
+    degrees: 
+        The RA angle in degrees to be converted.
 
     Returns
     -------
+    tuple
         A tuple (h, m, s) where, h (int): hours component of RA, m (int): minutes component of RA and s (float): seconds component of RA.  
     """
 
@@ -498,16 +519,18 @@ def degrees_to_hms(degrees:float)->tuple:
 
     return h, m, s
 
-def degrees_to_dms(degrees):
+def degrees_to_dms(degrees) -> tuple:
     """
     Convert DEC given in degrees to degrees-minutes-seconds.
 
     Parameters
     ----------
-    degrees: The DEC angle in degrees to be converted.
+    degrees: 
+        The DEC angle in degrees to be converted.
 
     Returns
     -------
+    tuple
         A tuple (d, m, s) where d (int): degrees component of the angle, m (int): minutes component of the angle and s (float): seconds component of the angle.
     """
 
@@ -532,10 +555,12 @@ def tap_query_RA_DEC_VSYS(filename:str)->Table:
     
     Parameters
     ----------
-    filename: The name of the file, expected to contain 'HIPASS' if applicable.
+    filename: 
+        The name of the file, expected to contain 'HIPASS' if applicable.
 
     Returns
     -------
+    Table
         The query results in an Astropy Table format.
     """
 
@@ -717,10 +742,12 @@ def tap_query_filename_visibility(filename:str)-> Table:
     
     Parameters
     ----------
-    filename: The name of the file to query.
+    filename: 
+        The name of the file to query.
     
     Returns
     -------
+    Table
         The Table with query result (files to download).
     """ 
 
@@ -748,10 +775,12 @@ def tap_query_sbid_evaluation(sbid:int)->Table:
     
     Parameters
     ----------
-    sbid: The sbid to query.
+    sbid: 
+        The sbid to query.
     
     Returns
     -------
+    Table
         The astropy table with query result (files to download).
     """ 
 
@@ -765,17 +794,20 @@ def tap_query_sbid_evaluation(sbid:int)->Table:
     return res
 
 # Function to map evaluation files 
-def find_evaluation_file(name:str, updated_vis_eval_dict:dict):
+def find_evaluation_file(name:str, updated_vis_eval_dict:dict) -> str:
     """
     Finds the key in updated_vis_eval_dict that contains the given filename as a substring.
     
     Parameters
     ----------
-    name: The filename to search for within the dictionary values.
-    updated_vis_eval_dict: A dictionary where keys are identifiers, and values are lists of filenames.
+    name: 
+        The filename to search for within the dictionary values.
+    updated_vis_eval_dict: 
+        A dictionary where keys are identifiers, and values are lists of filenames.
     
     Returns
     -------
+    str
         The key corresponding to the list containing the filename, or None if not found.
     """ 
 
@@ -798,9 +830,12 @@ def download_evaluation_files(filename:str, project_code:str, credentials:str):
 
     Parameters
     ----------
-    filename: The filename used to query the visibility data.
-    project_code: The project code associated with the observations.
-    credentials: Path to the credentials file containing CASDA login details.
+    filename: 
+        The filename used to query the visibility data.
+    project_code: 
+        The project code associated with the observations.
+    credentials: 
+        Path to the credentials file containing CASDA login details.
 
     Returns
     -------
@@ -960,11 +995,16 @@ def download_data_ms(credentials:str, input_csv:str, processed_catalogue:str, ti
     
     Parameters
     ----------
-    credentials: Path to the CASDA credentials file.
-    input_csv: Path to the input CSV file with source names.
-    processed_catalogue: Path to the catalogue of already processed sources.
-    timeout_seconds: Timeout setting in seconds for download operations.
-    project_code: Code of the project. 
+    credentials: i
+        Path to the CASDA credentials file.
+    input_csv: 
+        Path to the input CSV file with source names.
+    processed_catalogue: 
+        Path to the catalogue of already processed sources.
+    timeout_seconds: 
+        Timeout setting in seconds for download operations.
+    project_code: 
+        Code of the project. 
 
     Returns
     -------
@@ -1038,11 +1078,16 @@ def download_data_eval(credentials:str, input_csv:str, processed_catalogue:str, 
 
     Parameters
     ----------
-    credentials: Path to the CASDA credentials file.
-    input_csv: Path to the input CSV file with source names.
-    processed_catalogue: Path to the catalogue of already processed sources.
-    timeout_seconds: Timeout setting in seconds for download operations.
-    project_code: Code of the project. 
+    credentials: 
+        Path to the CASDA credentials file.
+    input_csv: 
+        Path to the input CSV file with source names.
+    processed_catalogue: 
+        Path to the catalogue of already processed sources.
+    timeout_seconds: 
+        Timeout setting in seconds for download operations.
+    project_code: 
+        Code of the project. 
 
     Returns
     -------
