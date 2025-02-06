@@ -27,6 +27,8 @@ Processing steps:
      - These components are launched inside Docker or Singularity containers on Hyades and Setonix, respectively. 
 6. Final step - mosaicking: When all the beams are processed, mosaicking is performed using the output files from the linmos stage. 
 
+
+
 ### Logical graph
 #### For each HIPASS source, the following three processes run in parallel:
 - Downloading the measurement set (.ms) files required for the imager.
@@ -34,6 +36,7 @@ Processing steps:
 - Querying the input HIPASS source to retrieve relevant data, which is then stored in a CSV file. This file includes details such as the source name, RA, DEC, Vsys, evaluation file, and evaluation file path. The CSV file is then passed as input to the function read_and_process_csv, which generates the dynamic components of the parset files.
 
 ![Alt text](images/test-graph-logical.png)
+ - Link to the test graph: [wallaby-hires-test-pipeline.graph](https://eagle.icrar.org/?service=GitHub&repository=ICRAR/wallaby-hires&branch=main&path=dlg-graphs&filename=wallaby-hires_test-pipeline.graph)
 
 ## Installation
 There are multiple options for the installation, depending on how you intend to run the DALiuGE engine, directly in a virtual environment (host) or inside a docker container. You can also install it either from PyPI (the latest released version).
