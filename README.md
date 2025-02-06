@@ -15,11 +15,12 @@
 - In the deployment version of the graph, imager, imcontsub, linmos, and mosaicking as ASKAPsoft components executed within a Docker container using the icrar/yanda_imager:0.4 image.
 
 ### Current workflow of the pipeline implemented as a DALiuGE graph
-Inputs: 
+**Inputs:** 
 1. Catalogue: Path to the CSV file containing HIPASS sources to be processed.
 2. Processed catalogue: Path to the CSV file with names of already processed sources.
-3. Credentials: Path to the CASDA credentials file. 
-Processing steps:
+3. Credentials: Path to the CASDA credentials file.
+   
+**Processing steps:**
 1. Processes the input source catalogue: Checks for existing sources, identifies unprocessed sources, retrieves relevant data (RA, DEC, and Vsys), stages files for download, and saves the processed data in a specified CSV format containing the information: source name, RA, DEC, Vsys and evaluation_file_path. 
 2. Reads the CSV file: Returns a list of dictionaries from the processed file that contain the dynamic parsets corresponding to all the beams of the given HIPASS source.
 3. Combines parameter sets: Merges the static and dynamic parameter sets for all beams of each HIPASS source.
