@@ -6,13 +6,8 @@ Description: All functions neeeded for the WALLABY hires test & deploy pipelines
 
 # Importing required modules
 import os
-import sys
-import json
 import urllib
 import urllib.request
-import asyncio
-import argparse
-import astropy
 from astropy.table import Table
 from astropy import units as u
 from astropy import constants
@@ -20,7 +15,6 @@ import configparser
 from astroquery.utils.tap.core import TapPlus
 from astroquery.casda import Casda
 import concurrent.futures
-import time
 import csv
 import pandas as pd
 import tarfile
@@ -29,7 +23,6 @@ import copy
 import logging
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
-import tarfile
 from typing import BinaryIO
 
 def process_data(credentials:str, input_csv:str, processed_catalogue:str, timeout_seconds:int, project_code:str):
