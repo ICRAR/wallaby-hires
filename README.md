@@ -8,4 +8,6 @@
 - The main ASKAPsoft components are launched as Docker or Singularity containers, which are provided by the ASKAP software team or Pawsey.
 - In operations, this workflow will be controlled by another long-running workflow, which will poll CASDA for new observations in a configurable cadence (maybe once a day) and trigger the main imaging workflow once new data becomes available. 
 
+## Original pipeline
+![Alt text](images/wallaby-hires-old-pipeline.png)
 
