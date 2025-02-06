@@ -26,12 +26,6 @@ Processing steps:
 4. Inputs for imaging stages: The complete parameter sets are supplied as inputs to the ASKAPsoft components: imager, imcontsub, and linmos.These components are launched inside Docker or Singularity containers on Hyades and Setonix, respectively. 
 6. Final step - mosaicking: When all the beams are processed, mosaicking is performed using the output files from the linmos stage. 
 
-### Logical graph
-#### For each HIPASS source, the following three processes run in parallel:
-- Downloading the measurement set (.ms) files required for the imager.
-- Downloading the evaluation files needed for linmos.
-- Querying the input HIPASS source to retrieve relevant data, which is then stored in a CSV file. This file includes details such as the source name, RA, DEC, Vsys, evaluation file, and evaluation file path. The CSV file is then passed as input to the function read_and_process_csv, which generates the dynamic components of the parset files.
-
 ![Alt text](images/test-graph-logical.png)
  - Link to the test graph: [wallaby-hires-test-pipeline.graph](https://eagle.icrar.org/?service=GitHub&repository=ICRAR/wallaby-hires&branch=main&path=dlg-graphs&filename=wallaby-hires_test-pipeline.graph)
 
