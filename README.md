@@ -1,7 +1,7 @@
 # wallaby-hires
 
 ## WALLABY "hi-res" imaging pipeline implemented as a DALiuGE graph
-- The existing test [WALLABY](https://wallaby-survey.org/) hires pipeline was a simple, manually invoked script that was not under version control. It mostly produced configuration files for ASKAPsoft and SLURM. 
+- The existing test [WALLABY](https://wallaby-survey.org/) hires pipeline was a simple, manually invoked script that was not under version control. It mostly produced configuration files for [ASKAPsoft](https://www.atnf.csiro.au/computing/software/askapsoft/sdp/docs/current/pipelines/introduction.html) and SLURM. 
 - The new pipeline is implemented as a [DALiuGE](https://daliuge.readthedocs.io/en/latest/) workflow, which is kept under version control on GitHub along with the required additional software components.
 - The workflow and the individual components are configurable using the [EAGLE](https://eagle-dlg.readthedocs.io/en/master/installation.html#) graphical workflow editor, and individual workflow instances (sessions) can be submitted to multiple processing platforms, including a local laptop, the ICRAR Hyades cluster and [Setonix](https://pawsey.org.au/systems/setonix/).
 - The workflow includes components to download the required data from [CASDA](https://research.csiro.au/casda/), prepare the ASKAPsoft configuration files (parameter files), launch the imager, continuum subtraction and primary beam correction for each of the beams of the footprints and then run the final mosaicing to combine the individual image cubes into a single output cube and the associated weight cube and upload those to Acacia.
