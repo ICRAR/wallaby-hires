@@ -9,9 +9,6 @@
 - In operations, this workflow will be controlled by another long-running workflow, which will poll CASDA for new observations in a configurable cadence (maybe once a day) and trigger the main imaging workflow once new data becomes available.
 - Here, two versions of the graph are implemented: test and deployment versions. Both versions were tested and benchmarked on ICRAR's local cluster Hyades and on the Setonix supercomputer at Pawsey. 
 
-### Original workflow of the pipeline
-![Alt text](images/wallaby-hires-old-pipeline.png)
-
 ### Test and Deployment versions of the DAliuGE graph
 - The only difference between the test and deployment versions of the graph is that, in the test version, the imager, imcontsub, linmos, and mosaicking components are replaced with Python functions: imager(), imcontsub(), linmos(), and mosaic().
 - In the deployment version of the graph, imager, imcontsub, linmos, and mosaicking as ASKAPsoft components executed within a Docker container using the icrar/yanda_imager:0.4 image.
