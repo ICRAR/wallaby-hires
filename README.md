@@ -45,4 +45,5 @@ c) Querying the input HIPASS source to retrieve relevant data, which is then sto
 ![Alt text](images/test-graph-translator.png)
 
 ### Deployment 
+- A view of the DALiuge graph in session. 
 ![Alt text](images/test-graph-deploment.png)
