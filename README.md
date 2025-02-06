@@ -30,6 +30,11 @@ Processing steps:
 6. Final step - mosaicking: When all the beams are processed, mosaicking is performed using the output files from the linmos stage. 
 
 ### Logical graph
+1) For each HIPASS source, the following three processes run in parallel:
+a) Downloading the measurement set (.ms) files required for the imager.
+b) Downloading the evaluation files needed for linmos.
+c) Querying the input HIPASS source to retrieve relevant data, which is then stored in a CSV file. This file includes details such as the source name, RA, DEC, Vsys, evaluation file, and evaluation file path. The CSV file is then passed as input to the function read_and_process_csv, which generates the dynamic components of the parset files.
+
 ![Alt text](images/test-graph-logical.png)
 
 ### Physical graph: Translator output 
