@@ -1264,3 +1264,151 @@ def download_data_eval(credentials:str, input_csv:str, processed_catalogue:str, 
                 print(f"Extracted '{tar_file}' to '{tar_file_folder_name}'")
 
     print(f"Evaluation files downloaded!")
+
+def process_CSV(filename: str) -> list:
+    """
+    Reads a CSV file and processes its contents, returning a list of dictionaries for imager, imcontsub and linmos for all the beams of the HIPASS source. 
+
+    Parameters
+    ----------
+    filename
+        The name of the CSV file to be read.
+
+    Returns
+    -------
+    list
+        A list of dictionaries containing the dynamic parsets for all the beams of the HIPASS source. 
+    """
+    
+    data = []
+
+    with open(filename, 'r') as file:
+        reader = csv.DictReader(file)  # Use DictReader for better readability
+
+        for row in reader:
+            try:
+                # Extract individual parameters
+                name = row['Name'].strip()
+                
+                # Process RA
+                RA = row['RA'].strip()
+                RA_split = RA.split(':')
+                if len(RA_split) != 3:
+                    raise ValueError(f"Invalid RA format: {RA}")
+
+                RA_hh, RA_mm, RA_ss = [x.strip() for x in RA_split]
+                RA_string = f"{RA_hh}h{RA_mm}m{RA_ss}s"
+
+                # Process DEC
+                Dec = row['DEC'].strip()
+                Dec_split = Dec.split(':')
+                if len(Dec_split) != 3:
+                    raise ValueError(f"Invalid DEC format: {Dec}")
+
+                Dec_dd, Dec_mm, Dec_ss = [x.strip() for x in Dec_split]
+                Dec_string = f"{Dec_dd}.{Dec_mm}.{Dec_ss}"
+
+                # Process Vsys
+                Vsys = float(row['Vsys'])
+
+                # Read the evaluation file parameter
+                evaluation_file = row['evaluation_file_path'].strip()
+
+                # Create the desired output dictionary
+                output_dict = {
+                    'Cimager.dataset': f"$DLG_ROOT/testdata/{name}.ms",
+                    'Cimager.Images.Names': f"[image.{name}]",
+                    'Cimager.Images.direction': f"[{RA_string},{Dec_string}, J2000]",
+                    'Cimager.write.weightsimage': 'true',
+                    'Vsys': Vsys,
+                    'imcontsub.inputfitscube': f"image.restored.{name}",
+                    'imcontsub.outputfitscube': f"image.restored.{name}.contsub",
+                    'linmos.names': f"[image.restored.{name}.contsub]",
+                    'linmos.weights': f"[weights.{name}]",
+                    'linmos.outname': f"image.restored.{name}.contsub_holo",
+                    'linmos.outweight': f"weights.{name}.contsub_holo",
+                    'linmos.feeds.centre': f"[{RA_string},{Dec_string}]",
+                    f'linmos.feeds.image.restored.{name}.contsub': '[0.0,0.0]',
+                    'linmos.primarybeam.ASKAP_PB.image': evaluation_file
+                }
+
+                data.append(output_dict)
+
+            except Exception as e:
+                print(f"Error processing row {row}: {e}")
+
+    if not data:
+        print(f"Warning: CSV file '{filename}' is empty.")
+    else:
+        print(f"CSV file '{filename}' successfully read and processed.")
+
+    return data
+
+def process_CSV_mosaic(filename: str) -> list:
+    """
+    Reads a CSV file and processes its contents, returning a list of dictionaries.
+
+    Parameters
+    ----------
+    filename: 
+        The name of the CSV file to be read.
+
+    Returns
+    -------
+    list
+        A list of dictionaries containing the dynamic parset generated for mosacicking for the HIPASS source. 
+    """
+    # List to store the source dictionary 
+    data = [] 
+    
+    # Lists to store image and weight filenames
+    linmos_images_string = []
+    weights_images_string = []
+
+    # Open the .csv file 
+    with open(filename, 'r') as file:
+        # Create a CSV reader
+        reader = csv.reader(file)
+
+        # Skip the first row (header)
+        next(reader)
+
+        # Process each row
+        for idx, row in enumerate(reader):
+            # Extract individual parameters
+            name = str(row[0]).strip()
+
+            if name:  # Only process if 'name' is not empty
+                # Extract the base name from 'name'
+                extracted_name = name.split('_')[0]
+
+                # Generate the file names
+                linmos_image = f"image.restored.{name}.contsub_holo.fits"
+                weight_image = f"weights.{name}.contsub_holo.fits"
+
+                # Append to the lists
+                linmos_images_string.append(linmos_image)
+                weights_images_string.append(weight_image)
+
+                # Add the 'outname' and 'outweight' only for the first row
+                if idx == 0:
+                    output_dict = {
+                        'linmos.outname': f"image.{extracted_name}.10arc.final_mosaic",
+                        'linmos.outweight': f"weights.{extracted_name}.10arc.final_mosaic",
+                    }
+                    data.append(output_dict)
+
+    # Append the final lists to the data
+    if linmos_images_string and weights_images_string:
+        data.append({
+            'linmos.names': linmos_images_string,
+            'linmos.weights': weights_images_string
+        })
+
+    # Check if data is not empty and print a message
+    if data:
+        print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
+    else:
+        print(f"Warning: CSV file '{filename}' is empty.")
+
+    return data
