@@ -292,7 +292,7 @@
         "generatorCommitHash": "7a9c88fea0ce82efe4760a15d8596746100afbb4",
         "generatorName": "EAGLE",
         "generatorVersion": "v6.4.2",
-        "lastModifiedDatetime": 1738822778.052463,
+        "lastModifiedDatetime": 1738823008.840744,
         "lastModifiedEmail": "",
         "lastModifiedName": "",
         "numLGNodes": 33,
@@ -5805,8 +5805,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1686.0237969346292,
-            "y": 2265.071869039971
+            "x": 1726.1653680150384,
+            "y": 2269.224445358633
         },
         {
             "category": "File",

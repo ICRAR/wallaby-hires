@@ -52,7 +52,7 @@
         "generatorCommitHash": "7a9c88fea0ce82efe4760a15d8596746100afbb4",
         "generatorName": "EAGLE",
         "generatorVersion": "v6.4.2",
-        "lastModifiedDatetime": 1737360859.657377,
+        "lastModifiedDatetime": 1738661025.792239,
         "lastModifiedEmail": "",
         "lastModifiedName": "",
         "numLGNodes": 6,
@@ -462,7 +462,7 @@
                     "readonly": false,
                     "type": "Integer",
                     "usage": "NoPort",
-                    "value": 800
+                    "value": 20000
                 },
                 {
                     "defaultValue": "0.7",
@@ -822,7 +822,7 @@
                     "readonly": false,
                     "type": "Integer",
                     "usage": "NoPort",
-                    "value": 3
+                    "value": 1
                 },
                 {
                     "defaultValue": "true",
@@ -852,7 +852,7 @@
                     "readonly": false,
                     "type": "Integer",
                     "usage": "NoPort",
-                    "value": 3
+                    "value": 25
                 },
                 {
                     "defaultValue": "false",
@@ -882,7 +882,7 @@
                     "readonly": false,
                     "type": "Object.Array",
                     "usage": "NoPort",
-                    "value": "[9,125]"
+                    "value": "[25,1]"
                 },
                 {
                     "defaultValue": "false",
@@ -1122,8 +1122,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 408.3104629702885,
-            "y": 304.3601670306448
+            "x": 417.3104629702885,
+            "y": 313.3601670306448
         },
         {
             "category": "Docker",
@@ -1237,7 +1237,7 @@
                     "readonly": false,
                     "type": "String",
                     "usage": "NoPort",
-                    "value": "mpirun -np 4 --allow-run-as-root imager"
+                    "value": "mpirun -np 26 --allow-run-as-root imager"
                 },
                 {
                     "defaultValue": "0",
@@ -1346,8 +1346,8 @@
             "paletteDownloadUrl": "",
             "repositoryUrl": "",
             "subject": null,
-            "x": 889.8207492098677,
-            "y": 303.01415915942533
+            "x": 902.3207492098677,
+            "y": 315.51415915942533
         },
         {
             "category": "PythonApp",
@@ -1524,8 +1524,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 568.7595912898859,
-            "y": 304.9269519286048
+            "x": 581.2595912898859,
+            "y": 317.4269519286048
         },
         {
             "category": "File",
@@ -1673,8 +1673,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 718.6328117518281,
-            "y": 305.04919362280526
+            "x": 727.6328117518281,
+            "y": 314.04919362280526
         },
         {
             "category": "File",
@@ -1822,8 +1822,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1039.9261646217515,
-            "y": 212.38253718646084
+            "x": 1048.9261646217515,
+            "y": 221.38253718646084
         },
         {
             "category": "File",
@@ -1971,8 +1971,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1045.7527379082496,
-            "y": 373.74400970724855
+            "x": 1054.7527379082496,
+            "y": 382.74400970724855
         }
     ]
 }
