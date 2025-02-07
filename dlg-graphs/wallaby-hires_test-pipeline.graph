@@ -372,7 +372,7 @@
         "generatorCommitHash": "7a9c88fea0ce82efe4760a15d8596746100afbb4",
         "generatorName": "EAGLE",
         "generatorVersion": "v6.4.2",
-        "lastModifiedDatetime": 1738911149.718714,
+        "lastModifiedDatetime": 1738913594.340283,
         "lastModifiedEmail": "",
         "lastModifiedName": "",
         "numLGNodes": 43,
@@ -5887,7 +5887,7 @@
                     "readonly": true,
                     "type": "String",
                     "usage": "NoPort",
-                    "value": "wallaby_hires.process_data"
+                    "value": "wallaby_hires.process_SOURCE"
                 }
             ],
             "id": "2525101b-17d7-4775-86c1-7c34ac59319b",
@@ -5897,7 +5897,7 @@
             "inputApplicationName": "",
             "inputApplicationType": "None",
             "isGroup": false,
-            "name": "process_data",
+            "name": "process_SOURCE",
             "outputAppFields": [],
             "outputApplicationDescription": "",
             "outputApplicationId": null,
@@ -6755,8 +6755,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master-template.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1016.2193513501658,
-            "y": 1739.3263858862392
+            "x": 1021.954911604636,
+            "y": 1746.9737995588666
         },
         {
             "category": "Memory",
