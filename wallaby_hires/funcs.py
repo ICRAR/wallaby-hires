@@ -77,8 +77,6 @@ def process_data(credentials:str, input_csv:str, processed_catalogue:str, timeou
 
             print(f"Querying for: {name}")
 
-            # Inserting the download_evaluation_files (code) 
-            # Step 1: Create sbid_visibility_dict 
             sbid_visibility_dict = {}
             res = tap_query_filename_visibility(name)
 
@@ -94,7 +92,6 @@ def process_data(credentials:str, input_csv:str, processed_catalogue:str, timeou
             # Update the same dictionary by modifying keys
             sbid_visibility_dict = {key.replace('ASKAP-', ''): value for key, value in sbid_visibility_dict.items()}
 
-            # Step 2: Create sbid_evaluation_dict from sbid_visibility_dict
             # Initialize the dictionary to store results
             sbid_evaluation_dict = {}
 
@@ -1258,85 +1255,6 @@ def download_data_eval(credentials:str, input_csv:str, processed_catalogue:str, 
 
     print(f"Evaluation files downloaded!")
 
-def process_CSV(filename: str) -> list:
-    """
-    Reads a CSV file and processes its contents, returning a list of dictionaries for imager, imcontsub and linmos for all the beams of the HIPASS source. 
-
-    Parameters
-    ----------
-    filename
-        The name of the CSV file to be read.
-
-    Returns
-    -------
-    list
-        A list of dictionaries containing the dynamic parsets for all the beams of the HIPASS source. 
-    """
-    
-    data = []
-
-    with open(filename, 'r') as file:
-        reader = csv.DictReader(file)  # Use DictReader for better readability
-
-        for row in reader:
-            try:
-                # Extract individual parameters
-                name = row['Name'].strip()
-                
-                # Process RA
-                RA = row['RA'].strip()
-                RA_split = RA.split(':')
-                if len(RA_split) != 3:
-                    raise ValueError(f"Invalid RA format: {RA}")
-
-                RA_hh, RA_mm, RA_ss = [x.strip() for x in RA_split]
-                RA_string = f"{RA_hh}h{RA_mm}m{RA_ss}s"
-
-                # Process DEC
-                Dec = row['DEC'].strip()
-                Dec_split = Dec.split(':')
-                if len(Dec_split) != 3:
-                    raise ValueError(f"Invalid DEC format: {Dec}")
-
-                Dec_dd, Dec_mm, Dec_ss = [x.strip() for x in Dec_split]
-                Dec_string = f"{Dec_dd}.{Dec_mm}.{Dec_ss}"
-
-                # Process Vsys
-                Vsys = float(row['Vsys'])
-
-                # Read the evaluation file parameter
-                evaluation_file = row['evaluation_file_path'].strip()
-
-                # Create the desired output dictionary
-                output_dict = {
-                    'Cimager.dataset': f"$DLG_ROOT/testdata/{name}.ms",
-                    'Cimager.Images.Names': f"[image.{name}]",
-                    'Cimager.Images.direction': f"[{RA_string},{Dec_string}, J2000]",
-                    'Cimager.write.weightsimage': 'true',
-                    'Vsys': Vsys,
-                    'imcontsub.inputfitscube': f"image.restored.{name}",
-                    'imcontsub.outputfitscube': f"image.restored.{name}.contsub",
-                    'linmos.names': f"[image.restored.{name}.contsub]",
-                    'linmos.weights': f"[weights.{name}]",
-                    'linmos.outname': f"image.restored.{name}.contsub_holo",
-                    'linmos.outweight': f"weights.{name}.contsub_holo",
-                    'linmos.feeds.centre': f"[{RA_string},{Dec_string}]",
-                    f'linmos.feeds.image.restored.{name}.contsub': '[0.0,0.0]',
-                    'linmos.primarybeam.ASKAP_PB.image': evaluation_file
-                }
-
-                data.append(output_dict)
-
-            except Exception as e:
-                print(f"Error processing row {row}: {e}")
-
-    if not data:
-        print(f"Warning: CSV file '{filename}' is empty.")
-    else:
-        print(f"CSV file '{filename}' successfully read and processed.")
-
-    return data
-
 def process_CSV_mosaic(filename: str) -> list:
     """
     Reads a CSV file and processes its contents, returning a list of dictionaries.
@@ -1403,5 +1321,286 @@ def process_CSV_mosaic(filename: str) -> list:
         print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
     else:
         print(f"Warning: CSV file '{filename}' is empty.")
+
+    return data
+
+def process_SOURCE(credentials:str, input_csv:str, processed_catalogue:str, timeout_seconds:int, project_code:str):
+    """
+    Processes an input catalogue of unprocessed sources to retrieve relevant data, 
+    and saves the processed details to a CSV file 'hipass_ms_file_details.csv' in the working directory.
+
+    Parameters
+    ----------
+    credentials: 
+        Path to the CASDA credentials file.
+    input_csv: 
+        Path to the input CSV file with source names.
+    processed_catalogue: 
+        Path to the catalogue of already processed sources.
+    timeout_seconds: 
+        Timeout setting in seconds for download operations.
+    project_code: 
+        Code of the project. 
+
+    Returns
+    -------
+    None
+    """
+    
+    # Read credentials from the provided file
+    parser = configparser.ConfigParser()
+    parser.read(credentials)
+    username = parser["CASDA"]["username"]
+    password = parser["CASDA"]["password"]
+
+    # Initialize CASDA instance
+    casda = Casda(parser["CASDA"]["username"], parser["CASDA"]["password"])
+
+    # Prepare a list to store the output rows for .ms files
+    output_data = []
+
+    # Load the processed catalogue to check for already processed sources
+    processed_catalogue = pd.read_csv(processed_catalogue) 
+    processed_sources = set(processed_catalogue['Name']) 
+
+    # Initialize the updated_vis_eval_dict
+    updated_vis_eval_dict = {}
+    
+    with open(input_csv, mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+
+        # For every row i.e. HIPASS source 
+        for row in csv_reader:
+            name = row['Name']
+
+            # Check if the source has already been processed
+            if name in processed_sources:
+                print(f"{name} already processed")
+                continue  # Skip to the next row if the source is processed
+
+            print(f"Querying for: {name}")
+
+            # Create sbid_visibility_dict 
+            sbid_visibility_dict = {}
+            res = tap_query_filename_visibility(name)
+
+            obs_id_list = list(res['obs_id']) 
+            obs_id_list = [str(item) for item in obs_id_list]
+
+            visibility_list = list(res['filename'])
+            visibility_list = [str(item) for item in visibility_list]
+        
+            for obs_id, visibility in zip(obs_id_list, visibility_list):
+                sbid_visibility_dict.setdefault(obs_id, []).append(visibility)
+
+            # Update the same dictionary by modifying keys
+            sbid_visibility_dict = {key.replace('ASKAP-', ''): value for key, value in sbid_visibility_dict.items()}
+
+            # Create sbid_evaluation_dict from sbid_visibility_dict
+            sbid_evaluation_dict = {}
+
+            # Extract unique SBIDs from sbid_visibility_dict
+            unique_sbid_set = sbid_visibility_dict.keys()
+
+            for sbid in unique_sbid_set:
+                # Run the TAP query for the current SBID
+                res = tap_query_sbid_evaluation(sbid)
+
+                # Check if the result is not empty
+                if len(res) > 0:
+                    # Convert the result to an Astropy Table for easier processing
+                    table = Table(res)
+
+                    # Ensure the necessary columns exist
+                    if "filename" in table.colnames and "filesize" in table.colnames:
+                        # Find the row with the largest filesize
+                        largest_file_row = table[table['filesize'].argmax()]
+                        filename = largest_file_row['filename']  # Get the filename
+                    else:
+                        filename = None  # If columns are missing, set to None
+                else:
+                    filename = None  # If query result is empty, set to None
+
+                # Add the SBID and its corresponding filename to the dictionary
+                sbid_evaluation_dict[sbid] = filename
+
+            # Convert np.str_ values to plain strings in sbid_evaluation_dict
+            sbid_evaluation_dict = {key: str(value) for key, value in sbid_evaluation_dict.items()}
+
+            # Print the two dictionaries
+            # Print sbid_visibility_dict
+            print("sbid_visibility_dict:")
+            print(sbid_visibility_dict)
+            
+            # Print sbid_evaluation_dict
+            print("sbid_evaluation_dict:")
+            print(sbid_evaluation_dict)
+
+            # Creating a new vis, eval dict based on the above two dictionaries 
+            vis_eval_dict = {sbid_evaluation_dict[key]: value for key, value in sbid_visibility_dict.items()}
+
+            # Print vis_eval_dict
+            print("vis_eval_dict:")
+            print(vis_eval_dict)
+
+            # Rename the values of the dict accordingly 
+            # Make a deep copy of the dictionary
+            updated_vis_eval_dict = copy.deepcopy(vis_eval_dict)
+
+            # Dictionary to track the occurrence of filenames
+            occurrence_count = {}
+
+            # Iterate through the copy and rename duplicates
+            for key, file_list in updated_vis_eval_dict.items():
+                for i, filename in enumerate(file_list):
+                    # If the filename has been seen before
+                    if filename in occurrence_count:
+                        occurrence_count[filename] += 1  # Increment the occurrence count
+                        # Rename the file by appending _N
+                        name_parts = filename.split('.ms.tar')  # Split to add suffix
+                        new_name = f"{name_parts[0]}_{occurrence_count[filename]}.ms.tar"
+                        file_list[i] = new_name  # Replace with the new name
+                    else:
+                        # If first occurrence, initialise count
+                        occurrence_count[filename] = 1
+
+            # Print updated_vis_eval_dict
+            print("updated_vis_eval_dict:")
+            print(updated_vis_eval_dict)
+
+            # Get RA, DEC, and Vsys from the query
+            res = tap_query_RA_DEC_VSYS(name) 
+
+            # Assuming res returns a DataFrame with the required values, extract them
+            if not res or len(res) == 0:
+                print(f"No results found for {name}. Skipping...")
+                continue
+
+            ra = res['RAJ2000'][0] 
+            dec = res['DEJ2000'][0]
+            vsys = res['VSys'][0]
+            print(f"Retrieved RA={ra}, DEC={dec}, VSys={vsys} for {name}")
+
+            # Convert RA and DEC from degrees to hms and dms formats
+            ra_h, ra_m, ra_s = degrees_to_hms(ra)
+            dec_d, dec_m, dec_s = degrees_to_dms(dec)
+            print(f"Converted RA={ra_h}h {ra_m}m {ra_s:.2f}s, DEC={dec_d}° {dec_m}′ {dec_s:.2f}″ for {name}")
+
+            ra_s = round(ra_s, 2)
+            dec_s = round(dec_s, 2)
+            
+            # Convert to required RA_string and DEC_string formats 
+            RA_string = f"{ra_h}h{ra_m}m{ra_s}s"
+            Dec_string = f"{dec_d}.{dec_m}.{dec_s}"
+
+            # Get filenames 
+            res = tap_query(name)
+            url_list = casda.stage_data(res, verbose=True)
+            print(f"Staging data URLs for {name}")
+
+            files = res['filename']
+
+            # Dictionary to keep track of duplicate counts for each file
+            filename_counts = {}  
+            for file in files:
+                # Remove the .tar extension from the filename
+                file_no_tar = file.replace('.ms.tar', '')
+            
+                # Check if the filename already exists in the dictionary
+                if file_no_tar in filename_counts:
+                    # Increment the counter for this filename
+                    filename_counts[file_no_tar] += 1
+                    # Insert the counter before the .ms suffix
+                    new_filename = f"{file_no_tar}_{filename_counts[file_no_tar]}"
+                else:
+                    # First occurrence of the filename, set counter to 1
+                    filename_counts[file_no_tar] = 1
+                    # Keep the original filename on the first occurrence
+                    new_filename = file_no_tar  
+            
+                print(f"File {new_filename} added to i/p for pipeline part B")
+                # output_data.append([new_filename, f"{ra_h}: {ra_m}: {ra_s:.2f}", f"{dec_d}: {dec_m}: {dec_s:.2f}", vsys])
+                output_data.append([new_filename, RA_string, Dec_string, vsys])
+            
+    # Creates a df with with filename, RA, DEC and System Velocity 
+    output_df = pd.DataFrame(output_data, columns=['Name', 'RA_string', 'Dec_string', 'Vsys'])
+
+    # Add an additional column i.e. the evaluation file
+    # Apply the function to create the new column
+    output_df['evaluation_file'] = output_df['Name'].apply(find_evaluation_file, args=(updated_vis_eval_dict,))
+
+    # Define the suffix to append to evaluation_file for creating evaluation_file_path
+    suffix = "LinmosBeamImages/akpb.iquv.square_6x6.54.1295MHz.SB32736.cube.fits"
+
+    # Create a new column evaluation_file_path by combining evaluation_file with the suffix
+    output_df['evaluation_file_path'] = output_df['evaluation_file'].apply(
+        lambda x: x.replace('.tar', f"/{suffix}") if pd.notnull(x) else None
+    )
+    
+    output_csv = os.path.join('.', 'hipass_ms_file_details.csv')
+    output_df.to_csv(output_csv, index=False, header=True)
+    print(f"Output saved to {output_csv}")
+
+def process_CSV(filename: str) -> list:
+    """
+    Reads a CSV file and processes its contents, returning a list of dictionaries.
+
+    Parameters
+    ----------
+    filename: The name of the CSV file to be read.
+
+    Returns
+    -------
+    list
+
+        A list of dictionaries representing each processed row of the CSV file.
+    """
+
+    # List to store the source dictionary 
+    data = []  
+
+    # Opening the .csv file 
+    with open(filename, 'r') as file:
+        # Create a CSV reader
+        reader = csv.reader(file)
+
+        # Skip the header row
+        next(reader)
+
+        # Read and process each row, including the header
+        for row in reader:
+            
+            # Extract individual parameters
+            name = str(row[0]).strip()
+            RA_string = str(row[1]).strip()
+            Dec_string = str(row[2]).strip()
+            Vsys = float(row[3])
+            evaluation_file = row[5].strip()
+
+            # Create the desired output dictionary
+            output_dict = {
+                'Cimager.dataset': f"$DLG_ROOT/testdata/{name}.ms",
+                'Cimager.Images.Names': f"[image.{name}]",
+                'Cimager.Images.direction': f"[{RA_string},{Dec_string}, J2000]",
+                'Cimager.write.weightsimage': 'true',
+                'Vsys': Vsys,
+                'imcontsub.inputfitscube': f"image.restored.{name}",
+                'imcontsub.outputfitscube': f"image.restored.{name}.contsub",
+                'linmos.names': f"[image.restored.{name}.contsub]",
+                'linmos.weights': f"[weights.{name}]",
+                'linmos.outname': f"image.restored.{name}.contsub_holo",
+                'linmos.outweight': f"weights.{name}.contsub_holo",
+                'linmos.feeds.centre': f"[{RA_string},{Dec_string}]",
+                f'linmos.feeds.image.restored.{name}.contsub': '[0.0,0.0]',
+                'linmos.primarybeam.ASKAP_PB.image': evaluation_file
+            }
+            
+            data.append(output_dict)
+
+        # Check if the file is empty
+        if not data:
+            print(f"Warning: CSV file '{filename}' is empty.")
+        else:
+            print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
 
     return data
