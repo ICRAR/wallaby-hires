@@ -19,7 +19,7 @@
 - [wallaby-hires_test-pipeline.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline.graph):
      - latest test version of the pipeline (ASKAPsoft components replaced with test-python functions)
 - [wallaby-hires_test-pipeline-nodownloads.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline-nodownloads.graph):
-     - latest test-version of the pipeline (ASKAPsoft components replaced with test-python functions)
+     - latest test version of the pipeline (ASKAPsoft components replaced with test-python functions)
      - no-downloads to quickly test the intermediate functions
 
 #### Other graphs: 
@@ -39,7 +39,7 @@
 4. Inputs for imaging stages: The complete parameter sets are supplied as inputs to the ASKAPsoft components: imager, imcontsub, and linmos.These components are launched inside Docker or Singularity containers on Hyades and Setonix, respectively. 
 6. Final step - mosaicking: When all the beams are processed, mosaicking is performed using the output files from the linmos stage. 
 
-![Alt text](images/test-graph-logical.png)
+![Alt text](images/wallaby-hires_test-pipeline.png)
  - Link to the test graph: [wallaby-hires-test-pipeline.graph](https://eagle.icrar.org/?service=GitHub&repository=ICRAR/wallaby-hires&branch=main&path=dlg-graphs&filename=wallaby-hires_test-pipeline.graph)
 
 ## Installation
