@@ -14,6 +14,15 @@
 - The only difference between the test and deployment versions of the graph is that, in the test version, the imager, imcontsub, linmos, and mosaicking components are replaced with Python functions: imager(), imcontsub(), linmos(), and mosaic().
 - In the deployment version of the graph, imager, imcontsub, linmos, and mosaicking as ASKAPsoft components executed within a Docker container using the icrar/yanda_imager:0.4 image.
 
+### Graphs Glossary
+#### Main graphs
+- [wallaby-hires_test-pipeline.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline.graph): latest test-version of the pipeline (ASKAPsoft components replaced with test-python functions)
+- wallaby-hires_test-pipeline-nodownloads.graph: latest test-version of the pipeline (ASKAPsoft components replaced with test-python functions + no-downloads to quickly test the intermediate functions)
+
+#### Other graphs: 
+- imager.graph: only the imager inside the docker container 
+- imager_singularity.graph: only the imager inside the singularity container  
+
 ### Current workflow of the pipeline implemented as a DALiuGE graph
 **Inputs:** 
 1. Catalogue: Path to the CSV file containing HIPASS sources to be processed.
