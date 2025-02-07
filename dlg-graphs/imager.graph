@@ -36,7 +36,7 @@
         "generatorCommitHash": "7a9c88fea0ce82efe4760a15d8596746100afbb4",
         "generatorName": "EAGLE",
         "generatorVersion": "v6.4.2",
-        "lastModifiedDatetime": 1738119789.046837,
+        "lastModifiedDatetime": 1738914699.423012,
         "lastModifiedEmail": "",
         "lastModifiedName": "",
         "numLGNodes": 5,
@@ -135,7 +135,7 @@
                     "value": false
                 },
                 {
-                    "defaultValue": "",
+                    "defaultValue": "icrar/yanda_imager:0.4 ",
                     "description": "Name of the docker image to be used for this application",
                     "encoding": "pickle",
                     "id": "3f1b46cd-8840-462e-bdbe-8649e4ba40a7",
@@ -262,7 +262,7 @@
             "inputApplicationName": "",
             "inputApplicationType": "None",
             "isGroup": false,
-            "name": "yanda_imager",
+            "name": "imager",
             "outputAppFields": [],
             "outputApplicationDescription": "",
             "outputApplicationId": null,
@@ -271,8 +271,8 @@
             "paletteDownloadUrl": "",
             "repositoryUrl": "",
             "subject": null,
-            "x": 931.0766367742796,
-            "y": 328.704024387105
+            "x": 952.0164825874847,
+            "y": 355.191168645876
         },
         {
             "category": "File",
@@ -420,8 +420,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 769.5722927014732,
-            "y": 330.9770039667274
+            "x": 797.0238806012417,
+            "y": 358.4285918664961
         },
         {
             "category": "File",
@@ -569,8 +569,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1068.9261646217515,
-            "y": 241.38253718646084
+            "x": 1086.9261646217515,
+            "y": 259.3825371864608
         },
         {
             "category": "File",
@@ -718,8 +718,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1074.7527379082496,
-            "y": 402.74400970724855
+            "x": 1092.7527379082496,
+            "y": 420.74400970724855
         },
         {
             "category": "Docker",
@@ -942,8 +942,8 @@
             "paletteDownloadUrl": "",
             "repositoryUrl": "",
             "subject": null,
-            "x": 3443.1236863978324,
-            "y": 1647.2992854042895
+            "x": 3468.1236863978324,
+            "y": 1672.2992854042895
         }
     ]
 }
