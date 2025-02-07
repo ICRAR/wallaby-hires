@@ -17,11 +17,11 @@
 ### Graphs Glossary
 #### Main graphs
 - [wallaby-hires_test-pipeline.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline.graph): latest test-version of the pipeline (ASKAPsoft components replaced with test-python functions)
-- wallaby-hires_test-pipeline-nodownloads.graph: latest test-version of the pipeline (ASKAPsoft components replaced with test-python functions + no-downloads to quickly test the intermediate functions)
+- [wallaby-hires_test-pipeline-nodownloads.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline-nodownloads.graph): latest test-version of the pipeline (ASKAPsoft components replaced with test-python functions + no-downloads to quickly test the intermediate functions)
 
 #### Other graphs: 
-- imager.graph: only the imager inside the docker container 
-- imager_singularity.graph: only the imager inside the singularity container  
+- [imager.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/imager.graph): only the imager inside docker container 
+- [imager_singularity.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/imager_singularity.graph): only the imager inside singularity container  
 
 ### Current workflow of the pipeline implemented as a DALiuGE graph
 **Inputs:** 
