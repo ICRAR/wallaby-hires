@@ -9,8 +9,6 @@ import os
 import urllib
 import urllib.request
 from astropy.table import Table
-from astropy import units as u
-from astropy import constants
 import configparser
 from astroquery.utils.tap.core import TapPlus
 from astroquery.casda import Casda
@@ -23,7 +21,6 @@ import copy
 import logging
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
-from typing import BinaryIO
 
 def process_data(credentials:str, input_csv:str, processed_catalogue:str, timeout_seconds:int, project_code:str):
     """
@@ -456,7 +453,7 @@ def download_file(url:str, check_exists:bool, output:str, timeout:int, buffer=41
         return filepath
 
 # Function to un-tar files 
-def untar_file(tar_file:str, output_dir='.'):
+def untar_file(tar_file:str, output_dir:str='.'):
     """
     Extracts a tar file (.tar, .tar.gz, .tar.bz2) to the specified output directory.
 
