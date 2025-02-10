@@ -18,6 +18,7 @@ import pandas as pd
 import tarfile
 import requests
 import copy
+import io 
 import logging
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
@@ -1544,7 +1545,8 @@ def process_CSV(filename: str) -> list:
 
     Parameters
     ----------
-    filename: The name of the CSV file to be read.
+    filename: 
+        The name of the CSV file to be read.
 
     Returns
     -------
@@ -1601,3 +1603,5 @@ def process_CSV(filename: str) -> list:
             print(f"CSV file '{filename}' successfully read and processed into a list of dictionaries.")
 
     return data
+
+
