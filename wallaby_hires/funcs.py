@@ -1604,7 +1604,6 @@ def process_CSV(filename: str) -> list:
 
     return data
 
-
 def process_SOURCE_str(credentials:str, input_csv:str, processed_catalogue:str, timeout_seconds:int, project_code:str)->str:
     """
     Processes an input catalogue of unprocessed sources to retrieve relevant data, 
@@ -1819,9 +1818,9 @@ def process_SOURCE_str(credentials:str, input_csv:str, processed_catalogue:str, 
         lambda x: x.replace('.tar', f"/{suffix}") if pd.notnull(x) else None
     )
     
-    output_csv = os.path.join('.', 'hipass_ms_file_details.csv')
-    output_df.to_csv(output_csv, index=False, header=True)
-    print(f"Output saved to {output_csv}")
+    # output_csv = os.path.join('.', 'hipass_ms_file_details.csv')
+    # output_df.to_csv(output_csv, index=False, header=True)
+    # print(f"Output saved to {output_csv}")
 
     output_csv_string = output_df.to_csv(index=False, header=True)
     return output_csv_string
