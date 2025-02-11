@@ -353,18 +353,26 @@
             "loop_aware": "0",
             "to": "3ae72926-7607-4cb3-af55-dbaa76a88f5b",
             "toPort": "a382a16c-0829-4c01-85bf-6cc39b6dbe0b"
+        },
+        {
+            "closesLoop": false,
+            "from": "82a41302-045a-47bc-ac77-1f69e7bc823c",
+            "fromPort": "09c1af74-da86-4dea-be39-8a7b02e08264",
+            "loop_aware": "0",
+            "to": "05efb9cb-1267-4aa3-a57e-dddb918e1c50",
+            "toPort": "5700abe4-3c2d-4fb4-9f2d-c8159b4beda7"
         }
     ],
     "modelData": {
         "commitHash": "",
         "detailedDescription": "",
         "downloadUrl": "",
-        "filePath": "process_SOURCE-withoutCSV.graph",
+        "filePath": "wallaby-hires_test-pipeline_CLEAN.graph",
         "fileType": "Graph",
         "generatorCommitHash": "7a9c88fea0ce82efe4760a15d8596746100afbb4",
         "generatorName": "EAGLE",
         "generatorVersion": "v6.4.2",
-        "lastModifiedDatetime": 1739256557.182193,
+        "lastModifiedDatetime": 1739263385.305195,
         "lastModifiedEmail": "",
         "lastModifiedName": "",
         "numLGNodes": 43,
@@ -569,8 +577,8 @@
             "paletteDownloadUrl": "",
             "repositoryUrl": "code",
             "subject": null,
-            "x": 670.2319845334539,
-            "y": 1826.3634230176092
+            "x": 688.9921465935178,
+            "y": 2752.8470837869627
         },
         {
             "category": "File",
@@ -718,8 +726,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 271.8539705408766,
-            "y": 1763.4645775000618
+            "x": 293.3742946610048,
+            "y": 2580.025483248327
         },
         {
             "category": "File",
@@ -867,8 +875,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 275.25109400375527,
-            "y": 1927.3227957630822
+            "x": 295.20637760886774,
+            "y": 2747.013782541378
         },
         {
             "category": "File",
@@ -1016,8 +1024,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 287.9252242731463,
-            "y": 2116.9122296292994
+            "x": 309.4455483932743,
+            "y": 2930.343054347531
         },
         {
             "category": "PythonApp",
@@ -1254,8 +1262,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master-template.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1053.328555281054,
-            "y": 1840.764184130557
+            "x": 1065.828555281054,
+            "y": 1853.264184130557
         },
         {
             "category": "Memory",
@@ -1403,8 +1411,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1225.7519624240397,
-            "y": 1845.1496378022512
+            "x": 1234.7519624240397,
+            "y": 1854.1496378022512
         },
         {
             "category": "PythonApp",
@@ -1628,8 +1636,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master-template.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1416.4435494325419,
-            "y": 2709.967032650276
+            "x": 1428.9435494325419,
+            "y": 2722.467032650276
         },
         {
             "category": "PythonApp",
@@ -1881,8 +1889,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master-template.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2074.5796243152677,
-            "y": 2710.5562651485457
+            "x": 2087.0796243152677,
+            "y": 2723.0562651485457
         },
         {
             "category": "ParameterSet",
@@ -2164,8 +2172,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/wallaby-hires/b9139a9ec42d7c8ea3ac67f7a53cef3ed1d4df7a/dlg-palettes/linmos.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1904.3371483780968,
-            "y": 2884.4922398024755
+            "x": 1913.3371483780968,
+            "y": 2893.4922398024755
         },
         {
             "category": "File",
@@ -2328,8 +2336,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2307.8066234254434,
-            "y": 2709.285590405843
+            "x": 2316.8066234254434,
+            "y": 2718.285590405843
         },
         {
             "category": "PythonApp",
@@ -2551,8 +2559,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master-template.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2554.813090542521,
-            "y": 2705.5695137580783
+            "x": 2567.313090542521,
+            "y": 2718.0695137580783
         },
         {
             "category": "File",
@@ -2715,8 +2723,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2746.4167596336874,
-            "y": 2581.738820175816
+            "x": 2755.4167596336874,
+            "y": 2590.738820175816
         },
         {
             "category": "File",
@@ -2879,8 +2887,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2759.747394136635,
-            "y": 2781.900787188358
+            "x": 2768.747394136635,
+            "y": 2790.900787188358
         },
         {
             "category": "Memory",
@@ -3028,8 +3036,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 859.468287761523,
-            "y": 1840.998875958893
+            "x": 927.9398273321316,
+            "y": 2296.0354227384596
         },
         {
             "category": "Memory",
@@ -3177,8 +3185,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1031.2756384551456,
-            "y": 2299.844179611913
+            "x": 1077.8366108155303,
+            "y": 2723.579916091158
         },
         {
             "category": "Scatter",
@@ -3299,7 +3307,7 @@
                 }
             ],
             "inputApplicationDescription": "",
-            "inputApplicationId": "78f6843e-4392-4305-8c79-98088b2d8fa3",
+            "inputApplicationId": "7a31fd16-e4ab-4cd7-b631-047d6350b61d",
             "inputApplicationName": "GenericScatterApp",
             "inputApplicationType": "PythonApp",
             "isGroup": true,
@@ -3312,8 +3320,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "",
             "subject": null,
-            "x": 1927.9616065488044,
-            "y": 1805.2432248429732
+            "x": 1938.2123452373262,
+            "y": 1822.395747589761
         },
         {
             "category": "PythonApp",
@@ -3566,8 +3574,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1765.5438609437638,
-            "y": 1498.7581755426475
+            "x": 1778.0438609437638,
+            "y": 1511.2581755426475
         },
         {
             "category": "PythonApp",
@@ -3820,8 +3828,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1777.5094712755895,
-            "y": 1785.7590577766234
+            "x": 1790.0094712755895,
+            "y": 1798.2590577766234
         },
         {
             "category": "File",
@@ -3970,8 +3978,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1940.802909303688,
-            "y": 1785.8005017182018
+            "x": 1949.802909303688,
+            "y": 1794.8005017182018
         },
         {
             "category": "PythonApp",
@@ -4224,8 +4232,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1778.8550729007557,
-            "y": 2121.2463888823427
+            "x": 1791.3550729007557,
+            "y": 2133.7463888823427
         },
         {
             "category": "File",
@@ -4374,8 +4382,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1934.9009058536412,
-            "y": 2119.473198856296
+            "x": 1943.9009058536412,
+            "y": 2128.473198856296
         },
         {
             "category": "File",
@@ -4539,8 +4547,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1935.8221365000918,
-            "y": 1499.4678266858436
+            "x": 1944.8221365000918,
+            "y": 1508.4678266858436
         },
         {
             "category": "Memory",
@@ -4689,8 +4697,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1561.667978216244,
-            "y": 1783.7097400194123
+            "x": 1570.667978216244,
+            "y": 1792.7097400194123
         },
         {
             "category": "PythonApp",
@@ -4913,8 +4921,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2107.9452035427394,
-            "y": 1498.5451062971795
+            "x": 2120.4452035427394,
+            "y": 1511.0451062971795
         },
         {
             "category": "PythonApp",
@@ -5137,8 +5145,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2113.8234089599314,
-            "y": 1784.0401678727649
+            "x": 2126.3234089599314,
+            "y": 1796.5401678727649
         },
         {
             "category": "PythonApp",
@@ -5361,8 +5369,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2098.360385103319,
-            "y": 2118.2747896349133
+            "x": 2110.860385103319,
+            "y": 2130.7747896349133
         },
         {
             "category": "File",
@@ -5541,8 +5549,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2296.7567122584087,
-            "y": 1499.347419550024
+            "x": 2305.7567122584087,
+            "y": 1508.347419550024
         },
         {
             "category": "File",
@@ -5721,8 +5729,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2294.223464872055,
-            "y": 1783.2728071650517
+            "x": 2303.223464872055,
+            "y": 1792.2728071650517
         },
         {
             "category": "File",
@@ -5901,8 +5909,8 @@
             "parentId": "ed41116b-6d22-4bb1-a5fd-cc746d7b38fb",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 2274.9758332003394,
-            "y": 2118.4527536563023
+            "x": 2283.9758332003394,
+            "y": 2127.4527536563023
         },
         {
             "category": "ParameterSet",
@@ -6960,8 +6968,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1260.3455389938542,
-            "y": 1696.6889943845988
+            "x": 1269.3455389938542,
+            "y": 1705.6889943845988
         },
         {
             "category": "ParameterSet",
@@ -7239,8 +7247,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1314.350669647609,
-            "y": 2029.9586311025214
+            "x": 1323.350669647609,
+            "y": 2038.9586311025214
         },
         {
             "category": "ParameterSet",
@@ -7612,8 +7620,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/wallaby-hires/b9139a9ec42d7c8ea3ac67f7a53cef3ed1d4df7a/dlg-palettes/linmos.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1462.3236368433995,
-            "y": 2337.0457953696186
+            "x": 1471.3236368433995,
+            "y": 2346.0457953696186
         },
         {
             "category": "Memory",
@@ -7761,8 +7769,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1745.511586873905,
-            "y": 2710.6960875914237
+            "x": 1754.511586873905,
+            "y": 2719.6960875914237
         },
         {
             "category": "PythonApp",
@@ -7955,8 +7963,8 @@
             "paletteDownloadUrl": "",
             "repositoryUrl": "code",
             "subject": null,
-            "x": 643.9461547538808,
-            "y": 1127.8122937105202
+            "x": 504.6372247973274,
+            "y": 1299.946426242153
         },
         {
             "category": "PythonApp",
@@ -8149,8 +8157,8 @@
             "paletteDownloadUrl": "",
             "repositoryUrl": "code",
             "subject": null,
-            "x": 656.4548864834574,
-            "y": 1419.1936367494386
+            "x": 523.4061185869679,
+            "y": 1860.5147378638273
         },
         {
             "category": "File",
@@ -8298,8 +8306,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 413.70526412754293,
-            "y": 1376.4637865231186
+            "x": 253.68088850581302,
+            "y": 1710.9922136464515
         },
         {
             "category": "File",
@@ -8447,8 +8455,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 421.93287974526953,
-            "y": 1495.9421531507442
+            "x": 263.4735446385558,
+            "y": 1866.4665121194446
         },
         {
             "category": "File",
@@ -8596,8 +8604,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 516.9218764172737,
-            "y": 1631.336806646129
+            "x": 278.64547504474325,
+            "y": 2039.4221379752116
         },
         {
             "category": "File",
@@ -8745,8 +8753,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 385.4608430412527,
-            "y": 1033.2905055679917
+            "x": 267.69256132495536,
+            "y": 1108.022207198665
         },
         {
             "category": "File",
@@ -8894,8 +8902,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 381.6273533874067,
-            "y": 1147.4083809638066
+            "x": 240.38346394586958,
+            "y": 1273.7864195900074
         },
         {
             "category": "File",
@@ -9043,8 +9051,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 440.43303424469343,
-            "y": 1247.9598414524257
+            "x": 272.5834560478836,
+            "y": 1463.545189434542
         },
         {
             "category": "Memory",
@@ -9192,8 +9200,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 854.8917208822556,
-            "y": 1701.978910439998
+            "x": 815.3754649167595,
+            "y": 1862.787840396552
         },
         {
             "category": "Memory",
@@ -9341,8 +9349,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 848.6373550174674,
-            "y": 1556.2882389205386
+            "x": 857.6373550174674,
+            "y": 1565.2882389205386
         }
     ]
 }
