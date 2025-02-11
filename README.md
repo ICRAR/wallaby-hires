@@ -1,5 +1,18 @@
 # wallaby-hires
 
+## WALLABY “high-res” imaging pipeline overview
+- One of the key data products to be released as part of the full WALLABY survey are the high-resolution 12 arcsec “postage stamps”, for a select sub-sample of galaxies. 
+- The sample will include all HIPASS galaxies, but additionally will also include pre-selected galaxies based on their optical properties that are likely to be well resolved with the 12’’ beam.
+- To test the imaging pipeline to produce the high-resolution images, we targeted a sample of HIPASS galaxies in the Pilot Phase 2 fields (NGC 5044, NGC 4808 and Vela). 
+- We split out visibilities, including the longest 6 km baselines (for the highest achievable resolution) from the calibrated and UV continuum subtracted visibilities that are produced as part of the default WALLABY ASKAPSoft imaging pipeline.
+- For every source, we split out visibilities for up to three neighbouring beams encompassing and surrounding the source from each footprint.
+- This amounts to up to a total of 6 beams for each source.
+- For each beam, we split out the visibilities for 250 channels encompassing the velocity range where the source is expected (approximately ~ 1000 km/s velocity bandwidth) to limit the dataset size.
+- The systemic velocity of each source is obtained from the relevant HIPASS catalogue.
+- Each data set (for a single beam) is typically about 15 GB in size.
+- So, for each source, the combined visibility dataset size can be up to ~90 GB.
+- The split-out datasets for each beam for each source are then uploaded to CASDA.
+
 ## WALLABY "hi-res" imaging pipeline implemented as a DALiuGE graph
 - The existing test [WALLABY](https://wallaby-survey.org/) hires pipeline was a simple, manually invoked script that was not under version control. It mostly produced configuration files for [ASKAPsoft](https://www.atnf.csiro.au/computing/software/askapsoft/sdp/docs/current/pipelines/introduction.html) and SLURM. 
 - The new pipeline is implemented as a [DALiuGE](https://daliuge.readthedocs.io/en/latest/) workflow, which is kept under version control on GitHub along with the required additional software components.
