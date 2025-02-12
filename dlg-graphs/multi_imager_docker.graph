@@ -21,11 +21,11 @@
         "lastModifiedDatetime": 0,
         "numLGNodes": 9
     },
-    "activeGraphConfigId": "f86b50c5-22aa-4235-99a7-0799b672fb72",
+    "activeGraphConfigId": "bfa99d4b-b4f4-4b57-a29a-f1c470f08f42",
     "graphConfigurations": {
         "f86b50c5-22aa-4235-99a7-0799b672fb72": {
-            "name": "Default Configuration",
-            "description": "",
+            "name": "2x2",
+            "description": "2 times 2 channels",
             "nodes": {
                 "00d928e9-0a59-4789-88ed-4a5c2628bfbd": {
                     "fields": {
@@ -55,6 +55,39 @@
             "lastModifiedName": "",
             "lastModifiedEmail": "",
             "lastModifiedDatetime": 0
+        },
+        "bfa99d4b-b4f4-4b57-a29a-f1c470f08f42": {
+            "name": "2x3",
+            "description": "2 times 3 channels",
+            "nodes": {
+                "00d928e9-0a59-4789-88ed-4a5c2628bfbd": {
+                    "fields": {
+                        "1c1ecfb2-76a4-472a-86e3-d799025b4a51": {
+                            "value": "cd $DLG_ROOT/testdata && mpirun -np 4 --allow-run-as-root imager",
+                            "comment": "The number after -np has to match the number of channels + 1"
+                        }
+                    }
+                },
+                "3e375d3e-455f-4fa0-8df0-880a70a98c74": {
+                    "fields": {
+                        "3cf87f56-ad5f-463a-9a2b-4666a456af4e": {
+                            "value": "[{\"Cimager.Channels\":[3,1]},{\"Cimager.Channels\":[3,4]}]",
+                            "comment": "Here we need to configure the channels for each of the imagers"
+                        }
+                    }
+                },
+                "10b93648-e8d5-4b9e-93ee-148cb3d7d5dd": {
+                    "fields": {
+                        "d8bad6d9-a281-454f-8497-2f07e982387b": {
+                            "value": "2",
+                            "comment": "This needs to be >= number of Channel configurations in the list above"
+                        }
+                    }
+                }
+            },
+            "lastModifiedName": "",
+            "lastModifiedEmail": "",
+            "lastModifiedDatetime": 0
         }
     },
     "nodeDataArray": [
@@ -65,7 +98,7 @@
             "color": "#2c2c2c",
             "drawOrderHint": 0,
             "id": "90f3be01-b360-4e0c-a6a7-f33c52ce90be",
-            "name": "File",
+            "name": "parset file",
             "description": "A standard file on a filesystem mounted to the deployment machine",
             "x": 730.5963910025866,
             "y": 198.06351504458223,
@@ -2129,7 +2162,7 @@
             "color": "#2c2c2c",
             "drawOrderHint": 0,
             "id": "3e375d3e-455f-4fa0-8df0-880a70a98c74",
-            "name": "Cimager.Channels",
+            "name": "list of Cimager.Channels",
             "description": "In-memory storage of intermediate data products",
             "x": 400.4130169689719,
             "y": 105.65592386099917,
@@ -2278,7 +2311,7 @@
             "color": "rgb(227 189 100)",
             "drawOrderHint": 0,
             "id": "10b93648-e8d5-4b9e-93ee-148cb3d7d5dd",
-            "name": "Scatter/GenericScatterApp",
+            "name": "Scatter configs",
             "description": "A default Scatter construct for the GenericScatterApp component.",
             "x": 764.8616682669875,
             "y": 200.47220243904187,
