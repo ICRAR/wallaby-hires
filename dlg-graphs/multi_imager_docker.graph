@@ -21,8 +21,42 @@
         "lastModifiedDatetime": 0,
         "numLGNodes": 9
     },
-    "activeGraphConfigId": null,
-    "graphConfigurations": {},
+    "activeGraphConfigId": "f86b50c5-22aa-4235-99a7-0799b672fb72",
+    "graphConfigurations": {
+        "f86b50c5-22aa-4235-99a7-0799b672fb72": {
+            "name": "Default Configuration",
+            "description": "",
+            "nodes": {
+                "00d928e9-0a59-4789-88ed-4a5c2628bfbd": {
+                    "fields": {
+                        "1c1ecfb2-76a4-472a-86e3-d799025b4a51": {
+                            "value": "cd $DLG_ROOT/testdata && mpirun -np 3 --allow-run-as-root imager",
+                            "comment": ""
+                        }
+                    }
+                },
+                "3e375d3e-455f-4fa0-8df0-880a70a98c74": {
+                    "fields": {
+                        "3cf87f56-ad5f-463a-9a2b-4666a456af4e": {
+                            "value": "[{\"Cimager.Channels\":[2,1]},{\"Cimager.Channels\":[2,3]}]",
+                            "comment": ""
+                        }
+                    }
+                },
+                "10b93648-e8d5-4b9e-93ee-148cb3d7d5dd": {
+                    "fields": {
+                        "d8bad6d9-a281-454f-8497-2f07e982387b": {
+                            "value": "2",
+                            "comment": ""
+                        }
+                    }
+                }
+            },
+            "lastModifiedName": "",
+            "lastModifiedEmail": "",
+            "lastModifiedDatetime": 0
+        }
+    },
     "nodeDataArray": [
         {
             "category": "File",
@@ -2097,8 +2131,8 @@
             "id": "3e375d3e-455f-4fa0-8df0-880a70a98c74",
             "name": "Cimager.Channels",
             "description": "In-memory storage of intermediate data products",
-            "x": 401.3335696544159,
-            "y": 104.73537117555514,
+            "x": 400.4130169689719,
+            "y": 105.65592386099917,
             "subject": null,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "76436f8",
