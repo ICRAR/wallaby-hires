@@ -31,7 +31,7 @@
                     "fields": {
                         "1c1ecfb2-76a4-472a-86e3-d799025b4a51": {
                             "value": "cd $DLG_ROOT/testdata && mpirun -np 3 --allow-run-as-root imager",
-                            "comment": ""
+                            "comment": "The number after -np has to match the number of channels + 1"
                         }
                     }
                 },
@@ -39,7 +39,7 @@
                     "fields": {
                         "3cf87f56-ad5f-463a-9a2b-4666a456af4e": {
                             "value": "[{\"Cimager.Channels\":[2,1]},{\"Cimager.Channels\":[2,3]}]",
-                            "comment": ""
+                            "comment": "Here we need to configure the channels for each of the imagers"
                         }
                     }
                 },
@@ -47,7 +47,7 @@
                     "fields": {
                         "d8bad6d9-a281-454f-8497-2f07e982387b": {
                             "value": "2",
-                            "comment": ""
+                            "comment": "This needs to be >= number of Channel configurations in the list above"
                         }
                     }
                 }
