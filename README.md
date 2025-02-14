@@ -29,11 +29,13 @@
 
 ### Graphs Glossary
 #### Main graphs
-- [wallaby-hires_test-pipeline_CLEAN.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline_CLEAN.graph):
+- [wallaby-hires_test-pipeline.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline.graph):
      - latest test version of the pipeline (ASKAPsoft components replaced with test-python functions)
-- [wallaby-hires_test-pipeline-nodownloads_CLEAN.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline-nodownloads_CLEAN.graph):
+- [wallaby-hires_test-pipeline-nodownloads.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline-nodownloads.graph):
      - latest test version of the pipeline (ASKAPsoft components replaced with test-python functions)
      - no-downloads to quickly test the intermediate functions
+-[wallaby-hires_deploy-pipeline.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_deploy-pipeline.graph):
+     - latest deployment version of the pipeline. 
 
 #### Other graphs: 
 - [imager.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/imager.graph): only the imager inside docker container 
@@ -53,7 +55,7 @@
 6. Final step - mosaicking: When all the beams are processed, mosaicking is performed using the output files from the linmos stage. 
 
 ![Alt text](images/pipeline-test.png)
- - Link to the test graph: [Click here](https://eagle.icrar.org/?service=GitHub&repository=ICRAR/wallaby-hires&branch=main&path=dlg-graphs&filename=wallaby-hires_test-pipeline_CLEAN.graph)
+ - Link to the test graph: [Click here](https://eagle.icrar.org/?service=GitHub&repository=ICRAR/wallaby-hires&branch=main&path=dlg-graphs&filename=wallaby-hires_test-pipeline.graph)
 
 ## Installation
 There are multiple options for the installation, depending on how you intend to run the DALiuGE engine, directly in a virtual environment (host) or inside a docker container. You can also install it either from PyPI (the latest released version).
