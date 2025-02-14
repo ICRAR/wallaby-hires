@@ -34,8 +34,8 @@
 - [wallaby-hires_test-pipeline-nodownloads.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_test-pipeline-nodownloads.graph):
      - latest test version of the pipeline (ASKAPsoft components replaced with test-python functions)
      - no-downloads to quickly test the intermediate functions
--[wallaby-hires_deploy-pipeline.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_deploy-pipeline.graph):
-     - latest deployment version of the pipeline. 
+- [wallaby-hires_deploy-pipeline.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/wallaby-hires_deploy-pipeline.graph):
+     - latest deployment version of the pipeline 
 
 #### Other graphs: 
 - [imager.graph](https://github.com/ICRAR/wallaby-hires/blob/main/dlg-graphs/imager.graph): only the imager inside docker container 
