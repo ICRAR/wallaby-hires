@@ -1,7 +1,7 @@
 # __main__ is not required for DALiuGE components.
 import argparse  # pragma: no cover
 
-from . import parset_mixin  # pragma: no cover
+# from . import parset_mixin  # pragma: no cover
 
 
 def main() -> None:  # pragma: no cover
@@ -52,9 +52,9 @@ def main() -> None:  # pragma: no cover
         print("Verbose mode is on.")
 
     print("Executing main function")
-    d0 = {"a": {"value": 1}, "b": {"value": 2}}
-    d1 = {"a": "Hello", "b": "World"}
-    print(parset_mixin(d0, d1))
+    # d0 = {"a": {"value": 1}, "b": {"value": 2}}
+    # d1 = {"a": "Hello", "b": "World"}
+    # print(parset_mixin(d0, d1))
     print("End of main function")
 
 
