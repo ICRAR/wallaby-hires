@@ -337,7 +337,7 @@ def parset_mixing(static_parset: dict, dynamic_parset: list, prefix: str="") -> 
                 else:
                     static_parset[key] = {"value": value, "type": "string", "description": ""}
 
-    serialp = "\n".join(f"{x}={y['value']}" for x, y in static_parset.items())
+    serialp = "\n".join([f"{x}={y['value']}" for x, y in static_parset.items()])
 
     return serialp.encode("utf-8")
 
