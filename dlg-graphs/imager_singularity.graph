@@ -33,10 +33,10 @@
         "downloadUrl": "",
         "filePath": "imager_singularity.graph",
         "fileType": "Graph",
-        "generatorCommitHash": "7a9c88fea0ce82efe4760a15d8596746100afbb4",
+        "generatorCommitHash": "459eaa752c5bb5709ef7564e184f38a50c980bf3",
         "generatorName": "EAGLE",
-        "generatorVersion": "v6.4.2",
-        "lastModifiedDatetime": 1737705534.672181,
+        "generatorVersion": "v6.6.0",
+        "lastModifiedDatetime": 1749110690.421657,
         "lastModifiedEmail": "",
         "lastModifiedName": "",
         "numLGNodes": 4,
@@ -196,8 +196,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1052.819337299585,
-            "y": 196.4939808617359
+            "x": 1061.819337299585,
+            "y": 205.4939808617359
         },
         {
             "category": "File",
@@ -345,8 +345,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1054.0255564359074,
-            "y": 374.1279498046889
+            "x": 1063.0255564359074,
+            "y": 383.1279498046889
         },
         {
             "category": "BashShellApp",
@@ -370,7 +370,7 @@
                     "readonly": false,
                     "type": "String",
                     "usage": "NoPort",
-                    "value": "singularity exec --bind $PWD:/askapbuffer,/scratch:/scratch /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif imager -c %i0"
+                    "value": "singularity exec --bind $PWD:/askapbuffer,/scratch:/scratch /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif imager -c {c}"
                 },
                 {
                     "defaultValue": "",
@@ -629,11 +629,11 @@
                 {
                     "defaultValue": "",
                     "description": "",
-                    "encoding": "pickle",
+                    "encoding": "path",
                     "id": "d274a73a-8005-49a6-9b8a-cd67c8dfd1bc",
                     "name": "c",
                     "options": [],
-                    "parameterType": "ComponentParameter",
+                    "parameterType": "ApplicationArgument",
                     "positional": false,
                     "precious": false,
                     "readonly": false,
@@ -658,8 +658,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master-template.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 887.8386372945763,
-            "y": 291.7363564482247
+            "x": 900.3386372945763,
+            "y": 304.2363564482247
         },
         {
             "category": "File",
@@ -807,8 +807,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 696.9349461701812,
-            "y": 295.9057524098891
+            "x": 705.9349461701812,
+            "y": 304.9057524098891
         }
     ]
 }
