@@ -36,7 +36,7 @@
         "generatorCommitHash": "459eaa752c5bb5709ef7564e184f38a50c980bf3",
         "generatorName": "EAGLE",
         "generatorVersion": "v6.6.0",
-        "lastModifiedDatetime": 1749110690.421657,
+        "lastModifiedDatetime": 1749610788.263847,
         "lastModifiedEmail": "",
         "lastModifiedName": "",
         "numLGNodes": 4,
@@ -196,8 +196,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1061.819337299585,
-            "y": 205.4939808617359
+            "x": 1070.819337299585,
+            "y": 214.4939808617359
         },
         {
             "category": "File",
@@ -345,8 +345,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 1063.0255564359074,
-            "y": 383.1279498046889
+            "x": 1072.0255564359074,
+            "y": 392.1279498046889
         },
         {
             "category": "BashShellApp",
@@ -370,7 +370,7 @@
                     "readonly": false,
                     "type": "String",
                     "usage": "NoPort",
-                    "value": "singularity exec --bind $PWD:/askapbuffer,/scratch:/scratch /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif imager -c {c}"
+                    "value": "singularity exec --bind $DLG_ROOT:/mnt /software/projects/pawsey0411/awicenec/singularity/askapsoft_1.17.5-mpich.sif cimager -c {c}"
                 },
                 {
                     "defaultValue": "",
@@ -658,8 +658,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master-template.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 900.3386372945763,
-            "y": 304.2363564482247
+            "x": 912.8386372945763,
+            "y": 316.7363564482247
         },
         {
             "category": "File",
@@ -683,7 +683,7 @@
                     "readonly": false,
                     "type": "String",
                     "usage": "NoPort",
-                    "value": "$DLG_ROOT/testdata/imager_parset_test.in"
+                    "value": "/mnt/testdata/imager_parset_test.in"
                 },
                 {
                     "defaultValue": "False",
@@ -807,8 +807,8 @@
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "subject": null,
-            "x": 705.9349461701812,
-            "y": 304.9057524098891
+            "x": 714.9349461701812,
+            "y": 313.9057524098891
         }
     ]
 }

@@ -1122,8 +1122,8 @@ def download_data_ms(
             # Get filenames from the query
             res = tap_query(name)
             url_list = casda.stage_data(res, verbose=True)
-            print(f"url_list: {url_list}")
-
+            print(f"url_list: ")
+            url_list = [url for url in url_list if not url.endswith("checksum")]
             # Download files concurrently in the current working directory
             # Empty list to store downloaded filenames
             file_list = []
@@ -1144,7 +1144,6 @@ def download_data_ms(
                         timeout=timeout_seconds,
                     )
                     for url in url_list
-                    if not url.endswith("checksum")
                 ]
 
                 # For each completed future, save the file-name to file_list
