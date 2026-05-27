@@ -7,8 +7,8 @@
         "repoService": "GitHub",
         "repoBranch": "main",
         "repo": "ICRAR/wallaby-hires",
-        "generatorVersion": "v6.5.0",
-        "generatorCommitHash": "558775b2b42a4f218c4f766cbf3465a7bf56cd92",
+        "generatorVersion": "v6.10.0",
+        "generatorCommitHash": "7c7c678628459824797c72087d0999f708efa505",
         "generatorName": "EAGLE",
         "schemaVersion": "OJS",
         "readonly": true,
@@ -19,13 +19,47 @@
         "lastModifiedName": "",
         "lastModifiedEmail": "",
         "lastModifiedDatetime": 0,
-        "numLGNodes": 9
+        "numLGNodes": 10
     },
     "activeGraphConfigId": "bfa99d4b-b4f4-4b57-a29a-f1c470f08f42",
     "graphConfigurations": {
         "f86b50c5-22aa-4235-99a7-0799b672fb72": {
-            "name": "2x2",
-            "description": "2 times 2 channels",
+            "modelData": {
+                "name": "2x2",
+                "shortDescription": "2 times 2 channels",
+                "detailedDescription": "",
+                "type": "GraphConfig",
+                "schemaVersion": "Unknown",
+                "readonly": true,
+                "location": {
+                    "repositoryService": "Unknown",
+                    "repositoryBranch": "",
+                    "repositoryName": "",
+                    "repositoryPath": "",
+                    "repositoryFileName": "",
+                    "commitHash": "",
+                    "downloadUrl": ""
+                },
+                "generatorVersion": "",
+                "generatorCommitHash": "",
+                "generatorName": "",
+                "repositoryUrl": "",
+                "graphLocation": {
+                    "repositoryService": "GitHub",
+                    "repositoryBranch": "main",
+                    "repositoryName": "ICRAR/wallaby-hires",
+                    "repositoryPath": "dlg-graphs",
+                    "repositoryFileName": "multi_imager_docker.graph",
+                    "commitHash": "ffb9c416d001ed5904d36641995502d8df5c61a3",
+                    "downloadUrl": "https://raw.githubusercontent.com/ICRAR/wallaby-hires/ffb9c416d001ed5904d36641995502d8df5c61a3/dlg-graphs/multi_imager_docker.graph"
+                },
+                "signature": "",
+                "lastModifiedName": "",
+                "lastModifiedEmail": "",
+                "lastModifiedDatetime": 0,
+                "numLGNodes": 0
+            },
+            "id": "f86b50c5-22aa-4235-99a7-0799b672fb72",
             "nodes": {
                 "00d928e9-0a59-4789-88ed-4a5c2628bfbd": {
                     "fields": {
@@ -46,19 +80,50 @@
                 "10b93648-e8d5-4b9e-93ee-148cb3d7d5dd": {
                     "fields": {
                         "d8bad6d9-a281-454f-8497-2f07e982387b": {
-                            "value": "2",
+                            "value": 2,
                             "comment": "This needs to be >= number of Channel configurations in the list above"
                         }
                     }
                 }
-            },
-            "lastModifiedName": "",
-            "lastModifiedEmail": "",
-            "lastModifiedDatetime": 0
+            }
         },
         "bfa99d4b-b4f4-4b57-a29a-f1c470f08f42": {
-            "name": "2x3",
-            "description": "2 times 3 channels",
+            "modelData": {
+                "name": "2x3",
+                "shortDescription": "2 times 3 channels",
+                "detailedDescription": "",
+                "type": "GraphConfig",
+                "schemaVersion": "Unknown",
+                "readonly": true,
+                "location": {
+                    "repositoryService": "Unknown",
+                    "repositoryBranch": "",
+                    "repositoryName": "",
+                    "repositoryPath": "",
+                    "repositoryFileName": "",
+                    "commitHash": "",
+                    "downloadUrl": ""
+                },
+                "generatorVersion": "",
+                "generatorCommitHash": "",
+                "generatorName": "",
+                "repositoryUrl": "",
+                "graphLocation": {
+                    "repositoryService": "GitHub",
+                    "repositoryBranch": "main",
+                    "repositoryName": "ICRAR/wallaby-hires",
+                    "repositoryPath": "dlg-graphs",
+                    "repositoryFileName": "multi_imager_docker.graph",
+                    "commitHash": "ffb9c416d001ed5904d36641995502d8df5c61a3",
+                    "downloadUrl": "https://raw.githubusercontent.com/ICRAR/wallaby-hires/ffb9c416d001ed5904d36641995502d8df5c61a3/dlg-graphs/multi_imager_docker.graph"
+                },
+                "signature": "",
+                "lastModifiedName": "",
+                "lastModifiedEmail": "",
+                "lastModifiedDatetime": 0,
+                "numLGNodes": 0
+            },
+            "id": "bfa99d4b-b4f4-4b57-a29a-f1c470f08f42",
             "nodes": {
                 "00d928e9-0a59-4789-88ed-4a5c2628bfbd": {
                     "fields": {
@@ -79,15 +144,12 @@
                 "10b93648-e8d5-4b9e-93ee-148cb3d7d5dd": {
                     "fields": {
                         "d8bad6d9-a281-454f-8497-2f07e982387b": {
-                            "value": "2",
+                            "value": 2,
                             "comment": "This needs to be >= number of Channel configurations in the list above"
                         }
                     }
                 }
-            },
-            "lastModifiedName": "",
-            "lastModifiedEmail": "",
-            "lastModifiedDatetime": 0
+            }
         }
     },
     "nodeDataArray": [
@@ -100,9 +162,9 @@
             "id": "90f3be01-b360-4e0c-a6a7-f33c52ce90be",
             "name": "parset file",
             "description": "A standard file on a filesystem mounted to the deployment machine",
+            "comment": "",
             "x": 730.5963910025866,
             "y": 198.06351504458223,
-            "subject": null,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "b11f970",
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
@@ -236,10 +298,12 @@
             "inputApplicationType": "None",
             "inputApplicationId": null,
             "inputApplicationDescription": "",
+            "inputApplicationComment": "",
             "outputApplicationName": "",
             "outputApplicationType": "None",
             "outputApplicationId": null,
-            "outputApplicationDescription": ""
+            "outputApplicationDescription": "",
+            "outputApplicationComment": ""
         },
         {
             "category": "File",
@@ -250,9 +314,9 @@
             "id": "3883631f-1065-4ae9-bb5a-e1cf480273ec",
             "name": "residual_image",
             "description": "A standard file on a filesystem mounted to the deployment machine",
+            "comment": "",
             "x": 953.9557784735208,
             "y": 98.55097472111736,
-            "subject": null,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "ba97608",
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
@@ -386,10 +450,12 @@
             "inputApplicationType": "None",
             "inputApplicationId": null,
             "inputApplicationDescription": "",
+            "inputApplicationComment": "",
             "outputApplicationName": "",
             "outputApplicationType": "None",
             "outputApplicationId": null,
-            "outputApplicationDescription": ""
+            "outputApplicationDescription": "",
+            "outputApplicationComment": ""
         },
         {
             "category": "File",
@@ -400,9 +466,9 @@
             "id": "6c456d09-99c7-4e07-8602-5982056b0a2b",
             "name": "restored_image",
             "description": "A standard file on a filesystem mounted to the deployment machine",
+            "comment": "",
             "x": 955.1619976098433,
             "y": 276.1849436640703,
-            "subject": null,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "ba97608",
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
@@ -536,10 +602,12 @@
             "inputApplicationType": "None",
             "inputApplicationId": null,
             "inputApplicationDescription": "",
+            "inputApplicationComment": "",
             "outputApplicationName": "",
             "outputApplicationType": "None",
             "outputApplicationId": null,
-            "outputApplicationDescription": ""
+            "outputApplicationDescription": "",
+            "outputApplicationComment": ""
         },
         {
             "category": "ParameterSet",
@@ -550,9 +618,9 @@
             "id": "f1287185-b61c-4538-9523-faa5ab50576a",
             "name": "CimagerParset (D0)",
             "description": "A set of parameters, which can be set and modified in EAGLE and thus is part of the graph. Multiple serialisation formats are available.",
+            "comment": "",
             "x": 440.19648817325486,
             "y": 279.36543492840616,
-            "subject": null,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "b11f970",
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE_test_repo/master/daliuge/daliuge-master.palette",
@@ -1595,10 +1663,12 @@
             "inputApplicationType": "None",
             "inputApplicationId": null,
             "inputApplicationDescription": "",
+            "inputApplicationComment": "",
             "outputApplicationName": "",
             "outputApplicationType": "None",
             "outputApplicationId": null,
-            "outputApplicationDescription": ""
+            "outputApplicationDescription": "",
+            "outputApplicationComment": ""
         },
         {
             "category": "Docker",
@@ -1609,9 +1679,9 @@
             "id": "00d928e9-0a59-4789-88ed-4a5c2628bfbd",
             "name": "imager",
             "description": "This docker app runs the Yandasoft Imager. It uses an askapsoft compliant configuration file on input, which defines all the required parameters.",
+            "comment": "",
             "x": 859.2744399481404,
             "y": 196.73513081164077,
-            "subject": null,
             "repositoryUrl": "",
             "commitHash": "",
             "paletteDownloadUrl": "",
@@ -1820,10 +1890,12 @@
             "inputApplicationType": "None",
             "inputApplicationId": null,
             "inputApplicationDescription": "",
+            "inputApplicationComment": "",
             "outputApplicationName": "",
             "outputApplicationType": "None",
             "outputApplicationId": null,
-            "outputApplicationDescription": ""
+            "outputApplicationDescription": "",
+            "outputApplicationComment": ""
         },
         {
             "category": "Memory",
@@ -1834,9 +1906,9 @@
             "id": "e8fafbf3-f77d-44e5-9709-401df4a0c40d",
             "name": "Cimager.Channels",
             "description": "In-memory storage of intermediate data products",
+            "comment": "",
             "x": 601.345661475538,
             "y": 159.30013869652112,
-            "subject": null,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "76436f8",
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
@@ -1970,13 +2042,15 @@
             "inputApplicationType": "None",
             "inputApplicationId": null,
             "inputApplicationDescription": "",
+            "inputApplicationComment": "",
             "outputApplicationName": "",
             "outputApplicationType": "None",
             "outputApplicationId": null,
-            "outputApplicationDescription": ""
+            "outputApplicationDescription": "",
+            "outputApplicationComment": ""
         },
         {
-            "category": "PythonApp",
+            "category": "PyFuncApp",
             "categoryType": "Application",
             "isGroup": false,
             "color": "#0059a5",
@@ -1984,9 +2058,9 @@
             "id": "c4b6ac64-56a6-473c-9abb-fe8014661f1d",
             "name": "parset_mixing",
             "description": "Update parset with dict values.\n    \n    Parameters\n    ----------\n    static_parset: \n        Standard parset dictionary\n    dynamic_parset: \n        List of dictionaries containing key-value pairs to update parset.\n    prefix: \n        Prefix to filter which keys should be updated.\n    \n    Returns\n    -------\n    bytes\n        Binary encoded combined parset.",
+            "comment": "",
             "x": 634.2288779645776,
             "y": 243.99757517685362,
-            "subject": null,
             "repositoryUrl": "dlg_paletteGen.generated",
             "commitHash": "0.1",
             "paletteDownloadUrl": "",
@@ -2150,10 +2224,12 @@
             "inputApplicationType": "None",
             "inputApplicationId": null,
             "inputApplicationDescription": "",
+            "inputApplicationComment": "",
             "outputApplicationName": "",
             "outputApplicationType": "None",
             "outputApplicationId": null,
-            "outputApplicationDescription": ""
+            "outputApplicationDescription": "",
+            "outputApplicationComment": ""
         },
         {
             "category": "Memory",
@@ -2164,9 +2240,9 @@
             "id": "3e375d3e-455f-4fa0-8df0-880a70a98c74",
             "name": "list of Cimager.Channels",
             "description": "In-memory storage of intermediate data products",
+            "comment": "",
             "x": 400.4130169689719,
             "y": 105.65592386099917,
-            "subject": null,
             "repositoryUrl": "https://github.com/ICRAR/daliuge",
             "commitHash": "76436f8",
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
@@ -2299,23 +2375,25 @@
             "inputApplicationType": "None",
             "inputApplicationId": null,
             "inputApplicationDescription": "",
+            "inputApplicationComment": "",
             "outputApplicationName": "",
             "outputApplicationType": "None",
             "outputApplicationId": null,
-            "outputApplicationDescription": ""
+            "outputApplicationDescription": "",
+            "outputApplicationComment": ""
         },
         {
             "category": "Scatter",
             "categoryType": "Construct",
             "isGroup": true,
-            "color": "rgb(227 189 100)",
+            "color": "#e3bd64",
             "drawOrderHint": 0,
             "id": "10b93648-e8d5-4b9e-93ee-148cb3d7d5dd",
             "name": "Scatter configs",
             "description": "A default Scatter construct for the GenericScatterApp component.",
+            "comment": "",
             "x": 764.8616682669875,
             "y": 200.47220243904187,
-            "subject": null,
             "repositoryUrl": "",
             "commitHash": "",
             "paletteDownloadUrl": "https://raw.githubusercontent.com/ICRAR/EAGLE-graph-repo/master/daliuge/daliuge-master.palette",
@@ -2431,17 +2509,20 @@
             ],
             "outputAppFields": [],
             "inputApplicationName": "GenericScatterApp",
-            "inputApplicationType": "PythonApp",
-            "inputApplicationId": "7e09b078-019e-4b9f-9cdd-28f088a07a7b",
+            "inputApplicationType": "DALiuGEApp",
+            "inputApplicationId": "d7eef9d1-6bd6-4e39-ab24-50f309f260a0",
             "inputApplicationDescription": "",
+            "inputApplicationComment": "",
             "outputApplicationName": "",
             "outputApplicationType": "None",
             "outputApplicationId": null,
-            "outputApplicationDescription": ""
+            "outputApplicationDescription": "",
+            "outputApplicationComment": ""
         }
     ],
     "linkDataArray": [
         {
+            "comment": "",
             "from": "00d928e9-0a59-4789-88ed-4a5c2628bfbd",
             "fromPort": "ef6fd024-ee9c-46fe-886e-63b7c73982e9",
             "to": "6c456d09-99c7-4e07-8602-5982056b0a2b",
@@ -2450,6 +2531,7 @@
             "closesLoop": false
         },
         {
+            "comment": "",
             "from": "00d928e9-0a59-4789-88ed-4a5c2628bfbd",
             "fromPort": "e469c9a3-f9fa-4787-9da8-3cb123d5bd80",
             "to": "3883631f-1065-4ae9-bb5a-e1cf480273ec",
@@ -2458,6 +2540,7 @@
             "closesLoop": false
         },
         {
+            "comment": "",
             "from": "90f3be01-b360-4e0c-a6a7-f33c52ce90be",
             "fromPort": "8528f8ab-2dbb-4b4d-87c9-6667e732c13e",
             "to": "00d928e9-0a59-4789-88ed-4a5c2628bfbd",
@@ -2466,6 +2549,7 @@
             "closesLoop": false
         },
         {
+            "comment": "",
             "from": "e8fafbf3-f77d-44e5-9709-401df4a0c40d",
             "fromPort": "ee1cdd13-5a41-4be5-b2cf-1dd45014b8a9",
             "to": "c4b6ac64-56a6-473c-9abb-fe8014661f1d",
@@ -2474,6 +2558,7 @@
             "closesLoop": false
         },
         {
+            "comment": "",
             "from": "c4b6ac64-56a6-473c-9abb-fe8014661f1d",
             "fromPort": "866e1dad-5f7a-4a86-8652-019277bd8b03",
             "to": "90f3be01-b360-4e0c-a6a7-f33c52ce90be",
@@ -2482,6 +2567,7 @@
             "closesLoop": false
         },
         {
+            "comment": "",
             "from": "f1287185-b61c-4538-9523-faa5ab50576a",
             "fromPort": "73a15ab8-a495-4c74-80dd-f8d859f932cd",
             "to": "c4b6ac64-56a6-473c-9abb-fe8014661f1d",
@@ -2490,6 +2576,7 @@
             "closesLoop": false
         },
         {
+            "comment": "",
             "from": "3e375d3e-455f-4fa0-8df0-880a70a98c74",
             "fromPort": "a12a0ea2-9758-4c31-822c-9acc339eaa9d",
             "to": "10b93648-e8d5-4b9e-93ee-148cb3d7d5dd",
@@ -2498,6 +2585,7 @@
             "closesLoop": false
         },
         {
+            "comment": "",
             "from": "10b93648-e8d5-4b9e-93ee-148cb3d7d5dd",
             "fromPort": "bac99e12-45b0-453e-8652-cfcd42c1212b",
             "to": "e8fafbf3-f77d-44e5-9709-401df4a0c40d",
