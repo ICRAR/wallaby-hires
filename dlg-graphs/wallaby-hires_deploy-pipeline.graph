@@ -2372,7 +2372,7 @@
                     "encoding": "pickle",
                     "id": "d5f6dcf7-fc6d-410e-8024-d91484219365",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "InputPort"
                 }
             ],
             "inputAppFields": [],
@@ -2538,7 +2538,7 @@
                     "encoding": "pickle",
                     "id": "b7e1d445-3650-4c6c-aa43-d866291a7ba9",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "InputPort"
                 }
             ],
             "inputAppFields": [],
@@ -2984,7 +2984,7 @@
             "outputAppFields": [],
             "inputApplicationName": "GenericScatterApp",
             "inputApplicationType": "DALiuGEApp",
-            "inputApplicationId": "deec4eb3-bcc2-457b-b37d-7894d63ceffa",
+            "inputApplicationId": "18f4a806-8f3f-46e2-b411-ef31a7825e81",
             "inputApplicationDescription": "",
             "inputApplicationComment": "",
             "outputApplicationName": "",
@@ -8594,7 +8594,7 @@
                     "encoding": "pickle",
                     "id": "adb33a2a-e136-4e57-9bc1-8194c764a1a9",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "InputPort"
                 }
             ],
             "inputAppFields": [],
@@ -8761,7 +8761,7 @@
                     "encoding": "pickle",
                     "id": "dcc7f8a4-bdcb-4acd-9b6f-ceebcf5e80de",
                     "parameterType": "ApplicationArgument",
-                    "usage": "InputOutput"
+                    "usage": "InputPort"
                 },
                 {
                     "name": "event",
